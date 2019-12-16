@@ -5,5 +5,6 @@
   </head>
   <body>
     <h1>Point K</h1>
+    <nav>Barre de navigation</nav>
   </body>
 </html>
