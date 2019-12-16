@@ -3,13 +3,13 @@
     <title>Point K</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../public/css/bootstrap.css" />
+    <script src="../../public/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../../public/css/bootstrap.min.css" />
+    <script src="../../public/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../public/css/bootstrap-grid.css" />
     <link rel="stylesheet" href="../../public/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="../../public/css/bootstrap-reboot.css" />
     <link rel="stylesheet" href="../../public/css/bootstrap-reboot.min.css" />
-    <script src="../../public/js/bootstrap.js"></script>
-    <script src="../../public/js/bootstrap.min.js"></script>
     <script src="../../public/js/bootstrap.bundle.js"></script>
     <script src="../../public/js/bootstrap.bundle.min.js"></script>
   </head>
