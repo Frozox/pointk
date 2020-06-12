@@ -105,7 +105,11 @@ EOT
             $targetArg = $kernel->getProjectDir().'/'.$targetArg;
 
             if (!is_dir($targetArg)) {
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('The target directory "%s" does not exist.', $input->getArgument('target')));
+=======
+                throw new InvalidArgumentException(sprintf('The target directory "%s" does not exist.', $targetArg));
+>>>>>>> ThomasN
             }
         }
 

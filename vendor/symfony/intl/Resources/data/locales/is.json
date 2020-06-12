@@ -368,6 +368,11 @@
         "ko_KP": "kóreska (Norður-Kórea)",
         "ko_KR": "kóreska (Suður-Kórea)",
         "ks": "kasmírska",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kasmírska (arabískt)",
+        "ks_Arab_IN": "kasmírska (arabískt, Indland)",
+>>>>>>> ThomasN
         "ks_IN": "kasmírska (Indland)",
         "ku": "kúrdíska",
         "ku_TR": "kúrdíska (Tyrkland)",
@@ -406,6 +411,10 @@
         "mr_IN": "maratí (Indland)",
         "ms": "malaíska",
         "ms_BN": "malaíska (Brúnei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malaíska (Indónesía)",
+>>>>>>> ThomasN
         "ms_MY": "malaíska (Malasía)",
         "ms_SG": "malaíska (Singapúr)",
         "mt": "maltneska",
@@ -486,6 +495,13 @@
         "rw": "kínjarvanda",
         "rw_RW": "kínjarvanda (Rúanda)",
         "sd": "sindí",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindí (arabískt)",
+        "sd_Arab_PK": "sindí (arabískt, Pakistan)",
+        "sd_Deva": "sindí (devanagari)",
+        "sd_Deva_IN": "sindí (devanagari, Indland)",
+>>>>>>> ThomasN
         "sd_PK": "sindí (Pakistan)",
         "se": "norðursamíska",
         "se_FI": "norðursamíska (Finnland)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "serbneska (latneskt, Serbía)",
         "sr_ME": "serbneska (Svartfjallaland)",
         "sr_RS": "serbneska (Serbía)",
+<<<<<<< HEAD
+=======
+        "su": "súndanska",
+        "su_ID": "súndanska (Indónesía)",
+        "su_Latn": "súndanska (latneskt)",
+        "su_Latn_ID": "súndanska (latneskt, Indónesía)",
+>>>>>>> ThomasN
         "sv": "sænska",
         "sv_AX": "sænska (Álandseyjar)",
         "sv_FI": "sænska (Finnland)",

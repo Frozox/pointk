@@ -19,9 +19,12 @@
 
 namespace Doctrine\ORM\Mapping;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory;
 use Doctrine\Common\Persistence\Mapping\ClassMetadata as ClassMetadataInterface;
 use Doctrine\Common\Persistence\Mapping\ReflectionService;
+=======
+>>>>>>> ThomasN
 use Doctrine\DBAL\Platforms;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
@@ -30,8 +33,18 @@ use Doctrine\ORM\Events;
 use Doctrine\ORM\Id\BigIntegerIdentityGenerator;
 use Doctrine\ORM\Id\IdentityGenerator;
 use Doctrine\ORM\ORMException;
+<<<<<<< HEAD
 use ReflectionException;
 use function assert;
+=======
+use Doctrine\Persistence\Mapping\AbstractClassMetadataFactory;
+use Doctrine\Persistence\Mapping\ClassMetadata as ClassMetadataInterface;
+use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use Doctrine\Persistence\Mapping\ReflectionService;
+use ReflectionException;
+use function assert;
+use function interface_exists;
+>>>>>>> ThomasN
 
 /**
  * The ClassMetadataFactory is used to create ClassMetadata objects that contain all the
@@ -57,7 +70,11 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
     private $targetPlatform;
 
     /**
+<<<<<<< HEAD
      * @var \Doctrine\Common\Persistence\Mapping\Driver\MappingDriver
+=======
+     * @var MappingDriver
+>>>>>>> ThomasN
      */
     private $driver;
 
@@ -402,7 +419,11 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
     private function addInheritedFields(ClassMetadata $subClass, ClassMetadata $parentClass)
     {
         foreach ($parentClass->fieldMappings as $mapping) {
+<<<<<<< HEAD
             if (! isset($mapping['inherited']) && ! $parentClass->isMappedSuperclass && ! $parentClass->isEmbeddedClass) {
+=======
+            if (! isset($mapping['inherited']) && ! $parentClass->isMappedSuperclass) {
+>>>>>>> ThomasN
                 $mapping['inherited'] = $parentClass->name;
             }
             if (! isset($mapping['declared'])) {
@@ -470,6 +491,13 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
     private function addNestedEmbeddedClasses(ClassMetadata $subClass, ClassMetadata $parentClass, $prefix)
     {
         foreach ($subClass->embeddedClasses as $property => $embeddableClass) {
+<<<<<<< HEAD
+=======
+            if (isset($embeddableClass['inherited'])) {
+                continue;
+            }
+
+>>>>>>> ThomasN
             $embeddableMetadata = $this->getMetadataFor($embeddableClass['class']);
 
             $parentClass->mapEmbedded(
@@ -777,9 +805,13 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
      */
     protected function isEntity(ClassMetadataInterface $class)
     {
+<<<<<<< HEAD
         assert($class instanceof ClassMetadata);
 
         return $class->isMappedSuperclass === false && $class->isEmbeddedClass === false;
+=======
+        return isset($class->isMappedSuperclass) && $class->isMappedSuperclass === false;
+>>>>>>> ThomasN
     }
 
     /**
@@ -794,3 +826,9 @@ class ClassMetadataFactory extends AbstractClassMetadataFactory
         return $this->targetPlatform;
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadataInterface::class);
+interface_exists(ReflectionService::class);
+>>>>>>> ThomasN

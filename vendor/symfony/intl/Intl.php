@@ -125,7 +125,11 @@ final class Intl
      */
     public static function getIcuStubVersion(): string
     {
+<<<<<<< HEAD
         return '65.1';
+=======
+        return '67.1';
+>>>>>>> ThomasN
     }
 
     /**

@@ -368,6 +368,11 @@
         "ko_KP": "lea fakakōlea (Kōlea tokelau)",
         "ko_KR": "lea fakakōlea (Kōlea tonga)",
         "ks": "lea fakakāsimila",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "lea fakakāsimila (tohinima fakaʻalepea)",
+        "ks_Arab_IN": "lea fakakāsimila (tohinima fakaʻalepea, ʻInitia)",
+>>>>>>> ThomasN
         "ks_IN": "lea fakakāsimila (ʻInitia)",
         "ku": "lea fakakulitī",
         "ku_TR": "lea fakakulitī (Toake)",
@@ -406,6 +411,10 @@
         "mr_IN": "lea fakamalati (ʻInitia)",
         "ms": "lea fakamalei",
         "ms_BN": "lea fakamalei (Pulunei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "lea fakamalei (ʻInitonēsia)",
+>>>>>>> ThomasN
         "ms_MY": "lea fakamalei (Malēsia)",
         "ms_SG": "lea fakamalei (Singapoa)",
         "mt": "lea fakamalita",
@@ -486,6 +495,13 @@
         "rw": "lea fakakiniāuanita",
         "rw_RW": "lea fakakiniāuanita (Luanitā)",
         "sd": "lea fakasīniti",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "lea fakasīniti (tohinima fakaʻalepea)",
+        "sd_Arab_PK": "lea fakasīniti (tohinima fakaʻalepea, Pākisitani)",
+        "sd_Deva": "lea fakasīniti (tohinima fakaʻinitia-tevanākalī)",
+        "sd_Deva_IN": "lea fakasīniti (tohinima fakaʻinitia-tevanākalī, ʻInitia)",
+>>>>>>> ThomasN
         "sd_PK": "lea fakasīniti (Pākisitani)",
         "se": "lea fakasami-tokelau",
         "se_FI": "lea fakasami-tokelau (Finilani)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "lea fakasēpia (tohinima fakalatina, Sēpia)",
         "sr_ME": "lea fakasēpia (Monitenikalo)",
         "sr_RS": "lea fakasēpia (Sēpia)",
+<<<<<<< HEAD
+=======
+        "su": "lea fakasunitā",
+        "su_ID": "lea fakasunitā (ʻInitonēsia)",
+        "su_Latn": "lea fakasunitā (tohinima fakalatina)",
+        "su_Latn_ID": "lea fakasunitā (tohinima fakalatina, ʻInitonēsia)",
+>>>>>>> ThomasN
         "sv": "lea fakasuēteni",
         "sv_AX": "lea fakasuēteni (ʻOtumotu ʻAlani)",
         "sv_FI": "lea fakasuēteni (Finilani)",

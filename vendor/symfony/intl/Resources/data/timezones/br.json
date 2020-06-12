@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Amzer keitat Greenwich (AKG) (Abidjan)",
         "Africa\/Accra": "Amzer keitat Greenwich (AKG) (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "eur Arcʼhantina (Rio Gallegos)",
         "America\/Argentina\/Salta": "eur Arcʼhantina (Salta)",
         "America\/Argentina\/San_Juan": "eur Arcʼhantina (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "eur Arcʼhantina ar Cʼhornôg (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "eur Arcʼhantina (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "eur Arcʼhantina (Tucuman)",
         "America\/Argentina\/Ushuaia": "eur Arcʼhantina (Ushuaia)",
         "America\/Aruba": "eur an Atlantel (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "eur Brunei Darussalam",
         "Asia\/Calcutta": "eur cʼhoañv India (Calcutta)",
         "Asia\/Chita": "eur Yakutsk (Tchita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "eur Choibalsan",
+=======
+        "Asia\/Choibalsan": "eur Ulaanbaatar (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "eur cʼhoañv India (Kolamba)",
         "Asia\/Damascus": "eur Europa ar Reter (Damask)",
         "Asia\/Dhaka": "eur Bangladesh (Dhaka)",

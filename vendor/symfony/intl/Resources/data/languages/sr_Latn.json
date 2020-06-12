@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afarski",
         "ab": "abhaski",
@@ -61,6 +64,10 @@
         "cad": "kado",
         "car": "karipski",
         "cch": "atsam",
+<<<<<<< HEAD
+=======
+        "ccp": "čakma",
+>>>>>>> ThomasN
         "ce": "čečenski",
         "ceb": "sebuanski",
         "cgg": "čiga",
@@ -497,6 +504,10 @@
         "en_GB": "engleski (Velika Britanija)",
         "en_US": "engleski (Sjedinjene Američke Države)",
         "es_ES": "španski (Evropa)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "nds_NL": "niskosaksonski",
         "nl_BE": "flamanski",
         "pt_PT": "portugalski (Portugal)",

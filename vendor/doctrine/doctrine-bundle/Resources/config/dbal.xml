@@ -41,6 +41,10 @@
         <service id="data_collector.doctrine" class="%doctrine.data_collector.class%" public="false">
             <tag name="data_collector" template="@Doctrine/Collector/db.html.twig" id="db" priority="250" />
             <argument type="service" id="doctrine" />
+<<<<<<< HEAD
+=======
+            <argument>true</argument>
+>>>>>>> ThomasN
         </service>
 
         <service id="doctrine.dbal.connection_factory" class="%doctrine.dbal.connection_factory.class%">

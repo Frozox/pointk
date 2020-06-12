@@ -108,7 +108,11 @@ abstract class IntlGlobals
     public static function setError(int $code, string $message = '')
     {
         if (!isset(self::$errorCodes[$code])) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('No such error code: "%s"', $code));
+=======
+            throw new \InvalidArgumentException(sprintf('No such error code: "%s".', $code));
+>>>>>>> ThomasN
         }
 
         self::$errorMessage = $message ? sprintf('%s: %s', $message, self::$errorCodes[$code]) : self::$errorCodes[$code];

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AD": "Andora",
         "AE": "Haɗaɗɗiyar Daular Larabawa",
@@ -15,6 +18,10 @@
         "AT": "Ostiriya",
         "AU": "Ostareliya",
         "AW": "Aruba",
+<<<<<<< HEAD
+=======
+        "AX": "Tsibirai na Åland",
+>>>>>>> ThomasN
         "AZ": "Azarbaijan",
         "BA": "Bosniya Harzagobina",
         "BB": "Barbadas",
@@ -33,6 +40,10 @@
         "BR": "Birazil",
         "BS": "Bahamas",
         "BT": "Butan",
+<<<<<<< HEAD
+=======
+        "BV": "Tsibirin Bouvet",
+>>>>>>> ThomasN
         "BW": "Baswana",
         "BY": "Belarus",
         "BZ": "Beliz",
@@ -64,6 +75,10 @@
         "EC": "Ekwador",
         "EE": "Estoniya",
         "EG": "Misira",
+<<<<<<< HEAD
+=======
+        "EH": "Yammacin Sahara",
+>>>>>>> ThomasN
         "ER": "Eritireya",
         "ES": "Sipen",
         "ET": "Habasha",
@@ -71,12 +86,20 @@
         "FJ": "Fiji",
         "FK": "Tsibiran Falkilan",
         "FM": "Mikuronesiya",
+<<<<<<< HEAD
+=======
+        "FO": "Tsibirai na Faroe",
+>>>>>>> ThomasN
         "FR": "Faransa",
         "GA": "Gabon",
         "GB": "Biritaniya",
         "GD": "Girnada",
         "GE": "Jiwarjiya",
         "GF": "Gini Ta Faransa",
+<<<<<<< HEAD
+=======
+        "GG": "Yankin Guernsey",
+>>>>>>> ThomasN
         "GH": "Gana",
         "GI": "Jibaraltar",
         "GL": "Grinlan",
@@ -85,10 +108,19 @@
         "GP": "Gwadaluf",
         "GQ": "Gini Ta Ikwaita",
         "GR": "Girka",
+<<<<<<< HEAD
+=======
+        "GS": "Kudancin Geogia da Kudancin Tsibirin Sandiwic",
+>>>>>>> ThomasN
         "GT": "Gwatamala",
         "GU": "Gwam",
         "GW": "Gini Bisau",
         "GY": "Guyana",
+<<<<<<< HEAD
+=======
+        "HK": "Hong Kong Babban Birnin Kasar Chana",
+        "HM": "Tsibirin Heard da McDonald",
+>>>>>>> ThomasN
         "HN": "Honduras",
         "HR": "Kurowaishiya",
         "HT": "Haiti",
@@ -96,12 +128,20 @@
         "ID": "Indunusiya",
         "IE": "Ayalan",
         "IL": "Iziraʼila",
+<<<<<<< HEAD
+=======
+        "IM": "Isle na Mutum",
+>>>>>>> ThomasN
         "IN": "Indiya",
         "IO": "Yankin Birtaniya Na Tekun Indiya",
         "IQ": "Iraƙi",
         "IR": "Iran",
         "IS": "Aisalan",
         "IT": "Italiya",
+<<<<<<< HEAD
+=======
+        "JE": "Kasar Jersey",
+>>>>>>> ThomasN
         "JM": "Jamaika",
         "JO": "Jordan",
         "JP": "Jàpân",
@@ -138,6 +178,10 @@
         "ML": "Mali",
         "MM": "Burma, Miyamar",
         "MN": "Mangoliya",
+<<<<<<< HEAD
+=======
+        "MO": "Babban Birnin Mulki na Chana",
+>>>>>>> ThomasN
         "MP": "Tsibiran Mariyana Na Arewa",
         "MQ": "Martinik",
         "MR": "Moritaniya",
@@ -190,6 +234,10 @@
         "SG": "Singapur",
         "SH": "San Helena",
         "SI": "Sulobeniya",
+<<<<<<< HEAD
+=======
+        "SJ": "Svalbard da Jan Mayen",
+>>>>>>> ThomasN
         "SK": "Sulobakiya",
         "SL": "Salewo",
         "SM": "San Marino",
@@ -220,6 +268,10 @@
         "TZ": "Tanzaniya",
         "UA": "Yukaran",
         "UG": "Yuganda",
+<<<<<<< HEAD
+=======
+        "UM": "Rukunin Tsibirin U.S",
+>>>>>>> ThomasN
         "US": "Amurka",
         "UY": "Yurigwai",
         "UZ": "Uzubekistan",

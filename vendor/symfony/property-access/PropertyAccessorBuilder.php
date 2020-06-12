@@ -12,6 +12,11 @@
 namespace Symfony\Component\PropertyAccess;
 
 use Psr\Cache\CacheItemPoolInterface;
+<<<<<<< HEAD
+=======
+use Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface;
+use Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface;
+>>>>>>> ThomasN
 
 /**
  * A configurable builder to create a PropertyAccessor.
@@ -30,6 +35,19 @@ class PropertyAccessorBuilder
     private $cacheItemPool;
 
     /**
+<<<<<<< HEAD
+=======
+     * @var PropertyReadInfoExtractorInterface|null
+     */
+    private $readInfoExtractor;
+
+    /**
+     * @var PropertyWriteInfoExtractorInterface|null
+     */
+    private $writeInfoExtractor;
+
+    /**
+>>>>>>> ThomasN
      * Enables the use of "__call" by the PropertyAccessor.
      *
      * @return $this
@@ -158,12 +176,49 @@ class PropertyAccessorBuilder
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @return $this
+     */
+    public function setReadInfoExtractor(?PropertyReadInfoExtractorInterface $readInfoExtractor)
+    {
+        $this->readInfoExtractor = $readInfoExtractor;
+
+        return $this;
+    }
+
+    public function getReadInfoExtractor(): ?PropertyReadInfoExtractorInterface
+    {
+        return $this->readInfoExtractor;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setWriteInfoExtractor(?PropertyWriteInfoExtractorInterface $writeInfoExtractor)
+    {
+        $this->writeInfoExtractor = $writeInfoExtractor;
+
+        return $this;
+    }
+
+    public function getWriteInfoExtractor(): ?PropertyWriteInfoExtractorInterface
+    {
+        return $this->writeInfoExtractor;
+    }
+
+    /**
+>>>>>>> ThomasN
      * Builds and returns a new PropertyAccessor object.
      *
      * @return PropertyAccessorInterface The built PropertyAccessor
      */
     public function getPropertyAccessor()
     {
+<<<<<<< HEAD
         return new PropertyAccessor($this->magicCall, $this->throwExceptionOnInvalidIndex, $this->cacheItemPool, $this->throwExceptionOnInvalidPropertyPath);
+=======
+        return new PropertyAccessor($this->magicCall, $this->throwExceptionOnInvalidIndex, $this->cacheItemPool, $this->throwExceptionOnInvalidPropertyPath, $this->readInfoExtractor, $this->writeInfoExtractor);
+>>>>>>> ThomasN
     }
 }

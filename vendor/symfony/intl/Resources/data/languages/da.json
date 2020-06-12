@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afar",
         "ab": "abkhasisk",
@@ -522,6 +525,10 @@
         "es_419": "latinamerikansk spansk",
         "es_ES": "europæisk spansk",
         "es_MX": "mexicansk spansk",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "canadisk fransk",
         "fr_CH": "schweizisk fransk",
         "nl_BE": "flamsk",

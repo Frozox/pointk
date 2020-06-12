@@ -47,6 +47,11 @@ class SQLAnywhereSchemaManager extends AbstractSchemaManager
      * Starts a database.
      *
      * @param string $database The name of the database to start.
+<<<<<<< HEAD
+=======
+     *
+     * @return void
+>>>>>>> ThomasN
      */
     public function startDatabase($database)
     {
@@ -58,6 +63,11 @@ class SQLAnywhereSchemaManager extends AbstractSchemaManager
      * Stops a database.
      *
      * @param string $database The name of the database to stop.
+<<<<<<< HEAD
+=======
+     *
+     * @return void
+>>>>>>> ThomasN
      */
     public function stopDatabase($database)
     {

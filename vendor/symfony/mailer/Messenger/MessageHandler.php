@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\Mailer\Messenger;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Mailer\SentMessage;
+>>>>>>> ThomasN
 use Symfony\Component\Mailer\Transport\TransportInterface;
 
 /**
@@ -25,8 +29,14 @@ class MessageHandler
         $this->transport = $transport;
     }
 
+<<<<<<< HEAD
     public function __invoke(SendEmailMessage $message)
     {
         $this->transport->send($message->getMessage(), $message->getEnvelope());
+=======
+    public function __invoke(SendEmailMessage $message): ?SentMessage
+    {
+        return $this->transport->send($message->getMessage(), $message->getEnvelope());
+>>>>>>> ThomasN
     }
 }

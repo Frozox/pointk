@@ -108,12 +108,16 @@ abstract class NodeAbstract implements Node, \JsonSerializable
     /**
      * Gets the doc comment of the node.
      *
+<<<<<<< HEAD
      * The doc comment has to be the last comment associated with the node.
      *
+=======
+>>>>>>> ThomasN
      * @return null|Comment\Doc Doc comment object or null
      */
     public function getDocComment() {
         $comments = $this->getComments();
+<<<<<<< HEAD
         if (!$comments) {
             return null;
         }
@@ -124,6 +128,16 @@ abstract class NodeAbstract implements Node, \JsonSerializable
         }
 
         return $lastComment;
+=======
+        for ($i = count($comments) - 1; $i >= 0; $i--) {
+            $comment = $comments[$i];
+            if ($comment instanceof Comment\Doc) {
+                return $comment;
+            }
+        }
+
+        return null;
+>>>>>>> ThomasN
     }
 
     /**
@@ -135,6 +149,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      */
     public function setDocComment(Comment\Doc $docComment) {
         $comments = $this->getComments();
+<<<<<<< HEAD
 
         $numComments = count($comments);
         if ($numComments > 0 && $comments[$numComments - 1] instanceof Comment\Doc) {
@@ -145,6 +160,19 @@ abstract class NodeAbstract implements Node, \JsonSerializable
             $comments[] = $docComment;
         }
 
+=======
+        for ($i = count($comments) - 1; $i >= 0; $i--) {
+            if ($comments[$i] instanceof Comment\Doc) {
+                // Replace existing doc comment.
+                $comments[$i] = $docComment;
+                $this->setAttribute('comments', $comments);
+                return;
+            }
+        }
+
+        // Append new doc comment.
+        $comments[] = $docComment;
+>>>>>>> ThomasN
         $this->setAttribute('comments', $comments);
     }
 

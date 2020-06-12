@@ -19,12 +19,20 @@
 
 namespace Doctrine\ORM\Mapping\Driver;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
+=======
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
+>>>>>>> ThomasN
 
 /**
  * {@inheritDoc}
  *
+<<<<<<< HEAD
  * @deprecated this driver will be removed. Use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain instead
+=======
+ * @deprecated this driver will be removed. Use Doctrine\Persistence\Mapping\Driver\MappingDriverChain instead
+>>>>>>> ThomasN
  */
 class DriverChain extends MappingDriverChain
 {

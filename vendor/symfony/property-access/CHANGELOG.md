@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+* Added an `UninitializedPropertyException`
+* Linking to PropertyInfo extractor to remove a lot of duplicate code
+
+>>>>>>> ThomasN
 4.4.0
 -----
 

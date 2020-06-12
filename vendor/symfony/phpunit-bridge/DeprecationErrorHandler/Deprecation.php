@@ -109,7 +109,11 @@ class Deprecation
     public function originatingClass()
     {
         if (null === $this->originClass) {
+<<<<<<< HEAD
             throw new \LogicException('Check with originatesFromAnObject() before calling this method');
+=======
+            throw new \LogicException('Check with originatesFromAnObject() before calling this method.');
+>>>>>>> ThomasN
         }
 
         return $this->originClass;
@@ -121,7 +125,11 @@ class Deprecation
     public function originatingMethod()
     {
         if (null === $this->originMethod) {
+<<<<<<< HEAD
             throw new \LogicException('Check with originatesFromAnObject() before calling this method');
+=======
+            throw new \LogicException('Check with originatesFromAnObject() before calling this method.');
+>>>>>>> ThomasN
         }
 
         return $this->originMethod;
@@ -237,7 +245,11 @@ class Deprecation
                 $relativePath = substr($path, \strlen($vendorRoot) + 1);
                 $vendor = strstr($relativePath, \DIRECTORY_SEPARATOR, true);
                 if (false === $vendor) {
+<<<<<<< HEAD
                     throw new \RuntimeException(sprintf('Could not find directory separator "%s" in path "%s"', \DIRECTORY_SEPARATOR, $relativePath));
+=======
+                    throw new \RuntimeException(sprintf('Could not find directory separator "%s" in path "%s".', \DIRECTORY_SEPARATOR, $relativePath));
+>>>>>>> ThomasN
                 }
 
                 return rtrim($vendor.'/'.strstr(substr(
@@ -247,7 +259,11 @@ class Deprecation
             }
         }
 
+<<<<<<< HEAD
         throw new \RuntimeException(sprintf('No vendors found for path "%s"', $path));
+=======
+        throw new \RuntimeException(sprintf('No vendors found for path "%s".', $path));
+>>>>>>> ThomasN
     }
 
     /**

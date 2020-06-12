@@ -41,7 +41,11 @@ class XliffUtils
             $namespace = $xliff->attributes->getNamedItem('xmlns');
             if ($namespace) {
                 if (0 !== substr_compare('urn:oasis:names:tc:xliff:document:', $namespace->nodeValue, 0, 34)) {
+<<<<<<< HEAD
                     throw new InvalidArgumentException(sprintf('Not a valid XLIFF namespace "%s"', $namespace));
+=======
+                    throw new InvalidArgumentException(sprintf('Not a valid XLIFF namespace "%s".', $namespace));
+>>>>>>> ThomasN
                 }
 
                 return substr($namespace, 34);

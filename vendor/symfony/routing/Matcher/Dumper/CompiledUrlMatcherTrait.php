@@ -93,10 +93,17 @@ trait CompiledUrlMatcherTrait
             }
 
             if ($requiredHost) {
+<<<<<<< HEAD
                 if ('#' !== $requiredHost[0] ? $requiredHost !== $host : !preg_match($requiredHost, $host, $hostMatches)) {
                     continue;
                 }
                 if ('#' === $requiredHost[0] && $hostMatches) {
+=======
+                if ('{' !== $requiredHost[0] ? $requiredHost !== $host : !preg_match($requiredHost, $host, $hostMatches)) {
+                    continue;
+                }
+                if ('{' === $requiredHost[0] && $hostMatches) {
+>>>>>>> ThomasN
                     $hostMatches['_route'] = $ret['_route'];
                     $ret = $this->mergeDefaults($hostMatches, $ret);
                 }

@@ -39,7 +39,11 @@ class YamlReferenceDumper
 
         foreach (explode('.', $path) as $step) {
             if (!$node instanceof ArrayNode) {
+<<<<<<< HEAD
                 throw new \UnexpectedValueException(sprintf('Unable to find node at path "%s.%s"', $rootNode->getName(), $path));
+=======
+                throw new \UnexpectedValueException(sprintf('Unable to find node at path "%s.%s".', $rootNode->getName(), $path));
+>>>>>>> ThomasN
             }
 
             /** @var NodeInterface[] $children */
@@ -53,7 +57,11 @@ class YamlReferenceDumper
                 }
             }
 
+<<<<<<< HEAD
             throw new \UnexpectedValueException(sprintf('Unable to find node at path "%s.%s"', $rootNode->getName(), $path));
+=======
+            throw new \UnexpectedValueException(sprintf('Unable to find node at path "%s.%s".', $rootNode->getName(), $path));
+>>>>>>> ThomasN
         }
 
         return $this->dumpNode($node);
@@ -120,7 +128,12 @@ class YamlReferenceDumper
 
         // deprecated?
         if ($node->isDeprecated()) {
+<<<<<<< HEAD
             $comments[] = sprintf('Deprecated (%s)', $node->getDeprecationMessage($node->getName(), $parentNode ? $parentNode->getPath() : $node->getPath()));
+=======
+            $deprecation = $node->getDeprecation($node->getName(), $parentNode ? $parentNode->getPath() : $node->getPath());
+            $comments[] = sprintf('Deprecated (%s)', ($deprecation['package'] || $deprecation['version'] ? "Since {$deprecation['package']} {$deprecation['version']}: " : '').$deprecation['message']);
+>>>>>>> ThomasN
         }
 
         // example

@@ -75,7 +75,11 @@ class GuardAuthenticatorHandler
             return $response;
         }
 
+<<<<<<< HEAD
         throw new \UnexpectedValueException(sprintf('The %s::onAuthenticationSuccess method must return null or a Response object. You returned %s.', \get_class($guardAuthenticator), \is_object($response) ? \get_class($response) : \gettype($response)));
+=======
+        throw new \UnexpectedValueException(sprintf('The "%s::onAuthenticationSuccess()" method must return null or a Response object. You returned "%s".', \get_class($guardAuthenticator), get_debug_type($response)));
+>>>>>>> ThomasN
     }
 
     /**
@@ -105,7 +109,11 @@ class GuardAuthenticatorHandler
             return $response;
         }
 
+<<<<<<< HEAD
         throw new \UnexpectedValueException(sprintf('The %s::onAuthenticationFailure method must return null or a Response object. You returned %s.', \get_class($guardAuthenticator), \is_object($response) ? \get_class($response) : \gettype($response)));
+=======
+        throw new \UnexpectedValueException(sprintf('The "%s::onAuthenticationFailure()" method must return null or a Response object. You returned "%s".', \get_class($guardAuthenticator), get_debug_type($response)));
+>>>>>>> ThomasN
     }
 
     /**
@@ -120,7 +128,11 @@ class GuardAuthenticatorHandler
 
     private function migrateSession(Request $request, TokenInterface $token, ?string $providerKey)
     {
+<<<<<<< HEAD
         if (!$this->sessionStrategy || !$request->hasSession() || !$request->hasPreviousSession() || \in_array($providerKey, $this->statelessProviderKeys, true)) {
+=======
+        if (\in_array($providerKey, $this->statelessProviderKeys, true) || !$this->sessionStrategy || !$request->hasSession() || !$request->hasPreviousSession()) {
+>>>>>>> ThomasN
             return;
         }
 

@@ -22,16 +22,25 @@ use Symfony\Component\String\Exception\RuntimeException;
  * @author Hugo Hamon <hugohamon@neuf.fr>
  *
  * @throws ExceptionInterface
+<<<<<<< HEAD
  *
  * @experimental in 5.0
  */
 class ByteString extends AbstractString
 {
+=======
+ */
+class ByteString extends AbstractString
+{
+    private const ALPHABET_ALPHANUMERIC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+>>>>>>> ThomasN
     public function __construct(string $string = '')
     {
         $this->string = $string;
     }
 
+<<<<<<< HEAD
     public static function fromRandom(int $length = 16): self
     {
         $string = '';
@@ -41,6 +50,59 @@ class ByteString extends AbstractString
         } while (\strlen($string) < $length);
 
         return new static(substr($string, 0, $length));
+=======
+    /*
+     * The following method was derived from code of the Hack Standard Library (v4.40 - 2020-05-03)
+     *
+     * https://github.com/hhvm/hsl/blob/80a42c02f036f72a42f0415e80d6b847f4bf62d5/src/random/private.php#L16
+     *
+     * Code subject to the MIT license (https://github.com/hhvm/hsl/blob/master/LICENSE).
+     *
+     * Copyright (c) 2004-2020, Facebook, Inc. (https://www.facebook.com/)
+     */
+
+    public static function fromRandom(int $length = 16, string $alphabet = null): self
+    {
+        if ($length <= 0) {
+            throw new InvalidArgumentException(sprintf('A strictly positive length is expected, "%d" given.', $length));
+        }
+
+        $alphabet = $alphabet ?? self::ALPHABET_ALPHANUMERIC;
+        $alphabetSize = \strlen($alphabet);
+        $bits = (int) ceil(log($alphabetSize, 2.0));
+        if ($bits <= 0 || $bits > 56) {
+            throw new InvalidArgumentException('The length of the alphabet must in the [2^1, 2^56] range.');
+        }
+
+        $ret = '';
+        while ($length > 0) {
+            $urandomLength = (int) ceil(2 * $length * $bits / 8.0);
+            $data = random_bytes($urandomLength);
+            $unpackedData = 0;
+            $unpackedBits = 0;
+            for ($i = 0; $i < $urandomLength && $length > 0; ++$i) {
+                // Unpack 8 bits
+                $unpackedData = ($unpackedData << 8) | \ord($data[$i]);
+                $unpackedBits += 8;
+
+                // While we have enough bits to select a character from the alphabet, keep
+                // consuming the random data
+                for (; $unpackedBits >= $bits && $length > 0; $unpackedBits -= $bits) {
+                    $index = ($unpackedData & ((1 << $bits) - 1));
+                    $unpackedData >>= $bits;
+                    // Unfortunately, the alphabet size is not necessarily a power of two.
+                    // Worst case, it is 2^k + 1, which means we need (k+1) bits and we
+                    // have around a 50% chance of missing as k gets larger
+                    if ($index < $alphabetSize) {
+                        $ret .= $alphabet[$index];
+                        --$length;
+                    }
+                }
+            }
+        }
+
+        return new static($ret);
+>>>>>>> ThomasN
     }
 
     public function bytesAt(int $offset): array
@@ -271,7 +333,11 @@ class ByteString extends AbstractString
 
         if (\is_array($to)) {
             if (!\is_callable($to)) {
+<<<<<<< HEAD
                 throw new \TypeError(sprintf('Argument 2 passed to %s::replaceMatches() must be callable, array given.', static::class));
+=======
+                throw new \TypeError(sprintf('Argument 2 passed to "%s::replaceMatches()" must be callable, array given.', static::class));
+>>>>>>> ThomasN
             }
 
             $replace = 'preg_replace_callback';
@@ -303,6 +369,17 @@ class ByteString extends AbstractString
         return $str;
     }
 
+<<<<<<< HEAD
+=======
+    public function reverse(): parent
+    {
+        $str = clone $this;
+        $str->string = strrev($str->string);
+
+        return $str;
+    }
+
+>>>>>>> ThomasN
     public function slice(int $start = 0, int $length = null): parent
     {
         $str = clone $this;
@@ -449,6 +526,7 @@ class ByteString extends AbstractString
 
     public function width(bool $ignoreAnsiDecoration = true): int
     {
+<<<<<<< HEAD
         $width = 0;
         $s = str_replace(["\x00", "\x05", "\x07"], '', $this->string);
 
@@ -473,5 +551,10 @@ class ByteString extends AbstractString
         }
 
         return $width;
+=======
+        $string = preg_match('//u', $this->string) ? $this->string : preg_replace('/[\x80-\xFF]/', '?', $this->string);
+
+        return (new CodePointString($string))->width($ignoreAnsiDecoration);
+>>>>>>> ThomasN
     }
 }

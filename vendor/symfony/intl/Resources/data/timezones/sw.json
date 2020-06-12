@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Saa za Greenwich (Abidjan)",
         "Africa\/Accra": "Saa za Greenwich (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Saa za Argentina (Rio Gallegos)",
         "America\/Argentina\/Salta": "Saa za Argentina (Salta)",
         "America\/Argentina\/San_Juan": "Saa za Argentina (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Saa za Magharibi mwa Argentina (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Saa za Argentina (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Saa za Argentina (Tucuman)",
         "America\/Argentina\/Ushuaia": "Saa za Argentina (Ushuaia)",
         "America\/Aruba": "Saa za Atlantiki (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Saa za Brunei Darussalam",
         "Asia\/Calcutta": "Saa Wastani za India (Kolkata)",
         "Asia\/Chita": "Saa za Yakutsk (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Saa za Choibalsan",
+=======
+        "Asia\/Choibalsan": "Saa za Ulan Bator (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Saa Wastani za India (Colombo)",
         "Asia\/Damascus": "Saa za Mashariki mwa Ulaya (Damascus)",
         "Asia\/Dhaka": "Saa za Bangladesh (Dhaka)",
@@ -271,7 +282,11 @@
         "Asia\/Pontianak": "Saa za Magharibi mwa Indonesia (Pontianak)",
         "Asia\/Pyongyang": "Saa za Korea (Pyongyang)",
         "Asia\/Qatar": "Saa za Uarabuni (Qatar)",
+<<<<<<< HEAD
         "Asia\/Qostanay": "Saa za Kazakhstan Mashariki (Qostanay)",
+=======
+        "Asia\/Qostanay": "Saa za Kazakhstan Mashariki (Kostanay)",
+>>>>>>> ThomasN
         "Asia\/Qyzylorda": "Saa za Kazakhstan Magharibi (Qyzylorda)",
         "Asia\/Rangoon": "Saa za Myanmar (Rangoon)",
         "Asia\/Riyadh": "Saa za Uarabuni (Riyadh)",

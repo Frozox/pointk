@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Arab": "árabe",
+=======
+    "Names": {
+        "Arab": "árabe",
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armn": "armenio",
         "Avst": "avéstico",
         "Bali": "balinés",
@@ -86,6 +92,10 @@
         "Phag": "phags-pa",
         "Phnx": "fenicio",
         "Plrd": "Pollard Miao",
+<<<<<<< HEAD
+=======
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Rjng": "rejang",
         "Roro": "rongo-rongo",
         "Runr": "rúnico",

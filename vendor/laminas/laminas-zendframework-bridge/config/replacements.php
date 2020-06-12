@@ -3,6 +3,10 @@
 return [
     // NEVER REWRITE
     'zendframework/zendframework' => 'zendframework/zendframework',
+<<<<<<< HEAD
+=======
+    'zend-developer-tools/toolbar/bjy' => 'zend-developer-tools/toolbar/bjy',
+>>>>>>> ThomasN
     'zend-developer-tools/toolbar/doctrine' => 'zend-developer-tools/toolbar/doctrine',
 
     // NAMESPACES

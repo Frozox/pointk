@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\Console\Helper;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Console\Cursor;
+>>>>>>> ThomasN
 use Symfony\Component\Console\Exception\LogicException;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\ConsoleSectionOutput;
@@ -47,6 +51,10 @@ final class ProgressBar
     private $overwrite = true;
     private $terminal;
     private $previousMessage;
+<<<<<<< HEAD
+=======
+    private $cursor;
+>>>>>>> ThomasN
 
     private static $formatters;
     private static $formats;
@@ -78,6 +86,10 @@ final class ProgressBar
         }
 
         $this->startTime = time();
+<<<<<<< HEAD
+=======
+        $this->cursor = new Cursor($output);
+>>>>>>> ThomasN
     }
 
     /**
@@ -191,11 +203,36 @@ final class ProgressBar
         return $this->percent;
     }
 
+<<<<<<< HEAD
     public function getBarOffset(): int
+=======
+    public function getBarOffset(): float
+>>>>>>> ThomasN
     {
         return floor($this->max ? $this->percent * $this->barWidth : (null === $this->redrawFreq ? min(5, $this->barWidth / 15) * $this->writeCount : $this->step) % $this->barWidth);
     }
 
+<<<<<<< HEAD
+=======
+    public function getEstimated(): float
+    {
+        if (!$this->step) {
+            return 0;
+        }
+
+        return round((time() - $this->startTime) / $this->step * $this->max);
+    }
+
+    public function getRemaining(): float
+    {
+        if (!$this->step) {
+            return 0;
+        }
+
+        return round((time() - $this->startTime) / $this->step * ($this->max - $this->step));
+    }
+
+>>>>>>> ThomasN
     public function setBarWidth(int $size)
     {
         $this->barWidth = max(1, $size);
@@ -444,6 +481,7 @@ final class ProgressBar
                     $lines = floor(Helper::strlen($message) / $this->terminal->getWidth()) + $this->formatLineCount + 1;
                     $this->output->clear($lines);
                 } else {
+<<<<<<< HEAD
                     // Erase previous lines
                     if ($this->formatLineCount > 0) {
                         $message = str_repeat("\x1B[1A\x1B[2K", $this->formatLineCount).$message;
@@ -451,6 +489,14 @@ final class ProgressBar
 
                     // Move the cursor to the beginning of the line and erase the line
                     $message = "\x0D\x1B[2K$message";
+=======
+                    if ($this->formatLineCount > 0) {
+                        $this->cursor->moveUp($this->formatLineCount);
+                    }
+
+                    $this->cursor->moveToColumn(1);
+                    $this->cursor->clearLine();
+>>>>>>> ThomasN
                 }
             }
         } elseif ($this->step > 0) {
@@ -500,6 +546,7 @@ final class ProgressBar
                     throw new LogicException('Unable to display the remaining time if the maximum number of steps is not set.');
                 }
 
+<<<<<<< HEAD
                 if (!$bar->getProgress()) {
                     $remaining = 0;
                 } else {
@@ -507,12 +554,16 @@ final class ProgressBar
                 }
 
                 return Helper::formatTime($remaining);
+=======
+                return Helper::formatTime($bar->getRemaining());
+>>>>>>> ThomasN
             },
             'estimated' => function (self $bar) {
                 if (!$bar->getMaxSteps()) {
                     throw new LogicException('Unable to display the estimated time if the maximum number of steps is not set.');
                 }
 
+<<<<<<< HEAD
                 if (!$bar->getProgress()) {
                     $estimated = 0;
                 } else {
@@ -520,6 +571,9 @@ final class ProgressBar
                 }
 
                 return Helper::formatTime($estimated);
+=======
+                return Helper::formatTime($bar->getEstimated());
+>>>>>>> ThomasN
             },
             'memory' => function (self $bar) {
                 return Helper::formatMemory(memory_get_usage(true));

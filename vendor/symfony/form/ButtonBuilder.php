@@ -468,6 +468,19 @@ class ButtonBuilder implements \IteratorAggregate, FormBuilderInterface
 
     /**
      * Unsupported method.
+<<<<<<< HEAD
+=======
+     *
+     * @throws BadMethodCallException
+     */
+    public function setIsEmptyCallback(?callable $isEmptyCallback)
+    {
+        throw new BadMethodCallException('Buttons do not support "is empty" callback.');
+    }
+
+    /**
+     * Unsupported method.
+>>>>>>> ThomasN
      */
     public function getEventDispatcher()
     {
@@ -741,6 +754,19 @@ class ButtonBuilder implements \IteratorAggregate, FormBuilderInterface
     /**
      * Unsupported method.
      *
+<<<<<<< HEAD
+=======
+     * @throws BadMethodCallException
+     */
+    public function getIsEmptyCallback(): ?callable
+    {
+        throw new BadMethodCallException('Buttons do not support "is empty" callback.');
+    }
+
+    /**
+     * Unsupported method.
+     *
+>>>>>>> ThomasN
      * @return int Always returns 0
      */
     public function count()

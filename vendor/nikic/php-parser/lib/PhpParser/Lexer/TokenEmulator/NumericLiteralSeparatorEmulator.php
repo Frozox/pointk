@@ -21,7 +21,12 @@ final class NumericLiteralSeparatorEmulator implements TokenEmulatorInterface
             return false;
         }
 
+<<<<<<< HEAD
         return preg_match('~[0-9a-f]_[0-9a-f]~i', $code) !== false;
+=======
+        return preg_match('~[0-9]_[0-9]~', $code)
+            || preg_match('~0x[0-9a-f]+_[0-9a-f]~i', $code);
+>>>>>>> ThomasN
     }
 
     public function emulate(string $code, array $tokens): array

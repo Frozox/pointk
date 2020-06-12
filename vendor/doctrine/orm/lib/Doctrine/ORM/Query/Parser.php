@@ -42,6 +42,11 @@ class Parser
      * READ-ONLY: Maps BUILT-IN string function names to AST class names.
      *
      * @var array
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-var class-string<Functions\FunctionNode>
+>>>>>>> ThomasN
      */
     private static $_STRING_FUNCTIONS = [
         'concat'    => Functions\ConcatFunction::class,
@@ -56,6 +61,11 @@ class Parser
      * READ-ONLY: Maps BUILT-IN numeric function names to AST class names.
      *
      * @var array
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-var class-string<Functions\FunctionNode>
+>>>>>>> ThomasN
      */
     private static $_NUMERIC_FUNCTIONS = [
         'length'    => Functions\LengthFunction::class,
@@ -80,6 +90,11 @@ class Parser
      * READ-ONLY: Maps BUILT-IN datetime function names to AST class names.
      *
      * @var array
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-var class-string<Functions\FunctionNode>
+>>>>>>> ThomasN
      */
     private static $_DATETIME_FUNCTIONS = [
         'current_date'      => Functions\CurrentDateFunction::class,
@@ -171,7 +186,11 @@ class Parser
     /**
      * The custom last tree walker, if any, that is responsible for producing the output.
      *
+<<<<<<< HEAD
      * @var TreeWalker
+=======
+     * @var class-string<TreeWalker>
+>>>>>>> ThomasN
      */
     private $customOutputWalker;
 

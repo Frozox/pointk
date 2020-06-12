@@ -26,9 +26,19 @@ class DoctrineDataCollector extends BaseCollector
     /** @var string[] */
     private $groupedQueries;
 
+<<<<<<< HEAD
     public function __construct(ManagerRegistry $registry)
     {
         $this->registry = $registry;
+=======
+    /** @var bool */
+    private $shouldValidateSchema;
+
+    public function __construct(ManagerRegistry $registry, bool $shouldValidateSchema = true)
+    {
+        $this->registry             = $registry;
+        $this->shouldValidateSchema = $shouldValidateSchema;
+>>>>>>> ThomasN
 
         parent::__construct($registry);
     }
@@ -59,6 +69,7 @@ class DoctrineDataCollector extends BaseCollector
 
         /** @var EntityManager $em */
         foreach ($this->registry->getManagers() as $name => $em) {
+<<<<<<< HEAD
             $entities[$name] = [];
             /** @var ClassMetadataFactory $factory */
             $factory   = $em->getMetadataFactory();
@@ -78,6 +89,30 @@ class DoctrineDataCollector extends BaseCollector
                 }
 
                 $errors[$name][$class->getName()] = $classErrors;
+=======
+            if ($this->shouldValidateSchema) {
+                $entities[$name] = [];
+
+                /** @var ClassMetadataFactory $factory */
+                $factory   = $em->getMetadataFactory();
+                $validator = new SchemaValidator($em);
+
+                /** @var ClassMetadataInfo $class */
+                foreach ($factory->getLoadedMetadata() as $class) {
+                    if (isset($entities[$name][$class->getName()])) {
+                        continue;
+                    }
+
+                    $classErrors                        = $validator->validateClass($class);
+                    $entities[$name][$class->getName()] = $class->getName();
+
+                    if (empty($classErrors)) {
+                        continue;
+                    }
+
+                    $errors[$name][$class->getName()] = $classErrors;
+                }
+>>>>>>> ThomasN
             }
 
             /** @var Configuration $emConfig */

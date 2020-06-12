@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "ADP": [
             "ADP",
@@ -219,7 +222,11 @@
         ],
         "CNH": [
             "CNH",
+<<<<<<< HEAD
             "CNH"
+=======
+            "renmimbi cinese offshore"
+>>>>>>> ThomasN
         ],
         "CNY": [
             "CN¥",

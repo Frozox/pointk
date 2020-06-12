@@ -67,6 +67,7 @@
             <argument type="tagged_iterator" tag="messenger.transport_factory" />
         </service>
 
+<<<<<<< HEAD
         <service id="messenger.transport.amqp.factory" class="Symfony\Component\Messenger\Transport\AmqpExt\AmqpTransportFactory">
             <tag name="messenger.transport_factory" />
         </service>
@@ -74,6 +75,11 @@
         <service id="messenger.transport.redis.factory" class="Symfony\Component\Messenger\Transport\RedisExt\RedisTransportFactory">
             <tag name="messenger.transport_factory" />
         </service>
+=======
+        <service id="messenger.transport.amqp.factory" class="Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpTransportFactory"/>
+
+        <service id="messenger.transport.redis.factory" class="Symfony\Component\Messenger\Bridge\Redis\Transport\RedisTransportFactory"/>
+>>>>>>> ThomasN
 
         <service id="messenger.transport.sync.factory" class="Symfony\Component\Messenger\Transport\Sync\SyncTransportFactory">
             <tag name="messenger.transport_factory" />
@@ -85,6 +91,11 @@
             <tag name="kernel.reset" method="reset" />
         </service>
 
+<<<<<<< HEAD
+=======
+        <service id="messenger.transport.sqs.factory" class="Symfony\Component\Messenger\Bridge\AmazonSqs\Transport\AmazonSqsTransportFactory"/>
+
+>>>>>>> ThomasN
         <!-- retry -->
         <service id="messenger.retry_strategy_locator">
             <tag name="container.service_locator" />

@@ -29,9 +29,16 @@ class MockHttpClient implements HttpClientInterface
 
     private $responseFactory;
     private $baseUri;
+<<<<<<< HEAD
 
     /**
      * @param callable|ResponseInterface|ResponseInterface[]|iterable|null $responseFactory
+=======
+    private $requestsCount = 0;
+
+    /**
+     * @param callable|callable[]|ResponseInterface|ResponseInterface[]|iterable|null $responseFactory
+>>>>>>> ThomasN
      */
     public function __construct($responseFactory = null, string $baseUri = null)
     {
@@ -64,9 +71,17 @@ class MockHttpClient implements HttpClientInterface
         } elseif (!$this->responseFactory->valid()) {
             throw new TransportException('The response factory iterator passed to MockHttpClient is empty.');
         } else {
+<<<<<<< HEAD
             $response = $this->responseFactory->current();
             $this->responseFactory->next();
         }
+=======
+            $responseFactory = $this->responseFactory->current();
+            $response = \is_callable($responseFactory) ? $responseFactory($method, $url, $options) : $responseFactory;
+            $this->responseFactory->next();
+        }
+        ++$this->requestsCount;
+>>>>>>> ThomasN
 
         return MockResponse::fromRequest($method, $url, $options, $response);
     }
@@ -79,9 +94,21 @@ class MockHttpClient implements HttpClientInterface
         if ($responses instanceof ResponseInterface) {
             $responses = [$responses];
         } elseif (!is_iterable($responses)) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('%s() expects parameter 1 to be an iterable of MockResponse objects, %s given.', __METHOD__, \is_object($responses) ? \get_class($responses) : \gettype($responses)));
+=======
+            throw new \TypeError(sprintf('"%s()" expects parameter 1 to be an iterable of MockResponse objects, "%s" given.', __METHOD__, get_debug_type($responses)));
+>>>>>>> ThomasN
         }
 
         return new ResponseStream(MockResponse::stream($responses, $timeout));
     }
+<<<<<<< HEAD
+=======
+
+    public function getRequestsCount(): int
+    {
+        return $this->requestsCount;
+    }
+>>>>>>> ThomasN
 }

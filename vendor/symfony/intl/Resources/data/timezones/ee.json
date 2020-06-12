@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Greenwich gaƒoƒo me (Abidjan)",
         "Africa\/Accra": "Greenwich gaƒoƒo me (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentina gaƒoƒo me (Rio Gallegos)",
         "America\/Argentina\/Salta": "Argentina gaƒoƒo me (Salta)",
         "America\/Argentina\/San_Juan": "Argentina gaƒoƒo me (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Ɣetoɖoƒe Argentina gaƒoƒo me (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Argentina gaƒoƒo me (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentina gaƒoƒo me (Tucuman)",
         "America\/Argentina\/Ushuaia": "Argentina gaƒoƒo me (Ushuaia)",
         "America\/Aruba": "Atlantic gaƒoƒome (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Brunei Darussalam gaƒoƒo me",
         "Asia\/Calcutta": "India gaƒoƒo me (Kolkata)",
         "Asia\/Chita": "Yakutsk gaƒoƒo me (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Choibalsan gaƒoƒo me",
+=======
+        "Asia\/Choibalsan": "Ulan Bator gaƒoƒo me (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "India gaƒoƒo me (Colombo)",
         "Asia\/Damascus": "Ɣedzeƒe Europe gaƒoƒome (Damascus)",
         "Asia\/Dhaka": "Bangladesh gaƒoƒo me (Dhaka)",

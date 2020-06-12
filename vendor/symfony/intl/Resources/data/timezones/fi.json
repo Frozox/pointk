@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Greenwichin normaaliaika (Abidjan)",
         "Africa\/Accra": "Greenwichin normaaliaika (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentiinan aika (Rio Gallegos)",
         "America\/Argentina\/Salta": "Argentiinan aika (Salta)",
         "America\/Argentina\/San_Juan": "Argentiinan aika (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Länsi-Argentiinan aika (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Argentiinan aika (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentiinan aika (Tucumán)",
         "America\/Argentina\/Ushuaia": "Argentiinan aika (Ushuaia)",
         "America\/Aruba": "Kanadan Atlantin aika (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Brunein aika",
         "Asia\/Calcutta": "Intian aika (Kalkutta)",
         "Asia\/Chita": "Jakutskin aika (Tšita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Tšoibalsan aika",
+=======
+        "Asia\/Choibalsan": "Ulan Batorin aika (Tšoibalsa)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Intian aika (Colombo)",
         "Asia\/Damascus": "Itä-Euroopan aika (Damaskos)",
         "Asia\/Dhaka": "Bangladeshin aika (Dhaka)",

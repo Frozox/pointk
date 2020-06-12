@@ -20,7 +20,11 @@ use Symfony\Component\Notifier\Recipient\Recipient;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 class ChatChannel extends AbstractChannel
 {
@@ -36,7 +40,11 @@ class ChatChannel extends AbstractChannel
         }
 
         if (null === $message) {
+<<<<<<< HEAD
             $message = ChatMessage::fromNotification($notification, $recipient, $transportName);
+=======
+            $message = ChatMessage::fromNotification($notification);
+>>>>>>> ThomasN
         }
 
         $message->transport($transportName);

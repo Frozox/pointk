@@ -15,6 +15,12 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(InvalidArgumentException::class);
+
+>>>>>>> ThomasN
 /**
  * An implementation of CacheInterface for PSR-6 CacheItemPoolInterface classes.
  *
@@ -41,8 +47,12 @@ trait CacheTrait
     private function doGet(CacheItemPoolInterface $pool, string $key, callable $callback, ?float $beta, array &$metadata = null, LoggerInterface $logger = null)
     {
         if (0 > $beta = $beta ?? 1.0) {
+<<<<<<< HEAD
             throw new class(sprintf('Argument "$beta" provided to "%s::get()" must be a positive number, %f given.', \get_class($this), $beta)) extends \InvalidArgumentException implements InvalidArgumentException {
             };
+=======
+            throw new class(sprintf('Argument "$beta" provided to "%s::get()" must be a positive number, %f given.', static::class, $beta)) extends \InvalidArgumentException implements InvalidArgumentException { };
+>>>>>>> ThomasN
         }
 
         $item = $pool->getItem($key);

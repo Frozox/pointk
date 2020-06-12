@@ -29,24 +29,46 @@ class AuthorizationChecker implements AuthorizationCheckerInterface
     private $accessDecisionManager;
     private $authenticationManager;
     private $alwaysAuthenticate;
+<<<<<<< HEAD
 
     public function __construct(TokenStorageInterface $tokenStorage, AuthenticationManagerInterface $authenticationManager, AccessDecisionManagerInterface $accessDecisionManager, bool $alwaysAuthenticate = false)
+=======
+    private $exceptionOnNoToken;
+
+    public function __construct(TokenStorageInterface $tokenStorage, AuthenticationManagerInterface $authenticationManager, AccessDecisionManagerInterface $accessDecisionManager, bool $alwaysAuthenticate = false, bool $exceptionOnNoToken = true)
+>>>>>>> ThomasN
     {
         $this->tokenStorage = $tokenStorage;
         $this->authenticationManager = $authenticationManager;
         $this->accessDecisionManager = $accessDecisionManager;
         $this->alwaysAuthenticate = $alwaysAuthenticate;
+<<<<<<< HEAD
+=======
+        $this->exceptionOnNoToken = $exceptionOnNoToken;
+>>>>>>> ThomasN
     }
 
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * @throws AuthenticationCredentialsNotFoundException when the token storage has no authentication token
+=======
+     * @throws AuthenticationCredentialsNotFoundException when the token storage has no authentication token and $exceptionOnNoToken is set to true
+>>>>>>> ThomasN
      */
     final public function isGranted($attribute, $subject = null): bool
     {
         if (null === ($token = $this->tokenStorage->getToken())) {
+<<<<<<< HEAD
             throw new AuthenticationCredentialsNotFoundException('The token storage contains no authentication token. One possible reason may be that there is no firewall configured for this URL.');
+=======
+            if ($this->exceptionOnNoToken) {
+                throw new AuthenticationCredentialsNotFoundException('The token storage contains no authentication token. One possible reason may be that there is no firewall configured for this URL.');
+            }
+
+            return false;
+>>>>>>> ThomasN
         }
 
         if ($this->alwaysAuthenticate || !$token->isAuthenticated()) {

@@ -53,13 +53,21 @@ class JsonManifestVersionStrategy implements VersionStrategyInterface
     private function getManifestPath(string $path): ?string
     {
         if (null === $this->manifestData) {
+<<<<<<< HEAD
             if (!file_exists($this->manifestPath)) {
+=======
+            if (!is_file($this->manifestPath)) {
+>>>>>>> ThomasN
                 throw new \RuntimeException(sprintf('Asset manifest file "%s" does not exist.', $this->manifestPath));
             }
 
             $this->manifestData = json_decode(file_get_contents($this->manifestPath), true);
             if (0 < json_last_error()) {
+<<<<<<< HEAD
                 throw new \RuntimeException(sprintf('Error parsing JSON from asset manifest file "%s" - %s', $this->manifestPath, json_last_error_msg()));
+=======
+                throw new \RuntimeException(sprintf('Error parsing JSON from asset manifest file "%s": ', $this->manifestPath).json_last_error_msg());
+>>>>>>> ThomasN
             }
         }
 

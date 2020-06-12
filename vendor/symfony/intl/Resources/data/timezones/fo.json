@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Greenwich Mean tíð (Abidjan)",
         "Africa\/Accra": "Greenwich Mean tíð (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentina tíð (Rio Gallegos)",
         "America\/Argentina\/Salta": "Argentina tíð (Salta)",
         "America\/Argentina\/San_Juan": "Argentina tíð (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Vestur Argentina tíð (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Argentina tíð (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentina tíð (Tucuman)",
         "America\/Argentina\/Ushuaia": "Argentina tíð (Ushuaia)",
         "America\/Aruba": "Atlantic tíð (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Brunei Darussalam tíð",
         "Asia\/Calcutta": "India tíð (Kolkata)",
         "Asia\/Chita": "Yakutsk tíð (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Choibalsan tíð",
+=======
+        "Asia\/Choibalsan": "Ulan Bator tíð (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "India tíð (Colombo)",
         "Asia\/Damascus": "Eysturevropa tíð (Damascus)",
         "Asia\/Dhaka": "Bangladesj tíð (Dhaka)",

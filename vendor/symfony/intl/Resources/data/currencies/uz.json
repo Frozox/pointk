@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -123,7 +126,11 @@
         ],
         "CNH": [
             "CNH",
+<<<<<<< HEAD
             "CNH"
+=======
+            "Xitoy yuani (ofshor)"
+>>>>>>> ThomasN
         ],
         "CNY": [
             "CN¥",

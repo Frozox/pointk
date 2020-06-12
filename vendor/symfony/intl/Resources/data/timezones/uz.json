@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Grinvich o‘rtacha vaqti (Abidjan)",
         "Africa\/Accra": "Grinvich o‘rtacha vaqti (Akkra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentina vaqti (Rio-Galyegos)",
         "America\/Argentina\/Salta": "Argentina vaqti (Salta)",
         "America\/Argentina\/San_Juan": "Argentina vaqti (San-Xuan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Gʻarbiy Argentina vaqti (San-Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Argentina vaqti (San-Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentina vaqti (Tukuman)",
         "America\/Argentina\/Ushuaia": "Argentina vaqti (Ushuaya)",
         "America\/Aruba": "Atlantika vaqti (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Bruney-Dorussalom vaqti",
         "Asia\/Calcutta": "Hindiston standart vaqti (Kalkutta)",
         "Asia\/Chita": "Yakutsk vaqti (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Choybalsan vaqti",
+=======
+        "Asia\/Choibalsan": "Ulan-Bator vaqti (Choybalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Hindiston standart vaqti (Kolombo)",
         "Asia\/Damascus": "Sharqiy Yevropa vaqti (Damashq)",
         "Asia\/Dhaka": "Bangladesh vaqti (Dakka)",
@@ -271,7 +282,11 @@
         "Asia\/Pontianak": "Gʻarbiy Indoneziya vaqti (Pontianak)",
         "Asia\/Pyongyang": "Koreya vaqti (Pxenyan)",
         "Asia\/Qatar": "Saudiya Arabistoni vaqti (Qatar)",
+<<<<<<< HEAD
         "Asia\/Qostanay": "Sharqiy Qozogʻiston vaqti (Qostanay)",
+=======
+        "Asia\/Qostanay": "Sharqiy Qozogʻiston vaqti (Kustanay)",
+>>>>>>> ThomasN
         "Asia\/Qyzylorda": "Gʻarbiy Qozogʻiston vaqti (Qizilo‘rda)",
         "Asia\/Rangoon": "Myanma vaqti (Rangun)",
         "Asia\/Riyadh": "Saudiya Arabistoni vaqti (Ar-Riyod)",

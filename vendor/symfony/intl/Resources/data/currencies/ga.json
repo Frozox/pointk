@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "ADP": [
             "ADP",
@@ -71,7 +74,11 @@
         ],
         "ATS": [
             "ATS",
+<<<<<<< HEAD
             "ATS"
+=======
+            "Scilling na hOstaire"
+>>>>>>> ThomasN
         ],
         "AUD": [
             "A$",
@@ -111,7 +118,11 @@
         ],
         "BEC": [
             "BEC",
+<<<<<<< HEAD
             "BEC"
+=======
+            "Franc na Beilge (inmhalartaithe)"
+>>>>>>> ThomasN
         ],
         "BEF": [
             "BEF",
@@ -119,7 +130,11 @@
         ],
         "BEL": [
             "BEL",
+<<<<<<< HEAD
             "BEL"
+=======
+            "Franc na Beilge (airgeadais)"
+>>>>>>> ThomasN
         ],
         "BGL": [
             "BGL",
@@ -249,10 +264,13 @@
             "CLP",
             "Peso na Sile"
         ],
+<<<<<<< HEAD
         "CNH": [
             "CNH",
             "CNH"
         ],
+=======
+>>>>>>> ThomasN
         "CNY": [
             "CN¥",
             "Yuan na Síne"
@@ -299,7 +317,11 @@
         ],
         "DDM": [
             "DDM",
+<<<<<<< HEAD
             "DDM"
+=======
+            "Marc Ghearmáin an Oirthir"
+>>>>>>> ThomasN
         ],
         "DEM": [
             "DEM",

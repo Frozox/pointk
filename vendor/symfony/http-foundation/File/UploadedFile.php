@@ -31,7 +31,11 @@ use Symfony\Component\Mime\MimeTypes;
  */
 class UploadedFile extends File
 {
+<<<<<<< HEAD
     private $test = false;
+=======
+    private $test;
+>>>>>>> ThomasN
     private $originalName;
     private $mimeType;
     private $error;
@@ -76,7 +80,11 @@ class UploadedFile extends File
      * It is extracted from the request from which the file has been uploaded.
      * Then it should not be considered as a safe value.
      *
+<<<<<<< HEAD
      * @return string|null The original name
+=======
+     * @return string The original name
+>>>>>>> ThomasN
      */
     public function getClientOriginalName()
     {
@@ -105,7 +113,11 @@ class UploadedFile extends File
      * For a trusted mime type, use getMimeType() instead (which guesses the mime
      * type based on the file content).
      *
+<<<<<<< HEAD
      * @return string|null The mime type
+=======
+     * @return string The mime type
+>>>>>>> ThomasN
      *
      * @see getMimeType()
      */
@@ -133,6 +145,13 @@ class UploadedFile extends File
      */
     public function guessClientExtension()
     {
+<<<<<<< HEAD
+=======
+        if (!class_exists(MimeTypes::class)) {
+            throw new \LogicException('You cannot guess the extension as the Mime component is not installed. Try running "composer require symfony/mime".');
+        }
+
+>>>>>>> ThomasN
         return MimeTypes::getDefault()->getExtensions($this->getClientMimeType())[0] ?? null;
     }
 
@@ -181,7 +200,11 @@ class UploadedFile extends File
             $moved = move_uploaded_file($this->getPathname(), $target);
             restore_error_handler();
             if (!$moved) {
+<<<<<<< HEAD
                 throw new FileException(sprintf('Could not move the file "%s" to "%s" (%s)', $this->getPathname(), $target, strip_tags($error)));
+=======
+                throw new FileException(sprintf('Could not move the file "%s" to "%s" (%s).', $this->getPathname(), $target, strip_tags($error)));
+>>>>>>> ThomasN
             }
 
             @chmod($target, 0666 & ~umask());

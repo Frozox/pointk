@@ -41,7 +41,11 @@ class RemoteUserAuthenticationListener extends AbstractPreAuthenticatedListener
     protected function getPreAuthenticatedData(Request $request)
     {
         if (!$request->server->has($this->userKey)) {
+<<<<<<< HEAD
             throw new BadCredentialsException(sprintf('User key was not found: %s', $this->userKey));
+=======
+            throw new BadCredentialsException(sprintf('User key was not found: "%s".', $this->userKey));
+>>>>>>> ThomasN
         }
 
         return [$request->server->get($this->userKey), null];

@@ -21,9 +21,13 @@ use function stripos;
  */
 class RunSqlCommand extends Command
 {
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
+=======
+    /** @return void */
+>>>>>>> ThomasN
     protected function configure()
     {
         $this

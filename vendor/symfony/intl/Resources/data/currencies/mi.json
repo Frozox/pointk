@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "ANG": [
@@ -21,10 +22,14 @@
             "BMD",
             "BMD"
         ],
+=======
+    "Names": {
+>>>>>>> ThomasN
         "BRL": [
             "R$",
             "Real Parahi"
         ],
+<<<<<<< HEAD
         "BSD": [
             "BSD",
             "BSD"
@@ -37,10 +42,13 @@
             "CA$",
             "CAD"
         ],
+=======
+>>>>>>> ThomasN
         "CNY": [
             "CN¥",
             "Yuan Haina"
         ],
+<<<<<<< HEAD
         "CRC": [
             "CRC",
             "CRC"
@@ -57,6 +65,8 @@
             "DOP",
             "DOP"
         ],
+=======
+>>>>>>> ThomasN
         "EUR": [
             "€",
             "Euro"
@@ -65,6 +75,7 @@
             "£",
             "Pāuna Piritene"
         ],
+<<<<<<< HEAD
         "GTQ": [
             "GTQ",
             "GTQ"
@@ -77,18 +88,24 @@
             "HTG",
             "HTG"
         ],
+=======
+>>>>>>> ThomasN
         "INR": [
             "₹",
             "Rupī Iniana"
         ],
+<<<<<<< HEAD
         "JMD": [
             "JMD",
             "JMD"
         ],
+=======
+>>>>>>> ThomasN
         "JPY": [
             "¥",
             "Yen Hapanihi"
         ],
+<<<<<<< HEAD
         "KYD": [
             "KYD",
             "KYD"
@@ -101,18 +118,24 @@
             "NIO",
             "NIO"
         ],
+=======
+>>>>>>> ThomasN
         "NZD": [
             "$",
             "Tāra o Aotearoa"
         ],
+<<<<<<< HEAD
         "PAB": [
             "PAB",
             "PAB"
         ],
+=======
+>>>>>>> ThomasN
         "RUB": [
             "RUB",
             "Rūpera Ruhiana"
         ],
+<<<<<<< HEAD
         "TTD": [
             "TTD",
             "TTD"
@@ -124,6 +147,11 @@
         "XCD": [
             "EC$",
             "XCD"
+=======
+        "USD": [
+            "US$",
+            "Tāra US"
+>>>>>>> ThomasN
         ]
     }
 }

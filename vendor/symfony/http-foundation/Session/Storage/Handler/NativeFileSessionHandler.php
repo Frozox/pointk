@@ -38,7 +38,11 @@ class NativeFileSessionHandler extends \SessionHandler
 
         if ($count = substr_count($savePath, ';')) {
             if ($count > 2) {
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('Invalid argument $savePath \'%s\'', $savePath));
+=======
+                throw new \InvalidArgumentException(sprintf('Invalid argument $savePath \'%s\'.', $savePath));
+>>>>>>> ThomasN
             }
 
             // characters after last ';' are the path
@@ -46,7 +50,11 @@ class NativeFileSessionHandler extends \SessionHandler
         }
 
         if ($baseDir && !is_dir($baseDir) && !@mkdir($baseDir, 0777, true) && !is_dir($baseDir)) {
+<<<<<<< HEAD
             throw new \RuntimeException(sprintf('Session Storage was not able to create directory "%s"', $baseDir));
+=======
+            throw new \RuntimeException(sprintf('Session Storage was not able to create directory "%s".', $baseDir));
+>>>>>>> ThomasN
         }
 
         ini_set('session.save_path', $savePath);

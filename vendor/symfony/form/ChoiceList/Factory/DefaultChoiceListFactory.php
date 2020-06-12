@@ -14,7 +14,13 @@ namespace Symfony\Component\Form\ChoiceList\Factory;
 use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 use Symfony\Component\Form\ChoiceList\ChoiceListInterface;
 use Symfony\Component\Form\ChoiceList\LazyChoiceList;
+<<<<<<< HEAD
 use Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface;
+=======
+use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
+use Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface;
+use Symfony\Component\Form\ChoiceList\Loader\FilterChoiceLoaderDecorator;
+>>>>>>> ThomasN
 use Symfony\Component\Form\ChoiceList\View\ChoiceGroupView;
 use Symfony\Component\Form\ChoiceList\View\ChoiceListView;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
@@ -23,22 +29,59 @@ use Symfony\Component\Form\ChoiceList\View\ChoiceView;
  * Default implementation of {@link ChoiceListFactoryInterface}.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
+<<<<<<< HEAD
+=======
+ * @author Jules Pietri <jules@heahprod.com>
+>>>>>>> ThomasN
  */
 class DefaultChoiceListFactory implements ChoiceListFactoryInterface
 {
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     public function createListFromChoices(iterable $choices, callable $value = null)
     {
+=======
+     *
+     * @param callable|null $filter
+     */
+    public function createListFromChoices(iterable $choices, callable $value = null/*, callable $filter = null*/)
+    {
+        $filter = \func_num_args() > 2 ? func_get_arg(2) : null;
+
+        if ($filter) {
+            // filter the choice list lazily
+            return $this->createListFromLoader(new FilterChoiceLoaderDecorator(
+                new CallbackChoiceLoader(static function () use ($choices) {
+                    return $choices;
+                }
+            ), $filter), $value);
+        }
+
+>>>>>>> ThomasN
         return new ArrayChoiceList($choices, $value);
     }
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     public function createListFromLoader(ChoiceLoaderInterface $loader, callable $value = null)
     {
+=======
+     *
+     * @param callable|null $filter
+     */
+    public function createListFromLoader(ChoiceLoaderInterface $loader, callable $value = null/*, callable $filter = null*/)
+    {
+        $filter = \func_num_args() > 2 ? func_get_arg(2) : null;
+
+        if ($filter) {
+            $loader = new FilterChoiceLoaderDecorator($loader, $filter);
+        }
+
+>>>>>>> ThomasN
         return new LazyChoiceList($loader, $value);
     }
 

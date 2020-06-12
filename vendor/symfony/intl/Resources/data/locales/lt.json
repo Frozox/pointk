@@ -368,6 +368,11 @@
         "ko_KP": "korėjiečių (Šiaurės Korėja)",
         "ko_KR": "korėjiečių (Pietų Korėja)",
         "ks": "kašmyrų",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kašmyrų (arabų)",
+        "ks_Arab_IN": "kašmyrų (arabų, Indija)",
+>>>>>>> ThomasN
         "ks_IN": "kašmyrų (Indija)",
         "ku": "kurdų",
         "ku_TR": "kurdų (Turkija)",
@@ -406,6 +411,10 @@
         "mr_IN": "maratų (Indija)",
         "ms": "malajiečių",
         "ms_BN": "malajiečių (Brunėjus)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malajiečių (Indonezija)",
+>>>>>>> ThomasN
         "ms_MY": "malajiečių (Malaizija)",
         "ms_SG": "malajiečių (Singapūras)",
         "mt": "maltiečių",
@@ -486,6 +495,13 @@
         "rw": "kinjaruandų",
         "rw_RW": "kinjaruandų (Ruanda)",
         "sd": "sindų",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindų (arabų)",
+        "sd_Arab_PK": "sindų (arabų, Pakistanas)",
+        "sd_Deva": "sindų (devanagari)",
+        "sd_Deva_IN": "sindų (devanagari, Indija)",
+>>>>>>> ThomasN
         "sd_PK": "sindų (Pakistanas)",
         "se": "šiaurės samių",
         "se_FI": "šiaurės samių (Suomija)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "serbų (lotynų, Serbija)",
         "sr_ME": "serbų (Juodkalnija)",
         "sr_RS": "serbų (Serbija)",
+<<<<<<< HEAD
+=======
+        "su": "sundų",
+        "su_ID": "sundų (Indonezija)",
+        "su_Latn": "sundų (lotynų)",
+        "su_Latn_ID": "sundų (lotynų, Indonezija)",
+>>>>>>> ThomasN
         "sv": "švedų",
         "sv_AX": "švedų (Alandų Salos)",
         "sv_FI": "švedų (Suomija)",

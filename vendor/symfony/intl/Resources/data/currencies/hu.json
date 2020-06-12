@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "ADP": [
             "ADP",
@@ -17,6 +20,13 @@
             "AFN",
             "afgán afghani"
         ],
+<<<<<<< HEAD
+=======
+        "ALK": [
+            "ALK",
+            "albán lek (1946–1965)"
+        ],
+>>>>>>> ThomasN
         "ALL": [
             "ALL",
             "albán lek"
@@ -85,6 +95,13 @@
             "BAM",
             "bosznia-hercegovinai konvertibilis márka"
         ],
+<<<<<<< HEAD
+=======
+        "BAN": [
+            "BAN",
+            "bosznia-hercegovinai új dínár (1994–1997)"
+        ],
+>>>>>>> ThomasN
         "BBD": [
             "BBD",
             "barbadosi dollár"
@@ -109,10 +126,24 @@
             "BGL",
             "Bolgár kemény leva"
         ],
+<<<<<<< HEAD
+=======
+        "BGM": [
+            "BGM",
+            "bolgár szocialista leva"
+        ],
+>>>>>>> ThomasN
         "BGN": [
             "BGN",
             "bolgár új leva"
         ],
+<<<<<<< HEAD
+=======
+        "BGO": [
+            "BGO",
+            "bolgár leva (1879–1952)"
+        ],
+>>>>>>> ThomasN
         "BHD": [
             "BHD",
             "bahreini dinár"
@@ -581,6 +612,13 @@
             "MAF",
             "Marokkói frank"
         ],
+<<<<<<< HEAD
+=======
+        "MDC": [
+            "MDC",
+            "moldáv kupon"
+        ],
+>>>>>>> ThomasN
         "MDL": [
             "MDL",
             "moldován lei"
@@ -597,6 +635,13 @@
             "MKD",
             "macedon dínár"
         ],
+<<<<<<< HEAD
+=======
+        "MKN": [
+            "MKN",
+            "macedón dénár (1992–1993)"
+        ],
+>>>>>>> ThomasN
         "MLF": [
             "MLF",
             "Mali frank"
@@ -1045,6 +1090,13 @@
             "YUN",
             "Jugoszláv konvertibilis dínár"
         ],
+<<<<<<< HEAD
+=======
+        "YUR": [
+            "YUR",
+            "jugoszláv reformált dinár (1992–1993)"
+        ],
+>>>>>>> ThomasN
         "ZAL": [
             "ZAL",
             "Dél-afrikai rand (pénzügyi)"

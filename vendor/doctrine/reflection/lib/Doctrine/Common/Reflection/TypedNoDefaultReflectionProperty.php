@@ -31,7 +31,11 @@ class TypedNoDefaultReflectionProperty extends ReflectionProperty
      */
     public function setValue($object, $value = null)
     {
+<<<<<<< HEAD
         if ($value === null) {
+=======
+        if ($value === null && $this->hasType() && ! $this->getType()->allowsNull()) {
+>>>>>>> ThomasN
             $propertyName = $this->getName();
 
             $unsetter = function () use ($propertyName) {

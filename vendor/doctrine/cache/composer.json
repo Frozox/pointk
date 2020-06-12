@@ -23,7 +23,11 @@
         {"name": "Johannes Schmitt", "email": "schmittjoh@gmail.com"}
     ],
     "require": {
+<<<<<<< HEAD
         "php": "~7.1"
+=======
+        "php": "~7.1 || ^8.0"
+>>>>>>> ThomasN
     },
     "require-dev": {
         "alcaeus/mongo-php-adapter": "^1.1",

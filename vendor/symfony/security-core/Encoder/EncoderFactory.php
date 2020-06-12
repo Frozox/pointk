@@ -50,7 +50,11 @@ class EncoderFactory implements EncoderFactoryInterface
         }
 
         if (null === $encoderKey) {
+<<<<<<< HEAD
             throw new \RuntimeException(sprintf('No encoder has been configured for account "%s".', \is_object($user) ? \get_class($user) : $user));
+=======
+            throw new \RuntimeException(sprintf('No encoder has been configured for account "%s".', \is_object($user) ? get_debug_type($user) : $user));
+>>>>>>> ThomasN
         }
 
         if (!$this->encoders[$encoderKey] instanceof PasswordEncoderInterface) {
@@ -72,10 +76,17 @@ class EncoderFactory implements EncoderFactoryInterface
             $config = $this->getEncoderConfigFromAlgorithm($config);
         }
         if (!isset($config['class'])) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('"class" must be set in %s.', json_encode($config)));
         }
         if (!isset($config['arguments'])) {
             throw new \InvalidArgumentException(sprintf('"arguments" must be set in %s.', json_encode($config)));
+=======
+            throw new \InvalidArgumentException('"class" must be set in '.json_encode($config));
+        }
+        if (!isset($config['arguments'])) {
+            throw new \InvalidArgumentException('"arguments" must be set in '.json_encode($config));
+>>>>>>> ThomasN
         }
 
         $encoder = new $config['class'](...$config['arguments']);

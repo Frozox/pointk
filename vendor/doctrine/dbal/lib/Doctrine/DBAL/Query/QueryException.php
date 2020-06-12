@@ -5,6 +5,12 @@ namespace Doctrine\DBAL\Query;
 use Doctrine\DBAL\DBALException;
 use function implode;
 
+<<<<<<< HEAD
+=======
+/**
+ * @psalm-immutable
+ */
+>>>>>>> ThomasN
 class QueryException extends DBALException
 {
     /**

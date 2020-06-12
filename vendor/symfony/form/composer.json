@@ -16,12 +16,23 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5",
         "symfony/event-dispatcher": "^4.4|^5.0",
         "symfony/intl": "^4.4|^5.0",
         "symfony/options-resolver": "^5.0",
         "symfony/polyfill-ctype": "~1.8",
         "symfony/polyfill-mbstring": "~1.0",
+=======
+        "php": ">=7.2.5",
+        "symfony/deprecation-contracts": "^2.1",
+        "symfony/event-dispatcher": "^4.4|^5.0",
+        "symfony/intl": "^4.4|^5.0",
+        "symfony/options-resolver": "^5.1",
+        "symfony/polyfill-ctype": "~1.8",
+        "symfony/polyfill-mbstring": "~1.0",
+        "symfony/polyfill-php80": "^1.15",
+>>>>>>> ThomasN
         "symfony/property-access": "^5.0",
         "symfony/service-contracts": "^1.1|^2"
     },
@@ -29,6 +40,10 @@
         "doctrine/collections": "~1.0",
         "symfony/validator": "^4.4|^5.0",
         "symfony/dependency-injection": "^4.4|^5.0",
+<<<<<<< HEAD
+=======
+        "symfony/expression-language": "^4.4|^5.0",
+>>>>>>> ThomasN
         "symfony/config": "^4.4|^5.0",
         "symfony/console": "^4.4|^5.0",
         "symfony/http-foundation": "^4.4|^5.0",
@@ -42,10 +57,18 @@
         "symfony/console": "<4.4",
         "symfony/dependency-injection": "<4.4",
         "symfony/doctrine-bridge": "<4.4",
+<<<<<<< HEAD
+=======
+        "symfony/error-handler": "<4.4.5",
+>>>>>>> ThomasN
         "symfony/framework-bundle": "<4.4",
         "symfony/http-kernel": "<4.4",
         "symfony/intl": "<4.4",
         "symfony/translation": "<4.4",
+<<<<<<< HEAD
+=======
+        "symfony/translation-contracts": "<1.1.7",
+>>>>>>> ThomasN
         "symfony/twig-bridge": "<4.4"
     },
     "suggest": {
@@ -62,7 +85,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "5.0-dev"
+=======
+            "dev-master": "5.1-dev"
+>>>>>>> ThomasN
         }
     }
 }

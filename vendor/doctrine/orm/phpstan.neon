@@ -1,4 +1,10 @@
 parameters:
+<<<<<<< HEAD
+=======
+    level: 1
+    paths:
+        - %currentWorkingDirectory%/lib
+>>>>>>> ThomasN
     earlyTerminatingMethodCalls:
         Doctrine\ORM\Query\Parser:
             - syntaxError

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "گرين وچ مين ٽائيم (ابي جان)",
         "Africa\/Accra": "گرين وچ مين ٽائيم (ايڪرا)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "ارجنٽائن وقت (ریو گالیگوس)",
         "America\/Argentina\/Salta": "ارجنٽائن وقت (سالٽا)",
         "America\/Argentina\/San_Juan": "ارجنٽائن وقت (سان جوآن)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "مغربي ارجنٽائن وقت (سان لوئیس)",
+=======
+        "America\/Argentina\/San_Luis": "ارجنٽائن وقت (سان لوئیس)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "ارجنٽائن وقت (ٽوڪومين)",
         "America\/Argentina\/Ushuaia": "ارجنٽائن وقت (اوشوآئیا)",
         "America\/Aruba": "ايٽلانٽڪ جو وقت (اروبا)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "برونائي داروالسلام جو وقت",
         "Asia\/Calcutta": "ڀارت جو معياري وقت (ڪلڪتا)",
         "Asia\/Chita": "ياڪتسڪ جو وقت (چيتا)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "چوئي بيلسن جو وقت",
+=======
+        "Asia\/Choibalsan": "اولان باتر جو وقت (چوئي بيلسن)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "ڀارت جو معياري وقت (ڪولمبو)",
         "Asia\/Damascus": "مشرقي يورپي وقت (دمشق)",
         "Asia\/Dhaka": "بنگلاديش جو وقت (ڍاڪا)",

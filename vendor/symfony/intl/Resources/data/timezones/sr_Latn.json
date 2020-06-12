@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Srednje vreme po Griniču (Abidžan)",
         "Africa\/Accra": "Srednje vreme po Griniču (Akra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentina vreme (Rio Galjegos)",
         "America\/Argentina\/Salta": "Argentina vreme (Salta)",
         "America\/Argentina\/San_Juan": "Argentina vreme (San Huan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Zapadna Argentina vreme (San Lui)",
+=======
+        "America\/Argentina\/San_Luis": "Argentina vreme (San Lui)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentina vreme (Tukuman)",
         "America\/Argentina\/Ushuaia": "Argentina vreme (Ušuaija)",
         "America\/Aruba": "Atlantsko vreme (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Brunej Darusalum vreme",
         "Asia\/Calcutta": "Indijsko standardno vreme (Kalkuta)",
         "Asia\/Chita": "Jakutsk vreme (Čita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Čojbalsan vreme",
+=======
+        "Asia\/Choibalsan": "Ulan Bator vreme (Čojbalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Indijsko standardno vreme (Kolombo)",
         "Asia\/Damascus": "Istočnoevropsko vreme (Damask)",
         "Asia\/Dhaka": "Bangladeš vreme (Daka)",

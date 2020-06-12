@@ -11,17 +11,33 @@
 
 namespace Symfony\Component\Security\Http\Firewall;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\EventDispatcher\EventDispatcher;
+>>>>>>> ThomasN
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+<<<<<<< HEAD
 use Symfony\Component\Security\Core\Exception\LogoutException;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+=======
+use Symfony\Component\Security\Core\Exception\LogicException;
+use Symfony\Component\Security\Core\Exception\LogoutException;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Http\Event\LogoutEvent;
+>>>>>>> ThomasN
 use Symfony\Component\Security\Http\HttpUtils;
 use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
 use Symfony\Component\Security\Http\Logout\LogoutSuccessHandlerInterface;
 use Symfony\Component\Security\Http\ParameterBagUtils;
+<<<<<<< HEAD
+=======
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+>>>>>>> ThomasN
 
 /**
  * LogoutListener logout users.
@@ -34,6 +50,7 @@ class LogoutListener extends AbstractListener
 {
     private $tokenStorage;
     private $options;
+<<<<<<< HEAD
     private $handlers;
     private $successHandler;
     private $httpUtils;
@@ -44,6 +61,32 @@ class LogoutListener extends AbstractListener
      */
     public function __construct(TokenStorageInterface $tokenStorage, HttpUtils $httpUtils, LogoutSuccessHandlerInterface $successHandler, array $options = [], CsrfTokenManagerInterface $csrfTokenManager = null)
     {
+=======
+    private $httpUtils;
+    private $csrfTokenManager;
+    private $eventDispatcher;
+
+    /**
+     * @param EventDispatcherInterface $eventDispatcher
+     * @param array                    $options         An array of options to process a logout attempt
+     */
+    public function __construct(TokenStorageInterface $tokenStorage, HttpUtils $httpUtils, /* EventDispatcherInterface */$eventDispatcher, array $options = [], CsrfTokenManagerInterface $csrfTokenManager = null)
+    {
+        if (!$eventDispatcher instanceof EventDispatcherInterface) {
+            trigger_deprecation('symfony/security-http', '5.1', 'Passing a logout success handler to "%s" is deprecated, pass an instance of "%s" instead.', __METHOD__, EventDispatcherInterface::class);
+
+            if (!$eventDispatcher instanceof LogoutSuccessHandlerInterface) {
+                throw new \TypeError(sprintf('Argument 3 of "%s" must be instance of "%s" or "%s", "%s" given.', __METHOD__, EventDispatcherInterface::class, LogoutSuccessHandlerInterface::class, get_debug_type($eventDispatcher)));
+            }
+
+            $successHandler = $eventDispatcher;
+            $eventDispatcher = new EventDispatcher();
+            $eventDispatcher->addListener(LogoutEvent::class, function (LogoutEvent $event) use ($successHandler) {
+                $event->setResponse($r = $successHandler->onLogoutSuccess($event->getRequest()));
+            });
+        }
+
+>>>>>>> ThomasN
         $this->tokenStorage = $tokenStorage;
         $this->httpUtils = $httpUtils;
         $this->options = array_merge([
@@ -51,6 +94,7 @@ class LogoutListener extends AbstractListener
             'csrf_token_id' => 'logout',
             'logout_path' => '/logout',
         ], $options);
+<<<<<<< HEAD
         $this->successHandler = $successHandler;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->handlers = [];
@@ -59,6 +103,26 @@ class LogoutListener extends AbstractListener
     public function addHandler(LogoutHandlerInterface $handler)
     {
         $this->handlers[] = $handler;
+=======
+        $this->csrfTokenManager = $csrfTokenManager;
+        $this->eventDispatcher = $eventDispatcher;
+    }
+
+    /**
+     * @deprecated since Symfony 5.1
+     */
+    public function addHandler(LogoutHandlerInterface $handler)
+    {
+        trigger_deprecation('symfony/security-http', '5.1', 'Calling "%s" is deprecated, register a listener on the "%s" event instead.', __METHOD__, LogoutEvent::class);
+
+        $this->eventDispatcher->addListener(LogoutEvent::class, function (LogoutEvent $event) use ($handler) {
+            if (null === $event->getResponse()) {
+                throw new LogicException(sprintf('No response was set for this logout action. Make sure the DefaultLogoutListener or another listener has set the response before "%s" is called.', __CLASS__));
+            }
+
+            $handler->logout($event->getRequest(), $event->getResponse(), $event->getToken());
+        });
+>>>>>>> ThomasN
     }
 
     /**
@@ -90,6 +154,7 @@ class LogoutListener extends AbstractListener
             }
         }
 
+<<<<<<< HEAD
         $response = $this->successHandler->onLogoutSuccess($request);
         if (!$response instanceof Response) {
             throw new \RuntimeException('Logout Success Handler did not return a Response.');
@@ -100,6 +165,14 @@ class LogoutListener extends AbstractListener
             foreach ($this->handlers as $handler) {
                 $handler->logout($request, $response, $token);
             }
+=======
+        $logoutEvent = new LogoutEvent($request, $this->tokenStorage->getToken());
+        $this->eventDispatcher->dispatch($logoutEvent);
+
+        $response = $logoutEvent->getResponse();
+        if (!$response instanceof Response) {
+            throw new \RuntimeException('No logout listener set the Response, make sure at least the DefaultLogoutListener is registered.');
+>>>>>>> ThomasN
         }
 
         $this->tokenStorage->setToken(null);

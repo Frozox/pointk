@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Ora e Grinuiçit (Abixhan)",
         "Africa\/Accra": "Ora e Grinuiçit (Akra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Ora e Argjentinës (Rio-Galegos)",
         "America\/Argentina\/Salta": "Ora e Argjentinës (Saltë)",
         "America\/Argentina\/San_Juan": "Ora e Argjentinës (San-Huan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Ora e Argjentinës Perëndimore (Shën-Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Ora e Argjentinës (Shën-Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Ora e Argjentinës (Tukuman)",
         "America\/Argentina\/Ushuaia": "Ora e Argjentinës (Ushuaja)",
         "America\/Aruba": "Ora e Atlantikut (Arubë)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Ora e Brunei-Durasalamit",
         "Asia\/Calcutta": "Ora standarde e Indisë (Kalkutë)",
         "Asia\/Chita": "Ora e Jakutskut (Çita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Ora e Çoibalsanit",
+=======
+        "Asia\/Choibalsan": "Ora e Ulan-Batorit (Çoibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Ora standarde e Indisë (Kolombo)",
         "Asia\/Damascus": "Ora e Evropës Lindore (Damask)",
         "Asia\/Dhaka": "Ora e Bangladeshit (Daka)",

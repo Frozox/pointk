@@ -63,6 +63,11 @@ class ConsoleRunner
 
     /**
      * Prints the instructions to create a configuration file
+<<<<<<< HEAD
+=======
+     *
+     * @return void
+>>>>>>> ThomasN
      */
     public static function printCliConfigTemplate()
     {

@@ -11,7 +11,10 @@
 
 namespace Symfony\Component\DependencyInjection;
 
+<<<<<<< HEAD
 use Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 
@@ -105,6 +108,7 @@ class ChildDefinition extends Definition
 
         return $this;
     }
+<<<<<<< HEAD
 
     /**
      * @internal
@@ -121,4 +125,6 @@ class ChildDefinition extends Definition
     {
         throw new BadMethodCallException('A ChildDefinition cannot have instanceof conditionals set on it.');
     }
+=======
+>>>>>>> ThomasN
 }

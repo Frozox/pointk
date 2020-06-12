@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -121,10 +124,13 @@
             "CLP",
             "i-Chilean Peso"
         ],
+<<<<<<< HEAD
         "CNH": [
             "CNH",
             "CNH"
         ],
+=======
+>>>>>>> ThomasN
         "CNY": [
             "CN¥",
             "i-Chinese Yuan"

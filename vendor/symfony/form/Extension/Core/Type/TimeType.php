@@ -61,6 +61,7 @@ class TimeType extends AbstractType
         }
 
         if ('single_text' === $options['widget']) {
+<<<<<<< HEAD
             // handle seconds ignored by user's browser when with_seconds enabled
             // https://codereview.chromium.org/450533009/
             if ($options['with_seconds']) {
@@ -71,6 +72,20 @@ class TimeType extends AbstractType
                     }
                 });
             }
+=======
+            $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $e) use ($options) {
+                $data = $e->getData();
+                if ($data && preg_match('/^(?P<hours>\d{2}):(?P<minutes>\d{2})(?::(?P<seconds>\d{2})(?:\.\d+)?)?$/', $data, $matches)) {
+                    if ($options['with_seconds']) {
+                        // handle seconds ignored by user's browser when with_seconds enabled
+                        // https://codereview.chromium.org/450533009/
+                        $e->setData(sprintf('%s:%s:%s', $matches['hours'], $matches['minutes'], isset($matches['seconds']) ? $matches['seconds'] : '00'));
+                    } else {
+                        $e->setData(sprintf('%s:%s', $matches['hours'], $matches['minutes']));
+                    }
+                }
+            });
+>>>>>>> ThomasN
 
             if (null !== $options['reference_date']) {
                 $format = 'Y-m-d '.$format;
@@ -294,6 +309,21 @@ class TimeType extends AbstractType
             return null;
         };
 
+<<<<<<< HEAD
+=======
+        $viewTimezone = static function (Options $options, $value): ?string {
+            if (null !== $value) {
+                return $value;
+            }
+
+            if (null !== $options['model_timezone'] && null === $options['reference_date']) {
+                return $options['model_timezone'];
+            }
+
+            return null;
+        };
+
+>>>>>>> ThomasN
         $resolver->setDefaults([
             'hours' => range(0, 23),
             'minutes' => range(0, 59),
@@ -304,7 +334,11 @@ class TimeType extends AbstractType
             'with_minutes' => true,
             'with_seconds' => false,
             'model_timezone' => $modelTimezone,
+<<<<<<< HEAD
             'view_timezone' => null,
+=======
+            'view_timezone' => $viewTimezone,
+>>>>>>> ThomasN
             'reference_date' => null,
             'placeholder' => $placeholderDefault,
             'html5' => true,
@@ -324,12 +358,21 @@ class TimeType extends AbstractType
             'choice_translation_domain' => false,
         ]);
 
+<<<<<<< HEAD
         $resolver->setNormalizer('model_timezone', function (Options $options, $modelTimezone): ?string {
             if (null !== $modelTimezone && $options['view_timezone'] !== $modelTimezone && null === $options['reference_date']) {
                 throw new LogicException(sprintf('Using different values for the "model_timezone" and "view_timezone" options without configuring a reference date is not supported.'));
             }
 
             return $modelTimezone;
+=======
+        $resolver->setNormalizer('view_timezone', function (Options $options, $viewTimezone): ?string {
+            if (null !== $options['model_timezone'] && $viewTimezone !== $options['model_timezone'] && null === $options['reference_date']) {
+                throw new LogicException(sprintf('Using different values for the "model_timezone" and "view_timezone" options without configuring a reference date is not supported.'));
+            }
+
+            return $viewTimezone;
+>>>>>>> ThomasN
         });
 
         $resolver->setNormalizer('placeholder', $placeholderNormalizer);

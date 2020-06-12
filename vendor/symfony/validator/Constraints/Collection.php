@@ -57,7 +57,11 @@ class Collection extends Composite
         parent::initializeNestedConstraints();
 
         if (!\is_array($this->fields)) {
+<<<<<<< HEAD
             throw new ConstraintDefinitionException(sprintf('The option "fields" is expected to be an array in constraint %s', __CLASS__));
+=======
+            throw new ConstraintDefinitionException(sprintf('The option "fields" is expected to be an array in constraint "%s".', __CLASS__));
+>>>>>>> ThomasN
         }
 
         foreach ($this->fields as $fieldName => $field) {

@@ -17,7 +17,11 @@ use Symfony\Component\Notifier\Exception\UnsupportedSchemeException;
 /**
  * @author Konstantin Myakshin <molodchick@gmail.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 interface TransportFactoryInterface
 {

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AD": "Orílẹ́ède Ààndórà",
         "AE": "Orílẹ́ède Ẹmirate ti Awọn Arabu",
@@ -9,11 +12,19 @@
         "AL": "Orílẹ́ède Àlùbàníánì",
         "AM": "Orílẹ́ède Améníà",
         "AO": "Orílẹ́ède Ààngólà",
+<<<<<<< HEAD
+=======
+        "AQ": "Antakítíkà",
+>>>>>>> ThomasN
         "AR": "Orílẹ́ède Agentínà",
         "AS": "Sámóánì ti Orílẹ́ède Àméríkà",
         "AT": "Orílẹ́ède Asítíríà",
         "AU": "Orílẹ́ède Ástràlìá",
         "AW": "Orílẹ́ède Árúbà",
+<<<<<<< HEAD
+=======
+        "AX": "Àwọn Erékùsù ti Åland",
+>>>>>>> ThomasN
         "AZ": "Orílẹ́ède Asẹ́bájánì",
         "BA": "Orílẹ́ède Bọ̀síníà àti Ẹtisẹgófínà",
         "BB": "Orílẹ́ède Bábádósì",
@@ -24,16 +35,32 @@
         "BH": "Orílẹ́ède Báránì",
         "BI": "Orílẹ́ède Bùùrúndì",
         "BJ": "Orílẹ́ède Bẹ̀nẹ̀",
+<<<<<<< HEAD
         "BM": "Orílẹ́ède Bémúdà",
         "BN": "Orílẹ́ède Búrúnẹ́lì",
         "BO": "Orílẹ́ède Bọ̀lífíyà",
         "BR": "Orilẹ̀-èdè Bàràsílì",
         "BS": "Orílẹ́ède Bàhámásì",
         "BT": "Orílẹ́ède Bútánì",
+=======
+        "BL": "St. Barthélemy",
+        "BM": "Orílẹ́ède Bémúdà",
+        "BN": "Orílẹ́ède Búrúnẹ́lì",
+        "BO": "Orílẹ́ède Bọ̀lífíyà",
+        "BQ": "Caribbean Netherlands",
+        "BR": "Orilẹ̀-èdè Bàràsílì",
+        "BS": "Orílẹ́ède Bàhámásì",
+        "BT": "Orílẹ́ède Bútánì",
+        "BV": "Erékùsù Bouvet",
+>>>>>>> ThomasN
         "BW": "Orílẹ́ède Bọ̀tìsúwánà",
         "BY": "Orílẹ́ède Bélárúsì",
         "BZ": "Orílẹ́ède Bèlísẹ̀",
         "CA": "Orílẹ́ède Kánádà",
+<<<<<<< HEAD
+=======
+        "CC": "Erékùsù Cocos (Keeling)",
+>>>>>>> ThomasN
         "CD": "Orilẹ́ède Kóngò",
         "CF": "Orílẹ́ède Àrin gùngun Áfíríkà",
         "CG": "Orílẹ́ède Kóngò",
@@ -47,6 +74,11 @@
         "CR": "Orílẹ́ède Kuusita Ríkà",
         "CU": "Orílẹ́ède Kúbà",
         "CV": "Orílẹ́ède Etíokun Kápé féndè",
+<<<<<<< HEAD
+=======
+        "CW": "Curaçao",
+        "CX": "Erékùsù Christmas",
+>>>>>>> ThomasN
         "CY": "Orílẹ́ède Kúrúsì",
         "CZ": "Orílẹ́ède ṣẹ́ẹ́kì",
         "DE": "Orílẹèdè Jámánì",
@@ -66,12 +98,20 @@
         "FJ": "Orílẹ́ède Fiji",
         "FK": "Orílẹ́ède Etikun Fakalandi",
         "FM": "Orílẹ́ède Makoronesia",
+<<<<<<< HEAD
+=======
+        "FO": "Àwọn Erékùsù ti Faroe",
+>>>>>>> ThomasN
         "FR": "Orílẹ́ède Faranse",
         "GA": "Orílẹ́ède Gabon",
         "GB": "Orílẹ́èdè Gẹ̀ẹ́sì",
         "GD": "Orílẹ́ède Genada",
         "GE": "Orílẹ́ède Gọgia",
         "GF": "Orílẹ́ède Firenṣi Guana",
+<<<<<<< HEAD
+=======
+        "GG": "Guernsey",
+>>>>>>> ThomasN
         "GH": "Orílẹ́ède Gana",
         "GI": "Orílẹ́ède Gibaratara",
         "GL": "Orílẹ́ède Gerelandi",
@@ -80,10 +120,19 @@
         "GP": "Orílẹ́ède Gadelope",
         "GQ": "Orílẹ́ède Ekutoria Gini",
         "GR": "Orílẹ́ède Geriisi",
+<<<<<<< HEAD
+=======
+        "GS": "Gúúsù Georgia àti Gúúsù Àwọn Erékùsù Sandwich",
+>>>>>>> ThomasN
         "GT": "Orílẹ́ède Guatemala",
         "GU": "Orílẹ́ède Guamu",
         "GW": "Orílẹ́ède Gene-Busau",
         "GY": "Orílẹ́ède Guyana",
+<<<<<<< HEAD
+=======
+        "HK": "Hong Kong SAR ti Ṣáìnà",
+        "HM": "Erékùsù Heard àti Erékùsù McDonald",
+>>>>>>> ThomasN
         "HN": "Orílẹ́ède Hondurasi",
         "HR": "Orílẹ́ède Kòróátíà",
         "HT": "Orílẹ́ède Haati",
@@ -91,12 +140,20 @@
         "ID": "Orílẹ́ède Indonesia",
         "IE": "Orílẹ́ède Ailandi",
         "IL": "Orílẹ́ède Iserẹli",
+<<<<<<< HEAD
+=======
+        "IM": "Isle of Man",
+>>>>>>> ThomasN
         "IN": "Orílẹ́ède India",
         "IO": "Orílẹ́ède Etíkun Índíánì ti Ìlú Bírítísì",
         "IQ": "Orílẹ́ède Iraki",
         "IR": "Orílẹ́ède Irani",
         "IS": "Orílẹ́ède Aṣilandi",
         "IT": "Orílẹ́ède Itáli",
+<<<<<<< HEAD
+=======
+        "JE": "Jersey",
+>>>>>>> ThomasN
         "JM": "Orílẹ́ède Jamaika",
         "JO": "Orílẹ́ède Jọdani",
         "JP": "Orílẹ́ède Japani",
@@ -125,12 +182,21 @@
         "MA": "Orílẹ́ède Moroko",
         "MC": "Orílẹ́ède Monako",
         "MD": "Orílẹ́ède Modofia",
+<<<<<<< HEAD
+=======
+        "ME": "Montenegro",
+        "MF": "St. Martin",
+>>>>>>> ThomasN
         "MG": "Orílẹ́ède Madasika",
         "MH": "Orílẹ́ède Etikun Máṣali",
         "MK": "Àríwá Macedonia",
         "ML": "Orílẹ́ède Mali",
         "MM": "Orílẹ́ède Manamari",
         "MN": "Orílẹ́ède Mogolia",
+<<<<<<< HEAD
+=======
+        "MO": "Macao SAR ti Ṣáìnà",
+>>>>>>> ThomasN
         "MP": "Orílẹ́ède Etikun Guusu Mariana",
         "MQ": "Orílẹ́ède Matinikuwi",
         "MR": "Orílẹ́ède Maritania",
@@ -172,6 +238,10 @@
         "QA": "Orílẹ́ède Kota",
         "RE": "Orílẹ́ède Riuniyan",
         "RO": "Orílẹ́ède Romaniya",
+<<<<<<< HEAD
+=======
+        "RS": "Serbia",
+>>>>>>> ThomasN
         "RU": "Orílẹ́ède Rọṣia",
         "RW": "Orílẹ́ède Ruwanda",
         "SA": "Orílẹ́ède Saudi Arabia",
@@ -182,6 +252,10 @@
         "SG": "Orílẹ́ède Singapo",
         "SH": "Orílẹ́ède Hẹlena",
         "SI": "Orílẹ́ède Silofania",
+<<<<<<< HEAD
+=======
+        "SJ": "Svalbard & Jan Mayen",
+>>>>>>> ThomasN
         "SK": "Orílẹ́ède Silofakia",
         "SL": "Orílẹ́ède Siria looni",
         "SM": "Orílẹ́ède Sani Marino",
@@ -191,6 +265,10 @@
         "SS": "Gúúsù Sudan",
         "ST": "Orílẹ́ède Sao tomi ati piriiṣipi",
         "SV": "Orílẹ́ède Ẹẹsáfádò",
+<<<<<<< HEAD
+=======
+        "SX": "Sint Maarten",
+>>>>>>> ThomasN
         "SY": "Orílẹ́ède Siria",
         "SZ": "Orílẹ́ède Saṣiland",
         "TC": "Orílẹ́ède Tọọki ati Etikun Kakọsi",
@@ -211,6 +289,10 @@
         "TZ": "Orílẹ́ède Tàǹsáníà",
         "UA": "Orílẹ́ède Ukarini",
         "UG": "Orílẹ́ède Uganda",
+<<<<<<< HEAD
+=======
+        "UM": "Àwọn Erékùsù Kékèké Agbègbè US",
+>>>>>>> ThomasN
         "US": "Orílẹ̀-èdè Amẹrikà",
         "UY": "Orílẹ́ède Nruguayi",
         "UZ": "Orílẹ́ède Nṣibẹkisitani",

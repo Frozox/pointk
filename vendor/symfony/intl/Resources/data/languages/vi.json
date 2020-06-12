@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Tiếng Afar",
         "ab": "Tiếng Abkhazia",
@@ -547,6 +550,10 @@
         "en_US": "Tiếng Anh (Mỹ)",
         "es_419": "Tiếng Tây Ban Nha (Mỹ La tinh)",
         "es_ES": "Tiếng Tây Ban Nha (Châu Âu)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Tiếng Dari",
+>>>>>>> ThomasN
         "nds_NL": "Tiếng Hạ Saxon",
         "nl_BE": "Tiếng Flemish",
         "pt_PT": "Tiếng Bồ Đào Nha (Châu Âu)",

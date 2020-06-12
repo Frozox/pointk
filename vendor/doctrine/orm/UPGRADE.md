@@ -47,7 +47,11 @@ Whole Doctrine\ORM\Tools\Export namespace with all its members have been depreca
 ## Deprecated `Doctrine\ORM\Proxy\Proxy` marker interface
 
 Proxy objects in Doctrine ORM 3.0 will no longer implement `Doctrine\ORM\Proxy\Proxy` nor
+<<<<<<< HEAD
 `Doctrine\Common\Persistence\Proxy`: instead, they implement
+=======
+`Doctrine\Persistence\Proxy`: instead, they implement
+>>>>>>> ThomasN
 `ProxyManager\Proxy\GhostObjectInterface`.
 
 These related classes have been deprecated:
@@ -439,6 +443,7 @@ above you must implement these new methods.
 
 ## Metadata Drivers
 
+<<<<<<< HEAD
 Metadata drivers have been rewritten to reuse code from Doctrine\Common. Anyone who is using the
 `Doctrine\ORM\Mapping\Driver\Driver` interface should instead refer to
 `Doctrine\Common\Persistence\Mapping\Driver\MappingDriver`. Same applies to
@@ -450,6 +455,19 @@ Also, following mapping drivers have been deprecated, please use their replaceme
  *  `Doctrine\ORM\Mapping\Driver\DriverChain`       => `Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain`
  *  `Doctrine\ORM\Mapping\Driver\PHPDriver`         => `Doctrine\Common\Persistence\Mapping\Driver\PHPDriver`
  *  `Doctrine\ORM\Mapping\Driver\StaticPHPDriver`   => `Doctrine\Common\Persistence\Mapping\Driver\StaticPHPDriver`
+=======
+Metadata drivers have been rewritten to reuse code from `Doctrine\Persistence`. Anyone who is using the
+`Doctrine\ORM\Mapping\Driver\Driver` interface should instead refer to
+`Doctrine\Persistence\Mapping\Driver\MappingDriver`. Same applies to
+`Doctrine\ORM\Mapping\Driver\AbstractFileDriver`: you should now refer to
+`Doctrine\Persistence\Mapping\Driver\FileDriver`.
+
+Also, following mapping drivers have been deprecated, please use their replacements in Doctrine\Common as listed:
+
+ *  `Doctrine\ORM\Mapping\Driver\DriverChain`       => `Doctrine\Persistence\Mapping\Driver\MappingDriverChain`
+ *  `Doctrine\ORM\Mapping\Driver\PHPDriver`         => `Doctrine\Persistence\Mapping\Driver\PHPDriver`
+ *  `Doctrine\ORM\Mapping\Driver\StaticPHPDriver`   => `Doctrine\Persistence\Mapping\Driver\StaticPHPDriver`
+>>>>>>> ThomasN
 
 # Upgrade to 2.2
 
@@ -538,7 +556,11 @@ Previously EntityManager#find(null) returned null. It now throws an exception.
 
 ## Interface for EntityRepository
 
+<<<<<<< HEAD
 The EntityRepository now has an interface Doctrine\Common\Persistence\ObjectRepository. This means that your classes that override EntityRepository and extend find(), findOneBy() or findBy() must be adjusted to follow this interface.
+=======
+The EntityRepository now has an interface Doctrine\Persistence\ObjectRepository. This means that your classes that override EntityRepository and extend find(), findOneBy() or findBy() must be adjusted to follow this interface.
+>>>>>>> ThomasN
 
 ## AnnotationReader changes
 

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Afar",
         "ab": "Abchazisch",
@@ -596,6 +599,10 @@
         "zza": "Zaza"
     },
     "LocalizedNames": {
+<<<<<<< HEAD
+=======
+        "fa_AF": "Dari",
+>>>>>>> ThomasN
         "nds_NL": "Nederduits"
     }
 }

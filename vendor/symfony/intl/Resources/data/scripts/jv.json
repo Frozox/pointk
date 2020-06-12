@@ -1,7 +1,12 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Arab": "Arab",
+=======
+    "Names": {
+        "Arab": "hija’iyah",
+>>>>>>> ThomasN
         "Armn": "Armenia",
         "Beng": "Bangla",
         "Bopo": "Bopomofo",
@@ -34,6 +39,10 @@
         "Orya": "Odia",
         "Sinh": "Sinhala",
         "Taml": "Tamil",
+<<<<<<< HEAD
+=======
+        "Telu": "Telugu",
+>>>>>>> ThomasN
         "Thaa": "Thaana",
         "Thai": "Thailand",
         "Tibt": "Tibetan",

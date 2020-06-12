@@ -39,10 +39,20 @@ class HttpBrowser extends AbstractBrowser
         parent::__construct([], $history, $cookieJar);
     }
 
+<<<<<<< HEAD
     protected function doRequest($request): Response
     {
         $headers = $this->getHeaders($request);
         [$body, $extraHeaders] = $this->getBodyAndExtraHeaders($request);
+=======
+    /**
+     * @param Request $request
+     */
+    protected function doRequest($request): Response
+    {
+        $headers = $this->getHeaders($request);
+        [$body, $extraHeaders] = $this->getBodyAndExtraHeaders($request, $headers);
+>>>>>>> ThomasN
 
         $response = $this->client->request($request->getMethod(), $request->getUri(), [
             'headers' => array_merge($headers, $extraHeaders),
@@ -56,7 +66,11 @@ class HttpBrowser extends AbstractBrowser
     /**
      * @return array [$body, $headers]
      */
+<<<<<<< HEAD
     private function getBodyAndExtraHeaders(Request $request): array
+=======
+    private function getBodyAndExtraHeaders(Request $request, array $headers): array
+>>>>>>> ThomasN
     {
         if (\in_array($request->getMethod(), ['GET', 'HEAD'])) {
             return ['', []];
@@ -67,6 +81,13 @@ class HttpBrowser extends AbstractBrowser
         }
 
         if (null !== $content = $request->getContent()) {
+<<<<<<< HEAD
+=======
+            if (isset($headers['content-type'])) {
+                return [$content, []];
+            }
+
+>>>>>>> ThomasN
             $part = new TextPart($content, 'utf-8', 'plain', '8bit');
 
             return [$part->bodyToString(), $part->getPreparedHeaders()->toArray()];
@@ -75,7 +96,11 @@ class HttpBrowser extends AbstractBrowser
         $fields = $request->getParameters();
 
         if ($uploadedFiles = $this->getUploadedFiles($request->getFiles())) {
+<<<<<<< HEAD
             $part = new FormDataPart($uploadedFiles);
+=======
+            $part = new FormDataPart(array_merge($fields, $uploadedFiles));
+>>>>>>> ThomasN
 
             return [$part->bodyToIterable(), $part->getPreparedHeaders()->toArray()];
         }

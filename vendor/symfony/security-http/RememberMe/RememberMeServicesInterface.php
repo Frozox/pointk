@@ -24,6 +24,11 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
  * - PersistentTokenBasedRememberMeServices (requires a TokenProvider)
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+<<<<<<< HEAD
+=======
+ *
+ * @method logout(Request $request, Response $response, TokenInterface $token)
+>>>>>>> ThomasN
  */
 interface RememberMeServicesInterface
 {

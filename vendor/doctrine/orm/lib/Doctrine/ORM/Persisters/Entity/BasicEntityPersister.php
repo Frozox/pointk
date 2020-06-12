@@ -92,7 +92,10 @@ class BasicEntityPersister implements EntityPersister
      */
     static private $comparisonMap = [
         Comparison::EQ          => '= %s',
+<<<<<<< HEAD
         Comparison::IS          => '= %s',
+=======
+>>>>>>> ThomasN
         Comparison::NEQ         => '!= %s',
         Comparison::GT          => '> %s',
         Comparison::GTE         => '>= %s',

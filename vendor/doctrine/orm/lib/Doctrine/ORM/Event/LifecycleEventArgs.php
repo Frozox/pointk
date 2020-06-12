@@ -19,7 +19,11 @@
 
 namespace Doctrine\ORM\Event;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs as BaseLifecycleEventArgs;
+=======
+use Doctrine\Persistence\Event\LifecycleEventArgs as BaseLifecycleEventArgs;
+>>>>>>> ThomasN
 
 /**
  * Lifecycle Events are triggered by the UnitOfWork during lifecycle transitions

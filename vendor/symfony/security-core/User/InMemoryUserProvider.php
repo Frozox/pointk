@@ -74,7 +74,11 @@ class InMemoryUserProvider implements UserProviderInterface
     public function refreshUser(UserInterface $user)
     {
         if (!$user instanceof User) {
+<<<<<<< HEAD
             throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+=======
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', get_debug_type($user)));
+>>>>>>> ThomasN
         }
 
         $storedUser = $this->getUser($user->getUsername());

@@ -8,9 +8,13 @@ or address are the primary use case for this feature.
 
 .. note::
 
+<<<<<<< HEAD
     Embeddables can not contain references to entities. They can however compose
     other embeddables in addition to holding properties with basic ``@Column``
     mapping.
+=======
+    Embeddables can only contain properties with basic ``@Column`` mapping.
+>>>>>>> ThomasN
 
 For the purposes of this tutorial, we will assume that you have a ``User``
 class in your application and you would like to store an address in

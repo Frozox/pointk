@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -239,7 +242,11 @@
         ],
         "HRK": [
             "HRK",
+<<<<<<< HEAD
             "HRK"
+=======
+            "የክሮሽያ ኩና"
+>>>>>>> ThomasN
         ],
         "HTG": [
             "HTG",

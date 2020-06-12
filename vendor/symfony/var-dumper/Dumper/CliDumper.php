@@ -195,7 +195,11 @@ class CliDumper extends AbstractDumper
                 'length' => 0 <= $cut ? mb_strlen($str, 'UTF-8') + $cut : 0,
                 'binary' => $bin,
             ];
+<<<<<<< HEAD
             $str = explode("\n", $str);
+=======
+            $str = $bin && false !== strpos($str, "\0") ? [$str] : explode("\n", $str);
+>>>>>>> ThomasN
             if (isset($str[1]) && !isset($str[2]) && !isset($str[1][0])) {
                 unset($str[1]);
                 $str[0] .= "\n";

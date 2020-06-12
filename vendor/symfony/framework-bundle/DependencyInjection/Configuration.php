@@ -470,6 +470,13 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('resource')->isRequired()->end()
                         ->scalarNode('type')->end()
+<<<<<<< HEAD
+=======
+                        ->scalarNode('default_uri')
+                            ->info('The default URI used to generate URLs in a non-HTTP context')
+                            ->defaultNull()
+                        ->end()
+>>>>>>> ThomasN
                         ->scalarNode('http_port')->defaultValue(80)->end()
                         ->scalarNode('https_port')->defaultValue(443)->end()
                         ->scalarNode('strict_requirements')
@@ -481,7 +488,11 @@ class Configuration implements ConfigurationInterface
                             )
                             ->defaultTrue()
                         ->end()
+<<<<<<< HEAD
                         ->booleanNode('utf8')->defaultFalse()->end()
+=======
+                        ->booleanNode('utf8')->defaultNull()->end()
+>>>>>>> ThomasN
                     ->end()
                 ->end()
             ->end()
@@ -660,6 +671,10 @@ class Configuration implements ConfigurationInterface
                     ->{!class_exists(FullStack::class) && class_exists(Translator::class) ? 'canBeDisabled' : 'canBeEnabled'}()
                     ->fixXmlConfig('fallback')
                     ->fixXmlConfig('path')
+<<<<<<< HEAD
+=======
+                    ->fixXmlConfig('enabled_locale')
+>>>>>>> ThomasN
                     ->children()
                         ->arrayNode('fallbacks')
                             ->info('Defaults to the value of "default_locale".')
@@ -677,6 +692,13 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('paths')
                             ->prototype('scalar')->end()
                         ->end()
+<<<<<<< HEAD
+=======
+                        ->arrayNode('enabled_locales')
+                            ->prototype('scalar')->end()
+                            ->defaultValue([])
+                        ->end()
+>>>>>>> ThomasN
                     ->end()
                 ->end()
             ->end()
@@ -1345,7 +1367,11 @@ class Configuration implements ConfigurationInterface
                                     ->thenInvalid('Either "scope" or "base_uri" should be defined.')
                                 ->end()
                                 ->validate()
+<<<<<<< HEAD
                                     ->ifTrue(function ($v) { return isset($v['query']) && !isset($v['base_uri']); })
+=======
+                                    ->ifTrue(function ($v) { return !empty($v['query']) && !isset($v['base_uri']); })
+>>>>>>> ThomasN
                                     ->thenInvalid('"query" applies to "base_uri" but no base URI is defined.')
                                 ->end()
                                 ->children()
@@ -1484,6 +1510,10 @@ class Configuration implements ConfigurationInterface
                     ->end()
                     ->fixXmlConfig('transport')
                     ->children()
+<<<<<<< HEAD
+=======
+                        ->scalarNode('message_bus')->defaultNull()->info('The message bus to use. Defaults to the default bus if the Messenger component is installed.')->end()
+>>>>>>> ThomasN
                         ->scalarNode('dsn')->defaultNull()->end()
                         ->arrayNode('transports')
                             ->useAttributeAsKey('name')

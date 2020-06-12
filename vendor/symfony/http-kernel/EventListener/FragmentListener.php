@@ -83,8 +83,12 @@ class FragmentListener implements EventSubscriberInterface
         }
 
         // is the Request signed?
+<<<<<<< HEAD
         // we cannot use $request->getUri() here as we want to work with the original URI (no query string reordering)
         if ($this->signer->check($request->getSchemeAndHttpHost().$request->getBaseUrl().$request->getPathInfo().(null !== ($qs = $request->server->get('QUERY_STRING')) ? '?'.$qs : ''))) {
+=======
+        if ($this->signer->checkRequest($request)) {
+>>>>>>> ThomasN
             return;
         }
 

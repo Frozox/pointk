@@ -36,10 +36,13 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
         }
 
         foreach ($container->getDefinitions() as $id => $definition) {
+<<<<<<< HEAD
             if ($definition instanceof ChildDefinition) {
                 // don't apply "instanceof" to children: it will be applied to their parent
                 continue;
             }
+=======
+>>>>>>> ThomasN
             $container->setDefinition($id, $this->processDefinition($container, $id, $definition));
         }
     }
@@ -59,11 +62,19 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
         $conditionals = $this->mergeConditionals($autoconfiguredInstanceof, $instanceofConditionals, $container);
 
         $definition->setInstanceofConditionals([]);
+<<<<<<< HEAD
         $parent = $shared = null;
+=======
+        $shared = null;
+>>>>>>> ThomasN
         $instanceofTags = [];
         $instanceofCalls = [];
         $instanceofBindings = [];
         $reflectionClass = null;
+<<<<<<< HEAD
+=======
+        $parent = $definition instanceof ChildDefinition ? $definition->getParent() : null;
+>>>>>>> ThomasN
 
         foreach ($conditionals as $interface => $instanceofDefs) {
             if ($interface !== $class && !(null === $reflectionClass ? $reflectionClass = ($container->getReflectionClass($class, false) ?: false) : $reflectionClass)) {
@@ -100,12 +111,23 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
         if ($parent) {
             $bindings = $definition->getBindings();
             $abstract = $container->setDefinition('.abstract.instanceof.'.$id, $definition);
+<<<<<<< HEAD
 
             // cast Definition to ChildDefinition
             $definition->setBindings([]);
             $definition = serialize($definition);
             $definition = substr_replace($definition, '53', 2, 2);
             $definition = substr_replace($definition, 'Child', 44, 0);
+=======
+            $definition->setBindings([]);
+            $definition = serialize($definition);
+
+            if (Definition::class === \get_class($abstract)) {
+                // cast Definition to ChildDefinition
+                $definition = substr_replace($definition, '53', 2, 2);
+                $definition = substr_replace($definition, 'Child', 44, 0);
+            }
+>>>>>>> ThomasN
             /** @var ChildDefinition $definition */
             $definition = unserialize($definition);
             $definition->setParent($parent);

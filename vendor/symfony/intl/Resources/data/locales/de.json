@@ -368,6 +368,11 @@
         "ko_KP": "Koreanisch (Nordkorea)",
         "ko_KR": "Koreanisch (Südkorea)",
         "ks": "Kaschmiri",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "Kaschmiri (Arabisch)",
+        "ks_Arab_IN": "Kaschmiri (Arabisch, Indien)",
+>>>>>>> ThomasN
         "ks_IN": "Kaschmiri (Indien)",
         "ku": "Kurdisch",
         "ku_TR": "Kurdisch (Türkei)",
@@ -406,6 +411,10 @@
         "mr_IN": "Marathi (Indien)",
         "ms": "Malaiisch",
         "ms_BN": "Malaiisch (Brunei Darussalam)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Malaiisch (Indonesien)",
+>>>>>>> ThomasN
         "ms_MY": "Malaiisch (Malaysia)",
         "ms_SG": "Malaiisch (Singapur)",
         "mt": "Maltesisch",
@@ -486,6 +495,13 @@
         "rw": "Kinyarwanda",
         "rw_RW": "Kinyarwanda (Ruanda)",
         "sd": "Sindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "Sindhi (Arabisch)",
+        "sd_Arab_PK": "Sindhi (Arabisch, Pakistan)",
+        "sd_Deva": "Sindhi (Devanagari)",
+        "sd_Deva_IN": "Sindhi (Devanagari, Indien)",
+>>>>>>> ThomasN
         "sd_PK": "Sindhi (Pakistan)",
         "se": "Nordsamisch",
         "se_FI": "Nordsamisch (Finnland)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "Serbisch (Lateinisch, Serbien)",
         "sr_ME": "Serbisch (Montenegro)",
         "sr_RS": "Serbisch (Serbien)",
+<<<<<<< HEAD
+=======
+        "su": "Sundanesisch",
+        "su_ID": "Sundanesisch (Indonesien)",
+        "su_Latn": "Sundanesisch (Lateinisch)",
+        "su_Latn_ID": "Sundanesisch (Lateinisch, Indonesien)",
+>>>>>>> ThomasN
         "sv": "Schwedisch",
         "sv_AX": "Schwedisch (Ålandinseln)",
         "sv_FI": "Schwedisch (Finnland)",

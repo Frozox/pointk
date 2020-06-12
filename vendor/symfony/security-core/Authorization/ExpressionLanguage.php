@@ -14,6 +14,12 @@ namespace Symfony\Component\Security\Core\Authorization;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(ExpressionLanguageProvider::class);
+
+>>>>>>> ThomasN
 if (!class_exists(BaseExpressionLanguage::class)) {
     throw new \LogicException(sprintf('The "%s" class requires the "ExpressionLanguage" component. Try running "composer require symfony/expression-language".', ExpressionLanguage::class));
 } else {

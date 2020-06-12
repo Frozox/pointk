@@ -158,6 +158,11 @@ class SQLSrvStatement implements IteratorAggregate, Statement
 
         $this->variables[$param] = $value;
         $this->types[$param]     = $type;
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**
@@ -174,6 +179,11 @@ class SQLSrvStatement implements IteratorAggregate, Statement
 
         // unset the statement resource if it exists as the new one will need to be bound to the new variable
         $this->stmt = null;
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**
@@ -263,6 +273,11 @@ class SQLSrvStatement implements IteratorAggregate, Statement
         }
 
         $this->result = true;
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**

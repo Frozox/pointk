@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Afak": "Afaka",
         "Aghb": "Kafkas Albanyası",
         "Arab": "Arap",
+<<<<<<< HEAD
+=======
+        "Aran": "Nestâlik",
+>>>>>>> ThomasN
         "Armi": "İmparatorluk Aramicesi",
         "Armn": "Ermeni",
         "Avst": "Avesta",
@@ -68,7 +75,11 @@
         "Khmr": "Kmer",
         "Khoj": "Khojki",
         "Knda": "Kannada",
+<<<<<<< HEAD
         "Kore": "Kore",
+=======
+        "Kore": "Korece",
+>>>>>>> ThomasN
         "Kpel": "Kpelle",
         "Kthi": "Kaithi",
         "Lana": "Lanna",
@@ -86,7 +97,10 @@
         "Lydi": "Lidya",
         "Mahj": "Mahajani",
         "Mand": "Manden",
+<<<<<<< HEAD
         "Mani": "Mani",
+=======
+>>>>>>> ThomasN
         "Maya": "Maya Hiyeroglifleri",
         "Mend": "Mende",
         "Merc": "Meroitik El Yazısı",
@@ -118,6 +132,10 @@
         "Phnx": "Fenike",
         "Plrd": "Pollard Fonetik",
         "Prti": "Partça Kitabe Dili",
+<<<<<<< HEAD
+=======
+        "Qaag": "Zawgyi",
+>>>>>>> ThomasN
         "Rjng": "Rejang",
         "Roro": "Rongorongo",
         "Runr": "Runik",

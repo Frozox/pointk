@@ -1,11 +1,18 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Scripts": [
         "Adlm",
         "Afak",
         "Aghb",
         "Ahom",
         "Arab",
+<<<<<<< HEAD
+=======
+        "Aran",
+>>>>>>> ThomasN
         "Armi",
         "Armn",
         "Avst",
@@ -26,12 +33,20 @@
         "Cari",
         "Cham",
         "Cher",
+<<<<<<< HEAD
+=======
+        "Chrs",
+>>>>>>> ThomasN
         "Cirt",
         "Copt",
         "Cprt",
         "Cyrl",
         "Cyrs",
         "Deva",
+<<<<<<< HEAD
+=======
+        "Diak",
+>>>>>>> ThomasN
         "Dogr",
         "Dsrt",
         "Dupl",
@@ -76,6 +91,10 @@
         "Khar",
         "Khmr",
         "Khoj",
+<<<<<<< HEAD
+=======
+        "Kits",
+>>>>>>> ThomasN
         "Knda",
         "Kore",
         "Kpel",
@@ -182,6 +201,10 @@
         "Wole",
         "Xpeo",
         "Xsux",
+<<<<<<< HEAD
+=======
+        "Yezi",
+>>>>>>> ThomasN
         "Yiii",
         "Zanb",
         "Zinh",

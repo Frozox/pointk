@@ -1,11 +1,18 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Adlm": "fulanin adlam-aakkosto",
         "Afak": "afaka",
         "Aghb": "kaukasianalbanialainen",
         "Ahom": "ahom",
         "Arab": "arabialainen",
+<<<<<<< HEAD
+=======
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armi": "valtakunnanaramealainen",
         "Armn": "armenialainen",
         "Avst": "avestalainen",
@@ -26,12 +33,20 @@
         "Cari": "kaarialainen",
         "Cham": "tšamilainen",
         "Cher": "cherokeelainen",
+<<<<<<< HEAD
+=======
+        "Chrs": "horemzi",
+>>>>>>> ThomasN
         "Cirt": "cirth",
         "Copt": "koptilainen",
         "Cprt": "muinaiskyproslainen",
         "Cyrl": "kyrillinen",
         "Cyrs": "kyrillinen muinaiskirkkoslaavimuunnelma",
         "Deva": "devanagari",
+<<<<<<< HEAD
+=======
+        "Diak": "dives akuru",
+>>>>>>> ThomasN
         "Dogr": "dogri",
         "Dsrt": "deseret",
         "Dupl": "Duployén pikakirjoitus",
@@ -44,6 +59,10 @@
         "Geok": "muinaisgeorgialainen",
         "Geor": "georgialainen",
         "Glag": "glagoliittinen",
+<<<<<<< HEAD
+=======
+        "Gong": "gondin gunjala",
+>>>>>>> ThomasN
         "Gonm": "masaram-gondi",
         "Goth": "goottilainen",
         "Gran": "grantha",
@@ -61,6 +80,10 @@
         "Hira": "hiragana",
         "Hluw": "anatolialaiset hieroglyfit",
         "Hmng": "pahawh hmong",
+<<<<<<< HEAD
+=======
+        "Hmnp": "hmongin nyiakeng puachue",
+>>>>>>> ThomasN
         "Hrkt": "japanin tavumerkistöt",
         "Hung": "muinaisunkarilainen",
         "Inds": "induslainen",
@@ -74,6 +97,10 @@
         "Khar": "kharosthi",
         "Khmr": "khmeriläinen",
         "Khoj": "khojki",
+<<<<<<< HEAD
+=======
+        "Kits": "kitaanin pieni merkistö",
+>>>>>>> ThomasN
         "Knda": "kannadalainen",
         "Kore": "korealainen",
         "Kpel": "kpelle",
@@ -180,6 +207,10 @@
         "Wole": "woleai",
         "Xpeo": "muinaispersialainen",
         "Xsux": "sumerilais-akkadilainen nuolenpääkirjoitus",
+<<<<<<< HEAD
+=======
+        "Yezi": "jesidi",
+>>>>>>> ThomasN
         "Yiii": "yiläinen",
         "Zanb": "zanabazar-neliökirjaimisto",
         "Zinh": "peritty",

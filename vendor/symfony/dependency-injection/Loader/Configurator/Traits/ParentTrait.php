@@ -31,10 +31,13 @@ trait ParentTrait
 
         if ($this->definition instanceof ChildDefinition) {
             $this->definition->setParent($parent);
+<<<<<<< HEAD
         } elseif ($this->definition->isAutoconfigured()) {
             throw new InvalidArgumentException(sprintf('The service "%s" cannot have a "parent" and also have "autoconfigure". Try disabling autoconfiguration for the service.', $this->id));
         } elseif ($this->definition->getBindings()) {
             throw new InvalidArgumentException(sprintf('The service "%s" cannot have a "parent" and also "bind" arguments.', $this->id));
+=======
+>>>>>>> ThomasN
         } else {
             // cast Definition to ChildDefinition
             $definition = serialize($this->definition);

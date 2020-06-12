@@ -41,7 +41,11 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
     private $multi;
 
     /**
+<<<<<<< HEAD
      * @param array $defaultOptions     Default requests' options
+=======
+     * @param array $defaultOptions     Default request's options
+>>>>>>> ThomasN
      * @param int   $maxHostConnections The maximum number of connections to open
      *
      * @see HttpClientInterface::OPTIONS_DEFAULTS for available options
@@ -219,6 +223,7 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
             ],
         ];
 
+<<<<<<< HEAD
         $proxy = self::getProxy($options['proxy'], $url);
         $noProxy = $options['no_proxy'] ?? $_SERVER['no_proxy'] ?? $_SERVER['NO_PROXY'] ?? '';
         $noProxy = $noProxy ? preg_split('/[\s,]+/', $noProxy) : [];
@@ -226,6 +231,12 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
         $resolveRedirect = self::createRedirectResolver($options, $host, $proxy, $noProxy, $info, $onProgress);
         $context = stream_context_create($context, ['notification' => $notification]);
         self::configureHeadersAndProxy($context, $host, $options['headers'], $proxy, $noProxy);
+=======
+        $proxy = self::getProxy($options['proxy'], $url, $options['no_proxy']);
+        $resolveRedirect = self::createRedirectResolver($options, $host, $proxy, $info, $onProgress);
+        $context = stream_context_create($context, ['notification' => $notification]);
+        self::configureHeadersAndProxy($context, $host, $options['headers'], $proxy);
+>>>>>>> ThomasN
 
         return new NativeResponse($this->multi, $context, implode('', $url), $options, $info, $resolveRedirect, $onProgress, $this->logger);
     }
@@ -238,7 +249,11 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
         if ($responses instanceof NativeResponse) {
             $responses = [$responses];
         } elseif (!is_iterable($responses)) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('%s() expects parameter 1 to be an iterable of NativeResponse objects, %s given.', __METHOD__, \is_object($responses) ? \get_class($responses) : \gettype($responses)));
+=======
+            throw new \TypeError(sprintf('"%s()" expects parameter 1 to be an iterable of NativeResponse objects, "%s" given.', __METHOD__, get_debug_type($responses)));
+>>>>>>> ThomasN
         }
 
         return new ResponseStream(NativeResponse::stream($responses, $timeout));
@@ -258,7 +273,11 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
 
         while ('' !== $data = $body(self::$CHUNK_SIZE)) {
             if (!\is_string($data)) {
+<<<<<<< HEAD
                 throw new TransportException(sprintf('Return value of the "body" option callback must be string, %s returned.', \gettype($data)));
+=======
+                throw new TransportException(sprintf('Return value of the "body" option callback must be string, "%s" returned.', get_debug_type($data)));
+>>>>>>> ThomasN
             }
 
             $result .= $data;
@@ -268,6 +287,7 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
     }
 
     /**
+<<<<<<< HEAD
      * Loads proxy configuration from the same environment variables as curl when no proxy is explicitly set.
      */
     private static function getProxy(?string $proxy, array $url): ?array
@@ -306,6 +326,8 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
     }
 
     /**
+=======
+>>>>>>> ThomasN
      * Resolves the IP of the host using the local DNS cache if possible.
      */
     private static function dnsResolve(array $url, NativeClientState $multi, array &$info, ?\Closure $onProgress): array
@@ -347,7 +369,11 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
     /**
      * Handles redirects - the native logic is too buggy to be used.
      */
+<<<<<<< HEAD
     private static function createRedirectResolver(array $options, string $host, ?array $proxy, array $noProxy, array &$info, ?\Closure $onProgress): \Closure
+=======
+    private static function createRedirectResolver(array $options, string $host, ?array $proxy, array &$info, ?\Closure $onProgress): \Closure
+>>>>>>> ThomasN
     {
         $redirectHeaders = [];
         if (0 < $maxRedirects = $options['max_redirects']) {
@@ -363,7 +389,11 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
             }
         }
 
+<<<<<<< HEAD
         return static function (NativeClientState $multi, ?string $location, $context) use ($redirectHeaders, $proxy, $noProxy, &$info, $maxRedirects, $onProgress): ?string {
+=======
+        return static function (NativeClientState $multi, ?string $location, $context) use ($redirectHeaders, $proxy, &$info, $maxRedirects, $onProgress): ?string {
+>>>>>>> ThomasN
             if (null === $location || $info['http_code'] < 300 || 400 <= $info['http_code']) {
                 $info['redirect_url'] = null;
 
@@ -411,14 +441,22 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
                 // Authorization and Cookie headers MUST NOT follow except for the initial host name
                 $requestHeaders = $redirectHeaders['host'] === $host ? $redirectHeaders['with_auth'] : $redirectHeaders['no_auth'];
                 $requestHeaders[] = 'Host: '.$host.$port;
+<<<<<<< HEAD
                 self::configureHeadersAndProxy($context, $host, $requestHeaders, $proxy, $noProxy);
+=======
+                self::configureHeadersAndProxy($context, $host, $requestHeaders, $proxy);
+>>>>>>> ThomasN
             }
 
             return implode('', $url);
         };
     }
 
+<<<<<<< HEAD
     private static function configureHeadersAndProxy($context, string $host, array $requestHeaders, ?array $proxy, array $noProxy): bool
+=======
+    private static function configureHeadersAndProxy($context, string $host, array $requestHeaders, ?array $proxy): bool
+>>>>>>> ThomasN
     {
         if (null === $proxy) {
             return stream_context_set_option($context, 'http', 'header', $requestHeaders);
@@ -426,7 +464,11 @@ final class NativeHttpClient implements HttpClientInterface, LoggerAwareInterfac
 
         // Matching "no_proxy" should follow the behavior of curl
 
+<<<<<<< HEAD
         foreach ($noProxy as $rule) {
+=======
+        foreach ($proxy['no_proxy'] as $rule) {
+>>>>>>> ThomasN
             $dotRule = '.'.ltrim($rule, '.');
 
             if ('*' === $rule || $host === $rule || substr($host, -\strlen($dotRule)) === $dotRule) {

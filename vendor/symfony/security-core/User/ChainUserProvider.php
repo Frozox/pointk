@@ -91,7 +91,11 @@ class ChainUserProvider implements UserProviderInterface, PasswordUpgraderInterf
             $e->setUsername($user->getUsername());
             throw $e;
         } else {
+<<<<<<< HEAD
             throw new UnsupportedUserException(sprintf('There is no user provider for user "%s". Shouldn\'t the "supportsClass()" method of your user provider return true for this classname?', \get_class($user)));
+=======
+            throw new UnsupportedUserException(sprintf('There is no user provider for user "%s". Shouldn\'t the "supportsClass()" method of your user provider return true for this classname?', get_debug_type($user)));
+>>>>>>> ThomasN
         }
     }
 

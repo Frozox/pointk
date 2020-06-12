@@ -79,7 +79,11 @@ class DateIntervalToStringTransformer implements DataTransformerInterface
             return null;
         }
         if (!$this->isISO8601($value)) {
+<<<<<<< HEAD
             throw new TransformationFailedException('Non ISO 8601 date strings are not supported yet');
+=======
+            throw new TransformationFailedException('Non ISO 8601 date strings are not supported yet.');
+>>>>>>> ThomasN
         }
         $valuePattern = '/^'.preg_replace('/%([yYmMdDhHiIsSwW])(\w)/', '(?P<$1>\d+)$2', $this->format).'$/';
         if (!preg_match($valuePattern, $value)) {

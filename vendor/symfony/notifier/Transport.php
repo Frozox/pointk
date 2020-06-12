@@ -11,7 +11,17 @@
 
 namespace Symfony\Component\Notifier;
 
+<<<<<<< HEAD
 use Symfony\Component\Notifier\Bridge\Nexmo\NexmoTransportFactory;
+=======
+use Symfony\Component\Notifier\Bridge\Firebase\FirebaseTransportFactory;
+use Symfony\Component\Notifier\Bridge\FreeMobile\FreeMobileTransportFactory;
+use Symfony\Component\Notifier\Bridge\Mattermost\MattermostTransportFactory;
+use Symfony\Component\Notifier\Bridge\Nexmo\NexmoTransportFactory;
+use Symfony\Component\Notifier\Bridge\OvhCloud\OvhCloudTransportFactory;
+use Symfony\Component\Notifier\Bridge\RocketChat\RocketChatTransportFactory;
+use Symfony\Component\Notifier\Bridge\Sinch\SinchTransportFactory;
+>>>>>>> ThomasN
 use Symfony\Component\Notifier\Bridge\Slack\SlackTransportFactory;
 use Symfony\Component\Notifier\Bridge\Telegram\TelegramTransportFactory;
 use Symfony\Component\Notifier\Bridge\Twilio\TwilioTransportFactory;
@@ -29,15 +39,30 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 class Transport
 {
     private const FACTORY_CLASSES = [
         SlackTransportFactory::class,
         TelegramTransportFactory::class,
+<<<<<<< HEAD
         NexmoTransportFactory::class,
         TwilioTransportFactory::class,
+=======
+        MattermostTransportFactory::class,
+        NexmoTransportFactory::class,
+        RocketChatTransportFactory::class,
+        TwilioTransportFactory::class,
+        OvhCloudTransportFactory::class,
+        FirebaseTransportFactory::class,
+        SinchTransportFactory::class,
+        FreeMobileTransportFactory::class,
+>>>>>>> ThomasN
     ];
 
     private $factories;

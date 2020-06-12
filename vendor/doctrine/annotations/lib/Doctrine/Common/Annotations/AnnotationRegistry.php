@@ -47,22 +47,45 @@ final class AnnotationRegistry
      */
     static private $failedToAutoload = [];
 
+<<<<<<< HEAD
+=======
+    /**
+     * Whenever registerFile() was used. Disables use of standard autoloader.
+     *
+     * @var bool
+     */
+    static private $registerFileUsed = false;
+
+>>>>>>> ThomasN
     public static function reset() : void
     {
         self::$autoloadNamespaces = [];
         self::$loaders            = [];
         self::$failedToAutoload   = [];
+<<<<<<< HEAD
+=======
+        self::$registerFileUsed   = false;
+>>>>>>> ThomasN
     }
 
     /**
      * Registers file.
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
      */
     public static function registerFile(string $file) : void
     {
+=======
+     * @deprecated This method is deprecated and will be removed in doctrine/annotations 2.0. Annotations will be autoloaded in 2.0.
+     */
+    public static function registerFile(string $file) : void
+    {
+        self::$registerFileUsed = true;
+
+>>>>>>> ThomasN
         require_once $file;
     }
 
@@ -74,9 +97,13 @@ final class AnnotationRegistry
      * @param string            $namespace
      * @param string|array|null $dirs
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
+=======
+     * @deprecated This method is deprecated and will be removed in doctrine/annotations 2.0. Annotations will be autoloaded in 2.0.
+>>>>>>> ThomasN
      */
     public static function registerAutoloadNamespace(string $namespace, $dirs = null) : void
     {
@@ -90,9 +117,13 @@ final class AnnotationRegistry
      *
      * @param string[][]|string[]|null[] $namespaces indexed by namespace name
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
+=======
+     * @deprecated This method is deprecated and will be removed in doctrine/annotations 2.0. Annotations will be autoloaded in 2.0.
+>>>>>>> ThomasN
      */
     public static function registerAutoloadNamespaces(array $namespaces) : void
     {
@@ -105,9 +136,13 @@ final class AnnotationRegistry
      * NOTE: These class loaders HAVE to be silent when a class was not found!
      * IMPORTANT: Loaders have to return true if they loaded a class that could contain the searched annotation class.
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
      *             autoloading should be deferred to the globally registered autoloader by then. For now,
      *             use @example AnnotationRegistry::registerLoader('class_exists')
+=======
+     * @deprecated This method is deprecated and will be removed in doctrine/annotations 2.0. Annotations will be autoloaded in 2.0.
+>>>>>>> ThomasN
      */
     public static function registerLoader(callable $callable) : void
     {
@@ -119,7 +154,11 @@ final class AnnotationRegistry
     /**
      * Registers an autoloading callable for annotations, if it is not already registered
      *
+<<<<<<< HEAD
      * @deprecated this method is deprecated and will be removed in doctrine/annotations 2.0
+=======
+     * @deprecated This method is deprecated and will be removed in doctrine/annotations 2.0. Annotations will be autoloaded in 2.0.
+>>>>>>> ThomasN
      */
     public static function registerUniqueLoader(callable $callable) : void
     {
@@ -167,6 +206,13 @@ final class AnnotationRegistry
             }
         }
 
+<<<<<<< HEAD
+=======
+        if (self::$loaders === [] && self::$autoloadNamespaces === [] && self::$registerFileUsed === false && \class_exists($class)) {
+            return true;
+        }
+
+>>>>>>> ThomasN
         self::$failedToAutoload[$class] = null;
 
         return false;

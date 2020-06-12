@@ -20,7 +20,13 @@
 namespace Doctrine\ORM;
 
 use Doctrine\Common\Cache\Cache as CacheDriver;
+<<<<<<< HEAD
 use Exception;
+=======
+use Doctrine\Persistence\ObjectRepository;
+use Exception;
+use function sprintf;
+>>>>>>> ThomasN
 
 /**
  * Base exception class for all ORM exceptions.
@@ -295,7 +301,15 @@ class ORMException extends Exception
      */
     public static function invalidEntityRepository($className)
     {
+<<<<<<< HEAD
         return new self("Invalid repository class '".$className."'. It must be a Doctrine\Common\Persistence\ObjectRepository.");
+=======
+        return new self(sprintf(
+            "Invalid repository class '%s'. It must be a %s.",
+            $className,
+            ObjectRepository::class
+        ));
+>>>>>>> ThomasN
     }
 
     /**

@@ -120,7 +120,13 @@ class MasterSlaveConnection extends Connection
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string|null $connectionName
+     *
+     * @return bool
+>>>>>>> ThomasN
      */
     public function connect($connectionName = null)
     {

@@ -8,8 +8,11 @@ use OutOfBoundsException as BaseOutOfBoundsException;
  *
  * @link   www.doctrine-project.org
  * @author Fredrik Wendel <fredrik_w@users.sourceforge.net>
+<<<<<<< HEAD
  *
  * @deprecated The Doctrine\Common\Proxy component is deprecated, please use ocramius/proxy-manager instead.
+=======
+>>>>>>> ThomasN
  */
 class OutOfBoundsException extends BaseOutOfBoundsException implements ProxyException
 {

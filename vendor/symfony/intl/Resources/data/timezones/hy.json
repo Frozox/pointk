@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Գրինվիչի ժամանակ (Աբիջան)",
         "Africa\/Accra": "Գրինվիչի ժամանակ (Աքրա)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Արգենտինայի ժամանակ (Ռիո Գալյեգոս)",
         "America\/Argentina\/Salta": "Արգենտինայի ժամանակ (Սալտա)",
         "America\/Argentina\/San_Juan": "Արգենտինայի ժամանակ (Սան Խուան)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Արևմտյան Արգենտինայի ժամանակ (Սան Լուիս)",
+=======
+        "America\/Argentina\/San_Luis": "Արգենտինայի ժամանակ (Սան Լուիս)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Արգենտինայի ժամանակ (Տուկուման)",
         "America\/Argentina\/Ushuaia": "Արգենտինայի ժամանակ (Ուշուայա)",
         "America\/Aruba": "Ատլանտյան ժամանակ (Արուբա)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Բրունեյի ժամանակ",
         "Asia\/Calcutta": "Հնդկաստանի ստանդարտ ժամանակ (Կալկուտա)",
         "Asia\/Chita": "Յակուտսկի ժամանակ (Չիտա)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Չոյբալսանի ժամանակ",
+=======
+        "Asia\/Choibalsan": "Ուլան Բատորի ժամանակ (Չոյբալսան)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Հնդկաստանի ստանդարտ ժամանակ (Կոլոմբո)",
         "Asia\/Damascus": "Արևելյան Եվրոպայի ժամանակ (Դամասկոս)",
         "Asia\/Dhaka": "Բանգլադեշի ժամանակ (Դաքքա)",

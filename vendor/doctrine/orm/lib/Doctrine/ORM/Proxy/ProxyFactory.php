@@ -19,7 +19,10 @@
 
 namespace Doctrine\ORM\Proxy;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
+=======
+>>>>>>> ThomasN
 use Doctrine\Common\Proxy\AbstractProxyFactory;
 use Doctrine\Common\Proxy\Proxy as BaseProxy;
 use Doctrine\Common\Proxy\ProxyDefinition;
@@ -29,6 +32,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Persisters\Entity\EntityPersister;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\ORM\Utility\IdentifierFlattener;
+<<<<<<< HEAD
+=======
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use function interface_exists;
+>>>>>>> ThomasN
 
 /**
  * This factory is used to create proxy objects for entities at runtime.
@@ -118,9 +126,12 @@ class ProxyFactory extends AbstractProxyFactory
     /**
      * Creates a closure capable of initializing a proxy
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadata $classMetadata
      * @param \Doctrine\ORM\Persisters\Entity\EntityPersister    $entityPersister
      *
+=======
+>>>>>>> ThomasN
      * @return \Closure
      *
      * @throws \Doctrine\ORM\EntityNotFoundException
@@ -172,9 +183,12 @@ class ProxyFactory extends AbstractProxyFactory
     /**
      * Creates a closure capable of finalizing state a cloned proxy
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadata $classMetadata
      * @param \Doctrine\ORM\Persisters\Entity\EntityPersister    $entityPersister
      *
+=======
+>>>>>>> ThomasN
      * @return \Closure
      *
      * @throws \Doctrine\ORM\EntityNotFoundException
@@ -211,3 +225,8 @@ class ProxyFactory extends AbstractProxyFactory
         };
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadata::class);
+>>>>>>> ThomasN

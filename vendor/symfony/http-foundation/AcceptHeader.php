@@ -11,6 +11,12 @@
 
 namespace Symfony\Component\HttpFoundation;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(AcceptHeaderItem::class);
+
+>>>>>>> ThomasN
 /**
  * Represents an Accept-* header.
  *

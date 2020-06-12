@@ -14,6 +14,11 @@ namespace Symfony\Bundle\FrameworkBundle\Routing;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Config\Loader\LoaderInterface;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Config\Resource\FileExistenceResource;
+use Symfony\Component\Config\Resource\FileResource;
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
 use Symfony\Component\DependencyInjection\ContainerInterface as SymfonyContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
@@ -66,6 +71,19 @@ class Router extends BaseRouter implements WarmableInterface, ServiceSubscriberI
             $this->collection = $this->container->get('routing.loader')->load($this->resource, $this->options['resource_type']);
             $this->resolveParameters($this->collection);
             $this->collection->addResource(new ContainerParametersResource($this->collectedParameters));
+<<<<<<< HEAD
+=======
+
+            try {
+                $containerFile = ($this->paramFetcher)('kernel.cache_dir').'/'.($this->paramFetcher)('kernel.container_class').'.php';
+                if (file_exists($containerFile)) {
+                    $this->collection->addResource(new FileResource($containerFile));
+                } else {
+                    $this->collection->addResource(new FileExistenceResource($containerFile));
+                }
+            } catch (ParameterNotFoundException $exception) {
+            }
+>>>>>>> ThomasN
         }
 
         return $this->collection;
@@ -73,6 +91,11 @@ class Router extends BaseRouter implements WarmableInterface, ServiceSubscriberI
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
+=======
+     *
+     * @return string[] A list of classes to preload on PHP 7.4+
+>>>>>>> ThomasN
      */
     public function warmUp(string $cacheDir)
     {
@@ -84,6 +107,14 @@ class Router extends BaseRouter implements WarmableInterface, ServiceSubscriberI
         $this->getGenerator();
 
         $this->setOption('cache_dir', $currentDir);
+<<<<<<< HEAD
+=======
+
+        return [
+            $this->getOption('generator_class'),
+            $this->getOption('matcher_class'),
+        ];
+>>>>>>> ThomasN
     }
 
     /**
@@ -171,7 +202,11 @@ class Router extends BaseRouter implements WarmableInterface, ServiceSubscriberI
                 return (string) $this->resolve($resolved);
             }
 
+<<<<<<< HEAD
             throw new RuntimeException(sprintf('The container parameter "%s", used in the route configuration value "%s", must be a string or numeric, but it is of type %s.', $match[1], $value, \gettype($resolved)));
+=======
+            throw new RuntimeException(sprintf('The container parameter "%s", used in the route configuration value "%s", must be a string or numeric, but it is of type "%s".', $match[1], $value, get_debug_type($resolved)));
+>>>>>>> ThomasN
         }, $value);
 
         return str_replace('%%', '%', $escapedValue);

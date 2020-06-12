@@ -118,10 +118,13 @@ trait MailerAssertionsTrait
 
     private static function getMessageMailerEvents(): MessageEvents
     {
+<<<<<<< HEAD
         if (!self::getClient()->getRequest()) {
             static::fail('Unable to make email assertions. Did you forget to make an HTTP request?');
         }
 
+=======
+>>>>>>> ThomasN
         if (!$logger = self::$container->get('mailer.logger_message_listener')) {
             static::fail('A client must have Mailer enabled to make email assertions. Did you forget to require symfony/mailer?');
         }

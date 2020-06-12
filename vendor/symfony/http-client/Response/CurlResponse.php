@@ -15,6 +15,10 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\Chunk\FirstChunk;
 use Symfony\Component\HttpClient\Chunk\InformationalChunk;
 use Symfony\Component\HttpClient\Exception\TransportException;
+<<<<<<< HEAD
+=======
+use Symfony\Component\HttpClient\Internal\ClientState;
+>>>>>>> ThomasN
 use Symfony\Component\HttpClient\Internal\CurlClientState;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -37,15 +41,28 @@ final class CurlResponse implements ResponseInterface
     /**
      * @internal
      */
+<<<<<<< HEAD
     public function __construct(CurlClientState $multi, $ch, array $options = null, LoggerInterface $logger = null, string $method = 'GET', callable $resolveRedirect = null)
+=======
+    public function __construct(CurlClientState $multi, $ch, array $options = null, LoggerInterface $logger = null, string $method = 'GET', callable $resolveRedirect = null, int $curlVersion = null)
+>>>>>>> ThomasN
     {
         $this->multi = $multi;
 
         if (\is_resource($ch)) {
             $this->handle = $ch;
             $this->debugBuffer = fopen('php://temp', 'w+');
+<<<<<<< HEAD
             curl_setopt($ch, CURLOPT_VERBOSE, true);
             curl_setopt($ch, CURLOPT_STDERR, $this->debugBuffer);
+=======
+            if (0x074000 === $curlVersion) {
+                fwrite($this->debugBuffer, 'Due to a bug in curl 7.64.0, the debug log is disabled; use another version to work around the issue.');
+            } else {
+                curl_setopt($ch, CURLOPT_VERBOSE, true);
+                curl_setopt($ch, CURLOPT_STDERR, $this->debugBuffer);
+            }
+>>>>>>> ThomasN
         } else {
             $this->info['url'] = $ch;
             $ch = $this->handle;
@@ -238,8 +255,15 @@ final class CurlResponse implements ResponseInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     private static function perform(CurlClientState $multi, array &$responses = null): void
+=======
+     *
+     * @param CurlClientState $multi
+     */
+    private static function perform(ClientState $multi, array &$responses = null): void
+>>>>>>> ThomasN
     {
         if (self::$performing) {
             if ($responses) {
@@ -285,8 +309,15 @@ final class CurlResponse implements ResponseInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     private static function select(CurlClientState $multi, float $timeout): int
+=======
+     *
+     * @param CurlClientState $multi
+     */
+    private static function select(ClientState $multi, float $timeout): int
+>>>>>>> ThomasN
     {
         if (\PHP_VERSION_ID < 70123 || (70200 <= \PHP_VERSION_ID && \PHP_VERSION_ID < 70211)) {
             // workaround https://bugs.php.net/76480
@@ -308,8 +339,20 @@ final class CurlResponse implements ResponseInterface
         }
 
         if ("\r\n" !== $data) {
+<<<<<<< HEAD
             // Regular header line: add it to the list
             self::addResponseHeaders([substr($data, 0, -2)], $info, $headers);
+=======
+            try {
+                // Regular header line: add it to the list
+                self::addResponseHeaders([substr($data, 0, -2)], $info, $headers);
+            } catch (TransportException $e) {
+                $multi->handlesActivity[$id][] = null;
+                $multi->handlesActivity[$id][] = $e;
+
+                return \strlen($data);
+            }
+>>>>>>> ThomasN
 
             if (0 !== strpos($data, 'HTTP/')) {
                 if (0 === stripos($data, 'Location:')) {

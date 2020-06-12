@@ -20,7 +20,11 @@ use Symfony\Component\Notifier\EventListener\NotificationLoggerListener;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 final class NotificationDataCollector extends DataCollector
 {

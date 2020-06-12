@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Greenwich-tyd (Abidjan)",
         "Africa\/Accra": "Greenwich-tyd (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentinië-tyd (Rio Gallegos)",
         "America\/Argentina\/Salta": "Argentinië-tyd (Salta)",
         "America\/Argentina\/San_Juan": "Argentinië-tyd (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Wes-Argentinië-tyd (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Argentinië-tyd (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentinië-tyd (Tucuman)",
         "America\/Argentina\/Ushuaia": "Argentinië-tyd (Ushuaia)",
         "America\/Aruba": "Atlantiese tyd (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Broenei Darussalam-tyd",
         "Asia\/Calcutta": "Indië-standaardtyd (Kolkata)",
         "Asia\/Chita": "Jakoetsk-tyd (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Choibalsan-tyd",
+=======
+        "Asia\/Choibalsan": "Ulaanbaatar-tyd (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Indië-standaardtyd (Colombo)",
         "Asia\/Damascus": "Oos-Europese tyd (Damaskus)",
         "Asia\/Dhaka": "Bangladesj-tyd (Dhaka)",

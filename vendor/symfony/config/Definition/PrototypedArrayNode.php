@@ -175,7 +175,11 @@ class PrototypedArrayNode extends ArrayNode
     protected function finalizeValue($value)
     {
         if (false === $value) {
+<<<<<<< HEAD
             throw new UnsetKeyException(sprintf('Unsetting key for path "%s", value: %s', $this->getPath(), json_encode($value)));
+=======
+            throw new UnsetKeyException(sprintf('Unsetting key for path "%s", value: %s.', $this->getPath(), json_encode($value)));
+>>>>>>> ThomasN
         }
 
         foreach ($value as $k => $v) {

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Affareg",
         "ab": "Abchaseg",
@@ -523,6 +526,10 @@
         "es_419": "Sbaeneg America Ladin",
         "es_ES": "Sbaeneg Ewrop",
         "es_MX": "Sbaeneg Mecsico",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Dari",
+>>>>>>> ThomasN
         "fr_CA": "Ffrangeg Canada",
         "fr_CH": "Ffrangeg y Swistir",
         "nds_NL": "Sacsoneg Isel",

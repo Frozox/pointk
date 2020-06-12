@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afāru",
         "ab": "abhāzu",
@@ -198,7 +201,11 @@
         "iu": "inuītu",
         "ja": "japāņu",
         "jbo": "ložbans",
+<<<<<<< HEAD
         "jgo": "jgo",
+=======
+        "jgo": "ngomba",
+>>>>>>> ThomasN
         "jmc": "mačamu",
         "jpr": "jūdpersiešu",
         "jrb": "jūdarābu",
@@ -510,6 +517,10 @@
         "az_Arab": "dienvidazerbaidžāņu",
         "de_CH": "augšvācu (Šveice)",
         "en_GB": "angļu (Lielbritānija)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "darī",
+>>>>>>> ThomasN
         "nds_NL": "lejassakšu",
         "nl_BE": "flāmu",
         "ro_MD": "moldāvu",

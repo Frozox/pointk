@@ -1,8 +1,14 @@
 {
     "Names": {
+<<<<<<< HEAD
         "af": "af",
         "af_NA": "af (Namibia)",
         "af_ZA": "af (Afrika Kidul)",
+=======
+        "af": "Afrika",
+        "af_NA": "Afrika (Namibia)",
+        "af_ZA": "Afrika (Afrika Kidul)",
+>>>>>>> ThomasN
         "ak": "Akan",
         "ak_GH": "Akan (Ghana)",
         "am": "Amharik",
@@ -43,8 +49,13 @@
         "az_Cyrl_AZ": "Azerbaijan (Sirilik, Azerbaijan)",
         "az_Latn": "Azerbaijan (Latin)",
         "az_Latn_AZ": "Azerbaijan (Latin, Azerbaijan)",
+<<<<<<< HEAD
         "be": "be",
         "be_BY": "be (Bélarus)",
+=======
+        "be": "Belarus",
+        "be_BY": "Belarus (Bélarus)",
+>>>>>>> ThomasN
         "bg": "Bulgaria",
         "bg_BG": "Bulgaria (Bulgari)",
         "bm": "Bambara",
@@ -55,12 +66,21 @@
         "bo_CN": "Tibet (Tyongkok)",
         "br": "Breton",
         "br_FR": "Breton (Prancis)",
+<<<<<<< HEAD
         "bs": "bs",
         "bs_BA": "bs (Bosnia lan Hèrségovina)",
         "bs_Cyrl": "bs (Sirilik)",
         "bs_Cyrl_BA": "bs (Sirilik, Bosnia lan Hèrségovina)",
         "bs_Latn": "bs (Latin)",
         "bs_Latn_BA": "bs (Latin, Bosnia lan Hèrségovina)",
+=======
+        "bs": "Bosnia lan Hercegovina",
+        "bs_BA": "Bosnia lan Hercegovina (Bosnia lan Hèrségovina)",
+        "bs_Cyrl": "Bosnia lan Hercegovina (Sirilik)",
+        "bs_Cyrl_BA": "Bosnia lan Hercegovina (Sirilik, Bosnia lan Hèrségovina)",
+        "bs_Latn": "Bosnia lan Hercegovina (Latin)",
+        "bs_Latn_BA": "Bosnia lan Hercegovina (Latin, Bosnia lan Hèrségovina)",
+>>>>>>> ThomasN
         "ca": "Katala",
         "ca_AD": "Katala (Andora)",
         "ca_ES": "Katala (Sepanyol)",
@@ -359,6 +379,10 @@
         "ko": "Korea",
         "ko_KR": "Korea (Koréa Kidul)",
         "ks": "Kashmiri",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "Kashmiri (hija’iyah)",
+>>>>>>> ThomasN
         "ku": "Kurdis",
         "ku_TR": "Kurdis (Turki)",
         "kw": "Kernowek",
@@ -392,6 +416,10 @@
         "mr": "Marathi",
         "ms": "Melayu",
         "ms_BN": "Melayu (Brunéi)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Melayu (Indonésia)",
+>>>>>>> ThomasN
         "ms_MY": "Melayu (Malaysia)",
         "ms_SG": "Melayu (Singapura)",
         "mt": "Malta",
@@ -423,8 +451,13 @@
         "os_GE": "Ossetia (Géorgia)",
         "os_RU": "Ossetia (Rusia)",
         "pa": "Punjab",
+<<<<<<< HEAD
         "pa_Arab": "Punjab (Arab)",
         "pa_Arab_PK": "Punjab (Arab, Pakistan)",
+=======
+        "pa_Arab": "Punjab (hija’iyah)",
+        "pa_Arab_PK": "Punjab (hija’iyah, Pakistan)",
+>>>>>>> ThomasN
         "pa_Guru": "Punjab (Gurmukhi)",
         "pa_PK": "Punjab (Pakistan)",
         "pl": "Polandia",
@@ -466,6 +499,12 @@
         "rw": "Kinyarwanda",
         "rw_RW": "Kinyarwanda (Rwanda)",
         "sd": "Sindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "Sindhi (hija’iyah)",
+        "sd_Arab_PK": "Sindhi (hija’iyah, Pakistan)",
+        "sd_Deva": "Sindhi (Devanagari)",
+>>>>>>> ThomasN
         "sd_PK": "Sindhi (Pakistan)",
         "se": "Sami Sisih Lor",
         "se_FI": "Sami Sisih Lor (Finlan)",
@@ -500,6 +539,13 @@
         "sr_Latn_RS": "Serbia (Latin, Sèrbi)",
         "sr_ME": "Serbia (Montenégro)",
         "sr_RS": "Serbia (Sèrbi)",
+<<<<<<< HEAD
+=======
+        "su": "Sunda",
+        "su_ID": "Sunda (Indonésia)",
+        "su_Latn": "Sunda (Latin)",
+        "su_Latn_ID": "Sunda (Latin, Indonésia)",
+>>>>>>> ThomasN
         "sv": "Swedia",
         "sv_AX": "Swedia (Kapuloan Alan)",
         "sv_FI": "Swedia (Finlan)",
@@ -538,8 +584,13 @@
         "ur_PK": "Urdu (Pakistan)",
         "uz": "Uzbek",
         "uz_AF": "Uzbek (Afganistan)",
+<<<<<<< HEAD
         "uz_Arab": "Uzbek (Arab)",
         "uz_Arab_AF": "Uzbek (Arab, Afganistan)",
+=======
+        "uz_Arab": "Uzbek (hija’iyah)",
+        "uz_Arab_AF": "Uzbek (hija’iyah, Afganistan)",
+>>>>>>> ThomasN
         "uz_Cyrl": "Uzbek (Sirilik)",
         "uz_Cyrl_UZ": "Uzbek (Sirilik, Usbèkistan)",
         "uz_Latn": "Uzbek (Latin)",

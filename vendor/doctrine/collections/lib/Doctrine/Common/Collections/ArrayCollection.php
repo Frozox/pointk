@@ -32,6 +32,10 @@ use function uasort;
  * serialize a collection use {@link toArray()} and reconstruct the collection
  * manually.
  *
+<<<<<<< HEAD
+=======
+ * @phpstan-template TKey
+>>>>>>> ThomasN
  * @psalm-template TKey of array-key
  * @psalm-template T
  * @template-implements Collection<TKey,T>
@@ -160,6 +164,11 @@ class ArrayCollection implements Collection, Selectable
      * Required by interface ArrayAccess.
      *
      * {@inheritDoc}
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param TKey $offset
+>>>>>>> ThomasN
      */
     public function offsetExists($offset)
     {
@@ -170,6 +179,11 @@ class ArrayCollection implements Collection, Selectable
      * Required by interface ArrayAccess.
      *
      * {@inheritDoc}
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param TKey $offset
+>>>>>>> ThomasN
      */
     public function offsetGet($offset)
     {
@@ -196,6 +210,11 @@ class ArrayCollection implements Collection, Selectable
      * Required by interface ArrayAccess.
      *
      * {@inheritDoc}
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param TKey $offset
+>>>>>>> ThomasN
      */
     public function offsetUnset($offset)
     {
@@ -282,6 +301,14 @@ class ArrayCollection implements Collection, Selectable
 
     /**
      * {@inheritDoc}
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-suppress InvalidPropertyAssignmentValue
+     *
+     * This breaks assumptions about the template type, but it would
+     * be a backwards-incompatible change to remove this method
+>>>>>>> ThomasN
      */
     public function add($element)
     {

@@ -313,6 +313,11 @@ class SQLAnywhereStatement implements IteratorAggregate, Statement
         $this->defaultFetchMode          = $fetchMode;
         $this->defaultFetchClass         = $arg2 ?: $this->defaultFetchClass;
         $this->defaultFetchClassCtorArgs = $arg3 ? (array) $arg3 : $this->defaultFetchClassCtorArgs;
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**

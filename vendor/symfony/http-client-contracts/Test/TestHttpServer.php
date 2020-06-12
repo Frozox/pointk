@@ -14,9 +14,12 @@ namespace Symfony\Contracts\HttpClient\Test;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
+<<<<<<< HEAD
 /**
  * @experimental in 1.1
  */
+=======
+>>>>>>> ThomasN
 class TestHttpServer
 {
     private static $started;

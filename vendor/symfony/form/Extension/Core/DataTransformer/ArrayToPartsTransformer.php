@@ -76,7 +76,11 @@ class ArrayToPartsTransformer implements DataTransformerInterface
                 return null;
             }
 
+<<<<<<< HEAD
             throw new TransformationFailedException(sprintf('The keys "%s" should not be empty', implode('", "', $emptyKeys)));
+=======
+            throw new TransformationFailedException(sprintf('The keys "%s" should not be empty.', implode('", "', $emptyKeys)));
+>>>>>>> ThomasN
         }
 
         return $result;

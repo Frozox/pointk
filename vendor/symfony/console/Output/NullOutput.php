@@ -11,7 +11,11 @@
 
 namespace Symfony\Component\Console\Output;
 
+<<<<<<< HEAD
 use Symfony\Component\Console\Formatter\OutputFormatter;
+=======
+use Symfony\Component\Console\Formatter\NullOutputFormatter;
+>>>>>>> ThomasN
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 
 /**
@@ -24,6 +28,11 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  */
 class NullOutput implements OutputInterface
 {
+<<<<<<< HEAD
+=======
+    private $formatter;
+
+>>>>>>> ThomasN
     /**
      * {@inheritdoc}
      */
@@ -37,8 +46,16 @@ class NullOutput implements OutputInterface
      */
     public function getFormatter()
     {
+<<<<<<< HEAD
         // to comply with the interface we must return a OutputFormatterInterface
         return new OutputFormatter();
+=======
+        if ($this->formatter) {
+            return $this->formatter;
+        }
+        // to comply with the interface we must return a OutputFormatterInterface
+        return $this->formatter = new NullOutputFormatter();
+>>>>>>> ThomasN
     }
 
     /**

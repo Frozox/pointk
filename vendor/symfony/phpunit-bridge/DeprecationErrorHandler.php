@@ -15,6 +15,10 @@ use PHPUnit\Framework\TestResult;
 use PHPUnit\Util\ErrorHandler;
 use Symfony\Bridge\PhpUnit\DeprecationErrorHandler\Configuration;
 use Symfony\Bridge\PhpUnit\DeprecationErrorHandler\Deprecation;
+<<<<<<< HEAD
+=======
+use Symfony\Bridge\PhpUnit\DeprecationErrorHandler\DeprecationGroup;
+>>>>>>> ThomasN
 use Symfony\Component\ErrorHandler\DebugClassLoader;
 
 /**
@@ -30,6 +34,7 @@ class DeprecationErrorHandler
 
     private $mode;
     private $configuration;
+<<<<<<< HEAD
     private $deprecations = [
         'unsilencedCount' => 0,
         'remaining selfCount' => 0,
@@ -44,10 +49,25 @@ class DeprecationErrorHandler
         'remaining direct' => [],
         'remaining indirect' => [],
     ];
+=======
+
+    /**
+     * @var DeprecationGroup[]
+     */
+    private $deprecationGroups = [];
+>>>>>>> ThomasN
 
     private static $isRegistered = false;
     private static $isAtLeastPhpUnit83;
 
+<<<<<<< HEAD
+=======
+    public function __construct()
+    {
+        $this->resetDeprecationGroups();
+    }
+
+>>>>>>> ThomasN
     /**
      * Registers and configures the deprecation handler.
      *
@@ -108,7 +128,11 @@ class DeprecationErrorHandler
                 $filesStack[] = $frame['file'];
             }
 
+<<<<<<< HEAD
             $deprecations[] = [error_reporting(), $msg, $file, $filesStack];
+=======
+            $deprecations[] = [error_reporting() & $type, $msg, $file, $filesStack];
+>>>>>>> ThomasN
 
             return null;
         });
@@ -138,15 +162,25 @@ class DeprecationErrorHandler
             $method = $deprecation->originatingMethod();
             $msg = $deprecation->getMessage();
 
+<<<<<<< HEAD
             if (0 !== error_reporting()) {
+=======
+            if (error_reporting() & $type) {
+>>>>>>> ThomasN
                 $group = 'unsilenced';
             } elseif ($deprecation->isLegacy()) {
                 $group = 'legacy';
             } else {
                 $group = [
+<<<<<<< HEAD
                     Deprecation::TYPE_SELF => 'remaining self',
                     Deprecation::TYPE_DIRECT => 'remaining direct',
                     Deprecation::TYPE_INDIRECT => 'remaining indirect',
+=======
+                    Deprecation::TYPE_SELF => 'self',
+                    Deprecation::TYPE_DIRECT => 'direct',
+                    Deprecation::TYPE_INDIRECT => 'indirect',
+>>>>>>> ThomasN
                     Deprecation::TYPE_UNDETERMINED => 'other',
                 ][$deprecation->getType()];
             }
@@ -157,6 +191,7 @@ class DeprecationErrorHandler
                 exit(1);
             }
             if ('legacy' !== $group) {
+<<<<<<< HEAD
                 $ref = &$this->deprecations[$group][$msg]['count'];
                 ++$ref;
                 $ref = &$this->deprecations[$group][$msg][$class.'::'.$method];
@@ -169,6 +204,16 @@ class DeprecationErrorHandler
 
         ++$this->deprecations[$group.'Count'];
 
+=======
+                $this->deprecationGroups[$group]->addNoticeFromObject($msg, $class, $method);
+            } else {
+                $this->deprecationGroups[$group]->addNotice();
+            }
+        } else {
+            $this->deprecationGroups[$group]->addNoticeFromProceduralCode($msg);
+        }
+
+>>>>>>> ThomasN
         return null;
     }
 
@@ -193,6 +238,7 @@ class DeprecationErrorHandler
             echo "\n", self::colorize('THE ERROR HANDLER HAS CHANGED!', true), "\n";
         }
 
+<<<<<<< HEAD
         $groups = ['unsilenced', 'remaining self', 'remaining direct', 'remaining indirect', 'legacy', 'other'];
 
         $this->displayDeprecations($groups, $configuration);
@@ -208,19 +254,55 @@ class DeprecationErrorHandler
         register_shutdown_function(function () use ($isFailing, $groups, $configuration) {
             foreach ($this->deprecations as $group => $arrayOrInt) {
                 if (0 < (\is_int($arrayOrInt) ? $arrayOrInt : \count($arrayOrInt))) {
+=======
+        $groups = array_keys($this->deprecationGroups);
+
+        // store failing status
+        $isFailing = !$configuration->tolerates($this->deprecationGroups);
+
+        $this->displayDeprecations($groups, $configuration, $isFailing);
+
+        $this->resetDeprecationGroups();
+
+        register_shutdown_function(function () use ($isFailing, $groups, $configuration) {
+            foreach ($this->deprecationGroups as $group) {
+                if ($group->count() > 0) {
+>>>>>>> ThomasN
                     echo "Shutdown-time deprecations:\n";
                     break;
                 }
             }
 
+<<<<<<< HEAD
             $this->displayDeprecations($groups, $configuration);
 
             if ($isFailing || !$configuration->tolerates($this->deprecations)) {
+=======
+            $isFailingAtShutdown = !$configuration->tolerates($this->deprecationGroups);
+            $this->displayDeprecations($groups, $configuration, $isFailingAtShutdown);
+
+            if ($isFailing || $isFailingAtShutdown) {
+>>>>>>> ThomasN
                 exit(1);
             }
         });
     }
 
+<<<<<<< HEAD
+=======
+    private function resetDeprecationGroups()
+    {
+        $this->deprecationGroups = [
+            'unsilenced' => new DeprecationGroup(),
+            'self' => new DeprecationGroup(),
+            'direct' => new DeprecationGroup(),
+            'indirect' => new DeprecationGroup(),
+            'legacy' => new DeprecationGroup(),
+            'other' => new DeprecationGroup(),
+        ];
+    }
+
+>>>>>>> ThomasN
     private function getConfiguration()
     {
         if (null !== $this->configuration) {
@@ -279,6 +361,7 @@ class DeprecationErrorHandler
     /**
      * @param string[]      $groups
      * @param Configuration $configuration
+<<<<<<< HEAD
      */
     private function displayDeprecations($groups, $configuration)
     {
@@ -304,6 +387,40 @@ class DeprecationErrorHandler
                     arsort($notices);
 
                     foreach ($notices as $method => $count) {
+=======
+     * @param bool          $isFailing
+     */
+    private function displayDeprecations($groups, $configuration, $isFailing)
+    {
+        $cmp = function ($a, $b) {
+            return $b->count() - $a->count();
+        };
+
+        foreach ($groups as $group) {
+            if ($this->deprecationGroups[$group]->count()) {
+                echo "\n", self::colorize(
+                    sprintf(
+                        '%s deprecation notices (%d)',
+                        \in_array($group, ['direct', 'indirect', 'self'], true) ? "Remaining $group" : ucfirst($group),
+                        $this->deprecationGroups[$group]->count()
+                    ),
+                    'legacy' !== $group && 'indirect' !== $group
+                ), "\n";
+
+                if ('legacy' !== $group && !$configuration->verboseOutput($group) && !$isFailing) {
+                    continue;
+                }
+                $notices = $this->deprecationGroups[$group]->notices();
+                uasort($notices, $cmp);
+
+                foreach ($notices as $msg => $notice) {
+                    echo "\n  ", $notice->count(), 'x: ', $msg, "\n";
+
+                    $countsByCaller = $notice->getCountsByCaller();
+                    arsort($countsByCaller);
+
+                    foreach ($countsByCaller as $method => $count) {
+>>>>>>> ThomasN
                         if ('count' !== $method) {
                             echo '    ', $count, 'x in ', preg_replace('/(.*)\\\\(.*?::.*?)$/', '$2 from $1', $method), "\n";
                         }

@@ -1,7 +1,11 @@
 <?php
 namespace Doctrine\Common\Util;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Proxy;
+=======
+use Doctrine\Persistence\Proxy;
+>>>>>>> ThomasN
 
 /**
  * Class and reflection related functionality for objects that
@@ -9,8 +13,11 @@ use Doctrine\Common\Persistence\Proxy;
  *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  * @author Johannes Schmitt <schmittjoh@gmail.com>
+<<<<<<< HEAD
  *
  * @deprecated The ClassUtils class is deprecated.
+=======
+>>>>>>> ThomasN
  */
 class ClassUtils
 {

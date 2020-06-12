@@ -2,6 +2,10 @@
 
 namespace Doctrine\Bundle\DoctrineBundle;
 
+<<<<<<< HEAD
+=======
+use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\CacheSchemaSubscriberPass;
+>>>>>>> ThomasN
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DbalSchemaFilterPass;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\EntityListenerPass;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\ServiceRepositoryCompilerPass;
@@ -40,6 +44,10 @@ class DoctrineBundle extends Bundle
         $container->addCompilerPass(new ServiceRepositoryCompilerPass());
         $container->addCompilerPass(new WellKnownSchemaFilterPass());
         $container->addCompilerPass(new DbalSchemaFilterPass());
+<<<<<<< HEAD
+=======
+        $container->addCompilerPass(new CacheSchemaSubscriberPass(), PassConfig::TYPE_OPTIMIZE, -10);
+>>>>>>> ThomasN
     }
 
     /**

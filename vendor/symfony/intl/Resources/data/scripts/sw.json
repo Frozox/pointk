@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Arab": "Kiarabu",
         "Armn": "Kiarmenia",
@@ -13,7 +16,11 @@
         "Grek": "Kigiriki",
         "Gujr": "Kigujarati",
         "Guru": "Kigurmukhi",
+<<<<<<< HEAD
         "Hanb": "Hanb",
+=======
+        "Hanb": "Kihan chenye Bopomofo",
+>>>>>>> ThomasN
         "Hang": "Kihangul",
         "Hani": "Kihan",
         "Hans": "Rahisi",

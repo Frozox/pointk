@@ -11,9 +11,12 @@
 
 namespace Symfony\Component\String\Exception;
 
+<<<<<<< HEAD
 /**
  * @experimental in 5.0
  */
+=======
+>>>>>>> ThomasN
 interface ExceptionInterface extends \Throwable
 {
 }

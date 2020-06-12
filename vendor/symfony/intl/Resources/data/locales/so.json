@@ -132,6 +132,10 @@
         "en_GI": "Ingiriisi (Gibraltar)",
         "en_GM": "Ingiriisi (Gambiya)",
         "en_GU": "Ingiriisi (Guaam)",
+<<<<<<< HEAD
+=======
+        "en_GY": "Ingiriisi (Guyana)",
+>>>>>>> ThomasN
         "en_HK": "Ingiriisi (Hong Kong)",
         "en_IE": "Ingiriisi (Ayrlaand)",
         "en_IL": "Ingiriisi (Israaʼiil)",
@@ -207,6 +211,10 @@
         "es_BR": "Isbaanish (Baraasiil)",
         "es_BZ": "Isbaanish (Beliis)",
         "es_CL": "Isbaanish (Jili)",
+<<<<<<< HEAD
+=======
+        "es_CO": "Isbaanish (Koloombiya)",
+>>>>>>> ThomasN
         "es_CR": "Isbaanish (Kosta Riika)",
         "es_CU": "Isbaanish (Kuuba)",
         "es_DO": "Isbaanish (Jamhuuriyaddda Dominika)",
@@ -234,6 +242,22 @@
         "fa_AF": "Faarisi (Afgaanistaan)",
         "fa_IR": "Faarisi (Iiraan)",
         "ff": "Fuulah",
+<<<<<<< HEAD
+=======
+        "ff_Adlm": "Fuulah (Adlam)",
+        "ff_Adlm_BF": "Fuulah (Adlam, Burkiina Faaso)",
+        "ff_Adlm_CM": "Fuulah (Adlam, Kaameruun)",
+        "ff_Adlm_GH": "Fuulah (Adlam, Gaana)",
+        "ff_Adlm_GM": "Fuulah (Adlam, Gambiya)",
+        "ff_Adlm_GN": "Fuulah (Adlam, Gini)",
+        "ff_Adlm_GW": "Fuulah (Adlam, Gini-Bisaaw)",
+        "ff_Adlm_LR": "Fuulah (Adlam, Laybeeriya)",
+        "ff_Adlm_MR": "Fuulah (Adlam, Muritaaniya)",
+        "ff_Adlm_NE": "Fuulah (Adlam, Nayjer)",
+        "ff_Adlm_NG": "Fuulah (Adlam, Nayjeeriya)",
+        "ff_Adlm_SL": "Fuulah (Adlam, Siraaliyoon)",
+        "ff_Adlm_SN": "Fuulah (Adlam, Sinigaal)",
+>>>>>>> ThomasN
         "ff_CM": "Fuulah (Kaameruun)",
         "ff_GN": "Fuulah (Gini)",
         "ff_Latn": "Fuulah (Laatiin)",
@@ -366,6 +390,11 @@
         "ko_KP": "Kuuriyaan (Kuuriyada Waqooyi)",
         "ko_KR": "Kuuriyaan (Kuuriyada Koonfureed)",
         "ks": "Kaashmiir",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "Kaashmiir (Carabi)",
+        "ks_Arab_IN": "Kaashmiir (Carabi, Hindiya)",
+>>>>>>> ThomasN
         "ks_IN": "Kaashmiir (Hindiya)",
         "ku": "Kurdishka",
         "ku_TR": "Kurdishka (Turki)",
@@ -404,6 +433,10 @@
         "mr_IN": "Maarati (Hindiya)",
         "ms": "Malaay",
         "ms_BN": "Malaay (Buruneeya)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Malaay (Indoneesiya)",
+>>>>>>> ThomasN
         "ms_MY": "Malaay (Malaysia)",
         "ms_SG": "Malaay (Singaboor)",
         "mt": "Maltiis",
@@ -439,6 +472,11 @@
         "pa": "Bunjaabi",
         "pa_Arab": "Bunjaabi (Carabi)",
         "pa_Arab_PK": "Bunjaabi (Carabi, Bakistaan)",
+<<<<<<< HEAD
+=======
+        "pa_Guru": "Bunjaabi (Luuqada gujarati)",
+        "pa_Guru_IN": "Bunjaabi (Luuqada gujarati, Hindiya)",
+>>>>>>> ThomasN
         "pa_IN": "Bunjaabi (Hindiya)",
         "pa_PK": "Bunjaabi (Bakistaan)",
         "pl": "Boolish",
@@ -480,6 +518,13 @@
         "rw": "Ruwaandha",
         "rw_RW": "Ruwaandha (Ruwanda)",
         "sd": "Siindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "Siindhi (Carabi)",
+        "sd_Arab_PK": "Siindhi (Carabi, Bakistaan)",
+        "sd_Deva": "Siindhi (Dhefangaari)",
+        "sd_Deva_IN": "Siindhi (Dhefangaari, Hindiya)",
+>>>>>>> ThomasN
         "sd_PK": "Siindhi (Bakistaan)",
         "se": "Koonfurta Saami",
         "se_FI": "Koonfurta Saami (Finland)",
@@ -515,6 +560,13 @@
         "sr_Latn_RS": "Seerbiyaan (Laatiin, Seerbiya)",
         "sr_ME": "Seerbiyaan (Moontenegro)",
         "sr_RS": "Seerbiyaan (Seerbiya)",
+<<<<<<< HEAD
+=======
+        "su": "Suudaaniis",
+        "su_ID": "Suudaaniis (Indoneesiya)",
+        "su_Latn": "Suudaaniis (Laatiin)",
+        "su_Latn_ID": "Suudaaniis (Laatiin, Indoneesiya)",
+>>>>>>> ThomasN
         "sv": "Swiidhis",
         "sv_AX": "Swiidhis (Jasiiradda Aland)",
         "sv_FI": "Swiidhis (Finland)",

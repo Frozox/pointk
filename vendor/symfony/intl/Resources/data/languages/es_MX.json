@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "ace": "acehnés",
         "arp": "arapaho",
@@ -29,7 +32,10 @@
         "nr": "ndebele meridional",
         "nso": "sotho septentrional",
         "pa": "punyabí",
+<<<<<<< HEAD
         "pcm": "pcm",
+=======
+>>>>>>> ThomasN
         "shu": "árabe chadiano",
         "ss": "siswati",
         "sw": "suajili",
@@ -37,7 +43,11 @@
         "tet": "tetún",
         "tn": "setswana",
         "tyv": "tuviniano",
+<<<<<<< HEAD
         "wuu": "wuu",
+=======
+        "wuu": "chino wu",
+>>>>>>> ThomasN
         "xal": "kalmyk",
         "zgh": "tamazight marroquí estándar"
     },

@@ -122,7 +122,11 @@ class Data implements \ArrayAccess, \Countable, \IteratorAggregate
     public function getIterator()
     {
         if (!\is_array($value = $this->getValue())) {
+<<<<<<< HEAD
             throw new \LogicException(sprintf('%s object holds non-iterable type "%s".', self::class, \gettype($value)));
+=======
+            throw new \LogicException(sprintf('"%s" object holds non-iterable type "%s".', self::class, get_debug_type($value)));
+>>>>>>> ThomasN
         }
 
         yield from $value;
@@ -392,7 +396,11 @@ class Data implements \ArrayAccess, \Countable, \IteratorAggregate
                     break;
 
                 default:
+<<<<<<< HEAD
                     throw new \RuntimeException(sprintf('Unexpected Stub type: %s', $item->type));
+=======
+                    throw new \RuntimeException(sprintf('Unexpected Stub type: "%s".', $item->type));
+>>>>>>> ThomasN
             }
         } elseif ('array' === $type) {
             $dumper->enterHash($cursor, Cursor::HASH_INDEXED, 0, false);

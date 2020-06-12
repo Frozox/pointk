@@ -17,7 +17,11 @@
         {"name": "Johannes Schmitt", "email": "schmittjoh@gmail.com"}
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2"
+=======
+        "php": "^7.2 || ^8.0"
+>>>>>>> ThomasN
     },
     "require-dev": {
         "doctrine/coding-standard": "^6.0",

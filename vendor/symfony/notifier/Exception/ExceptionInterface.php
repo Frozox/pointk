@@ -16,7 +16,11 @@ namespace Symfony\Component\Notifier\Exception;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 interface ExceptionInterface extends \Throwable
 {

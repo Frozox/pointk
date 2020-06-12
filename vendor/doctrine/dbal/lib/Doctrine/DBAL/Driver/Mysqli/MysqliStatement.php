@@ -207,12 +207,21 @@ class MysqliStatement implements IteratorAggregate, Statement
     /**
      * Binds parameters with known types previously bound to the statement
      */
+<<<<<<< HEAD
     private function bindTypedParameters()
+=======
+    private function bindTypedParameters() : void
+>>>>>>> ThomasN
     {
         $streams = $values = [];
         $types   = $this->types;
 
         foreach ($this->_bindedValues as $parameter => $value) {
+<<<<<<< HEAD
+=======
+            assert(is_int($parameter));
+
+>>>>>>> ThomasN
             if (! isset($types[$parameter - 1])) {
                 $types[$parameter - 1] = static::$_paramTypeMap[ParameterType::STRING];
             }
@@ -243,9 +252,17 @@ class MysqliStatement implements IteratorAggregate, Statement
     /**
      * Handle $this->_longData after regular query parameters have been bound
      *
+<<<<<<< HEAD
      * @throws MysqliException
      */
     private function sendLongData($streams)
+=======
+     * @param array<int, resource> $streams
+     *
+     * @throws MysqliException
+     */
+    private function sendLongData(array $streams) : void
+>>>>>>> ThomasN
     {
         foreach ($streams as $paramNr => $stream) {
             while (! feof($stream)) {

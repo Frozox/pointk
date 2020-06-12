@@ -28,7 +28,11 @@ class SwitchUserToken extends UsernamePasswordToken
      *
      * @throws \InvalidArgumentException
      */
+<<<<<<< HEAD
     public function __construct($user, $credentials, string $providerKey, array $roles = [], TokenInterface $originalToken)
+=======
+    public function __construct($user, $credentials, string $providerKey, array $roles, TokenInterface $originalToken)
+>>>>>>> ThomasN
     {
         parent::__construct($user, $credentials, $providerKey, $roles);
 
@@ -54,6 +58,10 @@ class SwitchUserToken extends UsernamePasswordToken
     public function __unserialize(array $data): void
     {
         [$this->originalToken, $parentData] = $data;
+<<<<<<< HEAD
+=======
+        $parentData = \is_array($parentData) ? $parentData : unserialize($parentData);
+>>>>>>> ThomasN
         parent::__unserialize($parentData);
     }
 }

@@ -21,8 +21,11 @@ use Symfony\Component\String\Exception\InvalidArgumentException;
  * @author Hugo Hamon <hugohamon@neuf.fr>
  *
  * @throws ExceptionInterface
+<<<<<<< HEAD
  *
  * @experimental in 5.0
+=======
+>>>>>>> ThomasN
  */
 class CodePointString extends AbstractUnicodeString
 {

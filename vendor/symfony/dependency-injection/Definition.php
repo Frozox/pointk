@@ -26,8 +26,12 @@ class Definition
     private $file;
     private $factory;
     private $shared = true;
+<<<<<<< HEAD
     private $deprecated = false;
     private $deprecationTemplate;
+=======
+    private $deprecation = [];
+>>>>>>> ThomasN
     private $properties = [];
     private $calls = [];
     private $instanceof = [];
@@ -705,12 +709,19 @@ class Definition
      * Whether this definition is deprecated, that means it should not be called
      * anymore.
      *
+<<<<<<< HEAD
      * @param string $template Template message to use if the definition is deprecated
+=======
+     * @param string $package The name of the composer package that is triggering the deprecation
+     * @param string $version The version of the package that introduced the deprecation
+     * @param string $message The deprecation message to use
+>>>>>>> ThomasN
      *
      * @return $this
      *
      * @throws InvalidArgumentException when the message template is invalid
      */
+<<<<<<< HEAD
     public function setDeprecated(bool $status = true, string $template = null)
     {
         if (null !== $template) {
@@ -728,6 +739,42 @@ class Definition
         $this->changes['deprecated'] = true;
 
         $this->deprecated = $status;
+=======
+    public function setDeprecated(/* string $package, string $version, string $message */)
+    {
+        $args = \func_get_args();
+
+        if (\func_num_args() < 3) {
+            trigger_deprecation('symfony/dependency-injection', '5.1', 'The signature of method "%s()" requires 3 arguments: "string $package, string $version, string $message", not defining them is deprecated.', __METHOD__);
+
+            $status = $args[0] ?? true;
+
+            if (!$status) {
+                trigger_deprecation('symfony/dependency-injection', '5.1', 'Passing a null message to un-deprecate a node is deprecated.');
+            }
+
+            $message = (string) ($args[1] ?? null);
+            $package = $version = '';
+        } else {
+            $status = true;
+            $package = (string) $args[0];
+            $version = (string) $args[1];
+            $message = (string) $args[2];
+        }
+
+        if ('' !== $message) {
+            if (preg_match('#[\r\n]|\*/#', $message)) {
+                throw new InvalidArgumentException('Invalid characters found in deprecation template.');
+            }
+
+            if (false === strpos($message, '%service_id%')) {
+                throw new InvalidArgumentException('The deprecation template must contain the "%service_id%" placeholder.');
+            }
+        }
+
+        $this->changes['deprecated'] = true;
+        $this->deprecation = $status ? ['package' => $package, 'version' => $version, 'message' => $message ?: self::$defaultDeprecationTemplate] : [];
+>>>>>>> ThomasN
 
         return $this;
     }
@@ -740,19 +787,46 @@ class Definition
      */
     public function isDeprecated()
     {
+<<<<<<< HEAD
         return $this->deprecated;
+=======
+        return (bool) $this->deprecation;
+>>>>>>> ThomasN
     }
 
     /**
      * Message to use if this definition is deprecated.
      *
+<<<<<<< HEAD
+=======
+     * @deprecated since Symfony 5.1, use "getDeprecation()" instead.
+     *
+>>>>>>> ThomasN
      * @param string $id Service id relying on this definition
      *
      * @return string
      */
     public function getDeprecationMessage(string $id)
     {
+<<<<<<< HEAD
         return str_replace('%service_id%', $id, $this->deprecationTemplate ?: self::$defaultDeprecationTemplate);
+=======
+        trigger_deprecation('symfony/dependency-injection', '5.1', 'The "%s()" method is deprecated, use "getDeprecation()" instead.', __METHOD__);
+
+        return $this->getDeprecation($id)['message'];
+    }
+
+    /**
+     * @param string $id Service id relying on this definition
+     */
+    public function getDeprecation(string $id): array
+    {
+        return [
+            'package' => $this->deprecation['package'],
+            'version' => $this->deprecation['version'],
+            'message' => str_replace('%service_id%', $id, $this->deprecation['message']),
+        ];
+>>>>>>> ThomasN
     }
 
     /**

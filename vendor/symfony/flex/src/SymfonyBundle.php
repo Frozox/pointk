@@ -49,7 +49,11 @@ class SymfonyBundle
                     foreach ($this->extractClassNames($namespace, $isSyliusPlugin) as $class) {
                         // we only check class existence on install as we do have the code available
                         // in contrast to uninstall operation
+<<<<<<< HEAD
                         if (!$uninstall && !$this->checkClassExists($class, $path, $isPsr4)) {
+=======
+                        if (!$uninstall && !$this->isBundleClass($class, $path, $isPsr4)) {
+>>>>>>> ThomasN
                             continue;
                         }
 
@@ -92,7 +96,11 @@ class SymfonyBundle
         return array_unique($classes);
     }
 
+<<<<<<< HEAD
     private function checkClassExists(string $class, string $path, bool $isPsr4): bool
+=======
+    private function isBundleClass(string $class, string $path, bool $isPsr4): bool
+>>>>>>> ThomasN
     {
         $classPath = ($this->vendorDir ? $this->vendorDir.'/' : '').$this->package->getPrettyName().'/'.$path.'/';
         $parts = explode('\\', $class);
@@ -102,6 +110,15 @@ class SymfonyBundle
         }
         $classPath .= str_replace('\\', '/', $class).'.php';
 
+<<<<<<< HEAD
         return file_exists($classPath);
+=======
+        if (!file_exists($classPath)) {
+            return false;
+        }
+
+        // heuristic that should work in almost all cases
+        return false !== strpos(file_get_contents($classPath), 'Symfony\Component\HttpKernel\Bundle\Bundle');
+>>>>>>> ThomasN
     }
 }

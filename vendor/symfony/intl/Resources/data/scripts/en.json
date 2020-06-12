@@ -1,11 +1,18 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Adlm": "Adlam",
         "Afak": "Afaka",
         "Aghb": "Caucasian Albanian",
         "Ahom": "Ahom",
         "Arab": "Arabic",
+<<<<<<< HEAD
+=======
+        "Aran": "Nastaliq",
+>>>>>>> ThomasN
         "Armi": "Imperial Aramaic",
         "Armn": "Armenian",
         "Avst": "Avestan",
@@ -26,12 +33,20 @@
         "Cari": "Carian",
         "Cham": "Cham",
         "Cher": "Cherokee",
+<<<<<<< HEAD
+=======
+        "Chrs": "Chorasmian",
+>>>>>>> ThomasN
         "Cirt": "Cirth",
         "Copt": "Coptic",
         "Cprt": "Cypriot",
         "Cyrl": "Cyrillic",
         "Cyrs": "Old Church Slavonic Cyrillic",
         "Deva": "Devanagari",
+<<<<<<< HEAD
+=======
+        "Diak": "Dives Akuru",
+>>>>>>> ThomasN
         "Dogr": "Dogra",
         "Dsrt": "Deseret",
         "Dupl": "Duployan shorthand",
@@ -76,6 +91,10 @@
         "Khar": "Kharoshthi",
         "Khmr": "Khmer",
         "Khoj": "Khojki",
+<<<<<<< HEAD
+=======
+        "Kits": "Khitan small script",
+>>>>>>> ThomasN
         "Knda": "Kannada",
         "Kore": "Korean",
         "Kpel": "Kpelle",
@@ -182,6 +201,10 @@
         "Wole": "Woleai",
         "Xpeo": "Old Persian",
         "Xsux": "Sumero-Akkadian Cuneiform",
+<<<<<<< HEAD
+=======
+        "Yezi": "Yezidi",
+>>>>>>> ThomasN
         "Yiii": "Yi",
         "Zanb": "Zanabazar Square",
         "Zinh": "Inherited",

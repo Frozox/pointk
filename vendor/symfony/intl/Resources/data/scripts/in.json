@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Afak": "Afaka",
         "Aghb": "Albania Kaukasia",
         "Arab": "Arab",
+<<<<<<< HEAD
+=======
+        "Aran": "Nastaliq",
+>>>>>>> ThomasN
         "Armi": "Aram Imperial",
         "Armn": "Armenia",
         "Avst": "Avesta",
@@ -87,7 +94,10 @@
         "Merc": "Kursif Meroitik",
         "Mero": "Meroitik",
         "Mlym": "Malayalam",
+<<<<<<< HEAD
         "Modi": "Modi",
+=======
+>>>>>>> ThomasN
         "Mong": "Mongolia",
         "Moon": "Moon",
         "Mroo": "Mro",
@@ -112,6 +122,10 @@
         "Phnx": "Phoenix",
         "Plrd": "Fonetik Pollard",
         "Prti": "Prasasti Parthia",
+<<<<<<< HEAD
+=======
+        "Qaag": "Zawgyi",
+>>>>>>> ThomasN
         "Rjng": "Rejang",
         "Roro": "Rongorongo",
         "Runr": "Runik",

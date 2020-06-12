@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AD": "Andorra",
         "AE": "Emîrtiyên Erebî yên Yekbûyî",
@@ -128,7 +131,10 @@
         "MC": "Monako",
         "MD": "Moldova",
         "ME": "Montenegro",
+<<<<<<< HEAD
         "MF": "MF",
+=======
+>>>>>>> ThomasN
         "MG": "Madagaskar",
         "MH": "Giravên Marşal",
         "MK": "Makedonya",

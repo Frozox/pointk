@@ -5,8 +5,13 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+<<<<<<< HEAD
         <parameter key="asset.request_context.base_path"></parameter>
         <parameter key="asset.request_context.secure">false</parameter>
+=======
+        <parameter key="asset.request_context.base_path">null</parameter>
+        <parameter key="asset.request_context.secure">null</parameter>
+>>>>>>> ThomasN
     </parameters>
 
     <services>
@@ -50,5 +55,13 @@
         <service id="assets.json_manifest_version_strategy" class="Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy" abstract="true">
             <argument /> <!-- manifest path -->
         </service>
+<<<<<<< HEAD
+=======
+
+        <service id="assets.remote_json_manifest_version_strategy" class="Symfony\Component\Asset\VersionStrategy\RemoteJsonManifestVersionStrategy" abstract="true">
+            <argument /> <!-- manifest url -->
+            <argument type="service" id="http_client" />
+        </service>
+>>>>>>> ThomasN
     </services>
 </container>

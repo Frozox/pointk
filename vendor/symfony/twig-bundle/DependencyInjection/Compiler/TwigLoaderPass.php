@@ -39,7 +39,11 @@ class TwigLoaderPass implements CompilerPassInterface
         }
 
         if (!$found) {
+<<<<<<< HEAD
             throw new LogicException('No twig loaders found. You need to tag at least one loader with "twig.loader"');
+=======
+            throw new LogicException('No twig loaders found. You need to tag at least one loader with "twig.loader".');
+>>>>>>> ThomasN
         }
 
         if (1 === $found) {

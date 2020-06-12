@@ -24,6 +24,10 @@ use IteratorAggregate;
  * position unless you explicitly positioned it before. Prefer iteration with
  * external iterators.
  *
+<<<<<<< HEAD
+=======
+ * @phpstan-template TKey
+>>>>>>> ThomasN
  * @psalm-template TKey of array-key
  * @psalm-template T
  * @template-extends IteratorAggregate<TKey, T>

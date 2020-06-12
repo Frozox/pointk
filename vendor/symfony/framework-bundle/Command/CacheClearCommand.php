@@ -17,6 +17,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Dumper\Preloader;
+>>>>>>> ThomasN
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
@@ -85,7 +89,11 @@ EOF
         $fs->remove($oldCacheDir);
 
         if (!is_writable($realCacheDir)) {
+<<<<<<< HEAD
             throw new RuntimeException(sprintf('Unable to write in the "%s" directory', $realCacheDir));
+=======
+            throw new RuntimeException(sprintf('Unable to write in the "%s" directory.', $realCacheDir));
+>>>>>>> ThomasN
         }
 
         $io->comment(sprintf('Clearing the cache for the <info>%s</info> environment with debug <info>%s</info>', $kernel->getEnvironment(), var_export($kernel->isDebug(), true)));
@@ -117,7 +125,15 @@ EOF
                 $warmer = $kernel->getContainer()->get('cache_warmer');
                 // non optional warmers already ran during container compilation
                 $warmer->enableOnlyOptionalWarmers();
+<<<<<<< HEAD
                 $warmer->warmUp($realCacheDir);
+=======
+                $preload = (array) $warmer->warmUp($realCacheDir);
+
+                if ($preload && file_exists($preloadFile = $realCacheDir.'/'.$kernel->getContainer()->getParameter('kernel.container_class').'.preload.php')) {
+                    Preloader::append($preloadFile, $preload);
+                }
+>>>>>>> ThomasN
             }
         } else {
             $fs->mkdir($warmupDir);
@@ -193,7 +209,15 @@ EOF
             $warmer = $kernel->getContainer()->get('cache_warmer');
             // non optional warmers already ran during container compilation
             $warmer->enableOnlyOptionalWarmers();
+<<<<<<< HEAD
             $warmer->warmUp($warmupDir);
+=======
+            $preload = (array) $warmer->warmUp($warmupDir);
+
+            if ($preload && file_exists($preloadFile = $warmupDir.'/'.$kernel->getContainer()->getParameter('kernel.container_class').'.preload.php')) {
+                Preloader::append($preloadFile, $preload);
+            }
+>>>>>>> ThomasN
         }
 
         // fix references to cached files with the real cache directory name

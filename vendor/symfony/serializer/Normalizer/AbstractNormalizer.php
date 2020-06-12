@@ -213,7 +213,11 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
             return $circularReferenceHandler($object, $format, $context);
         }
 
+<<<<<<< HEAD
         throw new CircularReferenceException(sprintf('A circular reference has been detected when serializing the object of class "%s" (configured limit: %d)', \get_class($object), $context[self::CIRCULAR_REFERENCE_LIMIT] ?? $this->defaultContext[self::CIRCULAR_REFERENCE_LIMIT]));
+=======
+        throw new CircularReferenceException(sprintf('A circular reference has been detected when serializing the object of class "%s" (configured limit: %d).', get_debug_type($object), $context[self::CIRCULAR_REFERENCE_LIMIT] ?? $this->defaultContext[self::CIRCULAR_REFERENCE_LIMIT]));
+>>>>>>> ThomasN
     }
 
     /**
@@ -239,6 +243,7 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
 
         $tmpGroups = $context[self::GROUPS] ?? $this->defaultContext[self::GROUPS] ?? null;
         $groups = (\is_array($tmpGroups) || is_scalar($tmpGroups)) ? (array) $tmpGroups : false;
+<<<<<<< HEAD
         if (false === $groups && $allowExtraAttributes) {
             return false;
         }
@@ -250,11 +255,34 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
             if (
                 (false === $groups || array_intersect($attributeMetadata->getGroups(), $groups)) &&
                 $this->isAllowedAttribute($classOrObject, $name, null, $context)
+=======
+
+        $allowedAttributes = [];
+        $ignoreUsed = false;
+        foreach ($this->classMetadataFactory->getMetadataFor($classOrObject)->getAttributesMetadata() as $attributeMetadata) {
+            if ($ignore = $attributeMetadata->isIgnored()) {
+                $ignoreUsed = true;
+            }
+
+            // If you update this check, update accordingly the one in Symfony\Component\PropertyInfo\Extractor\SerializerExtractor::getProperties()
+            if (
+                !$ignore &&
+                (false === $groups || array_intersect($attributeMetadata->getGroups(), $groups)) &&
+                $this->isAllowedAttribute($classOrObject, $name = $attributeMetadata->getName(), null, $context)
+>>>>>>> ThomasN
             ) {
                 $allowedAttributes[] = $attributesAsString ? $name : $attributeMetadata;
             }
         }
 
+<<<<<<< HEAD
+=======
+        if (!$ignoreUsed && false === $groups && $allowExtraAttributes) {
+            // Backward Compatibility with the code using this method written before the introduction of @Ignore
+            return false;
+        }
+
+>>>>>>> ThomasN
         return $allowedAttributes;
     }
 
@@ -354,7 +382,11 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
                 if ($constructorParameter->isVariadic()) {
                     if ($allowed && !$ignored && (isset($data[$key]) || \array_key_exists($key, $data))) {
                         if (!\is_array($data[$paramName])) {
+<<<<<<< HEAD
                             throw new RuntimeException(sprintf('Cannot create an instance of %s from serialized data because the variadic parameter %s can only accept an array.', $class, $constructorParameter->name));
+=======
+                            throw new RuntimeException(sprintf('Cannot create an instance of "%s" from serialized data because the variadic parameter "%s" can only accept an array.', $class, $constructorParameter->name));
+>>>>>>> ThomasN
                         }
 
                         $variadicParameters = [];
@@ -384,7 +416,11 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
                 } elseif ($constructorParameter->isDefaultValueAvailable()) {
                     $params[] = $constructorParameter->getDefaultValue();
                 } else {
+<<<<<<< HEAD
                     throw new MissingConstructorArgumentsException(sprintf('Cannot create an instance of %s from serialized data because its constructor requires parameter "%s" to be present.', $class, $constructorParameter->name));
+=======
+                    throw new MissingConstructorArgumentsException(sprintf('Cannot create an instance of "%s" from serialized data because its constructor requires parameter "%s" to be present.', $class, $constructorParameter->name));
+>>>>>>> ThomasN
                 }
             }
 
@@ -404,12 +440,24 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
     protected function denormalizeParameter(\ReflectionClass $class, \ReflectionParameter $parameter, string $parameterName, $parameterData, array $context, string $format = null)
     {
         try {
+<<<<<<< HEAD
             if (null !== $parameter->getClass()) {
                 if (!$this->serializer instanceof DenormalizerInterface) {
                     throw new LogicException(sprintf('Cannot create an instance of %s from serialized data because the serializer inject in "%s" is not a denormalizer', $parameter->getClass(), self::class));
                 }
                 $parameterClass = $parameter->getClass()->getName();
                 $parameterData = $this->serializer->denormalize($parameterData, $parameterClass, $format, $this->createChildContext($context, $parameterName, $format));
+=======
+            if (($parameterType = $parameter->getType()) && !$parameterType->isBuiltin()) {
+                $parameterClass = $parameterType->getName();
+                new \ReflectionClass($parameterClass); // throws a \ReflectionException if the class doesn't exist
+
+                if (!$this->serializer instanceof DenormalizerInterface) {
+                    throw new LogicException(sprintf('Cannot create an instance of "%s" from serialized data because the serializer inject in "%s" is not a denormalizer.', $parameterClass, static::class));
+                }
+
+                return $this->serializer->denormalize($parameterData, $parameterClass, $format, $this->createChildContext($context, $parameterName, $format));
+>>>>>>> ThomasN
             }
         } catch (\ReflectionException $e) {
             throw new RuntimeException(sprintf('Could not determine the class of the parameter "%s".', $parameterName), 0, $e);
@@ -417,7 +465,12 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
             if (!$parameter->getType()->allowsNull()) {
                 throw $e;
             }
+<<<<<<< HEAD
             $parameterData = null;
+=======
+
+            return null;
+>>>>>>> ThomasN
         }
 
         return $parameterData;

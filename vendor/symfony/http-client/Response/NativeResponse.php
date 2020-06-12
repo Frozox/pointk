@@ -14,6 +14,10 @@ namespace Symfony\Component\HttpClient\Response;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\Chunk\FirstChunk;
 use Symfony\Component\HttpClient\Exception\TransportException;
+<<<<<<< HEAD
+=======
+use Symfony\Component\HttpClient\Internal\ClientState;
+>>>>>>> ThomasN
 use Symfony\Component\HttpClient\Internal\NativeClientState;
 use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -214,6 +218,7 @@ final class NativeResponse implements ResponseInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     private static function perform(NativeClientState $multi, array &$responses = null): void
     {
@@ -222,6 +227,13 @@ final class NativeResponse implements ResponseInterface
             $multi->handles = [];
         }
 
+=======
+     *
+     * @param NativeClientState $multi
+     */
+    private static function perform(ClientState $multi, array &$responses = null): void
+    {
+>>>>>>> ThomasN
         foreach ($multi->openHandles as $i => [$h, $buffer, $onProgress]) {
             $hasActivity = false;
             $remaining = &$multi->openHandles[$i][3];
@@ -288,8 +300,11 @@ final class NativeResponse implements ResponseInterface
                 $multi->handlesActivity[$i][] = $e;
                 unset($multi->openHandles[$i]);
                 $multi->sleep = false;
+<<<<<<< HEAD
             } elseif (null !== $responses) {
                 $multi->handles[] = $h;
+=======
+>>>>>>> ThomasN
             }
         }
 
@@ -304,7 +319,11 @@ final class NativeResponse implements ResponseInterface
             }
         }
 
+<<<<<<< HEAD
         if (\count($multi->handles) >= $multi->maxHostConnections) {
+=======
+        if (\count($multi->openHandles) >= $multi->maxHostConnections) {
+>>>>>>> ThomasN
             return;
         }
 
@@ -315,10 +334,13 @@ final class NativeResponse implements ResponseInterface
                 $multi->sleep = false;
                 self::perform($multi);
 
+<<<<<<< HEAD
                 if (null !== $response->handle) {
                     $multi->handles[] = $response->handle;
                 }
 
+=======
+>>>>>>> ThomasN
                 break;
             }
         }
@@ -326,11 +348,23 @@ final class NativeResponse implements ResponseInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     private static function select(NativeClientState $multi, float $timeout): int
     {
         $_ = [];
 
         return (!$multi->sleep = !$multi->sleep) ? -1 : stream_select($multi->handles, $_, $_, (int) $timeout, (int) (1E6 * ($timeout - (int) $timeout)));
+=======
+     *
+     * @param NativeClientState $multi
+     */
+    private static function select(ClientState $multi, float $timeout): int
+    {
+        $_ = [];
+        $handles = array_column($multi->openHandles, 0);
+
+        return (!$multi->sleep = !$multi->sleep) ? -1 : stream_select($handles, $_, $_, (int) $timeout, (int) (1E6 * ($timeout - (int) $timeout)));
+>>>>>>> ThomasN
     }
 }

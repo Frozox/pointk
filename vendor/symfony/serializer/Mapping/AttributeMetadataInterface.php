@@ -62,6 +62,19 @@ interface AttributeMetadataInterface
     public function getSerializedName(): ?string;
 
     /**
+<<<<<<< HEAD
+=======
+     * Sets if this attribute must be ignored or not.
+     */
+    public function setIgnore(bool $ignore);
+
+    /**
+     * Gets if this attribute is ignored or not.
+     */
+    public function isIgnored(): bool;
+
+    /**
+>>>>>>> ThomasN
      * Merges an {@see AttributeMetadataInterface} with in the current one.
      */
     public function merge(self $attributeMetadata);

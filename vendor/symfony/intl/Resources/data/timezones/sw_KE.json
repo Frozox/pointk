@@ -1,12 +1,19 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "America\/Araguaina": "Saa za Brazili (Araguaina)",
         "America\/Argentina\/La_Rioja": "Saa za Ajentina (La Rioja)",
         "America\/Argentina\/Rio_Gallegos": "Saa za Ajentina (Rio Gallegos)",
         "America\/Argentina\/Salta": "Saa za Ajentina (Salta)",
         "America\/Argentina\/San_Juan": "Saa za Ajentina (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Saa za Magharibi mwa Ajentina (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Saa za Ajentina (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Saa za Ajentina (Tucuman)",
         "America\/Argentina\/Ushuaia": "Saa za Ajentina (Ushuaia)",
         "America\/Asuncion": "Saa za Paragwai (Asuncion)",
@@ -49,6 +56,10 @@
         "Asia\/Atyrau": "Saa za Kazakistani Magharibi (Atyrau)",
         "Asia\/Baku": "Saa za Azabajani (Baku)",
         "Asia\/Calcutta": "Saa za Wastani za India (Kolkata)",
+<<<<<<< HEAD
+=======
+        "Asia\/Choibalsan": "Saa za Ulaanbataar (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Saa za Wastani za India (Kolombo)",
         "Asia\/Dhaka": "Saa za Bangladeshi (Dhaka)",
         "Asia\/Dubai": "Saa za Wastani za Ghuba (Dubai)",

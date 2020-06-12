@@ -2,7 +2,11 @@
 namespace Doctrine\Common\Proxy;
 
 use Closure;
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Proxy as BaseProxy;
+=======
+use Doctrine\Persistence\Proxy as BaseProxy;
+>>>>>>> ThomasN
 
 /**
  * Interface for proxy classes.
@@ -10,8 +14,11 @@ use Doctrine\Common\Persistence\Proxy as BaseProxy;
  * @author Roman Borschel <roman@code-factory.org>
  * @author Marco Pivetta  <ocramius@gmail.com>
  * @since  2.4
+<<<<<<< HEAD
  *
  * @deprecated The Doctrine\Common\Proxy component is deprecated, please use ocramius/proxy-manager instead.
+=======
+>>>>>>> ThomasN
  */
 interface Proxy extends BaseProxy
 {

@@ -31,6 +31,10 @@ class TextPart extends AbstractPart
     private $disposition;
     private $name;
     private $encoding;
+<<<<<<< HEAD
+=======
+    private $seekable;
+>>>>>>> ThomasN
 
     /**
      * @param resource|string $body
@@ -40,12 +44,20 @@ class TextPart extends AbstractPart
         parent::__construct();
 
         if (!\is_string($body) && !\is_resource($body)) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('The body of "%s" must be a string or a resource (got "%s").', self::class, \is_object($body) ? \get_class($body) : \gettype($body)));
+=======
+            throw new \TypeError(sprintf('The body of "%s" must be a string or a resource (got "%s").', self::class, get_debug_type($body)));
+>>>>>>> ThomasN
         }
 
         $this->body = $body;
         $this->charset = $charset;
         $this->subtype = $subtype;
+<<<<<<< HEAD
+=======
+        $this->seekable = \is_resource($body) ? stream_get_meta_data($body)['seekable'] && 0 === fseek($body, 0, SEEK_CUR) : null;
+>>>>>>> ThomasN
 
         if (null === $encoding) {
             $this->encoding = $this->chooseEncoding();
@@ -93,11 +105,19 @@ class TextPart extends AbstractPart
 
     public function getBody(): string
     {
+<<<<<<< HEAD
         if (!\is_resource($this->body)) {
             return $this->body;
         }
 
         if (stream_get_meta_data($this->body)['seekable'] ?? false) {
+=======
+        if (null === $this->seekable) {
+            return $this->body;
+        }
+
+        if ($this->seekable) {
+>>>>>>> ThomasN
             rewind($this->body);
         }
 
@@ -111,8 +131,13 @@ class TextPart extends AbstractPart
 
     public function bodyToIterable(): iterable
     {
+<<<<<<< HEAD
         if (\is_resource($this->body)) {
             if (stream_get_meta_data($this->body)['seekable'] ?? false) {
+=======
+        if (null !== $this->seekable) {
+            if ($this->seekable) {
+>>>>>>> ThomasN
                 rewind($this->body);
             }
             yield from $this->getEncoder()->encodeByteStream($this->body);
@@ -185,7 +210,11 @@ class TextPart extends AbstractPart
     public function __sleep()
     {
         // convert resources to strings for serialization
+<<<<<<< HEAD
         if (\is_resource($this->body)) {
+=======
+        if (null !== $this->seekable) {
+>>>>>>> ThomasN
             $this->body = $this->getBody();
         }
 

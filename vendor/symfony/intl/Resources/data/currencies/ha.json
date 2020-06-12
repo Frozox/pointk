@@ -1,18 +1,74 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
             "Kuɗin Haɗaɗɗiyar Daular Larabawa"
         ],
+<<<<<<< HEAD
+=======
+        "AFN": [
+            "AFN",
+            "Afghani na kasar Afghanistan"
+        ],
+        "ALL": [
+            "ALL",
+            "Kudin Albanian"
+        ],
+        "AMD": [
+            "AMD",
+            "Kudin Armenian"
+        ],
+        "ANG": [
+            "ANG",
+            "Antillean Guilder na ƙasar Netherlands"
+        ],
+>>>>>>> ThomasN
         "AOA": [
             "AOA",
             "Kuɗin Angola"
         ],
+<<<<<<< HEAD
+=======
+        "ARS": [
+            "ARS",
+            "Peso na ƙasar Argentina"
+        ],
+>>>>>>> ThomasN
         "AUD": [
             "A$",
             "Dalar Ostareliya"
         ],
+<<<<<<< HEAD
+=======
+        "AWG": [
+            "AWG",
+            "Florin na yankin Aruba"
+        ],
+        "AZN": [
+            "AZN",
+            "Kudin Azerbaijani"
+        ],
+        "BAM": [
+            "BAM",
+            "Kudaden Bosnia da Harzegovina"
+        ],
+        "BBD": [
+            "BBD",
+            "Dalar ƙasar Barbados"
+        ],
+        "BDT": [
+            "BDT",
+            "Taka na kasar Bangladesh"
+        ],
+        "BGN": [
+            "BGN",
+            "Kudin Bulgeria"
+        ],
+>>>>>>> ThomasN
         "BHD": [
             "BHD",
             "Kuɗin Baharan"
@@ -21,14 +77,51 @@
             "BIF",
             "Kuɗin Burundi"
         ],
+<<<<<<< HEAD
+=======
+        "BMD": [
+            "BMD",
+            "Dalar ƙasar Bermuda"
+        ],
+        "BND": [
+            "BND",
+            "Kudin Brunei"
+        ],
+        "BOB": [
+            "BOB",
+            "Boloviano na ƙasar Bolivia"
+        ],
+>>>>>>> ThomasN
         "BRL": [
             "R$",
             "Ril Kudin Birazil"
         ],
+<<<<<<< HEAD
+=======
+        "BSD": [
+            "BSD",
+            "Dalar ƙasar Bahamas"
+        ],
+        "BTN": [
+            "BTN",
+            "Ngultrum na kasar Bhutan"
+        ],
+>>>>>>> ThomasN
         "BWP": [
             "BWP",
             "Kuɗin Baswana"
         ],
+<<<<<<< HEAD
+=======
+        "BYN": [
+            "BYN",
+            "Kudin Belarusian"
+        ],
+        "BZD": [
+            "BZD",
+            "Dalar ƙasar Belize"
+        ],
+>>>>>>> ThomasN
         "CAD": [
             "CA$",
             "Dalar Kanada"
@@ -41,18 +134,66 @@
             "CHF",
             "Kuɗin Suwizalan"
         ],
+<<<<<<< HEAD
+=======
+        "CLP": [
+            "CLP",
+            "Peso na ƙasar Chile"
+        ],
+        "CNH": [
+            "CNH",
+            "Yuan na ƙasar Sin (na wajen ƙasa)"
+        ],
+>>>>>>> ThomasN
         "CNY": [
             "CN¥",
             "Yuwan kasar Sin"
         ],
+<<<<<<< HEAD
+=======
+        "COP": [
+            "COP",
+            "Peso na ƙasar Columbia"
+        ],
+        "CRC": [
+            "CRC",
+            "Colón na kasar Costa Rica"
+        ],
+        "CUC": [
+            "CUC",
+            "Peso mai fuska biyu na ƙasar Cuba"
+        ],
+        "CUP": [
+            "CUP",
+            "Peso na ƙasar Cuba"
+        ],
+>>>>>>> ThomasN
         "CVE": [
             "CVE",
             "Kuɗin Tsibiran Kap Barde"
         ],
+<<<<<<< HEAD
+=======
+        "CZK": [
+            "CZK",
+            "Kudin Czech"
+        ],
+>>>>>>> ThomasN
         "DJF": [
             "DJF",
             "Kuɗin Jibuti"
         ],
+<<<<<<< HEAD
+=======
+        "DKK": [
+            "DKK",
+            "Krone na ƙasar Denmark"
+        ],
+        "DOP": [
+            "DOP",
+            "Peso na jamhuriyar Dominica"
+        ],
+>>>>>>> ThomasN
         "DZD": [
             "DZD",
             "Kuɗin Aljeriya"
@@ -73,26 +214,124 @@
             "€",
             "Yuro"
         ],
+<<<<<<< HEAD
+=======
+        "FJD": [
+            "FJD",
+            "Dalar Fiji"
+        ],
+        "FKP": [
+            "FKP",
+            "Fam na ƙasar Tsibirai na Falkland"
+        ],
+>>>>>>> ThomasN
         "GBP": [
             "£",
             "Fam na Ingila"
         ],
+<<<<<<< HEAD
+=======
+        "GEL": [
+            "GEL",
+            "Kudin Georgian"
+        ],
+>>>>>>> ThomasN
         "GHC": [
             "GHC",
             "Cedi"
         ],
+<<<<<<< HEAD
+=======
+        "GHS": [
+            "GHS",
+            "Kudin Ghana"
+        ],
+        "GIP": [
+            "GIP",
+            "Kudin Gibraltar"
+        ],
+>>>>>>> ThomasN
         "GMD": [
             "GMD",
             "Kuɗin Gambiya"
         ],
+<<<<<<< HEAD
+=======
+        "GNF": [
+            "GNF",
+            "Kudin Guinean"
+        ],
+>>>>>>> ThomasN
         "GNS": [
             "GNS",
             "Kuɗin Gini"
         ],
+<<<<<<< HEAD
+=======
+        "GTQ": [
+            "GTQ",
+            "Quetzal na ƙasar Guatemala"
+        ],
+        "GYD": [
+            "GYD",
+            "Dalar Guyana"
+        ],
+        "HKD": [
+            "HK$",
+            "Dalar Hong Kong"
+        ],
+        "HNL": [
+            "HNL",
+            "Lempira na ƙasar Honduras"
+        ],
+        "HRK": [
+            "HRK",
+            "Kudin Croatian"
+        ],
+        "HTG": [
+            "HTG",
+            "Gourde na ƙasar Haiti"
+        ],
+        "HUF": [
+            "HUF",
+            "Kudin Hungarian"
+        ],
+        "IDR": [
+            "IDR",
+            "Rupiah na ƙasar Indonesia"
+        ],
+        "ILS": [
+            "₪",
+            "Sabbin Kudin Shekel"
+        ],
+>>>>>>> ThomasN
         "INR": [
             "₹",
             "Kuɗin Indiya"
         ],
+<<<<<<< HEAD
+=======
+        "IQD": [
+            "IQD",
+            "Dinarin Iraqi"
+        ],
+        "IRR": [
+            "IRR",
+            "Riyal na kasar Iran"
+        ],
+        "ISK": [
+            "ISK",
+            "Króna na ƙasar Iceland"
+        ],
+        "JMD": [
+            "JMD",
+            "Dalar Jamaica"
+        ],
+        "JOD": [
+            "JOD",
+            "Dinarin Jordanian"
+        ],
+>>>>>>> ThomasN
         "JPY": [
             "¥",
             "Yen kasar Japan"
@@ -101,10 +340,56 @@
             "KES",
             "Sulen Kenya"
         ],
+<<<<<<< HEAD
+=======
+        "KGS": [
+            "KGS",
+            "Som na ƙasar Kyrgystani"
+        ],
+        "KHR": [
+            "KHR",
+            "Riel na ƙasar Cambodia"
+        ],
+>>>>>>> ThomasN
         "KMF": [
             "KMF",
             "Kuɗin Kwamoras"
         ],
+<<<<<<< HEAD
+=======
+        "KPW": [
+            "KPW",
+            "Won na ƙasar Koreya ta Arewa"
+        ],
+        "KRW": [
+            "₩",
+            "Won na Koreya ta Kudu"
+        ],
+        "KWD": [
+            "KWD",
+            "Dinarin Kuwaiti"
+        ],
+        "KYD": [
+            "KYD",
+            "Dalar ƙasar Tsibirai na Cayman"
+        ],
+        "KZT": [
+            "KZT",
+            "Tenge na ƙasar Kazkhstan"
+        ],
+        "LAK": [
+            "LAK",
+            "Kudin Laotian"
+        ],
+        "LBP": [
+            "LBP",
+            "Kudin Lebanese"
+        ],
+        "LKR": [
+            "LKR",
+            "Rupee na kasar Sri Lanka"
+        ],
+>>>>>>> ThomasN
         "LRD": [
             "LRD",
             "Dalar Laberiya"
@@ -121,10 +406,36 @@
             "MAD",
             "Kuɗin Maroko"
         ],
+<<<<<<< HEAD
+=======
+        "MDL": [
+            "MDL",
+            "kudaden Moldova"
+        ],
+>>>>>>> ThomasN
         "MGA": [
             "MGA",
             "Kuɗin Madagaskar"
         ],
+<<<<<<< HEAD
+=======
+        "MKD": [
+            "MKD",
+            "Dinarin Macedonian"
+        ],
+        "MMK": [
+            "MMK",
+            "Kudin Myanmar"
+        ],
+        "MNT": [
+            "MNT",
+            "Tugrik na Mongolia"
+        ],
+        "MOP": [
+            "MOP",
+            "Pataca na ƙasar Macao"
+        ],
+>>>>>>> ThomasN
         "MRO": [
             "MRO",
             "Kuɗin Moritaniya (1973–2017)"
@@ -137,14 +448,39 @@
             "MUR",
             "Kuɗin Moritus"
         ],
+<<<<<<< HEAD
+=======
+        "MVR": [
+            "MVR",
+            "Rufiyaa na kasar Maldives"
+        ],
+>>>>>>> ThomasN
         "MWK": [
             "MWK",
             "Kuɗin Malawi"
         ],
+<<<<<<< HEAD
+=======
+        "MXN": [
+            "MX$",
+            "Peso na ƙasar Mexico"
+        ],
+        "MYR": [
+            "MYR",
+            "Kudin Malaysian"
+        ],
+>>>>>>> ThomasN
         "MZM": [
             "MZM",
             "Kuɗin Mozambik"
         ],
+<<<<<<< HEAD
+=======
+        "MZN": [
+            "MZN",
+            "Metical na ƙasar Mozambique"
+        ],
+>>>>>>> ThomasN
         "NAD": [
             "NAD",
             "Dalar Namibiya"
@@ -153,6 +489,69 @@
             "₦",
             "Nairar Najeriya"
         ],
+<<<<<<< HEAD
+=======
+        "NIO": [
+            "NIO",
+            "Córdoba na ƙasar Nicaragua"
+        ],
+        "NOK": [
+            "NOK",
+            "Krone na ƙasar Norway"
+        ],
+        "NPR": [
+            "NPR",
+            "Rupee na Nepal"
+        ],
+        "NZD": [
+            "NZ$",
+            "Dalar New Zealand"
+        ],
+        "OMR": [
+            "OMR",
+            "Riyal din Omani"
+        ],
+        "PAB": [
+            "PAB",
+            "Balboa na ƙasar Panama"
+        ],
+        "PEN": [
+            "PEN",
+            "Sol na ƙasar Peru"
+        ],
+        "PGK": [
+            "PGK",
+            "Kina na ƙasar Papua Sabon Guinea"
+        ],
+        "PHP": [
+            "PHP",
+            "Kudin Philippine"
+        ],
+        "PKR": [
+            "PKR",
+            "Rupee na kasar Pakistan"
+        ],
+        "PLN": [
+            "PLN",
+            "Kudaden Polish"
+        ],
+        "PYG": [
+            "PYG",
+            "Guarani na ƙasar Paraguay"
+        ],
+        "QAR": [
+            "QAR",
+            "Riyal din Qatari"
+        ],
+        "RON": [
+            "RON",
+            "Kudin Romanian"
+        ],
+        "RSD": [
+            "RSD",
+            "Dinar Serbian"
+        ],
+>>>>>>> ThomasN
         "RUB": [
             "RUB",
             "Ruble kasar Rasha"
@@ -165,6 +564,13 @@
             "SAR",
             "Riyal"
         ],
+<<<<<<< HEAD
+=======
+        "SBD": [
+            "SBD",
+            "Dalar Tsibirai na Solomon"
+        ],
+>>>>>>> ThomasN
         "SCR": [
             "SCR",
             "Kuɗin Saishal"
@@ -173,6 +579,17 @@
             "SDG",
             "Fam kin Sudan"
         ],
+<<<<<<< HEAD
+=======
+        "SEK": [
+            "SEK",
+            "Krona na ƙasar Sweden"
+        ],
+        "SGD": [
+            "SGD",
+            "Dilar Singapore"
+        ],
+>>>>>>> ThomasN
         "SHP": [
             "SHP",
             "Fam kin San Helena"
@@ -185,6 +602,17 @@
             "SOS",
             "Sulen Somaliya"
         ],
+<<<<<<< HEAD
+=======
+        "SRD": [
+            "SRD",
+            "Dalar ƙasar Suriname"
+        ],
+        "SSP": [
+            "SSP",
+            "Fam na Kudancin Sudan"
+        ],
+>>>>>>> ThomasN
         "STD": [
             "STD",
             "Kuɗin Sawo Tome da Paransip (1977–2017)"
@@ -193,18 +621,66 @@
             "STN",
             "Kuɗin Sawo Tome da Paransip"
         ],
+<<<<<<< HEAD
+=======
+        "SYP": [
+            "SYP",
+            "Kudin Syrian"
+        ],
+>>>>>>> ThomasN
         "SZL": [
             "SZL",
             "Kuɗin Lilangeni"
         ],
+<<<<<<< HEAD
+=======
+        "THB": [
+            "THB",
+            "Baht na ƙasar Thailand"
+        ],
+        "TJS": [
+            "TJS",
+            "Somoni na ƙasar Tajikistan"
+        ],
+        "TMT": [
+            "TMT",
+            "Manat na ƙasar Turkmenistan"
+        ],
+>>>>>>> ThomasN
         "TND": [
             "TND",
             "Kuɗin Tunisiya"
         ],
+<<<<<<< HEAD
+=======
+        "TOP": [
+            "TOP",
+            "Paʼanga na ƙasar Tonga"
+        ],
+        "TRY": [
+            "TRY",
+            "Kudin Turkish"
+        ],
+        "TTD": [
+            "TTD",
+            "Dalar ƙasar Trinidad da Tobago"
+        ],
+        "TWD": [
+            "NT$",
+            "Sabuwar Dalar Taiwan"
+        ],
+>>>>>>> ThomasN
         "TZS": [
             "TZS",
             "Sulen Tanzaniya"
         ],
+<<<<<<< HEAD
+=======
+        "UAH": [
+            "UAH",
+            "Kudin Ukrainian"
+        ],
+>>>>>>> ThomasN
         "UGX": [
             "UGX",
             "Sule Yuganda"
@@ -213,14 +689,59 @@
             "$",
             "Dalar Amirka"
         ],
+<<<<<<< HEAD
+=======
+        "UYU": [
+            "UYU",
+            "Peso na ƙasar Uruguay"
+        ],
+        "UZS": [
+            "UZS",
+            "Som na ƙasar Uzbekistan"
+        ],
+        "VES": [
+            "VES",
+            "Bolívar na ƙasar Venezuela"
+        ],
+        "VND": [
+            "₫",
+            "Kudin Vietnamese"
+        ],
+        "VUV": [
+            "VUV",
+            "Vatu da ƙasar Vanuatu"
+        ],
+        "WST": [
+            "WST",
+            "Tala na ƙasar Samoa"
+        ],
+>>>>>>> ThomasN
         "XAF": [
             "FCFA",
             "Kuɗin Sefa na Afirka Ta Tsakiya"
         ],
+<<<<<<< HEAD
+=======
+        "XCD": [
+            "EC$",
+            "Dalar Gabashin Caribbean"
+        ],
+>>>>>>> ThomasN
         "XOF": [
             "CFA",
             "Kuɗin Sefa na Afirka Ta Yamma"
         ],
+<<<<<<< HEAD
+=======
+        "XPF": [
+            "CFPF",
+            "kudin CFP Franc"
+        ],
+        "YER": [
+            "YER",
+            "Riyal din Yemeni"
+        ],
+>>>>>>> ThomasN
         "ZAR": [
             "ZAR",
             "Kuɗin Afirka Ta Kudu"

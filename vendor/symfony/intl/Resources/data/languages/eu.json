@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afarera",
         "ab": "abkhaziera",
@@ -390,6 +393,10 @@
         "es_419": "Latinoamerikako espainiera",
         "es_ES": "espainiera (Europa)",
         "es_MX": "Mexikoko espainiera",
+<<<<<<< HEAD
+=======
+        "fa_AF": "daria",
+>>>>>>> ThomasN
         "fr_CA": "Kanadako frantses",
         "fr_CH": "Suitzako frantses",
         "nds_NL": "behe-saxoiera",

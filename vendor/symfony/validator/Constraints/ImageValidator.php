@@ -100,7 +100,11 @@ class ImageValidator extends FileValidator
 
         if ($constraint->minHeight) {
             if (!ctype_digit((string) $constraint->minHeight)) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('"%s" is not a valid minimum height', $constraint->minHeight));
+=======
+                throw new ConstraintDefinitionException(sprintf('"%s" is not a valid minimum height.', $constraint->minHeight));
+>>>>>>> ThomasN
             }
 
             if ($height < $constraint->minHeight) {
@@ -116,7 +120,11 @@ class ImageValidator extends FileValidator
 
         if ($constraint->maxHeight) {
             if (!ctype_digit((string) $constraint->maxHeight)) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('"%s" is not a valid maximum height', $constraint->maxHeight));
+=======
+                throw new ConstraintDefinitionException(sprintf('"%s" is not a valid maximum height.', $constraint->maxHeight));
+>>>>>>> ThomasN
             }
 
             if ($height > $constraint->maxHeight) {
@@ -132,7 +140,11 @@ class ImageValidator extends FileValidator
 
         if (null !== $constraint->minPixels) {
             if (!ctype_digit((string) $constraint->minPixels)) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('"%s" is not a valid minimum amount of pixels', $constraint->minPixels));
+=======
+                throw new ConstraintDefinitionException(sprintf('"%s" is not a valid minimum amount of pixels.', $constraint->minPixels));
+>>>>>>> ThomasN
             }
 
             if ($pixels < $constraint->minPixels) {
@@ -148,7 +160,11 @@ class ImageValidator extends FileValidator
 
         if (null !== $constraint->maxPixels) {
             if (!ctype_digit((string) $constraint->maxPixels)) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('"%s" is not a valid maximum amount of pixels', $constraint->maxPixels));
+=======
+                throw new ConstraintDefinitionException(sprintf('"%s" is not a valid maximum amount of pixels.', $constraint->maxPixels));
+>>>>>>> ThomasN
             }
 
             if ($pixels > $constraint->maxPixels) {
@@ -166,7 +182,11 @@ class ImageValidator extends FileValidator
 
         if (null !== $constraint->minRatio) {
             if (!is_numeric((string) $constraint->minRatio)) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('"%s" is not a valid minimum ratio', $constraint->minRatio));
+=======
+                throw new ConstraintDefinitionException(sprintf('"%s" is not a valid minimum ratio.', $constraint->minRatio));
+>>>>>>> ThomasN
             }
 
             if ($ratio < $constraint->minRatio) {
@@ -180,7 +200,11 @@ class ImageValidator extends FileValidator
 
         if (null !== $constraint->maxRatio) {
             if (!is_numeric((string) $constraint->maxRatio)) {
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('"%s" is not a valid maximum ratio', $constraint->maxRatio));
+=======
+                throw new ConstraintDefinitionException(sprintf('"%s" is not a valid maximum ratio.', $constraint->maxRatio));
+>>>>>>> ThomasN
             }
 
             if ($ratio > $constraint->maxRatio) {
@@ -218,7 +242,11 @@ class ImageValidator extends FileValidator
 
         if ($constraint->detectCorrupted) {
             if (!\function_exists('imagecreatefromstring')) {
+<<<<<<< HEAD
                 throw new LogicException('Corrupted images detection requires installed and enabled GD extension');
+=======
+                throw new LogicException('Corrupted images detection requires installed and enabled GD extension.');
+>>>>>>> ThomasN
             }
 
             $resource = @imagecreatefromstring(file_get_contents($value));

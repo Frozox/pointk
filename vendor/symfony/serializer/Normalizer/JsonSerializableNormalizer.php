@@ -35,7 +35,11 @@ class JsonSerializableNormalizer extends AbstractNormalizer
         }
 
         if (!$this->serializer instanceof NormalizerInterface) {
+<<<<<<< HEAD
             throw new LogicException('Cannot normalize object because injected serializer is not a normalizer');
+=======
+            throw new LogicException('Cannot normalize object because injected serializer is not a normalizer.');
+>>>>>>> ThomasN
         }
 
         return $this->serializer->normalize($object->jsonSerialize(), $format, $context);

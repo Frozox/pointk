@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Arab": "arabe",
+=======
+    "Names": {
+        "Arab": "arabe",
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armi": "araméen impérial",
         "Armn": "arménien",
         "Avst": "avestique",
@@ -97,6 +103,10 @@
         "Phnx": "phénicien",
         "Plrd": "phonétique de Pollard",
         "Prti": "parthe des inscriptions",
+<<<<<<< HEAD
+=======
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Rjng": "rejang",
         "Roro": "rongorongo",
         "Runr": "runique",

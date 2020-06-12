@@ -103,7 +103,11 @@ EOF
             $prevErrorHandler = set_error_handler(static function ($level, $message, $file, $line) use (&$prevErrorHandler) {
                 if (E_USER_DEPRECATED === $level) {
                     $templateLine = 0;
+<<<<<<< HEAD
                     if (preg_match('/ at line (\d+) /', $message, $matches)) {
+=======
+                    if (preg_match('/ at line (\d+)[ .]/', $message, $matches)) {
+>>>>>>> ThomasN
                         $templateLine = $matches[1];
                     }
 
@@ -145,7 +149,11 @@ EOF
             return Finder::create()->files()->in($filename)->name('*.twig');
         }
 
+<<<<<<< HEAD
         throw new RuntimeException(sprintf('File or directory "%s" is not readable', $filename));
+=======
+        throw new RuntimeException(sprintf('File or directory "%s" is not readable.', $filename));
+>>>>>>> ThomasN
     }
 
     private function validate(string $template, string $file): array
@@ -229,6 +237,17 @@ EOF
             $output->text(sprintf('<error> ERROR </error> (line %s)', $line));
         }
 
+<<<<<<< HEAD
+=======
+        // If the line is not known (this might happen for deprecations if we fail at detecting the line for instance),
+        // we render the message without context, to ensure the message is displayed.
+        if ($line <= 0) {
+            $output->text(sprintf('<error> >> %s</error> ', $exception->getRawMessage()));
+
+            return;
+        }
+
+>>>>>>> ThomasN
         foreach ($this->getContext($template, $line) as $lineNumber => $code) {
             $output->text(sprintf(
                 '%s %-6s %s',

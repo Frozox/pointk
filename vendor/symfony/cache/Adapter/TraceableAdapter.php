@@ -41,7 +41,11 @@ class TraceableAdapter implements AdapterInterface, CacheInterface, PruneableInt
     public function get(string $key, callable $callback, float $beta = null, array &$metadata = null)
     {
         if (!$this->pool instanceof CacheInterface) {
+<<<<<<< HEAD
             throw new \BadMethodCallException(sprintf('Cannot call "%s::get()": this class doesn\'t implement "%s".', \get_class($this->pool), CacheInterface::class));
+=======
+            throw new \BadMethodCallException(sprintf('Cannot call "%s::get()": this class doesn\'t implement "%s".', get_debug_type($this->pool), CacheInterface::class));
+>>>>>>> ThomasN
         }
 
         $isHit = true;
@@ -54,7 +58,11 @@ class TraceableAdapter implements AdapterInterface, CacheInterface, PruneableInt
         $event = $this->start(__FUNCTION__);
         try {
             $value = $this->pool->get($key, $callback, $beta, $metadata);
+<<<<<<< HEAD
             $event->result[$key] = \is_object($value) ? \get_class($value) : \gettype($value);
+=======
+            $event->result[$key] = get_debug_type($value);
+>>>>>>> ThomasN
         } finally {
             $event->end = microtime(true);
         }
@@ -244,6 +252,7 @@ class TraceableAdapter implements AdapterInterface, CacheInterface, PruneableInt
      */
     public function reset()
     {
+<<<<<<< HEAD
         if (!$this->pool instanceof ResetInterface) {
             return;
         }
@@ -253,6 +262,13 @@ class TraceableAdapter implements AdapterInterface, CacheInterface, PruneableInt
         } finally {
             $event->end = microtime(true);
         }
+=======
+        if ($this->pool instanceof ResetInterface) {
+            $this->pool->reset();
+        }
+
+        $this->clearCalls();
+>>>>>>> ThomasN
     }
 
     /**

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Meta": {
         "GmtFormat": "GMT%s",
         "HourFormatPos": "+%02d:%02d",

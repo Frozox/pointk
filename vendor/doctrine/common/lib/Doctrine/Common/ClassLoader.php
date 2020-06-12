@@ -18,7 +18,11 @@ use const E_USER_DEPRECATED;
  * @author Roman Borschel <roman@code-factory.org>
  * @since 2.0
  *
+<<<<<<< HEAD
  * @deprecated The ClassLoader is deprecated and will be removed in version 3.0 of doctrine/common.
+=======
+ * @deprecated The ClassLoader is deprecated and will be removed in version 4.0 of doctrine/common.
+>>>>>>> ThomasN
  */
 class ClassLoader
 {

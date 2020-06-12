@@ -35,7 +35,11 @@ class TwigErrorRenderer implements ErrorRendererInterface
     public function __construct(Environment $twig, HtmlErrorRenderer $fallbackErrorRenderer = null, $debug = false)
     {
         if (!\is_bool($debug) && !\is_callable($debug)) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('Argument 3 passed to %s() must be a boolean or a callable, %s given.', __METHOD__, \is_object($debug) ? \get_class($debug) : \gettype($debug)));
+=======
+            throw new \TypeError(sprintf('Argument 3 passed to "%s()" must be a boolean or a callable, "%s" given.', __METHOD__, get_debug_type($debug)));
+>>>>>>> ThomasN
         }
 
         $this->twig = $twig;

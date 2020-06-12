@@ -34,10 +34,21 @@ class ExpressionCacheWarmer implements CacheWarmerInterface
         return true;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return string[]
+     */
+>>>>>>> ThomasN
     public function warmUp(string $cacheDir)
     {
         foreach ($this->expressions as $expression) {
             $this->expressionLanguage->parse($expression, ['token', 'user', 'object', 'subject', 'roles', 'request', 'trust_resolver']);
         }
+<<<<<<< HEAD
+=======
+
+        return [];
+>>>>>>> ThomasN
     }
 }

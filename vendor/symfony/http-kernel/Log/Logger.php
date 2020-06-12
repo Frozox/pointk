@@ -37,10 +37,17 @@ class Logger extends AbstractLogger
     private $formatter;
     private $handle;
 
+<<<<<<< HEAD
     public function __construct(string $minLevel = null, $output = 'php://stderr', callable $formatter = null)
     {
         if (null === $minLevel) {
             $minLevel = 'php://stdout' === $output || 'php://stderr' === $output ? LogLevel::CRITICAL : LogLevel::WARNING;
+=======
+    public function __construct(string $minLevel = null, $output = null, callable $formatter = null)
+    {
+        if (null === $minLevel) {
+            $minLevel = null === $output || 'php://stdout' === $output || 'php://stderr' === $output ? LogLevel::ERROR : LogLevel::WARNING;
+>>>>>>> ThomasN
 
             if (isset($_ENV['SHELL_VERBOSITY']) || isset($_SERVER['SHELL_VERBOSITY'])) {
                 switch ((int) (isset($_ENV['SHELL_VERBOSITY']) ? $_ENV['SHELL_VERBOSITY'] : $_SERVER['SHELL_VERBOSITY'])) {
@@ -58,7 +65,11 @@ class Logger extends AbstractLogger
 
         $this->minLevelIndex = self::$levels[$minLevel];
         $this->formatter = $formatter ?: [$this, 'format'];
+<<<<<<< HEAD
         if (false === $this->handle = \is_resource($output) ? $output : @fopen($output, 'a')) {
+=======
+        if ($output && false === $this->handle = \is_resource($output) ? $output : @fopen($output, 'a')) {
+>>>>>>> ThomasN
             throw new InvalidArgumentException(sprintf('Unable to open "%s".', $output));
         }
     }
@@ -79,10 +90,21 @@ class Logger extends AbstractLogger
         }
 
         $formatter = $this->formatter;
+<<<<<<< HEAD
         fwrite($this->handle, $formatter($level, $message, $context));
     }
 
     private function format(string $level, string $message, array $context): string
+=======
+        if ($this->handle) {
+            @fwrite($this->handle, $formatter($level, $message, $context));
+        } else {
+            error_log($formatter($level, $message, $context, false));
+        }
+    }
+
+    private function format(string $level, string $message, array $context, bool $prefixDate = true): string
+>>>>>>> ThomasN
     {
         if (false !== strpos($message, '{')) {
             $replacements = [];
@@ -101,6 +123,15 @@ class Logger extends AbstractLogger
             $message = strtr($message, $replacements);
         }
 
+<<<<<<< HEAD
         return sprintf('%s [%s] %s', date(\DateTime::RFC3339), $level, $message).PHP_EOL;
+=======
+        $log = sprintf('[%s] %s', $level, $message).PHP_EOL;
+        if ($prefixDate) {
+            $log = date(\DateTime::RFC3339).' '.$log;
+        }
+
+        return $log;
+>>>>>>> ThomasN
     }
 }

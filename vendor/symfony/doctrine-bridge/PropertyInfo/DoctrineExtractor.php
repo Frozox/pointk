@@ -163,7 +163,10 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
                     switch ($typeOfField) {
                         case self::$useDeprecatedConstants ? DBALType::TARRAY : Types::ARRAY:
                         case 'json_array':
+<<<<<<< HEAD
                         case self::$useDeprecatedConstants ? false : Types::JSON:
+=======
+>>>>>>> ThomasN
                             return [new Type(Type::BUILTIN_TYPE_ARRAY, $nullable, null, true)];
 
                         case self::$useDeprecatedConstants ? DBALType::SIMPLE_ARRAY : Types::SIMPLE_ARRAY:
@@ -278,7 +281,10 @@ class DoctrineExtractor implements PropertyListExtractorInterface, PropertyTypeE
             case self::$useDeprecatedConstants ? DBALType::TARRAY : Types::ARRAY:
             case self::$useDeprecatedConstants ? DBALType::SIMPLE_ARRAY : Types::SIMPLE_ARRAY:
             case 'json_array':
+<<<<<<< HEAD
             case self::$useDeprecatedConstants ? false : Types::JSON:
+=======
+>>>>>>> ThomasN
                 return Type::BUILTIN_TYPE_ARRAY;
         }
 

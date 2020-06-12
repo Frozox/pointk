@@ -71,7 +71,11 @@ class RegisterServiceSubscribersPass extends AbstractRecursivePass
 
         foreach ($class::getSubscribedServices() as $key => $type) {
             if (!\is_string($type) || !preg_match('/^\??[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*+(?:\\\\[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*+)*+$/', $type)) {
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('"%s::getSubscribedServices()" must return valid PHP types for service "%s" key "%s", "%s" returned.', $class, $this->currentId, $key, \is_string($type) ? $type : \gettype($type)));
+=======
+                throw new InvalidArgumentException(sprintf('"%s::getSubscribedServices()" must return valid PHP types for service "%s" key "%s", "%s" returned.', $class, $this->currentId, $key, \is_string($type) ? $type : get_debug_type($type)));
+>>>>>>> ThomasN
             }
             if ($optionalBehavior = '?' === $type[0]) {
                 $type = substr($type, 1);

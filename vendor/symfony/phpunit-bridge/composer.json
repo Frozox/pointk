@@ -24,7 +24,11 @@
         "symfony/error-handler": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
     },
     "conflict": {
+<<<<<<< HEAD
         "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0|<6.4,>=6.0"
+=======
+        "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0|<6.4,>=6.0|9.1.2"
+>>>>>>> ThomasN
     },
     "autoload": {
         "files": [ "bootstrap.php" ],
@@ -39,7 +43,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "5.0-dev"
+=======
+            "dev-master": "5.1-dev"
+>>>>>>> ThomasN
         },
         "thanks": {
             "name": "phpunit/phpunit",

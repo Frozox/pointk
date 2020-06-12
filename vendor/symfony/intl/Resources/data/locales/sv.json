@@ -236,6 +236,22 @@
         "fa_AF": "persiska (Afghanistan)",
         "fa_IR": "persiska (Iran)",
         "ff": "fulani",
+<<<<<<< HEAD
+=======
+        "ff_Adlm": "fulani (adlamiska)",
+        "ff_Adlm_BF": "fulani (adlamiska, Burkina Faso)",
+        "ff_Adlm_CM": "fulani (adlamiska, Kamerun)",
+        "ff_Adlm_GH": "fulani (adlamiska, Ghana)",
+        "ff_Adlm_GM": "fulani (adlamiska, Gambia)",
+        "ff_Adlm_GN": "fulani (adlamiska, Guinea)",
+        "ff_Adlm_GW": "fulani (adlamiska, Guinea-Bissau)",
+        "ff_Adlm_LR": "fulani (adlamiska, Liberia)",
+        "ff_Adlm_MR": "fulani (adlamiska, Mauretanien)",
+        "ff_Adlm_NE": "fulani (adlamiska, Niger)",
+        "ff_Adlm_NG": "fulani (adlamiska, Nigeria)",
+        "ff_Adlm_SL": "fulani (adlamiska, Sierra Leone)",
+        "ff_Adlm_SN": "fulani (adlamiska, Senegal)",
+>>>>>>> ThomasN
         "ff_CM": "fulani (Kamerun)",
         "ff_GN": "fulani (Guinea)",
         "ff_Latn": "fulani (latinska)",
@@ -368,6 +384,11 @@
         "ko_KP": "koreanska (Nordkorea)",
         "ko_KR": "koreanska (Sydkorea)",
         "ks": "kashmiriska",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kashmiriska (arabiska)",
+        "ks_Arab_IN": "kashmiriska (arabiska, Indien)",
+>>>>>>> ThomasN
         "ks_IN": "kashmiriska (Indien)",
         "ku": "kurdiska",
         "ku_TR": "kurdiska (Turkiet)",
@@ -406,6 +427,10 @@
         "mr_IN": "marathi (Indien)",
         "ms": "malajiska",
         "ms_BN": "malajiska (Brunei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malajiska (Indonesien)",
+>>>>>>> ThomasN
         "ms_MY": "malajiska (Malaysia)",
         "ms_SG": "malajiska (Singapore)",
         "mt": "maltesiska",
@@ -486,6 +511,13 @@
         "rw": "kinjarwanda",
         "rw_RW": "kinjarwanda (Rwanda)",
         "sd": "sindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindhi (arabiska)",
+        "sd_Arab_PK": "sindhi (arabiska, Pakistan)",
+        "sd_Deva": "sindhi (devanagari)",
+        "sd_Deva_IN": "sindhi (devanagari, Indien)",
+>>>>>>> ThomasN
         "sd_PK": "sindhi (Pakistan)",
         "se": "nordsamiska",
         "se_FI": "nordsamiska (Finland)",
@@ -523,6 +555,13 @@
         "sr_Latn_RS": "serbiska (latinska, Serbien)",
         "sr_ME": "serbiska (Montenegro)",
         "sr_RS": "serbiska (Serbien)",
+<<<<<<< HEAD
+=======
+        "su": "sundanesiska",
+        "su_ID": "sundanesiska (Indonesien)",
+        "su_Latn": "sundanesiska (latinska)",
+        "su_Latn_ID": "sundanesiska (latinska, Indonesien)",
+>>>>>>> ThomasN
         "sv": "svenska",
         "sv_AX": "svenska (Åland)",
         "sv_FI": "svenska (Finland)",

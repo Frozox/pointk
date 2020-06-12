@@ -1,14 +1,20 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AUD": [
             "AUD$",
             "Tola fakaʻaositelēlia"
         ],
+<<<<<<< HEAD
         "BRL": [
             "R$",
             "BRL"
         ],
+=======
+>>>>>>> ThomasN
         "FJD": [
             "FJD",
             "Tola fakafisi"

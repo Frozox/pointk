@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "گرین وچ کا اصل وقت (عابدجان)",
         "Africa\/Accra": "گرین وچ کا اصل وقت (اکّرا)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "ارجنٹینا کا وقت (ریو گالیگوس)",
         "America\/Argentina\/Salta": "ارجنٹینا کا وقت (سالٹا)",
         "America\/Argentina\/San_Juan": "ارجنٹینا کا وقت (سان جوآن)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "مغربی ارجنٹینا کا وقت (سان لوئس)",
+=======
+        "America\/Argentina\/San_Luis": "ارجنٹینا کا وقت (سان لوئس)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "ارجنٹینا کا وقت (ٹوکومین)",
         "America\/Argentina\/Ushuaia": "ارجنٹینا کا وقت (اوشوآئیا)",
         "America\/Aruba": "اٹلانٹک ٹائم (اروبا)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "برونئی دارالسلام ٹائم",
         "Asia\/Calcutta": "ہندوستان کا معیاری وقت (کولکاتا)",
         "Asia\/Chita": "یکوتسک ٹائم (چیتا)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "کوئبلسان ٹائم (چوئبالسان)",
+=======
+        "Asia\/Choibalsan": "یولان بیتور ٹائم (چوئبالسان)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "ہندوستان کا معیاری وقت (کولمبو)",
         "Asia\/Damascus": "مشرقی یورپ کا وقت (دمشق)",
         "Asia\/Dhaka": "بنگلہ دیش کا وقت (ڈھاکہ)",

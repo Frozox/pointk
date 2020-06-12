@@ -40,6 +40,7 @@ final class KernelEvents
     const EXCEPTION = 'kernel.exception';
 
     /**
+<<<<<<< HEAD
      * The VIEW event occurs when the return value of a controller
      * is not a Response instance.
      *
@@ -51,6 +52,8 @@ final class KernelEvents
     const VIEW = 'kernel.view';
 
     /**
+=======
+>>>>>>> ThomasN
      * The CONTROLLER event occurs once a controller was found for
      * handling a request.
      *
@@ -72,6 +75,20 @@ final class KernelEvents
     const CONTROLLER_ARGUMENTS = 'kernel.controller_arguments';
 
     /**
+<<<<<<< HEAD
+=======
+     * The VIEW event occurs when the return value of a controller
+     * is not a Response instance.
+     *
+     * This event allows you to create a response for the return value of the
+     * controller.
+     *
+     * @Event("Symfony\Component\HttpKernel\Event\ViewEvent")
+     */
+    const VIEW = 'kernel.view';
+
+    /**
+>>>>>>> ThomasN
      * The RESPONSE event occurs once a response was created for
      * replying to a request.
      *
@@ -83,6 +100,7 @@ final class KernelEvents
     const RESPONSE = 'kernel.response';
 
     /**
+<<<<<<< HEAD
      * The TERMINATE event occurs once a response was sent.
      *
      * This event allows you to run expensive post-response jobs.
@@ -92,6 +110,8 @@ final class KernelEvents
     const TERMINATE = 'kernel.terminate';
 
     /**
+=======
+>>>>>>> ThomasN
      * The FINISH_REQUEST event occurs when a response was generated for a request.
      *
      * This event allows you to reset the global and environmental state of
@@ -100,4 +120,16 @@ final class KernelEvents
      * @Event("Symfony\Component\HttpKernel\Event\FinishRequestEvent")
      */
     const FINISH_REQUEST = 'kernel.finish_request';
+<<<<<<< HEAD
+=======
+
+    /**
+     * The TERMINATE event occurs once a response was sent.
+     *
+     * This event allows you to run expensive post-response jobs.
+     *
+     * @Event("Symfony\Component\HttpKernel\Event\TerminateEvent")
+     */
+    const TERMINATE = 'kernel.terminate';
+>>>>>>> ThomasN
 }

@@ -6,6 +6,11 @@ use Exception;
 
 /**
  * Abstract base implementation of the {@link DriverException} interface.
+<<<<<<< HEAD
+=======
+ *
+ * @psalm-immutable
+>>>>>>> ThomasN
  */
 abstract class AbstractDriverException extends Exception implements DriverException
 {

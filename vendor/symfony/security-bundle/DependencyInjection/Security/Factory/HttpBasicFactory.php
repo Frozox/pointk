@@ -20,8 +20,15 @@ use Symfony\Component\DependencyInjection\Reference;
  * HttpBasicFactory creates services for HTTP basic authentication.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+<<<<<<< HEAD
  */
 class HttpBasicFactory implements SecurityFactoryInterface
+=======
+ *
+ * @internal
+ */
+class HttpBasicFactory implements SecurityFactoryInterface, AuthenticatorFactoryInterface, EntryPointFactoryInterface
+>>>>>>> ThomasN
 {
     public function create(ContainerBuilder $container, string $id, array $config, string $userProvider, ?string $defaultEntryPoint)
     {
@@ -34,7 +41,14 @@ class HttpBasicFactory implements SecurityFactoryInterface
         ;
 
         // entry point
+<<<<<<< HEAD
         $entryPointId = $this->createEntryPoint($container, $id, $config, $defaultEntryPoint);
+=======
+        $entryPointId = $defaultEntryPoint;
+        if (null === $entryPointId) {
+            $entryPointId = $this->registerEntryPoint($container, $id, $config);
+        }
+>>>>>>> ThomasN
 
         // listener
         $listenerId = 'security.authentication.listener.basic.'.$id;
@@ -46,6 +60,20 @@ class HttpBasicFactory implements SecurityFactoryInterface
         return [$provider, $listenerId, $entryPointId];
     }
 
+<<<<<<< HEAD
+=======
+    public function createAuthenticator(ContainerBuilder $container, string $firewallName, array $config, string $userProviderId): string
+    {
+        $authenticatorId = 'security.authenticator.http_basic.'.$firewallName;
+        $container
+            ->setDefinition($authenticatorId, new ChildDefinition('security.authenticator.http_basic'))
+            ->replaceArgument(0, $config['realm'])
+            ->replaceArgument(1, new Reference($userProviderId));
+
+        return $authenticatorId;
+    }
+
+>>>>>>> ThomasN
     public function getPosition()
     {
         return 'http';
@@ -66,12 +94,17 @@ class HttpBasicFactory implements SecurityFactoryInterface
         ;
     }
 
+<<<<<<< HEAD
     protected function createEntryPoint(ContainerBuilder $container, string $id, array $config, ?string $defaultEntryPoint)
     {
         if (null !== $defaultEntryPoint) {
             return $defaultEntryPoint;
         }
 
+=======
+    public function registerEntryPoint(ContainerBuilder $container, string $id, array $config): string
+    {
+>>>>>>> ThomasN
         $entryPointId = 'security.authentication.basic_entry_point.'.$id;
         $container
             ->setDefinition($entryPointId, new ChildDefinition('security.authentication.basic_entry_point'))

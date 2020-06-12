@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+ * added `RdKafka` support
+
+>>>>>>> ThomasN
 4.4.0
 -----
 

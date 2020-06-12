@@ -20,8 +20,11 @@
 namespace Doctrine\ORM\Mapping\Driver;
 
 use Doctrine\Common\Inflector\Inflector;
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
+=======
+>>>>>>> ThomasN
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Schema\SchemaException;
 use Doctrine\DBAL\Schema\Table;
@@ -29,6 +32,12 @@ use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Mapping\MappingException;
+<<<<<<< HEAD
+=======
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use function interface_exists;
+>>>>>>> ThomasN
 use function preg_replace;
 
 /**
@@ -555,3 +564,8 @@ class DatabaseDriver implements MappingDriver
         return Inflector::camelize($columnName);
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadata::class);
+>>>>>>> ThomasN

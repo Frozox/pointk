@@ -15,6 +15,10 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\Config\Util\XmlUtils;
 use Symfony\Component\Translation\Exception\InvalidResourceException;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Translation\Exception\RuntimeException;
+>>>>>>> ThomasN
 use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\Util\XliffUtils;
 
@@ -30,6 +34,13 @@ class XliffFileLoader implements LoaderInterface
      */
     public function load($resource, string $locale, string $domain = 'messages')
     {
+<<<<<<< HEAD
+=======
+        if (!class_exists(XmlUtils::class)) {
+            throw new RuntimeException('Loading translations from the Xliff format requires the Symfony Config component.');
+        }
+
+>>>>>>> ThomasN
         if (!stream_is_local($resource)) {
             throw new InvalidResourceException(sprintf('This is not a local file "%s".', $resource));
         }
@@ -53,12 +64,20 @@ class XliffFileLoader implements LoaderInterface
         try {
             $dom = XmlUtils::loadFile($resource);
         } catch (\InvalidArgumentException $e) {
+<<<<<<< HEAD
             throw new InvalidResourceException(sprintf('Unable to load "%s": %s', $resource, $e->getMessage()), $e->getCode(), $e);
+=======
+            throw new InvalidResourceException(sprintf('Unable to load "%s": ', $resource).$e->getMessage(), $e->getCode(), $e);
+>>>>>>> ThomasN
         }
 
         $xliffVersion = XliffUtils::getVersionNumber($dom);
         if ($errors = XliffUtils::validateSchema($dom)) {
+<<<<<<< HEAD
             throw new InvalidResourceException(sprintf('Invalid resource provided: "%s"; Errors: %s', $resource, XliffUtils::getErrorsAsString($errors)));
+=======
+            throw new InvalidResourceException(sprintf('Invalid resource provided: "%s"; Errors: ', $resource).XliffUtils::getErrorsAsString($errors));
+>>>>>>> ThomasN
         }
 
         if ('1.2' === $xliffVersion) {
@@ -135,11 +154,20 @@ class XliffFileLoader implements LoaderInterface
 
         foreach ($xml->xpath('//xliff:unit') as $unit) {
             foreach ($unit->segment as $segment) {
+<<<<<<< HEAD
                 $source = $segment->source;
 
                 // If the xlf file has another encoding specified, try to convert it because
                 // simple_xml will always return utf-8 encoded values
                 $target = $this->utf8ToCharset((string) (isset($segment->target) ? $segment->target : $source), $encoding);
+=======
+                $attributes = $unit->attributes();
+                $source = $attributes['name'] ?? $segment->source;
+
+                // If the xlf file has another encoding specified, try to convert it because
+                // simple_xml will always return utf-8 encoded values
+                $target = $this->utf8ToCharset((string) ($segment->target ?? $segment->source), $encoding);
+>>>>>>> ThomasN
 
                 $catalogue->set((string) $source, $target, $domain);
 

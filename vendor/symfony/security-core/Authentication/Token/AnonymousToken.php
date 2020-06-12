@@ -11,6 +11,11 @@
 
 namespace Symfony\Component\Security\Core\Authentication\Token;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Security\Core\User\UserInterface;
+
+>>>>>>> ThomasN
 /**
  * AnonymousToken represents an anonymous token.
  *
@@ -21,9 +26,15 @@ class AnonymousToken extends AbstractToken
     private $secret;
 
     /**
+<<<<<<< HEAD
      * @param string        $secret A secret used to make sure the token is created by the app and not by a malicious client
      * @param string|object $user   The user can be a UserInterface instance, or an object implementing a __toString method or the username as a regular string
      * @param string[]      $roles  An array of roles
+=======
+     * @param string                           $secret A secret used to make sure the token is created by the app and not by a malicious client
+     * @param string|\Stringable|UserInterface $user
+     * @param string[]                         $roles
+>>>>>>> ThomasN
      */
     public function __construct(string $secret, $user, array $roles = [])
     {
@@ -66,6 +77,10 @@ class AnonymousToken extends AbstractToken
     public function __unserialize(array $data): void
     {
         [$this->secret, $parentData] = $data;
+<<<<<<< HEAD
+=======
+        $parentData = \is_array($parentData) ? $parentData : unserialize($parentData);
+>>>>>>> ThomasN
         parent::__unserialize($parentData);
     }
 }

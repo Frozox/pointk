@@ -368,6 +368,11 @@
         "ko_KP": "koreyscha (Shimoliy Koreya)",
         "ko_KR": "koreyscha (Janubiy Koreya)",
         "ks": "kashmircha",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kashmircha (arab)",
+        "ks_Arab_IN": "kashmircha (arab, Hindiston)",
+>>>>>>> ThomasN
         "ks_IN": "kashmircha (Hindiston)",
         "ku": "kurdcha",
         "ku_TR": "kurdcha (Turkiya)",
@@ -406,6 +411,10 @@
         "mr_IN": "maratxi (Hindiston)",
         "ms": "malay",
         "ms_BN": "malay (Bruney)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malay (Indoneziya)",
+>>>>>>> ThomasN
         "ms_MY": "malay (Malayziya)",
         "ms_SG": "malay (Singapur)",
         "mt": "maltiy",
@@ -484,6 +493,13 @@
         "rw": "kinyaruanda",
         "rw_RW": "kinyaruanda (Ruanda)",
         "sd": "sindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindhi (arab)",
+        "sd_Arab_PK": "sindhi (arab, Pokiston)",
+        "sd_Deva": "sindhi (devanagari)",
+        "sd_Deva_IN": "sindhi (devanagari, Hindiston)",
+>>>>>>> ThomasN
         "sd_PK": "sindhi (Pokiston)",
         "se": "shimoliy saam",
         "se_FI": "shimoliy saam (Finlandiya)",
@@ -519,6 +535,13 @@
         "sr_Latn_RS": "serbcha (lotin, Serbiya)",
         "sr_ME": "serbcha (Chernogoriya)",
         "sr_RS": "serbcha (Serbiya)",
+<<<<<<< HEAD
+=======
+        "su": "sundan",
+        "su_ID": "sundan (Indoneziya)",
+        "su_Latn": "sundan (lotin)",
+        "su_Latn_ID": "sundan (lotin, Indoneziya)",
+>>>>>>> ThomasN
         "sv": "shved",
         "sv_AX": "shved (Aland orollari)",
         "sv_FI": "shved (Finlandiya)",

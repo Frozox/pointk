@@ -16,7 +16,11 @@ use Symfony\Component\Notifier\Exception\InvalidArgumentException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 final class Dsn
 {
@@ -26,8 +30,15 @@ final class Dsn
     private $password;
     private $port;
     private $options;
+<<<<<<< HEAD
 
     public function __construct(string $scheme, string $host, ?string $user = null, ?string $password = null, ?int $port = null, array $options = [])
+=======
+    private $path;
+    private $dsn;
+
+    public function __construct(string $scheme, string $host, ?string $user = null, ?string $password = null, ?int $port = null, array $options = [], ?string $path = null)
+>>>>>>> ThomasN
     {
         $this->scheme = $scheme;
         $this->host = $host;
@@ -35,6 +46,10 @@ final class Dsn
         $this->password = $password;
         $this->port = $port;
         $this->options = $options;
+<<<<<<< HEAD
+=======
+        $this->path = $path;
+>>>>>>> ThomasN
     }
 
     public static function fromString(string $dsn): self
@@ -54,9 +69,19 @@ final class Dsn
         $user = isset($parsedDsn['user']) ? urldecode($parsedDsn['user']) : null;
         $password = isset($parsedDsn['pass']) ? urldecode($parsedDsn['pass']) : null;
         $port = $parsedDsn['port'] ?? null;
+<<<<<<< HEAD
         parse_str($parsedDsn['query'] ?? '', $query);
 
         return new self($parsedDsn['scheme'], $parsedDsn['host'], $user, $password, $port, $query);
+=======
+        $path = $parsedDsn['path'] ?? null;
+        parse_str($parsedDsn['query'] ?? '', $query);
+
+        $dsnObject = new self($parsedDsn['scheme'], $parsedDsn['host'], $user, $password, $port, $query, $path);
+        $dsnObject->dsn = $dsn;
+
+        return $dsnObject;
+>>>>>>> ThomasN
     }
 
     public function getScheme(): string
@@ -88,4 +113,17 @@ final class Dsn
     {
         return $this->options[$key] ?? $default;
     }
+<<<<<<< HEAD
+=======
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function getOriginalDsn(): string
+    {
+        return $this->dsn;
+    }
+>>>>>>> ThomasN
 }

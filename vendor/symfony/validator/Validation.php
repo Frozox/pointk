@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\Validator;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Validator\Exception\ValidationFailedException;
+>>>>>>> ThomasN
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -21,6 +25,37 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 final class Validation
 {
     /**
+<<<<<<< HEAD
+=======
+     * Creates a callable chain of constraints.
+     *
+     * @param Constraint|ValidatorInterface|null $constraintOrValidator
+     */
+    public static function createCallable($constraintOrValidator = null, Constraint ...$constraints): callable
+    {
+        $validator = $constraintOrValidator;
+
+        if ($constraintOrValidator instanceof Constraint) {
+            $constraints = \func_get_args();
+            $validator = null;
+        } elseif (null !== $constraintOrValidator && !$constraintOrValidator instanceof ValidatorInterface) {
+            throw new \TypeError(sprintf('Argument 1 passed to "%s()" must be a "%s" or a "%s" object, "%s" given.', __METHOD__, Constraint::class, ValidatorInterface::class, get_debug_type($constraintOrValidator)));
+        }
+
+        $validator = $validator ?? self::createValidator();
+
+        return static function ($value) use ($constraints, $validator) {
+            $violations = $validator->validate($value, $constraints);
+            if (0 !== $violations->count()) {
+                throw new ValidationFailedException($value, $violations);
+            }
+
+            return $value;
+        };
+    }
+
+    /**
+>>>>>>> ThomasN
      * Creates a new validator.
      *
      * If you want to configure the validator, use

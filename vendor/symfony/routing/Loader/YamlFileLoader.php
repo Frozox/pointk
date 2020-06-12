@@ -13,9 +13,16 @@ namespace Symfony\Component\Routing\Loader;
 
 use Symfony\Component\Config\Loader\FileLoader;
 use Symfony\Component\Config\Resource\FileResource;
+<<<<<<< HEAD
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\RouteCompiler;
+=======
+use Symfony\Component\Routing\Loader\Configurator\Traits\HostTrait;
+use Symfony\Component\Routing\Loader\Configurator\Traits\LocalizedRouteTrait;
+use Symfony\Component\Routing\Loader\Configurator\Traits\PrefixTrait;
+use Symfony\Component\Routing\RouteCollection;
+>>>>>>> ThomasN
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Parser as YamlParser;
 use Symfony\Component\Yaml\Yaml;
@@ -28,8 +35,17 @@ use Symfony\Component\Yaml\Yaml;
  */
 class YamlFileLoader extends FileLoader
 {
+<<<<<<< HEAD
     private static $availableKeys = [
         'resource', 'type', 'prefix', 'path', 'host', 'schemes', 'methods', 'defaults', 'requirements', 'options', 'condition', 'controller', 'name_prefix', 'trailing_slash_on_root', 'locale', 'format', 'utf8', 'exclude',
+=======
+    use HostTrait;
+    use LocalizedRouteTrait;
+    use PrefixTrait;
+
+    private static $availableKeys = [
+        'resource', 'type', 'prefix', 'path', 'host', 'schemes', 'methods', 'defaults', 'requirements', 'options', 'condition', 'controller', 'name_prefix', 'trailing_slash_on_root', 'locale', 'format', 'utf8', 'exclude', 'stateless',
+>>>>>>> ThomasN
     ];
     private $yamlParser;
 
@@ -62,7 +78,11 @@ class YamlFileLoader extends FileLoader
         try {
             $parsedConfig = $this->yamlParser->parseFile($path, Yaml::PARSE_CONSTANT);
         } catch (ParseException $e) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The file "%s" does not contain valid YAML.', $path), 0, $e);
+=======
+            throw new \InvalidArgumentException(sprintf('The file "%s" does not contain valid YAML: ', $path).$e->getMessage(), 0, $e);
+>>>>>>> ThomasN
         }
 
         $collection = new RouteCollection();
@@ -111,10 +131,13 @@ class YamlFileLoader extends FileLoader
         $defaults = isset($config['defaults']) ? $config['defaults'] : [];
         $requirements = isset($config['requirements']) ? $config['requirements'] : [];
         $options = isset($config['options']) ? $config['options'] : [];
+<<<<<<< HEAD
         $host = isset($config['host']) ? $config['host'] : '';
         $schemes = isset($config['schemes']) ? $config['schemes'] : [];
         $methods = isset($config['methods']) ? $config['methods'] : [];
         $condition = isset($config['condition']) ? $config['condition'] : null;
+=======
+>>>>>>> ThomasN
 
         foreach ($requirements as $placeholder => $requirement) {
             if (\is_int($placeholder)) {
@@ -134,6 +157,7 @@ class YamlFileLoader extends FileLoader
         if (isset($config['utf8'])) {
             $options['utf8'] = $config['utf8'];
         }
+<<<<<<< HEAD
 
         if (\is_array($config['path'])) {
             $route = new Route('', $defaults, $requirements, $options, $host, $schemes, $methods, $condition);
@@ -149,6 +173,22 @@ class YamlFileLoader extends FileLoader
         } else {
             $route = new Route($config['path'], $defaults, $requirements, $options, $host, $schemes, $methods, $condition);
             $collection->add($name, $route);
+=======
+        if (isset($config['stateless'])) {
+            $defaults['_stateless'] = $config['stateless'];
+        }
+
+        $routes = $this->createLocalizedRoute($collection, $name, $config['path']);
+        $routes->addDefaults($defaults);
+        $routes->addRequirements($requirements);
+        $routes->addOptions($options);
+        $routes->setSchemes($config['schemes'] ?? []);
+        $routes->setMethods($config['methods'] ?? []);
+        $routes->setCondition($config['condition'] ?? null);
+
+        if (isset($config['host'])) {
+            $this->addHost($routes, $config['host']);
+>>>>>>> ThomasN
         }
     }
 
@@ -171,6 +211,10 @@ class YamlFileLoader extends FileLoader
         $schemes = isset($config['schemes']) ? $config['schemes'] : null;
         $methods = isset($config['methods']) ? $config['methods'] : null;
         $trailingSlashOnRoot = $config['trailing_slash_on_root'] ?? true;
+<<<<<<< HEAD
+=======
+        $namePrefix = $config['name_prefix'] ?? null;
+>>>>>>> ThomasN
         $exclude = $config['exclude'] ?? null;
 
         if (isset($config['controller'])) {
@@ -185,9 +229,19 @@ class YamlFileLoader extends FileLoader
         if (isset($config['utf8'])) {
             $options['utf8'] = $config['utf8'];
         }
+<<<<<<< HEAD
 
         $this->setCurrentDir(\dirname($path));
 
+=======
+        if (isset($config['stateless'])) {
+            $defaults['_stateless'] = $config['stateless'];
+        }
+
+        $this->setCurrentDir(\dirname($path));
+
+        /** @var RouteCollection[] $imported */
+>>>>>>> ThomasN
         $imported = $this->import($config['resource'], $type, false, $file, $exclude) ?: [];
 
         if (!\is_array($imported)) {
@@ -195,6 +249,7 @@ class YamlFileLoader extends FileLoader
         }
 
         foreach ($imported as $subCollection) {
+<<<<<<< HEAD
             /* @var $subCollection RouteCollection */
             if (!\is_array($prefix)) {
                 $subCollection->addPrefix($prefix);
@@ -231,6 +286,12 @@ class YamlFileLoader extends FileLoader
 
             if (null !== $host) {
                 $subCollection->setHost($host);
+=======
+            $this->addPrefix($subCollection, $prefix, $trailingSlashOnRoot);
+
+            if (null !== $host) {
+                $this->addHost($subCollection, $host);
+>>>>>>> ThomasN
             }
             if (null !== $condition) {
                 $subCollection->setCondition($condition);
@@ -241,14 +302,23 @@ class YamlFileLoader extends FileLoader
             if (null !== $methods) {
                 $subCollection->setMethods($methods);
             }
+<<<<<<< HEAD
+=======
+            if (null !== $namePrefix) {
+                $subCollection->addNamePrefix($namePrefix);
+            }
+>>>>>>> ThomasN
             $subCollection->addDefaults($defaults);
             $subCollection->addRequirements($requirements);
             $subCollection->addOptions($options);
 
+<<<<<<< HEAD
             if (isset($config['name_prefix'])) {
                 $subCollection->addNamePrefix($config['name_prefix']);
             }
 
+=======
+>>>>>>> ThomasN
             $collection->addCollection($subCollection);
         }
     }
@@ -283,5 +353,11 @@ class YamlFileLoader extends FileLoader
         if (isset($config['controller']) && isset($config['defaults']['_controller'])) {
             throw new \InvalidArgumentException(sprintf('The routing file "%s" must not specify both the "controller" key and the defaults key "_controller" for "%s".', $path, $name));
         }
+<<<<<<< HEAD
+=======
+        if (isset($config['stateless']) && isset($config['defaults']['_stateless'])) {
+            throw new \InvalidArgumentException(sprintf('The routing file "%s" must not specify both the "stateless" key and the defaults key "_stateless" for "%s".', $path, $name));
+        }
+>>>>>>> ThomasN
     }
 }

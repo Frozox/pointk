@@ -17,7 +17,11 @@ use Symfony\Component\Notifier\Recipient\Recipient;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 interface SmsNotificationInterface
 {

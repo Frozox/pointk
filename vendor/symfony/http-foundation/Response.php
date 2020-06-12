@@ -11,6 +11,12 @@
 
 namespace Symfony\Component\HttpFoundation;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(ResponseHeaderBag::class);
+
+>>>>>>> ThomasN
 /**
  * Response represents an HTTP response.
  *
@@ -83,6 +89,27 @@ class Response
     const HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;                             // RFC6585
 
     /**
+<<<<<<< HEAD
+=======
+     * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+     */
+    private const HTTP_RESPONSE_CACHE_CONTROL_DIRECTIVES = [
+        'must_revalidate' => false,
+        'no_cache' => false,
+        'no_store' => false,
+        'no_transform' => false,
+        'public' => false,
+        'private' => false,
+        'proxy_revalidate' => false,
+        'max_age' => true,
+        's_maxage' => true,
+        'immutable' => false,
+        'last_modified' => true,
+        'etag' => true,
+    ];
+
+    /**
+>>>>>>> ThomasN
      * @var ResponseHeaderBag
      */
     public $headers;
@@ -208,9 +235,19 @@ class Response
      *         ->setSharedMaxAge(300);
      *
      * @return static
+<<<<<<< HEAD
      */
     public static function create(?string $content = '', int $status = 200, array $headers = [])
     {
+=======
+     *
+     * @deprecated since Symfony 5.1, use __construct() instead.
+     */
+    public static function create(?string $content = '', int $status = 200, array $headers = [])
+    {
+        trigger_deprecation('symfony/http-foundation', '5.1', 'The "%s()" method is deprecated, use "new %s()" instead.', __METHOD__, \get_called_class());
+
+>>>>>>> ThomasN
         return new static($content, $status, $headers);
     }
 
@@ -263,7 +300,11 @@ class Response
         } else {
             // Content-type based on the Request
             if (!$headers->has('Content-Type')) {
+<<<<<<< HEAD
                 $format = $request->getPreferredFormat(null);
+=======
+                $format = $request->getRequestFormat(null);
+>>>>>>> ThomasN
                 if (null !== $format && $mimeType = $request->getMimeType($format)) {
                     $headers->set('Content-Type', $mimeType);
                 }
@@ -914,7 +955,11 @@ class Response
     /**
      * Sets the response's cache headers (validation and/or expiration).
      *
+<<<<<<< HEAD
      * Available options are: etag, last_modified, max_age, s_maxage, private, public and immutable.
+=======
+     * Available options are: must_revalidate, no_cache, no_store, no_transform, public, private, proxy_revalidate, max_age, s_maxage, immutable, last_modified and etag.
+>>>>>>> ThomasN
      *
      * @return $this
      *
@@ -924,7 +969,11 @@ class Response
      */
     public function setCache(array $options): object
     {
+<<<<<<< HEAD
         if ($diff = array_diff(array_keys($options), ['etag', 'last_modified', 'max_age', 's_maxage', 'private', 'public', 'immutable'])) {
+=======
+        if ($diff = array_diff(array_keys($options), array_keys(self::HTTP_RESPONSE_CACHE_CONTROL_DIRECTIVES))) {
+>>>>>>> ThomasN
             throw new \InvalidArgumentException(sprintf('Response does not support the following options: "%s".', implode('", "', $diff)));
         }
 
@@ -944,6 +993,19 @@ class Response
             $this->setSharedMaxAge($options['s_maxage']);
         }
 
+<<<<<<< HEAD
+=======
+        foreach (self::HTTP_RESPONSE_CACHE_CONTROL_DIRECTIVES as $directive => $hasValue) {
+            if (!$hasValue && isset($options[$directive])) {
+                if ($options[$directive]) {
+                    $this->headers->addCacheControlDirective(str_replace('_', '-', $directive));
+                } else {
+                    $this->headers->removeCacheControlDirective(str_replace('_', '-', $directive));
+                }
+            }
+        }
+
+>>>>>>> ThomasN
         if (isset($options['public'])) {
             if ($options['public']) {
                 $this->setPublic();
@@ -960,10 +1022,13 @@ class Response
             }
         }
 
+<<<<<<< HEAD
         if (isset($options['immutable'])) {
             $this->setImmutable((bool) $options['immutable']);
         }
 
+=======
+>>>>>>> ThomasN
         return $this;
     }
 
@@ -1209,6 +1274,25 @@ class Response
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Marks a response as safe according to RFC8674.
+     *
+     * @see https://tools.ietf.org/html/rfc8674
+     */
+    public function setContentSafe(bool $safe = true): void
+    {
+        if ($safe) {
+            $this->headers->set('Preference-Applied', 'safe');
+        } elseif ('safe' === $this->headers->get('Preference-Applied')) {
+            $this->headers->remove('Preference-Applied');
+        }
+
+        $this->setVary('Prefer', false);
+    }
+
+    /**
+>>>>>>> ThomasN
      * Checks if we need to remove Cache-Control for SSL encrypted downloads when using IE < 9.
      *
      * @see http://support.microsoft.com/kb/323308

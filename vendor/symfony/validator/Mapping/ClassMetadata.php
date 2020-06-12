@@ -174,7 +174,11 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
     public function addConstraint(Constraint $constraint)
     {
         if (!\in_array(Constraint::CLASS_CONSTRAINT, (array) $constraint->getTargets())) {
+<<<<<<< HEAD
             throw new ConstraintDefinitionException(sprintf('The constraint "%s" cannot be put on classes.', \get_class($constraint)));
+=======
+            throw new ConstraintDefinitionException(sprintf('The constraint "%s" cannot be put on classes.', get_debug_type($constraint)));
+>>>>>>> ThomasN
         }
 
         if ($constraint instanceof Traverse) {
@@ -382,7 +386,11 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
     public function setGroupSequence($groupSequence)
     {
         if ($this->isGroupSequenceProvider()) {
+<<<<<<< HEAD
             throw new GroupDefinitionException('Defining a static group sequence is not allowed with a group sequence provider');
+=======
+            throw new GroupDefinitionException('Defining a static group sequence is not allowed with a group sequence provider.');
+>>>>>>> ThomasN
         }
 
         if (\is_array($groupSequence)) {
@@ -390,11 +398,19 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
         }
 
         if (\in_array(Constraint::DEFAULT_GROUP, $groupSequence->groups, true)) {
+<<<<<<< HEAD
             throw new GroupDefinitionException(sprintf('The group "%s" is not allowed in group sequences', Constraint::DEFAULT_GROUP));
         }
 
         if (!\in_array($this->getDefaultGroup(), $groupSequence->groups, true)) {
             throw new GroupDefinitionException(sprintf('The group "%s" is missing in the group sequence', $this->getDefaultGroup()));
+=======
+            throw new GroupDefinitionException(sprintf('The group "%s" is not allowed in group sequences.', Constraint::DEFAULT_GROUP));
+        }
+
+        if (!\in_array($this->getDefaultGroup(), $groupSequence->groups, true)) {
+            throw new GroupDefinitionException(sprintf('The group "%s" is missing in the group sequence.', $this->getDefaultGroup()));
+>>>>>>> ThomasN
         }
 
         $this->groupSequence = $groupSequence;
@@ -440,11 +456,19 @@ class ClassMetadata extends GenericMetadata implements ClassMetadataInterface
     public function setGroupSequenceProvider(bool $active)
     {
         if ($this->hasGroupSequence()) {
+<<<<<<< HEAD
             throw new GroupDefinitionException('Defining a group sequence provider is not allowed with a static group sequence');
         }
 
         if (!$this->getReflectionClass()->implementsInterface('Symfony\Component\Validator\GroupSequenceProviderInterface')) {
             throw new GroupDefinitionException(sprintf('Class "%s" must implement GroupSequenceProviderInterface', $this->name));
+=======
+            throw new GroupDefinitionException('Defining a group sequence provider is not allowed with a static group sequence.');
+        }
+
+        if (!$this->getReflectionClass()->implementsInterface('Symfony\Component\Validator\GroupSequenceProviderInterface')) {
+            throw new GroupDefinitionException(sprintf('Class "%s" must implement GroupSequenceProviderInterface.', $this->name));
+>>>>>>> ThomasN
         }
 
         $this->groupSequenceProvider = $active;

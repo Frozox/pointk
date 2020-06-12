@@ -82,7 +82,10 @@ class CurrencyDataGenerator extends AbstractDataGenerator
 
         if (isset($localeBundle['Currencies']) && null !== $localeBundle['Currencies']) {
             $data = [
+<<<<<<< HEAD
                 'Version' => $localeBundle['Version'],
+=======
+>>>>>>> ThomasN
                 'Names' => $this->generateSymbolNamePairs($localeBundle),
             ];
 
@@ -102,7 +105,10 @@ class CurrencyDataGenerator extends AbstractDataGenerator
         $rootBundle = $reader->read($tempDir, 'root');
 
         return [
+<<<<<<< HEAD
             'Version' => $rootBundle['Version'],
+=======
+>>>>>>> ThomasN
             'Names' => $this->generateSymbolNamePairs($rootBundle),
         ];
     }
@@ -112,7 +118,10 @@ class CurrencyDataGenerator extends AbstractDataGenerator
      */
     protected function generateDataForMeta(BundleEntryReaderInterface $reader, string $tempDir): ?array
     {
+<<<<<<< HEAD
         $rootBundle = $reader->read($tempDir, 'root');
+=======
+>>>>>>> ThomasN
         $supplementalDataBundle = $reader->read($tempDir, 'supplementalData');
         $numericCodesBundle = $reader->read($tempDir, 'currencyNumericCodes');
 
@@ -121,7 +130,10 @@ class CurrencyDataGenerator extends AbstractDataGenerator
         sort($this->currencyCodes);
 
         $data = [
+<<<<<<< HEAD
             'Version' => $rootBundle['Version'],
+=======
+>>>>>>> ThomasN
             'Currencies' => $this->currencyCodes,
             'Meta' => $this->generateCurrencyMeta($supplementalDataBundle),
             'Alpha3ToNumeric' => $this->generateAlpha3ToNumericMapping($numericCodesBundle, $this->currencyCodes),

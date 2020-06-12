@@ -13,6 +13,10 @@ namespace Symfony\Component\Mailer\Transport;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+<<<<<<< HEAD
+=======
+use Symfony\Component\EventDispatcher\Event;
+>>>>>>> ThomasN
 use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\Mailer\Envelope;
 use Symfony\Component\Mailer\Event\MessageEvent;
@@ -33,7 +37,11 @@ abstract class AbstractTransport implements TransportInterface
 
     public function __construct(EventDispatcherInterface $dispatcher = null, LoggerInterface $logger = null)
     {
+<<<<<<< HEAD
         $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
+=======
+        $this->dispatcher = class_exists(Event::class) ? LegacyEventDispatcherProxy::decorate($dispatcher) : $dispatcher;
+>>>>>>> ThomasN
         $this->logger = $logger ?: new NullLogger();
     }
 
@@ -63,10 +71,13 @@ abstract class AbstractTransport implements TransportInterface
             $envelope = $event->getEnvelope();
         }
 
+<<<<<<< HEAD
         if (!$envelope->getRecipients()) {
             return null;
         }
 
+=======
+>>>>>>> ThomasN
         $message = new SentMessage($message, $envelope);
         $this->doSend($message);
 

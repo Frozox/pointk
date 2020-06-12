@@ -11,6 +11,11 @@
 
 namespace Symfony\Component\Security\Core\Authentication\Token;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Security\Core\User\UserInterface;
+
+>>>>>>> ThomasN
 /**
  * PreAuthenticatedToken implements a pre-authenticated token.
  *
@@ -22,10 +27,16 @@ class PreAuthenticatedToken extends AbstractToken
     private $providerKey;
 
     /**
+<<<<<<< HEAD
      * @param string|object $user        The user can be a UserInterface instance, or an object implementing a __toString method or the username as a regular string
      * @param mixed         $credentials The user credentials
      * @param string        $providerKey The provider key
      * @param string[]      $roles       An array of roles
+=======
+     * @param string|\Stringable|UserInterface $user
+     * @param mixed                            $credentials
+     * @param string[]                         $roles
+>>>>>>> ThomasN
      */
     public function __construct($user, $credentials, string $providerKey, array $roles = [])
     {
@@ -86,6 +97,10 @@ class PreAuthenticatedToken extends AbstractToken
     public function __unserialize(array $data): void
     {
         [$this->credentials, $this->providerKey, $parentData] = $data;
+<<<<<<< HEAD
+=======
+        $parentData = \is_array($parentData) ? $parentData : unserialize($parentData);
+>>>>>>> ThomasN
         parent::__unserialize($parentData);
     }
 }

@@ -92,7 +92,11 @@ EOF
         $filter = $input->getOption('filter');
 
         if (null !== $name && [] === $this->getFilesystemLoaders()) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Argument "name" not supported, it requires the Twig loader "%s"', FilesystemLoader::class));
+=======
+            throw new InvalidArgumentException(sprintf('Argument "name" not supported, it requires the Twig loader "%s".', FilesystemLoader::class));
+>>>>>>> ThomasN
         }
 
         switch ($input->getOption('format')) {
@@ -317,7 +321,11 @@ EOF
             } elseif (\is_string($cb) && preg_match('{^(.+)::(.+)$}', $cb, $m) && method_exists($m[1], $m[2])) {
                 $refl = new \ReflectionMethod($m[1], $m[2]);
             } else {
+<<<<<<< HEAD
                 throw new \UnexpectedValueException('Unsupported callback type');
+=======
+                throw new \UnexpectedValueException('Unsupported callback type.');
+>>>>>>> ThomasN
             }
 
             $args = $refl->getParameters();

@@ -50,8 +50,12 @@ class ValidationListener implements EventSubscriberInterface
             foreach ($this->validator->validate($form) as $violation) {
                 // Allow the "invalid" constraint to be put onto
                 // non-synchronized forms
+<<<<<<< HEAD
                 // ConstraintViolation::getConstraint() must not expect to provide a constraint as long as Symfony\Component\Validator\ExecutionContext exists (before 3.0)
                 $allowNonSynchronized = (null === $violation->getConstraint() || $violation->getConstraint() instanceof Form) && Form::NOT_SYNCHRONIZED_ERROR === $violation->getCode();
+=======
+                $allowNonSynchronized = $violation->getConstraint() instanceof Form && Form::NOT_SYNCHRONIZED_ERROR === $violation->getCode();
+>>>>>>> ThomasN
 
                 $this->violationMapper->mapViolation($violation, $form, $allowNonSynchronized);
             }

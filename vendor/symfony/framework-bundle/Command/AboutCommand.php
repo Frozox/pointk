@@ -89,6 +89,7 @@ EOT
             ['Xdebug', \extension_loaded('xdebug') ? 'true' : 'false'],
         ];
 
+<<<<<<< HEAD
         if ($dotenv = self::getDotenvVars()) {
             $rows = array_merge($rows, [
                 new TableSeparator(),
@@ -99,6 +100,8 @@ EOT
             }, $dotenv, array_keys($dotenv)));
         }
 
+=======
+>>>>>>> ThomasN
         $io->table([], $rows);
 
         return 0;
@@ -129,6 +132,7 @@ EOT
 
         return false !== $date && new \DateTime() > $date->modify('last day of this month 23:59:59');
     }
+<<<<<<< HEAD
 
     private static function getDotenvVars(): array
     {
@@ -141,4 +145,6 @@ EOT
 
         return $vars;
     }
+=======
+>>>>>>> ThomasN
 }

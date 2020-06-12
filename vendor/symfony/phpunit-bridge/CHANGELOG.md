@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+ * ignore verbosity settings when the build fails because of deprecations
+ * added per-group verbosity
+ * added `ExpectDeprecationTrait` to be able to define an expected deprecation from inside a test
+ * deprecated the `@expectedDeprecation` annotation, use the `ExpectDeprecationTrait::expectDeprecation()` method instead
+
+>>>>>>> ThomasN
 5.0.0
 -----
 

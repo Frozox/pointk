@@ -13,6 +13,12 @@ namespace Symfony\Component\Stopwatch;
 
 use Symfony\Contracts\Service\ResetInterface;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(Section::class);
+
+>>>>>>> ThomasN
 /**
  * Stopwatch provides a way to profile code.
  *

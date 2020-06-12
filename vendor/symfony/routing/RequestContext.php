@@ -45,6 +45,26 @@ class RequestContext
         $this->setQueryString($queryString);
     }
 
+<<<<<<< HEAD
+=======
+    public static function fromUri(string $uri, string $host = 'localhost', string $scheme = 'http', int $httpPort = 80, int $httpsPort = 443): self
+    {
+        $uri = parse_url($uri);
+        $scheme = $uri['scheme'] ?? $scheme;
+        $host = $uri['host'] ?? $host;
+
+        if (isset($uri['port'])) {
+            if ('http' === $scheme) {
+                $httpPort = $uri['port'];
+            } elseif ('https' === $scheme) {
+                $httpsPort = $uri['port'];
+            }
+        }
+
+        return new self($uri['path'] ?? '', 'GET', $host, $scheme, $httpPort, $httpsPort);
+    }
+
+>>>>>>> ThomasN
     /**
      * Updates the RequestContext information based on a HttpFoundation Request.
      *
@@ -302,4 +322,12 @@ class RequestContext
 
         return $this;
     }
+<<<<<<< HEAD
+=======
+
+    public function isSecure(): bool
+    {
+        return 'https' === $this->scheme;
+    }
+>>>>>>> ThomasN
 }

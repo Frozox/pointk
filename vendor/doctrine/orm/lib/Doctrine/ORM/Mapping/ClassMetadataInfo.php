@@ -20,6 +20,7 @@
 namespace Doctrine\ORM\Mapping;
 
 use BadMethodCallException;
+<<<<<<< HEAD
 use Doctrine\Instantiator\Instantiator;
 use InvalidArgumentException;
 use RuntimeException;
@@ -28,6 +29,17 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use ReflectionClass;
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Cache\CacheException;
+=======
+use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\Instantiator\Instantiator;
+use Doctrine\ORM\Cache\CacheException;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\ReflectionService;
+use InvalidArgumentException;
+use ReflectionClass;
+use RuntimeException;
+>>>>>>> ThomasN
 
 /**
  * A <tt>ClassMetadata</tt> instance holds all the object-relational mapping metadata
@@ -251,7 +263,12 @@ class ClassMetadataInfo implements ClassMetadata
      * The name of the custom repository class used for the entity class.
      * (Optional).
      *
+<<<<<<< HEAD
      * @var string
+=======
+     * @var string|null
+     * @psalm-var ?class-string
+>>>>>>> ThomasN
      */
     public $customRepositoryClassName;
 
@@ -914,7 +931,11 @@ class ClassMetadataInfo implements ClassMetadata
     /**
      * Restores some state that can not be serialized/unserialized.
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ReflectionService $reflService
+=======
+     * @param ReflectionService $reflService
+>>>>>>> ThomasN
      *
      * @return void
      */
@@ -975,7 +996,11 @@ class ClassMetadataInfo implements ClassMetadata
      * Initializes a new ClassMetadata instance that will hold the object-relational mapping
      * metadata of the class with the given name.
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ReflectionService $reflService The reflection service.
+=======
+     * @param ReflectionService $reflService The reflection service.
+>>>>>>> ThomasN
      *
      * @return void
      */
@@ -1037,7 +1062,11 @@ class ClassMetadataInfo implements ClassMetadata
     /**
      * Validates lifecycle callbacks.
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ReflectionService $reflService
+=======
+     * @param ReflectionService $reflService
+>>>>>>> ThomasN
      *
      * @return void
      *
@@ -2625,6 +2654,11 @@ class ClassMetadataInfo implements ClassMetadata
      * @param string $repositoryClassName The class name of the custom mapper.
      *
      * @return void
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param class-string $repositoryClassName
+>>>>>>> ThomasN
      */
     public function setCustomRepositoryClass($repositoryClassName)
     {
@@ -3253,6 +3287,11 @@ class ClassMetadataInfo implements ClassMetadata
      * @param  string|null $className
      *
      * @return string|null null if the input value is null
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param ?class-string $className
+>>>>>>> ThomasN
      */
     public function fullyQualifiedClassName($className)
     {

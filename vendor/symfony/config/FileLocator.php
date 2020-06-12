@@ -68,7 +68,11 @@ class FileLocator implements FileLocatorInterface
         }
 
         if (!$filepaths) {
+<<<<<<< HEAD
             throw new FileLocatorFileNotFoundException(sprintf('The file "%s" does not exist (in: %s).', $name, implode(', ', $paths)), 0, null, $notfound);
+=======
+            throw new FileLocatorFileNotFoundException(sprintf('The file "%s" does not exist (in: "%s").', $name, implode('", "', $paths)), 0, null, $notfound);
+>>>>>>> ThomasN
         }
 
         return $filepaths;

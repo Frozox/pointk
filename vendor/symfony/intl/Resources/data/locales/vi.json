@@ -368,6 +368,11 @@
         "ko_KP": "Tiếng Hàn (Triều Tiên)",
         "ko_KR": "Tiếng Hàn (Hàn Quốc)",
         "ks": "Tiếng Kashmir",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "Tiếng Kashmir (Chữ Ả Rập)",
+        "ks_Arab_IN": "Tiếng Kashmir (Chữ Ả Rập, Ấn Độ)",
+>>>>>>> ThomasN
         "ks_IN": "Tiếng Kashmir (Ấn Độ)",
         "ku": "Tiếng Kurd",
         "ku_TR": "Tiếng Kurd (Thổ Nhĩ Kỳ)",
@@ -406,6 +411,10 @@
         "mr_IN": "Tiếng Marathi (Ấn Độ)",
         "ms": "Tiếng Mã Lai",
         "ms_BN": "Tiếng Mã Lai (Brunei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Tiếng Mã Lai (Indonesia)",
+>>>>>>> ThomasN
         "ms_MY": "Tiếng Mã Lai (Malaysia)",
         "ms_SG": "Tiếng Mã Lai (Singapore)",
         "mt": "Tiếng Malta",
@@ -486,6 +495,13 @@
         "rw": "Tiếng Kinyarwanda",
         "rw_RW": "Tiếng Kinyarwanda (Rwanda)",
         "sd": "Tiếng Sindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "Tiếng Sindhi (Chữ Ả Rập)",
+        "sd_Arab_PK": "Tiếng Sindhi (Chữ Ả Rập, Pakistan)",
+        "sd_Deva": "Tiếng Sindhi (Chữ Devanagari)",
+        "sd_Deva_IN": "Tiếng Sindhi (Chữ Devanagari, Ấn Độ)",
+>>>>>>> ThomasN
         "sd_PK": "Tiếng Sindhi (Pakistan)",
         "se": "Tiếng Sami Miền Bắc",
         "se_FI": "Tiếng Sami Miền Bắc (Phần Lan)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "Tiếng Serbia (Chữ La tinh, Serbia)",
         "sr_ME": "Tiếng Serbia (Montenegro)",
         "sr_RS": "Tiếng Serbia (Serbia)",
+<<<<<<< HEAD
+=======
+        "su": "Tiếng Sunda",
+        "su_ID": "Tiếng Sunda (Indonesia)",
+        "su_Latn": "Tiếng Sunda (Chữ La tinh)",
+        "su_Latn_ID": "Tiếng Sunda (Chữ La tinh, Indonesia)",
+>>>>>>> ThomasN
         "sv": "Tiếng Thụy Điển",
         "sv_AX": "Tiếng Thụy Điển (Quần đảo Åland)",
         "sv_FI": "Tiếng Thụy Điển (Phần Lan)",

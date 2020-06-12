@@ -47,7 +47,11 @@ final class BodyRenderer implements BodyRendererInterface
 
         $messageContext = $message->getContext();
         if (isset($messageContext['email'])) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('A "%s" context cannot have an "email" entry as this is a reserved variable.', \get_class($message)));
+=======
+            throw new InvalidArgumentException(sprintf('A "%s" context cannot have an "email" entry as this is a reserved variable.', get_debug_type($message)));
+>>>>>>> ThomasN
         }
 
         $vars = array_merge($this->context, $messageContext, [
@@ -74,6 +78,10 @@ final class BodyRenderer implements BodyRendererInterface
             return $this->converter->convert($html);
         }
 
+<<<<<<< HEAD
         return strip_tags($html);
+=======
+        return strip_tags(preg_replace('{<(head|style)\b.*?</\1>}i', '', $html));
+>>>>>>> ThomasN
     }
 }

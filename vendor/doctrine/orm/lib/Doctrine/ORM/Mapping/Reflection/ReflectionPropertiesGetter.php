@@ -19,7 +19,11 @@
 
 namespace Doctrine\ORM\Mapping\Reflection;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\ReflectionService;
+=======
+use Doctrine\Persistence\Mapping\ReflectionService;
+>>>>>>> ThomasN
 use ReflectionClass;
 use ReflectionProperty;
 

@@ -54,7 +54,14 @@ trait ServerLogHandlerTrait
     private $context;
     private $socket;
 
+<<<<<<< HEAD
     public function __construct(string $host, int $level = Logger::DEBUG, bool $bubble = true, array $context = [])
+=======
+    /**
+     * @param string|int $level The minimum logging level at which this handler will be triggered
+     */
+    public function __construct(string $host, $level = Logger::DEBUG, bool $bubble = true, array $context = [])
+>>>>>>> ThomasN
     {
         parent::__construct($level, $bubble);
 

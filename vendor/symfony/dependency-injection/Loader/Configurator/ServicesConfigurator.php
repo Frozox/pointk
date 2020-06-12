@@ -15,6 +15,10 @@ use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
@@ -72,8 +76,11 @@ class ServicesConfigurator extends AbstractConfigurator
     final public function set(?string $id, string $class = null): ServiceConfigurator
     {
         $defaults = $this->defaults;
+<<<<<<< HEAD
         $allowParent = !$defaults->getChanges() && empty($this->instanceof);
 
+=======
+>>>>>>> ThomasN
         $definition = new Definition();
 
         if (null === $id) {
@@ -83,16 +90,29 @@ class ServicesConfigurator extends AbstractConfigurator
 
             $id = sprintf('.%d_%s', ++$this->anonymousCount, preg_replace('/^.*\\\\/', '', $class).'~'.$this->anonymousHash);
             $definition->setPublic(false);
+<<<<<<< HEAD
         } else {
             $definition->setPublic($defaults->isPublic());
+=======
+        } elseif (!$defaults->isPublic() || !$defaults->isPrivate()) {
+            $definition->setPublic($defaults->isPublic() && !$defaults->isPrivate());
+>>>>>>> ThomasN
         }
 
         $definition->setAutowired($defaults->isAutowired());
         $definition->setAutoconfigured($defaults->isAutoconfigured());
+<<<<<<< HEAD
         $definition->setBindings($defaults->getBindings());
         $definition->setChanges([]);
 
         $configurator = new ServiceConfigurator($this->container, $this->instanceof, $allowParent, $this, $definition, $id, $defaults->getTags(), $this->path);
+=======
+        // deep clone, to avoid multiple process of the same instance in the passes
+        $definition->setBindings(unserialize(serialize($defaults->getBindings())));
+        $definition->setChanges([]);
+
+        $configurator = new ServiceConfigurator($this->container, $this->instanceof, true, $this, $definition, $id, $defaults->getTags(), $this->path);
+>>>>>>> ThomasN
 
         return null !== $class ? $configurator->class($class) : $configurator;
     }
@@ -103,7 +123,14 @@ class ServicesConfigurator extends AbstractConfigurator
     final public function alias(string $id, string $referencedId): AliasConfigurator
     {
         $ref = static::processValue($referencedId, true);
+<<<<<<< HEAD
         $alias = new Alias((string) $ref, $this->defaults->isPublic());
+=======
+        $alias = new Alias((string) $ref);
+        if (!$this->defaults->isPublic() || !$this->defaults->isPrivate()) {
+            $alias->setPublic($this->defaults->isPublic());
+        }
+>>>>>>> ThomasN
         $this->container->setAlias($id, $alias);
 
         return new AliasConfigurator($this, $alias);
@@ -114,9 +141,13 @@ class ServicesConfigurator extends AbstractConfigurator
      */
     final public function load(string $namespace, string $resource): PrototypeConfigurator
     {
+<<<<<<< HEAD
         $allowParent = !$this->defaults->getChanges() && empty($this->instanceof);
 
         return new PrototypeConfigurator($this, $this->loader, $this->defaults, $namespace, $resource, $allowParent);
+=======
+        return new PrototypeConfigurator($this, $this->loader, $this->defaults, $namespace, $resource, true);
+>>>>>>> ThomasN
     }
 
     /**
@@ -126,10 +157,49 @@ class ServicesConfigurator extends AbstractConfigurator
      */
     final public function get(string $id): ServiceConfigurator
     {
+<<<<<<< HEAD
         $allowParent = !$this->defaults->getChanges() && empty($this->instanceof);
         $definition = $this->container->getDefinition($id);
 
         return new ServiceConfigurator($this->container, $definition->getInstanceofConditionals(), $allowParent, $this, $definition, $id, []);
+=======
+        $definition = $this->container->getDefinition($id);
+
+        return new ServiceConfigurator($this->container, $definition->getInstanceofConditionals(), true, $this, $definition, $id, []);
+    }
+
+    /**
+     * Registers a stack of decorator services.
+     *
+     * @param InlineServiceConfigurator[]|ReferenceConfigurator[] $services
+     */
+    final public function stack(string $id, array $services): AliasConfigurator
+    {
+        foreach ($services as $i => $service) {
+            if ($service instanceof InlineServiceConfigurator) {
+                $definition = $service->definition->setInstanceofConditionals($this->instanceof);
+
+                $changes = $definition->getChanges();
+                $definition->setAutowired((isset($changes['autowired']) ? $definition : $this->defaults)->isAutowired());
+                $definition->setAutoconfigured((isset($changes['autoconfigured']) ? $definition : $this->defaults)->isAutoconfigured());
+                $definition->setBindings(array_merge($this->defaults->getBindings(), $definition->getBindings()));
+                $definition->setChanges($changes);
+
+                $services[$i] = $definition;
+            } elseif (!$service instanceof ReferenceConfigurator) {
+                throw new InvalidArgumentException(sprintf('"%s()" expects a list of definitions as returned by "%s()" or "%s()", "%s" given at index "%s" for service "%s".', __METHOD__, InlineServiceConfigurator::FACTORY, ReferenceConfigurator::FACTORY, $service instanceof AbstractConfigurator ? $service::FACTORY.'()' : get_debug_type($service)), $i, $id);
+            }
+        }
+
+        $alias = $this->alias($id, '');
+        $alias->definition = $this->set($id)
+            ->parent('')
+            ->args($services)
+            ->tag('container.stack')
+            ->definition;
+
+        return $alias;
+>>>>>>> ThomasN
     }
 
     /**

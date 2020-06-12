@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Гринвичица юкъара хан (Абиджан)",
         "Africa\/Accra": "Гринвичица юкъара хан (Аккра)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Аргентина (Рио-Гальегос)",
         "America\/Argentina\/Salta": "Аргентина (Сальта)",
         "America\/Argentina\/San_Juan": "Аргентина (Сан-Хуан)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Малхбузен Аргентина (Сан-Луис)",
+=======
+        "America\/Argentina\/San_Luis": "Аргентина (Сан-Луис)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Аргентина (Тукуман)",
         "America\/Argentina\/Ushuaia": "Аргентина (Ушуая)",
         "America\/Aruba": "Атлантикан хан (Аруба)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Бруней-Даруссалам",
         "Asia\/Calcutta": "ХӀинди (Калькутта)",
         "Asia\/Chita": "Якутск (Чита)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Чойбалсан",
+=======
+        "Asia\/Choibalsan": "Улан-Батор (Чойбалсан)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "ХӀинди (Коломбо)",
         "Asia\/Damascus": "Малхбален Европа (Димашкъ)",
         "Asia\/Dhaka": "Бангладеш (Дакка)",

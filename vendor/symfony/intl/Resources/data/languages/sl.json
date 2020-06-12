@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afarščina",
         "ab": "abhaščina",
@@ -497,6 +500,10 @@
         "en_US": "angleščina (ZDA)",
         "es_ES": "evropska španščina",
         "es_MX": "mehiška španščina",
+<<<<<<< HEAD
+=======
+        "fa_AF": "darijščina",
+>>>>>>> ThomasN
         "fr_CA": "kanadska francoščina",
         "fr_CH": "švicarska francoščina",
         "nds_NL": "nizka saščina",

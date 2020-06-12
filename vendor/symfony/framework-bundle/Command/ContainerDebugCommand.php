@@ -12,8 +12,11 @@
 namespace Symfony\Bundle\FrameworkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Console\Helper\DescriptorHelper;
+<<<<<<< HEAD
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\Config\FileLocator;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,10 +24,15 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+<<<<<<< HEAD
 use Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+=======
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 
 /**
@@ -36,12 +44,18 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
  */
 class ContainerDebugCommand extends Command
 {
+<<<<<<< HEAD
     protected static $defaultName = 'debug:container';
 
     /**
      * @var ContainerBuilder|null
      */
     protected $containerBuilder;
+=======
+    use BuildDebugContainerTrait;
+
+    protected static $defaultName = 'debug:container';
+>>>>>>> ThomasN
 
     /**
      * {@inheritdoc}
@@ -62,6 +76,10 @@ class ContainerDebugCommand extends Command
                 new InputOption('env-vars', null, InputOption::VALUE_NONE, 'Displays environment variables used in the container'),
                 new InputOption('format', null, InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'),
                 new InputOption('raw', null, InputOption::VALUE_NONE, 'To output raw description'),
+<<<<<<< HEAD
+=======
+                new InputOption('deprecations', null, InputOption::VALUE_NONE, 'Displays deprecations generated when compiling and warming up the container'),
+>>>>>>> ThomasN
             ])
             ->setDescription('Displays current services for an application')
             ->setHelp(<<<'EOF'
@@ -69,6 +87,13 @@ The <info>%command.name%</info> command displays all configured <comment>public<
 
   <info>php %command.full_name%</info>
 
+<<<<<<< HEAD
+=======
+To see deprecations generated during container compilation and cache warmup, use the <info>--deprecations</info> option:
+
+  <info>php %command.full_name% --deprecations</info>
+
+>>>>>>> ThomasN
 To get specific information about a service, specify its name:
 
   <info>php %command.full_name% validator</info>
@@ -149,6 +174,11 @@ EOF
         } elseif ($name = $input->getArgument('name')) {
             $name = $this->findProperServiceName($input, $errorIo, $object, $name, $input->getOption('show-hidden'));
             $options = ['id' => $name];
+<<<<<<< HEAD
+=======
+        } elseif ($input->getOption('deprecations')) {
+            $options = ['deprecations' => true];
+>>>>>>> ThomasN
         } else {
             $options = [];
         }
@@ -180,7 +210,11 @@ EOF
                 $errorIo->comment('To search for a specific tag, re-run this command with a search term. (e.g. <comment>debug:container --tag=form.type</comment>)');
             } elseif ($input->getOption('parameters')) {
                 $errorIo->comment('To search for a specific parameter, re-run this command with a search term. (e.g. <comment>debug:container --parameter=kernel.debug</comment>)');
+<<<<<<< HEAD
             } else {
+=======
+            } elseif (!$input->getOption('deprecations')) {
+>>>>>>> ThomasN
                 $errorIo->comment('To search for a specific service, re-run this command with a search term. (e.g. <comment>debug:container log</comment>)');
             }
         }
@@ -212,6 +246,7 @@ EOF
         }
     }
 
+<<<<<<< HEAD
     /**
      * Loads the ContainerBuilder from the cache.
      *
@@ -240,6 +275,8 @@ EOF
         return $this->containerBuilder = $container;
     }
 
+=======
+>>>>>>> ThomasN
     private function findProperServiceName(InputInterface $input, SymfonyStyle $io, ContainerBuilder $builder, string $name, bool $showHidden): string
     {
         $name = ltrim($name, '\\');

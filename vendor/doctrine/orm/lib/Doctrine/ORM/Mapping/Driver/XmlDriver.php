@@ -20,12 +20,22 @@
 namespace Doctrine\ORM\Mapping\Driver;
 
 use Doctrine\Common\Collections\Criteria;
+<<<<<<< HEAD
 use SimpleXMLElement;
 use Doctrine\Common\Persistence\Mapping\Driver\FileDriver;
 use Doctrine\ORM\Mapping\Builder\EntityListenerBuilder;
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\MappingException;
 use Doctrine\ORM\Mapping\ClassMetadata as Metadata;
+=======
+use Doctrine\ORM\Mapping\Builder\EntityListenerBuilder;
+use Doctrine\ORM\Mapping\MappingException;
+use Doctrine\ORM\Mapping\ClassMetadata as Metadata;
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\Driver\FileDriver;
+use SimpleXMLElement;
+use function interface_exists;
+>>>>>>> ThomasN
 
 /**
  * XmlDriver is a metadata driver that enables mapping through XML files.
@@ -879,3 +889,8 @@ class XmlDriver extends FileDriver
         return ($flag == "true" || $flag == "1");
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadata::class);
+>>>>>>> ThomasN

@@ -32,7 +32,11 @@
             $exceptionAsArray = $exception->toArray();
             $exceptionWithUserCode = [];
             $exceptionAsArrayCount = count($exceptionAsArray);
+<<<<<<< HEAD
             $last = count($exceptionAsArray) - 1;
+=======
+            $last = $exceptionAsArrayCount - 1;
+>>>>>>> ThomasN
             foreach ($exceptionAsArray as $i => $e) {
                 foreach ($e['trace'] as $trace) {
                     if ($trace['file'] && false === mb_strpos($trace['file'], '/vendor/') && false === mb_strpos($trace['file'], '/var/cache/') && $i < $last) {

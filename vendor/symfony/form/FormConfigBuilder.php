@@ -102,6 +102,10 @@ class FormConfigBuilder implements FormConfigBuilderInterface
 
     private $autoInitialize = false;
     private $options;
+<<<<<<< HEAD
+=======
+    private $isEmptyCallback;
+>>>>>>> ThomasN
 
     /**
      * Creates an empty form configuration.
@@ -464,6 +468,17 @@ class FormConfigBuilder implements FormConfigBuilderInterface
     /**
      * {@inheritdoc}
      */
+<<<<<<< HEAD
+=======
+    public function getIsEmptyCallback(): ?callable
+    {
+        return $this->isEmptyCallback;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> ThomasN
     public function setAttribute(string $name, $value)
     {
         if ($this->locked) {
@@ -762,6 +777,19 @@ class FormConfigBuilder implements FormConfigBuilderInterface
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * {@inheritdoc}
+     */
+    public function setIsEmptyCallback(?callable $isEmptyCallback)
+    {
+        $this->isEmptyCallback = $isEmptyCallback;
+
+        return $this;
+    }
+
+    /**
+>>>>>>> ThomasN
      * Validates whether the given variable is a valid form name.
      *
      * @throws InvalidArgumentException if the name contains invalid characters

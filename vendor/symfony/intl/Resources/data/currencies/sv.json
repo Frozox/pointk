@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "ADP": [
             "ADP",
@@ -1033,6 +1036,13 @@
             "UYU",
             "uruguayansk peso"
         ],
+<<<<<<< HEAD
+=======
+        "UYW": [
+            "UYW",
+            "uruguayansk indexenhet för nominell lön"
+        ],
+>>>>>>> ThomasN
         "UZS": [
             "UZS",
             "uzbekisk sum"

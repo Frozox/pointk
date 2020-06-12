@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+* Added an internal cache layer on top of the CssSelectorConverter
+* Added `UriResolver` to resolve an URI according to a base URI
+
+>>>>>>> ThomasN
 5.0.0
 -----
 

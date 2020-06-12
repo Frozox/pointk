@@ -33,6 +33,14 @@ use Symfony\Contracts\Translation\LocaleAwareInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Contracts\Translation\TranslatorTrait;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(TranslatorInterface::class);
+class_exists(LocaleAwareInterface::class);
+class_exists(TranslatorTrait::class);
+
+>>>>>>> ThomasN
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  */

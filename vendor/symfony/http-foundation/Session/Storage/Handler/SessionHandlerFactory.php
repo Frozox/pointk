@@ -27,7 +27,11 @@ class SessionHandlerFactory
     public static function createHandler($connection): AbstractSessionHandler
     {
         if (!\is_string($connection) && !\is_object($connection)) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('Argument 1 passed to %s() must be a string or a connection object, %s given.', __METHOD__, \gettype($connection)));
+=======
+            throw new \TypeError(sprintf('Argument 1 passed to "%s()" must be a string or a connection object, "%s" given.', __METHOD__, get_debug_type($connection)));
+>>>>>>> ThomasN
         }
 
         switch (true) {
@@ -46,7 +50,11 @@ class SessionHandlerFactory
                 return new PdoSessionHandler($connection);
 
             case !\is_string($connection):
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('Unsupported Connection: %s.', \get_class($connection)));
+=======
+                throw new \InvalidArgumentException(sprintf('Unsupported Connection: "%s".', get_debug_type($connection)));
+>>>>>>> ThomasN
             case 0 === strpos($connection, 'file://'):
                 return new StrictSessionHandler(new NativeFileSessionHandler(substr($connection, 7)));
 
@@ -80,6 +88,10 @@ class SessionHandlerFactory
                 return new PdoSessionHandler($connection);
         }
 
+<<<<<<< HEAD
         throw new \InvalidArgumentException(sprintf('Unsupported Connection: %s.', $connection));
+=======
+        throw new \InvalidArgumentException(sprintf('Unsupported Connection: "%s".', $connection));
+>>>>>>> ThomasN
     }
 }

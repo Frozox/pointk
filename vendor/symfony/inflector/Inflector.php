@@ -11,10 +11,18 @@
 
 namespace Symfony\Component\Inflector;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\String\Inflector\EnglishInflector;
+
+trigger_deprecation('symfony/inflector', '5.1', 'The "%s" class is deprecated, use "%s" instead.', Inflector::class, EnglishInflector::class);
+
+>>>>>>> ThomasN
 /**
  * Converts words between singular and plural forms.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
+<<<<<<< HEAD
  */
 final class Inflector
 {
@@ -320,6 +328,14 @@ final class Inflector
         'peehs',
         'seiceps',
     ];
+=======
+ *
+ * @deprecated since Symfony 5.1, use Symfony\Component\String\Inflector\EnglishInflector instead.
+ */
+final class Inflector
+{
+    private static $englishInflector;
+>>>>>>> ThomasN
 
     /**
      * This class should not be instantiated.
@@ -340,6 +356,7 @@ final class Inflector
      */
     public static function singularize(string $plural)
     {
+<<<<<<< HEAD
         $pluralRev = strrev($plural);
         $lowerPluralRev = strtolower($pluralRev);
         $pluralLength = \strlen($lowerPluralRev);
@@ -412,6 +429,13 @@ final class Inflector
 
         // Assume that plural and singular is identical
         return $plural;
+=======
+        if (1 === \count($singulars = self::getEnglishInflector()->singularize($plural))) {
+            return $singulars[0];
+        }
+
+        return $singulars;
+>>>>>>> ThomasN
     }
 
     /**
@@ -426,6 +450,7 @@ final class Inflector
      */
     public static function pluralize(string $singular)
     {
+<<<<<<< HEAD
         $singularRev = strrev($singular);
         $lowerSingularRev = strtolower($singularRev);
         $singularLength = \strlen($lowerSingularRev);
@@ -499,5 +524,21 @@ final class Inflector
 
         // Assume that plural is singular with a trailing `s`
         return $singular.'s';
+=======
+        if (1 === \count($plurals = self::getEnglishInflector()->pluralize($singular))) {
+            return $plurals[0];
+        }
+
+        return $plurals;
+    }
+
+    private static function getEnglishInflector(): EnglishInflector
+    {
+        if (!self::$englishInflector) {
+            self::$englishInflector = new EnglishInflector();
+        }
+
+        return self::$englishInflector;
+>>>>>>> ThomasN
     }
 }

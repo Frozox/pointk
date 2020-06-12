@@ -101,7 +101,11 @@ class Profile
         return $this->ip;
     }
 
+<<<<<<< HEAD
     public function setIp(string $ip)
+=======
+    public function setIp(?string $ip)
+>>>>>>> ThomasN
     {
         $this->ip = $ip;
     }
@@ -131,7 +135,11 @@ class Profile
         return $this->url;
     }
 
+<<<<<<< HEAD
     public function setUrl(string $url)
+=======
+    public function setUrl(?string $url)
+>>>>>>> ThomasN
     {
         $this->url = $url;
     }

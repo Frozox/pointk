@@ -149,7 +149,11 @@ class EntityGenerator
     /**
      * Whether or not to make generated embeddables immutable.
      *
+<<<<<<< HEAD
      * @var boolean.
+=======
+     * @var bool
+>>>>>>> ThomasN
      */
     protected $embeddablesImmutable = false;
 
@@ -342,9 +346,13 @@ public function __construct(<params>)
     {
         @trigger_error(self::class . ' is deprecated and will be removed in Doctrine ORM 3.0', E_USER_DEPRECATED);
 
+<<<<<<< HEAD
         if (version_compare(\Doctrine\Common\Version::VERSION, '2.2.0-DEV', '>=')) {
             $this->annotationsPrefix = 'ORM\\';
         }
+=======
+        $this->annotationsPrefix = 'ORM\\';
+>>>>>>> ThomasN
     }
 
     /**
@@ -1166,7 +1174,11 @@ public function __construct(<params>)
         $inheritanceClassMap = [];
 
         foreach ($metadata->discriminatorMap as $type => $class) {
+<<<<<<< HEAD
             $inheritanceClassMap[] .= '"' . $type . '" = "' . $class . '"';
+=======
+            $inheritanceClassMap[] = '"' . $type . '" = "' . $class . '"';
+>>>>>>> ThomasN
         }
 
         return '@' . $this->annotationsPrefix . 'DiscriminatorMap({' . implode(', ', $inheritanceClassMap) . '})';
@@ -1468,7 +1480,11 @@ public function __construct(<params>)
         }
 
         if (isset($joinColumn['unique']) && $joinColumn['unique']) {
+<<<<<<< HEAD
             $joinColumnAnnot[] = 'unique=' . ($joinColumn['unique'] ? 'true' : 'false');
+=======
+            $joinColumnAnnot[] = 'unique=true';
+>>>>>>> ThomasN
         }
 
         if (isset($joinColumn['nullable'])) {
@@ -1560,7 +1576,11 @@ public function __construct(<params>)
             }
 
             if (isset($associationMapping['orphanRemoval']) && $associationMapping['orphanRemoval']) {
+<<<<<<< HEAD
                 $typeOptions[] = 'orphanRemoval=' . ($associationMapping['orphanRemoval'] ? 'true' : 'false');
+=======
+                $typeOptions[] = 'orphanRemoval=true';
+>>>>>>> ThomasN
             }
 
             if (isset($associationMapping['fetch']) && $associationMapping['fetch'] !== ClassMetadataInfo::FETCH_LAZY) {

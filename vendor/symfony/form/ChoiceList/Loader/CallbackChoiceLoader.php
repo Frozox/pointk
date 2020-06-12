@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Form\ChoiceList\Loader;
 
+<<<<<<< HEAD
 use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 
 /**
@@ -19,10 +20,19 @@ use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
  * @author Jules Pietri <jules@heahprod.com>
  */
 class CallbackChoiceLoader implements ChoiceLoaderInterface
+=======
+/**
+ * Loads an {@link ArrayChoiceList} instance from a callable returning iterable choices.
+ *
+ * @author Jules Pietri <jules@heahprod.com>
+ */
+class CallbackChoiceLoader extends AbstractChoiceLoader
+>>>>>>> ThomasN
 {
     private $callback;
 
     /**
+<<<<<<< HEAD
      * The loaded choice list.
      *
      * @var ArrayChoiceList
@@ -31,12 +41,16 @@ class CallbackChoiceLoader implements ChoiceLoaderInterface
 
     /**
      * @param callable $callback The callable returning an array of choices
+=======
+     * @param callable $callback The callable returning iterable choices
+>>>>>>> ThomasN
      */
     public function __construct(callable $callback)
     {
         $this->callback = $callback;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
@@ -73,5 +87,10 @@ class CallbackChoiceLoader implements ChoiceLoaderInterface
         }
 
         return $this->loadChoiceList($value)->getValuesForChoices($choices);
+=======
+    protected function loadChoices(): iterable
+    {
+        return ($this->callback)();
+>>>>>>> ThomasN
     }
 }

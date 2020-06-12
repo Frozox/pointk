@@ -334,6 +334,10 @@
         "mr_IN": "marata (Hindujo)",
         "ms": "malaja",
         "ms_BN": "malaja (Brunejo)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malaja (Indonezio)",
+>>>>>>> ThomasN
         "ms_MY": "malaja (Malajzio)",
         "ms_SG": "malaja (Singapuro)",
         "mt": "malta",
@@ -422,6 +426,11 @@
         "sq_AL": "albana (Albanujo)",
         "sr": "serba",
         "sr_BA": "serba (Bosnio-Hercegovino)",
+<<<<<<< HEAD
+=======
+        "su": "sunda",
+        "su_ID": "sunda (Indonezio)",
+>>>>>>> ThomasN
         "sv": "sveda",
         "sv_FI": "sveda (Finnlando)",
         "sv_SE": "sveda (Svedujo)",

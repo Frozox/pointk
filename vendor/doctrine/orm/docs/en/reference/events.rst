@@ -423,7 +423,11 @@ A lifecycle event listener looks like the following:
 .. code-block:: php
 
     <?php
+<<<<<<< HEAD
     use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+=======
+    use Doctrine\Persistence\Event\LifecycleEventArgs;
+>>>>>>> ThomasN
 
     class MyEventListener
     {
@@ -445,8 +449,13 @@ A lifecycle event subscriber may look like this:
 
     <?php
     use Doctrine\ORM\Events;
+<<<<<<< HEAD
     use Doctrine\Common\EventSubscriber;
     use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+=======
+    use Doctrine\EventSubscriber;
+    use Doctrine\Persistence\Event\LifecycleEventArgs;
+>>>>>>> ThomasN
 
     class MyEventSubscriber implements EventSubscriber
     {

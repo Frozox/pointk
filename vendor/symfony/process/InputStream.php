@@ -45,7 +45,11 @@ class InputStream implements \IteratorAggregate
             return;
         }
         if ($this->isClosed()) {
+<<<<<<< HEAD
             throw new RuntimeException(sprintf('%s is closed', static::class));
+=======
+            throw new RuntimeException(sprintf('"%s" is closed.', static::class));
+>>>>>>> ThomasN
         }
         $this->input[] = ProcessUtils::validateInput(__METHOD__, $input);
     }

@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "GHS": [
             "GH₵",
             "GHS"
+=======
+    "Names": {
+        "GHS": [
+            "GH₵",
+            "Kudin Ghana"
+>>>>>>> ThomasN
         ]
     }
 }

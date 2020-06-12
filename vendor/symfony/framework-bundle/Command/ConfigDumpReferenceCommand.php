@@ -11,6 +11,10 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Command;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+>>>>>>> ThomasN
 use Symfony\Component\Config\Definition\Dumper\XmlReferenceDumper;
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
@@ -19,6 +23,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+>>>>>>> ThomasN
 
 /**
  * A console command for dumping available configuration reference.
@@ -81,6 +90,18 @@ EOF
 
         if (null === $name = $input->getArgument('name')) {
             $this->listBundles($errorIo);
+<<<<<<< HEAD
+=======
+
+            $kernel = $this->getApplication()->getKernel();
+            if ($kernel instanceof ExtensionInterface
+                && ($kernel instanceof ConfigurationInterface || $kernel instanceof ConfigurationExtensionInterface)
+                && $kernel->getAlias()
+            ) {
+                $errorIo->table(['Kernel Extension'], [[$kernel->getAlias()]]);
+            }
+
+>>>>>>> ThomasN
             $errorIo->comment([
                 'Provide the name of a bundle as the first argument of this command to dump its default configuration. (e.g. <comment>config:dump-reference FrameworkBundle</comment>)',
                 'For dumping a specific option, add its path as the second argument of this command. (e.g. <comment>config:dump-reference FrameworkBundle profiler.matcher</comment> to dump the <comment>framework.profiler.matcher</comment> configuration)',
@@ -91,7 +112,15 @@ EOF
 
         $extension = $this->findExtension($name);
 
+<<<<<<< HEAD
         $configuration = $extension->getConfiguration([], $this->getContainerBuilder());
+=======
+        if ($extension instanceof ConfigurationInterface) {
+            $configuration = $extension;
+        } else {
+            $configuration = $extension->getConfiguration([], $this->getContainerBuilder());
+        }
+>>>>>>> ThomasN
 
         $this->validateConfiguration($extension, $configuration);
 

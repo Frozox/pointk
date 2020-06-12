@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Mëttler Greenwich-Zäit (Abidjan)",
         "Africa\/Accra": "Mëttler Greenwich-Zäit (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Argentinesch Zäit (Rio Gallegos)",
         "America\/Argentina\/Salta": "Argentinesch Zäit (Salta)",
         "America\/Argentina\/San_Juan": "Argentinesch Zäit (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Westargentinesch Zäit (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Argentinesch Zäit (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Argentinesch Zäit (Tucuman)",
         "America\/Argentina\/Ushuaia": "Argentinesch Zäit (Ushuaia)",
         "America\/Aruba": "Atlantik-Zäit (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Brunei-Zäit",
         "Asia\/Calcutta": "Indesch Zäit (Kalkutta)",
         "Asia\/Chita": "Jakutsk-Zäit (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Choibalsan-Zäit",
+=======
+        "Asia\/Choibalsan": "Ulaanbaatar-Zäit (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Indesch Zäit (Colombo)",
         "Asia\/Damascus": "Osteuropäesch Zäit (Damaskus)",
         "Asia\/Dhaka": "Bangladesch-Zäit (Dhaka)",

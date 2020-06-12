@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+ * added `lint` method to `ExpressionLanguage` class
+ * added `lint` method to `Parser` class
+
+>>>>>>> ThomasN
 4.0.0
 -----
 

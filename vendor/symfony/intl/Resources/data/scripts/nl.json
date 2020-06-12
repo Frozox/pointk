@@ -1,11 +1,18 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Adlm": "Adlam",
         "Afak": "Defaka",
         "Aghb": "Kaukasisch Albanees",
         "Ahom": "Ahom",
         "Arab": "Arabisch",
+<<<<<<< HEAD
+=======
+        "Aran": "Nastaliq",
+>>>>>>> ThomasN
         "Armi": "Keizerlijk Aramees",
         "Armn": "Armeens",
         "Avst": "Avestaans",
@@ -26,12 +33,20 @@
         "Cari": "Carisch",
         "Cham": "Cham",
         "Cher": "Cherokee",
+<<<<<<< HEAD
+=======
+        "Chrs": "Chorasmisch",
+>>>>>>> ThomasN
         "Cirt": "Cirth",
         "Copt": "Koptisch",
         "Cprt": "Cyprisch",
         "Cyrl": "Cyrillisch",
         "Cyrs": "Oudkerkslavisch Cyrillisch",
         "Deva": "Devanagari",
+<<<<<<< HEAD
+=======
+        "Diak": "Dives Akuru",
+>>>>>>> ThomasN
         "Dogr": "Dogra",
         "Dsrt": "Deseret",
         "Dupl": "Duployan snelschrift",
@@ -51,7 +66,11 @@
         "Grek": "Grieks",
         "Gujr": "Gujarati",
         "Guru": "Gurmukhi",
+<<<<<<< HEAD
         "Hanb": "Hanb",
+=======
+        "Hanb": "Han met Bopomofo",
+>>>>>>> ThomasN
         "Hang": "Hangul",
         "Hani": "Han",
         "Hano": "Hanunoo",
@@ -76,6 +95,10 @@
         "Khar": "Kharoshthi",
         "Khmr": "Khmer",
         "Khoj": "Khojki",
+<<<<<<< HEAD
+=======
+        "Kits": "Kitaans kleinschrift",
+>>>>>>> ThomasN
         "Knda": "Kannada",
         "Kore": "Koreaans",
         "Kpel": "Kpelle",
@@ -134,7 +157,11 @@
         "Phnx": "Foenicisch",
         "Plrd": "Pollard-fonetisch",
         "Prti": "Inscriptioneel Parthisch",
+<<<<<<< HEAD
         "Qaag": "Qaag",
+=======
+        "Qaag": "Zawgyi",
+>>>>>>> ThomasN
         "Rjng": "Rejang",
         "Rohg": "Hanifi Rohingya",
         "Roro": "Rongorongo",
@@ -182,6 +209,10 @@
         "Wole": "Woleai",
         "Xpeo": "Oudperzisch",
         "Xsux": "Sumero-Akkadian Cuneiform",
+<<<<<<< HEAD
+=======
+        "Yezi": "Jezidi",
+>>>>>>> ThomasN
         "Yiii": "Yi",
         "Zanb": "vierkant Zanabazar",
         "Zinh": "Overgeërfd",

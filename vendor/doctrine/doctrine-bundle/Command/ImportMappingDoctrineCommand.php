@@ -16,6 +16,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Import Doctrine ORM metadata mapping information from an existing database.
  *
+<<<<<<< HEAD
+=======
+ * @deprecated
+ *
+>>>>>>> ThomasN
  * @final
  */
 class ImportMappingDoctrineCommand extends DoctrineCommand

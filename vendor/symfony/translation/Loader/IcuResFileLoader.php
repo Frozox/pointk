@@ -43,7 +43,11 @@ class IcuResFileLoader implements LoaderInterface
         }
 
         if (!$rb) {
+<<<<<<< HEAD
             throw new InvalidResourceException(sprintf('Cannot load resource "%s"', $resource));
+=======
+            throw new InvalidResourceException(sprintf('Cannot load resource "%s".', $resource));
+>>>>>>> ThomasN
         } elseif (intl_is_failure($rb->getErrorCode())) {
             throw new InvalidResourceException($rb->getErrorMessage(), $rb->getErrorCode());
         }

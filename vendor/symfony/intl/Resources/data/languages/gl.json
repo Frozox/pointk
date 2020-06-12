@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afar",
         "ab": "abkhazo",
@@ -48,6 +51,10 @@
         "bug": "buginés",
         "byn": "blin",
         "ca": "catalán",
+<<<<<<< HEAD
+=======
+        "ccp": "chakma",
+>>>>>>> ThomasN
         "ce": "checheno",
         "ceb": "cebuano",
         "cgg": "kiga",
@@ -394,6 +401,10 @@
         "es_419": "español de América",
         "es_ES": "español de España",
         "es_MX": "español de México",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "francés canadense",
         "fr_CH": "francés suízo",
         "nds_NL": "baixo saxón",

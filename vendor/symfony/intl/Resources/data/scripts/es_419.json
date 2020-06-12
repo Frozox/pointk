@@ -1,10 +1,18 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Hanb": "han con bopomofo",
         "Hrkt": "katakana o hiragana",
         "Laoo": "lao",
         "Latn": "latín",
+<<<<<<< HEAD
         "Mlym": "malayalam"
+=======
+        "Mlym": "malayalam",
+        "Olck": "ol chiki"
+>>>>>>> ThomasN
     }
 }

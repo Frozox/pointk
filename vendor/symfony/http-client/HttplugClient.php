@@ -184,7 +184,11 @@ final class HttplugClient implements HttplugInterface, HttpAsyncClient, RequestF
         } elseif (\is_resource($body)) {
             $stream = $this->streamFactory->createStreamFromResource($body);
         } else {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('%s() expects string, resource or StreamInterface, %s given.', __METHOD__, \gettype($body)));
+=======
+            throw new \InvalidArgumentException(sprintf('"%s()" expects string, resource or StreamInterface, "%s" given.', __METHOD__, get_debug_type($body)));
+>>>>>>> ThomasN
         }
 
         if ($stream->isSeekable()) {

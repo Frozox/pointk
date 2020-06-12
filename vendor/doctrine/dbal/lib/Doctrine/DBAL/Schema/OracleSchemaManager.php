@@ -287,6 +287,11 @@ class OracleSchemaManager extends AbstractSchemaManager
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
+=======
+     * @param string|null $database
+     *
+>>>>>>> ThomasN
      * Calling this method without an argument or by passing NULL is deprecated.
      */
     public function createDatabase($database = null)
@@ -399,7 +404,14 @@ SQL;
         $sql      = $platform->getListTableCommentsSQL($tableName);
 
         $tableOptions = $this->_conn->fetchAssoc($sql);
+<<<<<<< HEAD
         $table->addOption('comment', $tableOptions['COMMENTS']);
+=======
+
+        if ($tableOptions !== false) {
+            $table->addOption('comment', $tableOptions['COMMENTS']);
+        }
+>>>>>>> ThomasN
 
         return $table;
     }

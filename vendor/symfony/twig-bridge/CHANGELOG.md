@@ -8,6 +8,11 @@ CHANGELOG
  * removed `transChoice` filter and token
  * `HttpFoundationExtension` requires a `UrlHelper` on instantiation
  * removed support for implicit STDIN usage in the `lint:twig` command, use `lint:twig -` (append a dash) instead to make it explicit.
+<<<<<<< HEAD
+=======
+ * added form theme for Foundation 6
+ * added support for Foundation 6 switches: add the `switch-input` class to the attributes of a `CheckboxType`
+>>>>>>> ThomasN
 
 4.4.0
 -----

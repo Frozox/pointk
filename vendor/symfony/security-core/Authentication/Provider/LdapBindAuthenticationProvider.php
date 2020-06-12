@@ -63,7 +63,11 @@ class LdapBindAuthenticationProvider extends UserAuthenticationProvider
     protected function retrieveUser(string $username, UsernamePasswordToken $token)
     {
         if (AuthenticationProviderInterface::USERNAME_NONE_PROVIDED === $username) {
+<<<<<<< HEAD
             throw new UsernameNotFoundException('Username can not be null');
+=======
+            throw new UsernameNotFoundException('Username can not be null.');
+>>>>>>> ThomasN
         }
 
         return $this->userProvider->loadUserByUsername($username);
@@ -82,14 +86,21 @@ class LdapBindAuthenticationProvider extends UserAuthenticationProvider
         }
 
         try {
+<<<<<<< HEAD
             $username = $this->ldap->escape($username, '', LdapInterface::ESCAPE_DN);
 
+=======
+>>>>>>> ThomasN
             if ($this->queryString) {
                 if ('' !== $this->searchDn && '' !== $this->searchPassword) {
                     $this->ldap->bind($this->searchDn, $this->searchPassword);
                 } else {
                     throw new LogicException('Using the "query_string" config without using a "search_dn" and a "search_password" is not supported.');
                 }
+<<<<<<< HEAD
+=======
+                $username = $this->ldap->escape($username, '', LdapInterface::ESCAPE_FILTER);
+>>>>>>> ThomasN
                 $query = str_replace('{username}', $username, $this->queryString);
                 $result = $this->ldap->query($this->dnString, $query)->execute();
                 if (1 !== $result->count()) {
@@ -98,6 +109,10 @@ class LdapBindAuthenticationProvider extends UserAuthenticationProvider
 
                 $dn = $result[0]->getDn();
             } else {
+<<<<<<< HEAD
+=======
+                $username = $this->ldap->escape($username, '', LdapInterface::ESCAPE_DN);
+>>>>>>> ThomasN
                 $dn = str_replace('{username}', $username, $this->dnString);
             }
 

@@ -383,7 +383,11 @@ class Connection implements DriverConnection
      *
      * @throws DBALException If an invalid platform was specified for this connection.
      */
+<<<<<<< HEAD
     private function detectDatabasePlatform()
+=======
+    private function detectDatabasePlatform() : void
+>>>>>>> ThomasN
     {
         $version = $this->getDatabasePlatformVersion();
 
@@ -504,6 +508,11 @@ class Connection implements DriverConnection
      * @see   isAutoCommit
      *
      * @param bool $autoCommit True to enable auto-commit mode; false to disable it.
+<<<<<<< HEAD
+=======
+     *
+     * @return void
+>>>>>>> ThomasN
      */
     public function setAutoCommit($autoCommit)
     {
@@ -821,7 +830,11 @@ class Connection implements DriverConnection
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
     public function quote($input, $type = null)
+=======
+    public function quote($input, $type = ParameterType::STRING)
+>>>>>>> ThomasN
     {
         $connection = $this->getWrappedConnection();
 
@@ -1316,7 +1329,11 @@ class Connection implements DriverConnection
     /**
      * Commits all current nesting transactions.
      */
+<<<<<<< HEAD
     private function commitAll()
+=======
+    private function commitAll() : void
+>>>>>>> ThomasN
     {
         while ($this->transactionNestingLevel !== 0) {
             if ($this->autoCommit === false && $this->transactionNestingLevel === 1) {
@@ -1334,6 +1351,11 @@ class Connection implements DriverConnection
     /**
      * Cancels any database changes done during the current transaction.
      *
+<<<<<<< HEAD
+=======
+     * @return bool
+     *
+>>>>>>> ThomasN
      * @throws ConnectionException If the rollback operation failed.
      */
     public function rollBack()
@@ -1373,6 +1395,11 @@ class Connection implements DriverConnection
             $this->isRollbackOnly = true;
             --$this->transactionNestingLevel;
         }
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**

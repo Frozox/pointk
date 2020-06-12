@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afar",
         "ab": "abház",
@@ -522,6 +525,10 @@
         "es_419": "latin-amerikai spanyol",
         "es_ES": "európai spanyol",
         "es_MX": "spanyol (mexikói)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "kanadai francia",
         "fr_CH": "svájci francia",
         "nds_NL": "alsószász",

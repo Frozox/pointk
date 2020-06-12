@@ -228,7 +228,11 @@ class MockResponse implements ResponseInterface
         } elseif ($body instanceof \Closure) {
             while ('' !== $data = $body(16372)) {
                 if (!\is_string($data)) {
+<<<<<<< HEAD
                     throw new TransportException(sprintf('Return value of the "body" option callback must be string, %s returned.', \gettype($data)));
+=======
+                    throw new TransportException(sprintf('Return value of the "body" option callback must be string, "%s" returned.', get_debug_type($data)));
+>>>>>>> ThomasN
                 }
 
                 // "notify" upload progress
@@ -295,7 +299,11 @@ class MockResponse implements ResponseInterface
         $onProgress($offset, $dlSize, $response->info);
 
         if ($dlSize && $offset !== $dlSize) {
+<<<<<<< HEAD
             throw new TransportException(sprintf('Transfer closed with %s bytes remaining to read.', $dlSize - $offset));
+=======
+            throw new TransportException(sprintf('Transfer closed with %d bytes remaining to read.', $dlSize - $offset));
+>>>>>>> ThomasN
         }
     }
 }

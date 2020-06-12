@@ -25,8 +25,11 @@ use Symfony\Component\String\Exception\RuntimeException;
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @throws ExceptionInterface
+<<<<<<< HEAD
  *
  * @experimental in 5.0
+=======
+>>>>>>> ThomasN
  */
 abstract class AbstractUnicodeString extends AbstractString
 {
@@ -309,7 +312,11 @@ abstract class AbstractUnicodeString extends AbstractString
 
         if (\is_array($to) || $to instanceof \Closure) {
             if (!\is_callable($to)) {
+<<<<<<< HEAD
                 throw new \TypeError(sprintf('Argument 2 passed to %s::replaceMatches() must be callable, array given.', static::class));
+=======
+                throw new \TypeError(sprintf('Argument 2 passed to "%s::replaceMatches()" must be callable, array given.', static::class));
+>>>>>>> ThomasN
             }
 
             $replace = 'preg_replace_callback';
@@ -352,6 +359,17 @@ abstract class AbstractUnicodeString extends AbstractString
         return $str;
     }
 
+<<<<<<< HEAD
+=======
+    public function reverse(): parent
+    {
+        $str = clone $this;
+        $str->string = implode('', array_reverse(preg_split('/(\X)/u', $str->string, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY)));
+
+        return $str;
+    }
+
+>>>>>>> ThomasN
     public function snake(): parent
     {
         $str = $this->camel()->title();
@@ -433,6 +451,7 @@ abstract class AbstractUnicodeString extends AbstractString
             $s = str_replace(["\r\n", "\r"], "\n", $s);
         }
 
+<<<<<<< HEAD
         foreach (explode("\n", $s) as $s) {
             if ($ignoreAnsiDecoration) {
                 $s = preg_replace('/\x1B(?:
@@ -449,6 +468,23 @@ abstract class AbstractUnicodeString extends AbstractString
             if ($width < $w += mb_strlen($s, 'UTF-8') + ($wide << 1)) {
                 $width = $w;
             }
+=======
+        if (!$ignoreAnsiDecoration) {
+            $s = preg_replace('/[\p{Cc}\x7F]++/u', '', $s);
+        }
+
+        foreach (explode("\n", $s) as $s) {
+            if ($ignoreAnsiDecoration) {
+                $s = preg_replace('/(?:\x1B(?:
+                    \[ [\x30-\x3F]*+ [\x20-\x2F]*+ [0x40-\x7E]
+                    | [P\]X^_] .*? \x1B\\\\
+                    | [\x41-\x7E]
+                )|[\p{Cc}\x7F]++)/xu', '', $s);
+            }
+
+            // Non printable characters have been dropped, so wcswidth cannot logically return -1.
+            $width += $this->wcswidth($s);
+>>>>>>> ThomasN
         }
 
         return $width;
@@ -492,4 +528,83 @@ abstract class AbstractUnicodeString extends AbstractString
                 throw new InvalidArgumentException('Invalid padding type.');
         }
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Based on https://github.com/jquast/wcwidth, a Python implementation of https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c.
+     */
+    private function wcswidth(string $string): int
+    {
+        $width = 0;
+
+        foreach (preg_split('//u', $string, -1, PREG_SPLIT_NO_EMPTY) as $c) {
+            $codePoint = mb_ord($c, 'UTF-8');
+
+            if (0 === $codePoint // NULL
+                || 0x034F === $codePoint // COMBINING GRAPHEME JOINER
+                || (0x200B <= $codePoint && 0x200F >= $codePoint) // ZERO WIDTH SPACE to RIGHT-TO-LEFT MARK
+                || 0x2028 === $codePoint // LINE SEPARATOR
+                || 0x2029 === $codePoint // PARAGRAPH SEPARATOR
+                || (0x202A <= $codePoint && 0x202E >= $codePoint) // LEFT-TO-RIGHT EMBEDDING to RIGHT-TO-LEFT OVERRIDE
+                || (0x2060 <= $codePoint && 0x2063 >= $codePoint) // WORD JOINER to INVISIBLE SEPARATOR
+            ) {
+                continue;
+            }
+
+            // Non printable characters
+            if (32 > $codePoint // C0 control characters
+                || (0x07F <= $codePoint && 0x0A0 > $codePoint) // C1 control characters and DEL
+            ) {
+                return -1;
+            }
+
+            static $tableZero;
+            if (null === $tableZero) {
+                $tableZero = require __DIR__.'/Resources/data/wcswidth_table_zero.php';
+            }
+
+            if ($codePoint >= $tableZero[0][0] && $codePoint <= $tableZero[$ubound = \count($tableZero) - 1][1]) {
+                $lbound = 0;
+                while ($ubound >= $lbound) {
+                    $mid = floor(($lbound + $ubound) / 2);
+
+                    if ($codePoint > $tableZero[$mid][1]) {
+                        $lbound = $mid + 1;
+                    } elseif ($codePoint < $tableZero[$mid][0]) {
+                        $ubound = $mid - 1;
+                    } else {
+                        continue 2;
+                    }
+                }
+            }
+
+            static $tableWide;
+            if (null === $tableWide) {
+                $tableWide = require __DIR__.'/Resources/data/wcswidth_table_wide.php';
+            }
+
+            if ($codePoint >= $tableWide[0][0] && $codePoint <= $tableWide[$ubound = \count($tableWide) - 1][1]) {
+                $lbound = 0;
+                while ($ubound >= $lbound) {
+                    $mid = floor(($lbound + $ubound) / 2);
+
+                    if ($codePoint > $tableWide[$mid][1]) {
+                        $lbound = $mid + 1;
+                    } elseif ($codePoint < $tableWide[$mid][0]) {
+                        $ubound = $mid - 1;
+                    } else {
+                        $width += 2;
+
+                        continue 2;
+                    }
+                }
+            }
+
+            ++$width;
+        }
+
+        return $width;
+    }
+>>>>>>> ThomasN
 }

@@ -59,7 +59,11 @@ class SessionAuthenticationStrategy implements SessionAuthenticationStrategyInte
                 return;
 
             default:
+<<<<<<< HEAD
                 throw new \RuntimeException(sprintf('Invalid session authentication strategy "%s"', $this->strategy));
+=======
+                throw new \RuntimeException(sprintf('Invalid session authentication strategy "%s".', $this->strategy));
+>>>>>>> ThomasN
         }
     }
 }

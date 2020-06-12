@@ -12,12 +12,19 @@
 namespace Symfony\Component\Notifier\Message;
 
 use Symfony\Component\Notifier\Notification\Notification;
+<<<<<<< HEAD
 use Symfony\Component\Notifier\Recipient\Recipient;
+=======
+>>>>>>> ThomasN
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 final class ChatMessage implements MessageInterface
 {
@@ -32,7 +39,11 @@ final class ChatMessage implements MessageInterface
         $this->options = $options;
     }
 
+<<<<<<< HEAD
     public static function fromNotification(Notification $notification, Recipient $recipient, string $transport = null): self
+=======
+    public static function fromNotification(Notification $notification): self
+>>>>>>> ThomasN
     {
         $message = new self($notification->getSubject());
         $message->notification = $notification;

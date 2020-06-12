@@ -45,7 +45,11 @@ class VarCloner extends AbstractCloner
                                         // or null if the original value is used directly
 
         if (!$gid = self::$gid) {
+<<<<<<< HEAD
             $gid = self::$gid = uniqid(mt_rand(), true); // Unique string used to detect the special $GLOBALS variable
+=======
+            $gid = self::$gid = md5(random_bytes(6)); // Unique string used to detect the special $GLOBALS variable
+>>>>>>> ThomasN
         }
         $arrayStub = new Stub();
         $arrayStub->type = Stub::TYPE_ARRAY;

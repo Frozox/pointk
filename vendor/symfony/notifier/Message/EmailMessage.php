@@ -22,7 +22,11 @@ use Symfony\Component\Notifier\Recipient\Recipient;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 final class EmailMessage implements MessageInterface
 {
@@ -35,7 +39,11 @@ final class EmailMessage implements MessageInterface
         $this->envelope = $envelope;
     }
 
+<<<<<<< HEAD
     public static function fromNotification(Notification $notification, Recipient $recipient, string $transport = null): self
+=======
+    public static function fromNotification(Notification $notification, Recipient $recipient): self
+>>>>>>> ThomasN
     {
         if (!class_exists(NotificationEmail::class)) {
             $email = (new Email())

@@ -32,26 +32,45 @@ class Configuration
     private $enabled = true;
 
     /**
+<<<<<<< HEAD
      * @var bool
      */
     private $verboseOutput = true;
+=======
+     * @var bool[]
+     */
+    private $verboseOutput;
+>>>>>>> ThomasN
 
     /**
      * @param int[]  $thresholds    A hash associating groups to thresholds
      * @param string $regex         Will be matched against messages, to decide
      *                              whether to display a stack trace
+<<<<<<< HEAD
      * @param bool   $verboseOutput
      */
     private function __construct(array $thresholds = [], $regex = '', $verboseOutput = true)
+=======
+     * @param bool[] $verboseOutput Keyed by groups
+     */
+    private function __construct(array $thresholds = [], $regex = '', $verboseOutput = [])
+>>>>>>> ThomasN
     {
         $groups = ['total', 'indirect', 'direct', 'self'];
 
         foreach ($thresholds as $group => $threshold) {
             if (!\in_array($group, $groups, true)) {
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('Unrecognized threshold "%s", expected one of "%s"', $group, implode('", "', $groups)));
             }
             if (!is_numeric($threshold)) {
                 throw new \InvalidArgumentException(sprintf('Threshold for group "%s" has invalid value "%s"', $group, $threshold));
+=======
+                throw new \InvalidArgumentException(sprintf('Unrecognized threshold "%s", expected one of "%s".', $group, implode('", "', $groups)));
+            }
+            if (!is_numeric($threshold)) {
+                throw new \InvalidArgumentException(sprintf('Threshold for group "%s" has invalid value "%s".', $group, $threshold));
+>>>>>>> ThomasN
             }
             $this->thresholds[$group] = (int) $threshold;
         }
@@ -72,7 +91,25 @@ class Configuration
             }
         }
         $this->regex = $regex;
+<<<<<<< HEAD
         $this->verboseOutput = $verboseOutput;
+=======
+
+        $this->verboseOutput = [
+            'unsilenced' => true,
+            'direct' => true,
+            'indirect' => true,
+            'self' => true,
+            'other' => true,
+        ];
+
+        foreach ($verboseOutput as $group => $status) {
+            if (!isset($this->verboseOutput[$group])) {
+                throw new \InvalidArgumentException(sprintf('Unsupported verbosity group "%s", expected one of "%s".', $group, implode('", "', array_keys($this->verboseOutput))));
+            }
+            $this->verboseOutput[$group] = (bool) $status;
+        }
+>>>>>>> ThomasN
     }
 
     /**
@@ -84,6 +121,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * @param mixed[] $deprecations
      *
      * @return bool
@@ -102,6 +140,28 @@ class Configuration
         }
         foreach (['self', 'direct', 'indirect'] as $deprecationType) {
             if ($deprecationCounts['remaining '.$deprecationType.'Count'] > $this->thresholds[$deprecationType]) {
+=======
+     * @param DeprecationGroup[] $deprecationGroups
+     *
+     * @return bool
+     */
+    public function tolerates(array $deprecationGroups)
+    {
+        $grandTotal = 0;
+
+        foreach ($deprecationGroups as $name => $group) {
+            if ('legacy' !== $name) {
+                $grandTotal += $group->count();
+            }
+        }
+
+        if ($grandTotal > $this->thresholds['total']) {
+            return false;
+        }
+
+        foreach (['self', 'direct', 'indirect'] as $deprecationType) {
+            if ($deprecationGroups[$deprecationType]->count() > $this->thresholds[$deprecationType]) {
+>>>>>>> ThomasN
                 return false;
             }
         }
@@ -130,9 +190,15 @@ class Configuration
     /**
      * @return bool
      */
+<<<<<<< HEAD
     public function verboseOutput()
     {
         return $this->verboseOutput;
+=======
+    public function verboseOutput($group)
+    {
+        return $this->verboseOutput[$group];
+>>>>>>> ThomasN
     }
 
     /**
@@ -145,8 +211,13 @@ class Configuration
     {
         parse_str($serializedConfiguration, $normalizedConfiguration);
         foreach (array_keys($normalizedConfiguration) as $key) {
+<<<<<<< HEAD
             if (!\in_array($key, ['max', 'disabled', 'verbose'], true)) {
                 throw new \InvalidArgumentException(sprintf('Unknown configuration option "%s"', $key));
+=======
+            if (!\in_array($key, ['max', 'disabled', 'verbose', 'quiet'], true)) {
+                throw new \InvalidArgumentException(sprintf('Unknown configuration option "%s".', $key));
+>>>>>>> ThomasN
             }
         }
 
@@ -154,9 +225,25 @@ class Configuration
             return self::inDisabledMode();
         }
 
+<<<<<<< HEAD
         $verboseOutput = true;
         if (isset($normalizedConfiguration['verbose'])) {
             $verboseOutput = (bool) $normalizedConfiguration['verbose'];
+=======
+        $verboseOutput = [];
+        if (!isset($normalizedConfiguration['verbose'])) {
+            $normalizedConfiguration['verbose'] = true;
+        }
+
+        foreach (['unsilenced', 'direct', 'indirect', 'self', 'other'] as $group) {
+            $verboseOutput[$group] = (bool) $normalizedConfiguration['verbose'];
+        }
+
+        if (isset($normalizedConfiguration['quiet']) && \is_array($normalizedConfiguration['quiet'])) {
+            foreach ($normalizedConfiguration['quiet'] as $shushedGroup) {
+                $verboseOutput[$shushedGroup] = false;
+            }
+>>>>>>> ThomasN
         }
 
         return new self(
@@ -190,7 +277,16 @@ class Configuration
      */
     public static function inWeakMode()
     {
+<<<<<<< HEAD
         return new self([], '', false);
+=======
+        $verboseOutput = [];
+        foreach (['unsilenced', 'direct', 'indirect', 'self', 'other'] as $group) {
+            $verboseOutput[$group] = false;
+        }
+
+        return new self([], '', $verboseOutput);
+>>>>>>> ThomasN
     }
 
     /**

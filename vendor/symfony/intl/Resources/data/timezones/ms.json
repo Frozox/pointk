@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Waktu Min Greenwich (Abidjan)",
         "Africa\/Accra": "Waktu Min Greenwich (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Waktu Argentina (Rio Gallegos)",
         "America\/Argentina\/Salta": "Waktu Argentina (Salta)",
         "America\/Argentina\/San_Juan": "Waktu Argentina (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Waktu Argentina Barat (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Waktu Argentina (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Waktu Argentina (Tucuman)",
         "America\/Argentina\/Ushuaia": "Waktu Argentina (Ushuaia)",
         "America\/Aruba": "Waktu Atlantik (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Waktu Brunei Darussalam",
         "Asia\/Calcutta": "Waktu Piawai India (Kolkata)",
         "Asia\/Chita": "Waktu Yakutsk (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Waktu Choibalsan",
+=======
+        "Asia\/Choibalsan": "Waktu Ulan Bator (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Waktu Piawai India (Colombo)",
         "Asia\/Damascus": "Waktu Eropah Timur (Damsyik)",
         "Asia\/Dhaka": "Waktu Bangladesh (Dhaka)",

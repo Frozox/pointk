@@ -368,6 +368,11 @@
         "ko_KP": "koreera (Ipar Korea)",
         "ko_KR": "koreera (Hego Korea)",
         "ks": "kaxmirera",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kaxmirera (arabiarra)",
+        "ks_Arab_IN": "kaxmirera (arabiarra, India)",
+>>>>>>> ThomasN
         "ks_IN": "kaxmirera (India)",
         "ku": "kurduera",
         "ku_TR": "kurduera (Turkia)",
@@ -406,6 +411,10 @@
         "mr_IN": "marathera (India)",
         "ms": "malaysiera",
         "ms_BN": "malaysiera (Brunei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malaysiera (Indonesia)",
+>>>>>>> ThomasN
         "ms_MY": "malaysiera (Malaysia)",
         "ms_SG": "malaysiera (Singapur)",
         "mt": "maltera",
@@ -486,6 +495,13 @@
         "rw": "kinyaruanda",
         "rw_RW": "kinyaruanda (Ruanda)",
         "sd": "sindhi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindhi (arabiarra)",
+        "sd_Arab_PK": "sindhi (arabiarra, Pakistan)",
+        "sd_Deva": "sindhi (devanagaria)",
+        "sd_Deva_IN": "sindhi (devanagaria, India)",
+>>>>>>> ThomasN
         "sd_PK": "sindhi (Pakistan)",
         "se": "iparraldeko samiera",
         "se_FI": "iparraldeko samiera (Finlandia)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "serbiera (latinoa, Serbia)",
         "sr_ME": "serbiera (Montenegro)",
         "sr_RS": "serbiera (Serbia)",
+<<<<<<< HEAD
+=======
+        "su": "sundanera",
+        "su_ID": "sundanera (Indonesia)",
+        "su_Latn": "sundanera (latinoa)",
+        "su_Latn_ID": "sundanera (latinoa, Indonesia)",
+>>>>>>> ThomasN
         "sv": "suediera",
         "sv_AX": "suediera (Åland)",
         "sv_FI": "suediera (Finlandia)",

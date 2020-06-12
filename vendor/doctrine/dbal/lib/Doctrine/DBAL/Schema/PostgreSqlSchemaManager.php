@@ -500,7 +500,13 @@ class PostgreSqlSchemaManager extends AbstractSchemaManager
 
         $tableOptions = $this->_conn->fetchAssoc($sql);
 
+<<<<<<< HEAD
         $table->addOption('comment', $tableOptions['table_comment']);
+=======
+        if ($tableOptions !== false) {
+            $table->addOption('comment', $tableOptions['table_comment']);
+        }
+>>>>>>> ThomasN
 
         return $table;
     }

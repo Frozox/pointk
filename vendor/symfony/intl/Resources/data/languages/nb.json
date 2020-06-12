@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afar",
         "ab": "abkhasisk",
@@ -597,6 +600,10 @@
     },
     "LocalizedNames": {
         "ar_001": "moderne standardarabisk",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "nds_NL": "nedersaksisk",
         "nl_BE": "flamsk",
         "ro_MD": "moldovsk",

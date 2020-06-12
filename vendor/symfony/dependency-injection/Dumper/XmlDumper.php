@@ -12,6 +12,10 @@
 namespace Symfony\Component\DependencyInjection\Dumper;
 
 use Symfony\Component\DependencyInjection\Alias;
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
 use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
@@ -136,7 +140,15 @@ class XmlDumper extends Dumper
         foreach ($definition->getTags() as $name => $tags) {
             foreach ($tags as $attributes) {
                 $tag = $this->document->createElement('tag');
+<<<<<<< HEAD
                 $tag->setAttribute('name', $name);
+=======
+                if (!\array_key_exists('name', $attributes)) {
+                    $tag->setAttribute('name', $name);
+                } else {
+                    $tag->appendChild($this->document->createTextNode($name));
+                }
+>>>>>>> ThomasN
                 foreach ($attributes as $key => $value) {
                     $tag->setAttribute($key, $value);
                 }
@@ -178,8 +190,16 @@ class XmlDumper extends Dumper
         }
 
         if ($definition->isDeprecated()) {
+<<<<<<< HEAD
             $deprecated = $this->document->createElement('deprecated');
             $deprecated->appendChild($this->document->createTextNode($definition->getDeprecationMessage('%service_id%')));
+=======
+            $deprecation = $definition->getDeprecation('%service_id%');
+            $deprecated = $this->document->createElement('deprecated');
+            $deprecated->appendChild($this->document->createTextNode($definition->getDeprecation('%service_id%')['message']));
+            $deprecated->setAttribute('package', $deprecation['package']);
+            $deprecated->setAttribute('version', $deprecation['version']);
+>>>>>>> ThomasN
 
             $service->appendChild($deprecated);
         }
@@ -224,8 +244,16 @@ class XmlDumper extends Dumper
         }
 
         if ($id->isDeprecated()) {
+<<<<<<< HEAD
             $deprecated = $this->document->createElement('deprecated');
             $deprecated->appendChild($this->document->createTextNode($id->getDeprecationMessage('%alias_id%')));
+=======
+            $deprecation = $id->getDeprecation('%alias_id%');
+            $deprecated = $this->document->createElement('deprecated');
+            $deprecated->appendChild($this->document->createTextNode($deprecation['message']));
+            $deprecated->setAttribute('package', $deprecation['package']);
+            $deprecated->setAttribute('version', $deprecation['version']);
+>>>>>>> ThomasN
 
             $service->appendChild($deprecated);
         }
@@ -312,6 +340,13 @@ class XmlDumper extends Dumper
                 $element->setAttribute('type', 'binary');
                 $text = $this->document->createTextNode(self::phpToXml(base64_encode($value)));
                 $element->appendChild($text);
+<<<<<<< HEAD
+=======
+            } elseif ($value instanceof AbstractArgument) {
+                $element->setAttribute('type', 'abstract');
+                $text = $this->document->createTextNode(self::phpToXml($value->getText()));
+                $element->appendChild($text);
+>>>>>>> ThomasN
             } else {
                 if (\in_array($value, ['null', 'true', 'false'], true)) {
                     $element->setAttribute('type', 'string');

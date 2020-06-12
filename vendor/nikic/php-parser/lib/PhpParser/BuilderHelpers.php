@@ -8,6 +8,10 @@ use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
+<<<<<<< HEAD
+=======
+use PhpParser\Node\UnionType;
+>>>>>>> ThomasN
 
 /**
  * This class defines helpers used in the implementation of builders. Don't use it directly.
@@ -158,6 +162,7 @@ final class BuilderHelpers
      * In particular, builtin types become Identifiers, custom types become Names and nullables
      * are wrapped in NullableType nodes.
      *
+<<<<<<< HEAD
      * @param string|Name|Identifier|NullableType $type The type to normalize
      *
      * @return Name|Identifier|NullableType The normalized type
@@ -168,6 +173,21 @@ final class BuilderHelpers
                     && !$type instanceof NullableType) {
                 throw new \LogicException(
                     'Type must be a string, or an instance of Name, Identifier or NullableType');
+=======
+     * @param string|Name|Identifier|NullableType|UnionType $type The type to normalize
+     *
+     * @return Name|Identifier|NullableType|UnionType The normalized type
+     */
+    public static function normalizeType($type) {
+        if (!is_string($type)) {
+            if (
+                !$type instanceof Name && !$type instanceof Identifier &&
+                !$type instanceof NullableType && !$type instanceof UnionType
+            ) {
+                throw new \LogicException(
+                    'Type must be a string, or an instance of Name, Identifier, NullableType or UnionType'
+                );
+>>>>>>> ThomasN
             }
             return $type;
         }
@@ -179,7 +199,11 @@ final class BuilderHelpers
         }
 
         $builtinTypes = [
+<<<<<<< HEAD
             'array', 'callable', 'string', 'int', 'float', 'bool', 'iterable', 'void', 'object'
+=======
+            'array', 'callable', 'string', 'int', 'float', 'bool', 'iterable', 'void', 'object', 'mixed'
+>>>>>>> ThomasN
         ];
 
         $lowerType = strtolower($type);
@@ -193,7 +217,15 @@ final class BuilderHelpers
             throw new \LogicException('void type cannot be nullable');
         }
 
+<<<<<<< HEAD
         return $nullable ? new Node\NullableType($type) : $type;
+=======
+        if ($nullable && (string) $type === 'mixed') {
+            throw new \LogicException('mixed type cannot be nullable');
+        }
+
+        return $nullable ? new NullableType($type) : $type;
+>>>>>>> ThomasN
     }
 
     /**

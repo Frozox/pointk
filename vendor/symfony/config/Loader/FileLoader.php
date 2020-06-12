@@ -83,7 +83,11 @@ abstract class FileLoader extends Loader
             $ret = [];
             $isSubpath = 0 !== $i && false !== strpos(substr($resource, 0, $i), '/');
             foreach ($this->glob($resource, false, $_, $ignoreErrors || !$isSubpath, false, $excluded) as $path => $info) {
+<<<<<<< HEAD
                 if (null !== $res = $this->doImport($path, $type, $ignoreErrors, $sourceResource)) {
+=======
+                if (null !== $res = $this->doImport($path, 'glob' === $type ? null : $type, $ignoreErrors, $sourceResource)) {
+>>>>>>> ThomasN
                     $ret[] = $res;
                 }
                 $isSubpath = true;

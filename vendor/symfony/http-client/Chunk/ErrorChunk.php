@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\HttpClient\Chunk;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\HttpClient\Exception\TimeoutException;
+>>>>>>> ThomasN
 use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Contracts\HttpClient\ChunkInterface;
 
@@ -61,7 +65,11 @@ class ErrorChunk implements ChunkInterface
     public function isFirst(): bool
     {
         $this->didThrow = true;
+<<<<<<< HEAD
         throw new TransportException($this->errorMessage, 0, $this->error);
+=======
+        throw null !== $this->error ? new TransportException($this->errorMessage, 0, $this->error) : new TimeoutException($this->errorMessage);
+>>>>>>> ThomasN
     }
 
     /**
@@ -70,7 +78,11 @@ class ErrorChunk implements ChunkInterface
     public function isLast(): bool
     {
         $this->didThrow = true;
+<<<<<<< HEAD
         throw new TransportException($this->errorMessage, 0, $this->error);
+=======
+        throw null !== $this->error ? new TransportException($this->errorMessage, 0, $this->error) : new TimeoutException($this->errorMessage);
+>>>>>>> ThomasN
     }
 
     /**
@@ -79,7 +91,11 @@ class ErrorChunk implements ChunkInterface
     public function getInformationalStatus(): ?array
     {
         $this->didThrow = true;
+<<<<<<< HEAD
         throw new TransportException($this->errorMessage, 0, $this->error);
+=======
+        throw null !== $this->error ? new TransportException($this->errorMessage, 0, $this->error) : new TimeoutException($this->errorMessage);
+>>>>>>> ThomasN
     }
 
     /**
@@ -88,7 +104,11 @@ class ErrorChunk implements ChunkInterface
     public function getContent(): string
     {
         $this->didThrow = true;
+<<<<<<< HEAD
         throw new TransportException($this->errorMessage, 0, $this->error);
+=======
+        throw null !== $this->error ? new TransportException($this->errorMessage, 0, $this->error) : new TimeoutException($this->errorMessage);
+>>>>>>> ThomasN
     }
 
     /**
@@ -119,7 +139,11 @@ class ErrorChunk implements ChunkInterface
     {
         if (!$this->didThrow) {
             $this->didThrow = true;
+<<<<<<< HEAD
             throw new TransportException($this->errorMessage, 0, $this->error);
+=======
+            throw null !== $this->error ? new TransportException($this->errorMessage, 0, $this->error) : new TimeoutException($this->errorMessage);
+>>>>>>> ThomasN
         }
     }
 }

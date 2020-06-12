@@ -2,6 +2,12 @@
 
 namespace Doctrine\DBAL;
 
+<<<<<<< HEAD
+=======
+/**
+ * @psalm-immutable
+ */
+>>>>>>> ThomasN
 class ConnectionException extends DBALException
 {
     /**

@@ -36,7 +36,11 @@ interface ConstraintViolationInterface
     /**
      * Returns the violation message.
      *
+<<<<<<< HEAD
      * @return string|object The violation message as a string or a stringable object
+=======
+     * @return string|\Stringable The violation message as a string or a stringable object
+>>>>>>> ThomasN
      */
     public function getMessage();
 

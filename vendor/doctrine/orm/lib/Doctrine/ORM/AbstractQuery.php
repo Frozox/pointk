@@ -19,6 +19,7 @@
 
 namespace Doctrine\ORM;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\MappingException;
 use Doctrine\Common\Util\ClassUtils;
 use Doctrine\Common\Collections\Collection;
@@ -28,6 +29,16 @@ use Doctrine\ORM\Mapping\MappingException as ORMMappingException;
 use Doctrine\ORM\Query\Parameter;
 use Doctrine\ORM\Cache\QueryCacheKey;
 use Doctrine\DBAL\Cache\QueryCacheProfile;
+=======
+use Doctrine\Common\Util\ClassUtils;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Cache\QueryCacheProfile;
+use Doctrine\ORM\Mapping\MappingException as ORMMappingException;
+use Doctrine\ORM\Query\Parameter;
+use Doctrine\ORM\Cache\QueryCacheKey;
+use Doctrine\Persistence\Mapping\MappingException;
+>>>>>>> ThomasN
 
 /**
  * Base contract for ORM queries. Base class for Query and NativeQuery.

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Afar",
         "ab": "Abkasies",
@@ -397,6 +400,10 @@
         "ar_001": "Moderne Standaardarabies",
         "en_GB": "Engels (VK)",
         "en_US": "Engels (VSA)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Dari",
+>>>>>>> ThomasN
         "nds_NL": "Nedersaksies",
         "nl_BE": "Vlaams"
     }

@@ -215,6 +215,17 @@ class DateTimeType extends AbstractType
         //  * the html5 is set to true
         if ($options['html5'] && 'single_text' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
             $view->vars['type'] = 'datetime-local';
+<<<<<<< HEAD
+=======
+
+            // we need to force the browser to display the seconds by
+            // adding the HTML attribute step if not already defined.
+            // Otherwise the browser will not display and so not send the seconds
+            // therefore the value will always be considered as invalid.
+            if ($options['with_seconds'] && !isset($view->vars['attr']['step'])) {
+                $view->vars['attr']['step'] = 1;
+            }
+>>>>>>> ThomasN
         }
     }
 
@@ -311,28 +322,44 @@ class DateTimeType extends AbstractType
 
         $resolver->setNormalizer('date_format', function (Options $options, $dateFormat) {
             if (null !== $dateFormat && 'single_text' === $options['widget'] && self::HTML5_FORMAT === $options['format']) {
+<<<<<<< HEAD
                 throw new LogicException(sprintf('Cannot use the "date_format" option of the %s with an HTML5 date.', self::class));
+=======
+                throw new LogicException(sprintf('Cannot use the "date_format" option of the "%s" with an HTML5 date.', self::class));
+>>>>>>> ThomasN
             }
 
             return $dateFormat;
         });
         $resolver->setNormalizer('date_widget', function (Options $options, $dateWidget) {
             if (null !== $dateWidget && 'single_text' === $options['widget']) {
+<<<<<<< HEAD
                 throw new LogicException(sprintf('Cannot use the "date_widget" option of the %s when the "widget" option is set to "single_text".', self::class));
+=======
+                throw new LogicException(sprintf('Cannot use the "date_widget" option of the "%s" when the "widget" option is set to "single_text".', self::class));
+>>>>>>> ThomasN
             }
 
             return $dateWidget;
         });
         $resolver->setNormalizer('time_widget', function (Options $options, $timeWidget) {
             if (null !== $timeWidget && 'single_text' === $options['widget']) {
+<<<<<<< HEAD
                 throw new LogicException(sprintf('Cannot use the "time_widget" option of the %s when the "widget" option is set to "single_text".', self::class));
+=======
+                throw new LogicException(sprintf('Cannot use the "time_widget" option of the "%s" when the "widget" option is set to "single_text".', self::class));
+>>>>>>> ThomasN
             }
 
             return $timeWidget;
         });
         $resolver->setNormalizer('html5', function (Options $options, $html5) {
             if ($html5 && self::HTML5_FORMAT !== $options['format']) {
+<<<<<<< HEAD
                 throw new LogicException(sprintf('Cannot use the "format" option of %s when the "html5" option is enabled.', self::class));
+=======
+                throw new LogicException(sprintf('Cannot use the "format" option of "%s" when the "html5" option is enabled.', self::class));
+>>>>>>> ThomasN
             }
 
             return $html5;

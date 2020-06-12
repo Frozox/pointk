@@ -20,6 +20,10 @@
 namespace Doctrine\ORM\Query;
 
 use Doctrine\ORM\EntityManagerInterface;
+<<<<<<< HEAD
+=======
+use function assert;
+>>>>>>> ThomasN
 
 /**
  * Collection class for all the query filters.
@@ -110,6 +114,11 @@ class FilterCollection
         if ( ! $this->isEnabled($name)) {
             $filterClass = $this->config->getFilterClassName($name);
 
+<<<<<<< HEAD
+=======
+            assert($filterClass !== null);
+
+>>>>>>> ThomasN
             $this->enabledFilters[$name] = new $filterClass($this->em);
 
             // Keep the enabled filters sorted for the hash

@@ -117,6 +117,10 @@
     "es_US": "es_419",
     "es_UY": "es_419",
     "es_VE": "es_419",
+<<<<<<< HEAD
+=======
+    "ff_Adlm": "root",
+>>>>>>> ThomasN
     "pa_Arab": "root",
     "pt_AO": "pt_PT",
     "pt_CH": "pt_PT",
@@ -128,6 +132,10 @@
     "pt_MZ": "pt_PT",
     "pt_ST": "pt_PT",
     "pt_TL": "pt_PT",
+<<<<<<< HEAD
+=======
+    "sd_Deva": "root",
+>>>>>>> ThomasN
     "sr_Latn": "root",
     "uz_Arab": "root",
     "uz_Cyrl": "root",

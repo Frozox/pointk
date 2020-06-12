@@ -16,10 +16,19 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5",
         "symfony/polyfill-mbstring": "~1.0",
         "symfony/polyfill-php73": "^1.8",
         "symfony/service-contracts": "^1.1|^2"
+=======
+        "php": ">=7.2.5",
+        "symfony/polyfill-mbstring": "~1.0",
+        "symfony/polyfill-php73": "^1.8",
+        "symfony/polyfill-php80": "^1.15",
+        "symfony/service-contracts": "^1.1|^2",
+        "symfony/string": "^5.1"
+>>>>>>> ThomasN
     },
     "require-dev": {
         "symfony/config": "^4.4|^5.0",
@@ -41,6 +50,10 @@
     },
     "conflict": {
         "symfony/dependency-injection": "<4.4",
+<<<<<<< HEAD
+=======
+        "symfony/dotenv": "<5.1",
+>>>>>>> ThomasN
         "symfony/event-dispatcher": "<4.4",
         "symfony/lock": "<4.4",
         "symfony/process": "<4.4"
@@ -54,7 +67,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "5.0-dev"
+=======
+            "dev-master": "5.1-dev"
+>>>>>>> ThomasN
         }
     }
 }

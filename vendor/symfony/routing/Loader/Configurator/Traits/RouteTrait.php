@@ -19,7 +19,11 @@ trait RouteTrait
     /**
      * @var RouteCollection|Route
      */
+<<<<<<< HEAD
     private $route;
+=======
+    protected $route;
+>>>>>>> ThomasN
 
     /**
      * Adds defaults.
@@ -160,4 +164,19 @@ trait RouteTrait
 
         return $this;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Adds the "_stateless" entry to defaults.
+     *
+     * @return $this
+     */
+    final public function stateless(bool $stateless = true): self
+    {
+        $this->route->addDefaults(['_stateless' => $stateless]);
+
+        return $this;
+    }
+>>>>>>> ThomasN
 }

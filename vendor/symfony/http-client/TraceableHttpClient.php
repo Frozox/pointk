@@ -11,6 +11,13 @@
 
 namespace Symfony\Component\HttpClient;
 
+<<<<<<< HEAD
+=======
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpClient\Response\ResponseStream;
+use Symfony\Component\HttpClient\Response\TraceableResponse;
+>>>>>>> ThomasN
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Contracts\HttpClient\ResponseStreamInterface;
@@ -19,7 +26,11 @@ use Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jérémy Romey <jeremy@free-agent.fr>
  */
+<<<<<<< HEAD
 final class TraceableHttpClient implements HttpClientInterface, ResetInterface
+=======
+final class TraceableHttpClient implements HttpClientInterface, ResetInterface, LoggerAwareInterface
+>>>>>>> ThomasN
 {
     private $client;
     private $tracedRequests = [];
@@ -34,12 +45,20 @@ final class TraceableHttpClient implements HttpClientInterface, ResetInterface
      */
     public function request(string $method, string $url, array $options = []): ResponseInterface
     {
+<<<<<<< HEAD
+=======
+        $content = null;
+>>>>>>> ThomasN
         $traceInfo = [];
         $this->tracedRequests[] = [
             'method' => $method,
             'url' => $url,
             'options' => $options,
             'info' => &$traceInfo,
+<<<<<<< HEAD
+=======
+            'content' => &$content,
+>>>>>>> ThomasN
         ];
         $onProgress = $options['on_progress'] ?? null;
 
@@ -51,7 +70,11 @@ final class TraceableHttpClient implements HttpClientInterface, ResetInterface
             }
         };
 
+<<<<<<< HEAD
         return $this->client->request($method, $url, $options);
+=======
+        return new TraceableResponse($this->client, $this->client->request($method, $url, $options), $content);
+>>>>>>> ThomasN
     }
 
     /**
@@ -59,7 +82,17 @@ final class TraceableHttpClient implements HttpClientInterface, ResetInterface
      */
     public function stream($responses, float $timeout = null): ResponseStreamInterface
     {
+<<<<<<< HEAD
         return $this->client->stream($responses, $timeout);
+=======
+        if ($responses instanceof TraceableResponse) {
+            $responses = [$responses];
+        } elseif (!is_iterable($responses)) {
+            throw new \TypeError(sprintf('"%s()" expects parameter 1 to be an iterable of TraceableResponse objects, "%s" given.', __METHOD__, get_debug_type($responses)));
+        }
+
+        return new ResponseStream(TraceableResponse::stream($this->client, $responses, $timeout));
+>>>>>>> ThomasN
     }
 
     public function getTracedRequests(): array
@@ -75,4 +108,17 @@ final class TraceableHttpClient implements HttpClientInterface, ResetInterface
 
         $this->tracedRequests = [];
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLogger(LoggerInterface $logger): void
+    {
+        if ($this->client instanceof LoggerAwareInterface) {
+            $this->client->setLogger($logger);
+        }
+    }
+>>>>>>> ThomasN
 }

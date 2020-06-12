@@ -49,7 +49,11 @@ class StaticMethodLoader implements LoaderInterface
             }
 
             if (!$reflMethod->isStatic()) {
+<<<<<<< HEAD
                 throw new MappingException(sprintf('The method %s::%s should be static', $reflClass->name, $this->methodName));
+=======
+                throw new MappingException(sprintf('The method "%s::%s()" should be static.', $reflClass->name, $this->methodName));
+>>>>>>> ThomasN
             }
 
             if ($reflMethod->getDeclaringClass()->name != $reflClass->name) {

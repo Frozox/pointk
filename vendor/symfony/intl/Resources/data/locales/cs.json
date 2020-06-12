@@ -368,6 +368,11 @@
         "ko_KP": "korejština (Severní Korea)",
         "ko_KR": "korejština (Jižní Korea)",
         "ks": "kašmírština",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kašmírština (arabské)",
+        "ks_Arab_IN": "kašmírština (arabské, Indie)",
+>>>>>>> ThomasN
         "ks_IN": "kašmírština (Indie)",
         "ku": "kurdština",
         "ku_TR": "kurdština (Turecko)",
@@ -406,6 +411,10 @@
         "mr_IN": "maráthština (Indie)",
         "ms": "malajština",
         "ms_BN": "malajština (Brunej)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malajština (Indonésie)",
+>>>>>>> ThomasN
         "ms_MY": "malajština (Malajsie)",
         "ms_SG": "malajština (Singapur)",
         "mt": "maltština",
@@ -486,6 +495,13 @@
         "rw": "kiňarwandština",
         "rw_RW": "kiňarwandština (Rwanda)",
         "sd": "sindhština",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindhština (arabské)",
+        "sd_Arab_PK": "sindhština (arabské, Pákistán)",
+        "sd_Deva": "sindhština (dévanágarí)",
+        "sd_Deva_IN": "sindhština (dévanágarí, Indie)",
+>>>>>>> ThomasN
         "sd_PK": "sindhština (Pákistán)",
         "se": "sámština [severní]",
         "se_FI": "sámština [severní] (Finsko)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "srbština (latinka, Srbsko)",
         "sr_ME": "srbština (Černá Hora)",
         "sr_RS": "srbština (Srbsko)",
+<<<<<<< HEAD
+=======
+        "su": "sundština",
+        "su_ID": "sundština (Indonésie)",
+        "su_Latn": "sundština (latinka)",
+        "su_Latn_ID": "sundština (latinka, Indonésie)",
+>>>>>>> ThomasN
         "sv": "švédština",
         "sv_AX": "švédština (Ålandy)",
         "sv_FI": "švédština (Finsko)",

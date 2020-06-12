@@ -34,6 +34,11 @@ interface EntityListenerResolver
      * @param string $className The fully-qualified class name
      *
      * @return void
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param class-string $className
+>>>>>>> ThomasN
      */
     function clear($className = null);
 
@@ -43,6 +48,11 @@ interface EntityListenerResolver
      * @param string $className The fully-qualified class name
      *
      * @return object An entity listener
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param class-string $className
+>>>>>>> ThomasN
      */
     function resolve($className);
 

@@ -40,6 +40,13 @@ class RoleVoter implements VoterInterface
                 continue;
             }
 
+<<<<<<< HEAD
+=======
+            if ('ROLE_PREVIOUS_ADMIN' === $attribute) {
+                trigger_deprecation('symfony/security-core', '5.1', 'The ROLE_PREVIOUS_ADMIN role is deprecated and will be removed in version 6.0, use the IS_IMPERSONATOR attribute instead.');
+            }
+
+>>>>>>> ThomasN
             $result = VoterInterface::ACCESS_DENIED;
             foreach ($roles as $role) {
                 if ($attribute === $role) {

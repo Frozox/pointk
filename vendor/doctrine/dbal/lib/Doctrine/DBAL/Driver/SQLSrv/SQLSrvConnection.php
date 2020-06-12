@@ -152,6 +152,11 @@ class SQLSrvConnection implements Connection, ServerInfoAwareConnection
         if (! sqlsrv_begin_transaction($this->conn)) {
             throw SQLSrvException::fromSqlSrvErrors();
         }
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**
@@ -162,6 +167,11 @@ class SQLSrvConnection implements Connection, ServerInfoAwareConnection
         if (! sqlsrv_commit($this->conn)) {
             throw SQLSrvException::fromSqlSrvErrors();
         }
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**
@@ -172,6 +182,11 @@ class SQLSrvConnection implements Connection, ServerInfoAwareConnection
         if (! sqlsrv_rollback($this->conn)) {
             throw SQLSrvException::fromSqlSrvErrors();
         }
+<<<<<<< HEAD
+=======
+
+        return true;
+>>>>>>> ThomasN
     }
 
     /**

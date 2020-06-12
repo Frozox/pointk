@@ -31,6 +31,10 @@ class Parser
     private $binaryOperators;
     private $functions;
     private $names;
+<<<<<<< HEAD
+=======
+    private $lint;
+>>>>>>> ThomasN
 
     public function __construct(array $functions)
     {
@@ -91,14 +95,50 @@ class Parser
      */
     public function parse(TokenStream $stream, array $names = [])
     {
+<<<<<<< HEAD
+=======
+        $this->lint = false;
+
+        return $this->doParse($stream, $names);
+    }
+
+    /**
+     * Validates the syntax of an expression.
+     *
+     * The syntax of the passed expression will be checked, but not parsed.
+     * If you want to skip checking dynamic variable names, pass `null` instead of the array.
+     *
+     * @throws SyntaxError When the passed expression is invalid
+     */
+    public function lint(TokenStream $stream, ?array $names = []): void
+    {
+        $this->lint = true;
+        $this->doParse($stream, $names);
+    }
+
+    /**
+     * @throws SyntaxError
+     */
+    private function doParse(TokenStream $stream, ?array $names = []): Node\Node
+    {
+>>>>>>> ThomasN
         $this->stream = $stream;
         $this->names = $names;
 
         $node = $this->parseExpression();
         if (!$stream->isEOF()) {
+<<<<<<< HEAD
             throw new SyntaxError(sprintf('Unexpected token "%s" of value "%s"', $stream->current->type, $stream->current->value), $stream->current->cursor, $stream->getExpression());
         }
 
+=======
+            throw new SyntaxError(sprintf('Unexpected token "%s" of value "%s".', $stream->current->type, $stream->current->value), $stream->current->cursor, $stream->getExpression());
+        }
+
+        $this->stream = null;
+        $this->names = null;
+
+>>>>>>> ThomasN
         return $node;
     }
 
@@ -192,11 +232,16 @@ class Parser
                     default:
                         if ('(' === $this->stream->current->value) {
                             if (false === isset($this->functions[$token->value])) {
+<<<<<<< HEAD
                                 throw new SyntaxError(sprintf('The function "%s" does not exist', $token->value), $token->cursor, $this->stream->getExpression(), $token->value, array_keys($this->functions));
+=======
+                                throw new SyntaxError(sprintf('The function "%s" does not exist.', $token->value), $token->cursor, $this->stream->getExpression(), $token->value, array_keys($this->functions));
+>>>>>>> ThomasN
                             }
 
                             $node = new Node\FunctionNode($token->value, $this->parseArguments());
                         } else {
+<<<<<<< HEAD
                             if (!\in_array($token->value, $this->names, true)) {
                                 throw new SyntaxError(sprintf('Variable "%s" is not valid', $token->value), $token->cursor, $this->stream->getExpression(), $token->value, $this->names);
                             }
@@ -204,6 +249,19 @@ class Parser
                             // is the name used in the compiled code different
                             // from the name used in the expression?
                             if (\is_int($name = array_search($token->value, $this->names))) {
+=======
+                            if (!$this->lint || \is_array($this->names)) {
+                                if (!\in_array($token->value, $this->names, true)) {
+                                    throw new SyntaxError(sprintf('Variable "%s" is not valid.', $token->value), $token->cursor, $this->stream->getExpression(), $token->value, $this->names);
+                                }
+
+                                // is the name used in the compiled code different
+                                // from the name used in the expression?
+                                if (\is_int($name = array_search($token->value, $this->names))) {
+                                    $name = $token->value;
+                                }
+                            } else {
+>>>>>>> ThomasN
                                 $name = $token->value;
                             }
 
@@ -224,7 +282,11 @@ class Parser
                 } elseif ($token->test(Token::PUNCTUATION_TYPE, '{')) {
                     $node = $this->parseHashExpression();
                 } else {
+<<<<<<< HEAD
                     throw new SyntaxError(sprintf('Unexpected token "%s" of value "%s"', $token->type, $token->value), $token->cursor, $this->stream->getExpression());
+=======
+                    throw new SyntaxError(sprintf('Unexpected token "%s" of value "%s".', $token->type, $token->value), $token->cursor, $this->stream->getExpression());
+>>>>>>> ThomasN
                 }
         }
 
@@ -286,7 +348,11 @@ class Parser
             } else {
                 $current = $this->stream->current;
 
+<<<<<<< HEAD
                 throw new SyntaxError(sprintf('A hash key must be a quoted string, a number, a name, or an expression enclosed in parentheses (unexpected token "%s" of value "%s"', $current->type, $current->value), $current->cursor, $this->stream->getExpression());
+=======
+                throw new SyntaxError(sprintf('A hash key must be a quoted string, a number, a name, or an expression enclosed in parentheses (unexpected token "%s" of value "%s".', $current->type, $current->value), $current->cursor, $this->stream->getExpression());
+>>>>>>> ThomasN
             }
 
             $this->stream->expect(Token::PUNCTUATION_TYPE, ':', 'A hash key must be followed by a colon (:)');
@@ -324,7 +390,11 @@ class Parser
                     // As a result, if $token is NOT an operator OR $token->value is NOT a valid property or method name, an exception shall be thrown.
                     (Token::OPERATOR_TYPE !== $token->type || !preg_match('/[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/A', $token->value))
                 ) {
+<<<<<<< HEAD
                     throw new SyntaxError('Expected name', $token->cursor, $this->stream->getExpression());
+=======
+                    throw new SyntaxError('Expected name.', $token->cursor, $this->stream->getExpression());
+>>>>>>> ThomasN
                 }
 
                 $arg = new Node\ConstantNode($token->value, true);

@@ -17,7 +17,10 @@ use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\Definition;
+<<<<<<< HEAD
 use Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
@@ -191,18 +194,37 @@ final class CheckTypeDeclarationsPass extends AbstractRecursivePass
         } elseif ($value instanceof Parameter) {
             $value = $this->container->getParameter($value);
         } elseif ($value instanceof Expression) {
+<<<<<<< HEAD
             $value = $this->getExpressionLanguage()->evaluate($value, ['container' => $this->container]);
         } elseif (\is_string($value)) {
             if ('%' === ($value[0] ?? '') && preg_match('/^%([^%]+)%$/', $value, $match)) {
                 // Only array parameters are not inlined when dumped.
                 $value = [];
             } elseif ($envPlaceholderUniquePrefix && false !== strpos($value, 'env_')) {
+=======
+            try {
+                $value = $this->getExpressionLanguage()->evaluate($value, ['container' => $this->container]);
+            } catch (\Exception $e) {
+                // If a service from the expression cannot be fetched from the container, we skip the validation.
+                return;
+            }
+        } elseif (\is_string($value)) {
+            if ('%' === ($value[0] ?? '') && preg_match('/^%([^%]+)%$/', $value, $match)) {
+                $value = $this->container->getParameter(substr($value, 1, -1));
+            }
+
+            if ($envPlaceholderUniquePrefix && \is_string($value) && false !== strpos($value, 'env_')) {
+>>>>>>> ThomasN
                 // If the value is an env placeholder that is either mixed with a string or with another env placeholder, then its resolved value will always be a string, so we don't need to resolve it.
                 // We don't need to change the value because it is already a string.
                 if ('' === preg_replace('/'.$envPlaceholderUniquePrefix.'_\w+_[a-f0-9]{32}/U', '', $value, -1, $c) && 1 === $c) {
                     try {
                         $value = $this->container->resolveEnvPlaceholders($value, true);
+<<<<<<< HEAD
                     } catch (EnvNotFoundException | RuntimeException $e) {
+=======
+                    } catch (\Exception $e) {
+>>>>>>> ThomasN
                         // If an env placeholder cannot be resolved, we skip the validation.
                         return;
                     }
@@ -245,7 +267,15 @@ final class CheckTypeDeclarationsPass extends AbstractRecursivePass
             return;
         }
 
+<<<<<<< HEAD
         if ('iterable' === $type && (\is_array($value) || is_subclass_of($class, \Traversable::class))) {
+=======
+        if ('iterable' === $type && (\is_array($value) || 'array' === $class || is_subclass_of($class, \Traversable::class))) {
+            return;
+        }
+
+        if ($type === $class) {
+>>>>>>> ThomasN
             return;
         }
 
@@ -260,7 +290,11 @@ final class CheckTypeDeclarationsPass extends AbstractRecursivePass
         $checkFunction = sprintf('is_%s', $parameter->getType()->getName());
 
         if (!$parameter->getType()->isBuiltin() || !$checkFunction($value)) {
+<<<<<<< HEAD
             throw new InvalidParameterTypeException($this->currentId, \is_object($value) ? $class : \gettype($value), $parameter);
+=======
+            throw new InvalidParameterTypeException($this->currentId, \is_object($value) ? $class : get_debug_type($value), $parameter);
+>>>>>>> ThomasN
         }
     }
 

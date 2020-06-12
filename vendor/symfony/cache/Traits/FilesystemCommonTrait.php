@@ -38,13 +38,21 @@ trait FilesystemCommonTrait
         } else {
             $directory .= \DIRECTORY_SEPARATOR.'@';
         }
+<<<<<<< HEAD
         if (!file_exists($directory)) {
+=======
+        if (!is_dir($directory)) {
+>>>>>>> ThomasN
             @mkdir($directory, 0777, true);
         }
         $directory .= \DIRECTORY_SEPARATOR;
         // On Windows the whole path is limited to 258 chars
         if ('\\' === \DIRECTORY_SEPARATOR && \strlen($directory) > 234) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Cache directory too long (%s)', $directory));
+=======
+            throw new InvalidArgumentException(sprintf('Cache directory too long (%s).', $directory));
+>>>>>>> ThomasN
         }
 
         $this->directory = $directory;
@@ -77,7 +85,11 @@ trait FilesystemCommonTrait
 
         foreach ($ids as $id) {
             $file = $this->getFile($id);
+<<<<<<< HEAD
             $ok = (!file_exists($file) || $this->doUnlink($file) || !file_exists($file)) && $ok;
+=======
+            $ok = (!is_file($file) || $this->doUnlink($file) || !file_exists($file)) && $ok;
+>>>>>>> ThomasN
         }
 
         return $ok;
@@ -113,7 +125,11 @@ trait FilesystemCommonTrait
         $hash = str_replace('/', '-', base64_encode(hash('md5', static::class.$id, true)));
         $dir = ($directory ?? $this->directory).strtoupper($hash[0].\DIRECTORY_SEPARATOR.$hash[1].\DIRECTORY_SEPARATOR);
 
+<<<<<<< HEAD
         if ($mkdir && !file_exists($dir)) {
+=======
+        if ($mkdir && !is_dir($dir)) {
+>>>>>>> ThomasN
             @mkdir($dir, 0777, true);
         }
 
@@ -127,19 +143,31 @@ trait FilesystemCommonTrait
 
     private function scanHashDir(string $directory): \Generator
     {
+<<<<<<< HEAD
         if (!file_exists($directory)) {
+=======
+        if (!is_dir($directory)) {
+>>>>>>> ThomasN
             return;
         }
 
         $chars = '+-ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
         for ($i = 0; $i < 38; ++$i) {
+<<<<<<< HEAD
             if (!file_exists($directory.$chars[$i])) {
+=======
+            if (!is_dir($directory.$chars[$i])) {
+>>>>>>> ThomasN
                 continue;
             }
 
             for ($j = 0; $j < 38; ++$j) {
+<<<<<<< HEAD
                 if (!file_exists($dir = $directory.$chars[$i].\DIRECTORY_SEPARATOR.$chars[$j])) {
+=======
+                if (!is_dir($dir = $directory.$chars[$i].\DIRECTORY_SEPARATOR.$chars[$j])) {
+>>>>>>> ThomasN
                     continue;
                 }
 
@@ -178,7 +206,11 @@ trait FilesystemCommonTrait
         if (method_exists(parent::class, '__destruct')) {
             parent::__destruct();
         }
+<<<<<<< HEAD
         if (null !== $this->tmp && file_exists($this->tmp)) {
+=======
+        if (null !== $this->tmp && is_file($this->tmp)) {
+>>>>>>> ThomasN
             unlink($this->tmp);
         }
     }

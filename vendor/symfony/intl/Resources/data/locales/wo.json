@@ -333,6 +333,11 @@
         "ko": "Koreye",
         "ko_KP": "Koreye (Kore Noor)",
         "ks": "Kashmiri",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "Kashmiri (Araab)",
+        "ks_Arab_IN": "Kashmiri (Araab, End)",
+>>>>>>> ThomasN
         "ks_IN": "Kashmiri (End)",
         "ku": "Kurdi",
         "ku_TR": "Kurdi (Tirki)",
@@ -360,6 +365,10 @@
         "mr_IN": "Marati (End)",
         "ms": "Malay",
         "ms_BN": "Malay (Burney)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Malay (Indonesi)",
+>>>>>>> ThomasN
         "ms_MY": "Malay (Malesi)",
         "ms_SG": "Malay (Singapuur)",
         "mt": "Malt",
@@ -424,6 +433,11 @@
         "rw": "Kinyarwànda",
         "rw_RW": "Kinyarwànda (Ruwànda)",
         "sd": "Sindi",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "Sindi (Araab)",
+        "sd_Arab_PK": "Sindi (Araab, Pakistaŋ)",
+>>>>>>> ThomasN
         "sd_PK": "Sindi (Pakistaŋ)",
         "se": "Penku Sami",
         "se_FI": "Penku Sami (Finlànd)",

@@ -368,6 +368,11 @@
         "ko_KP": "korejiešu (Ziemeļkoreja)",
         "ko_KR": "korejiešu (Dienvidkoreja)",
         "ks": "kašmiriešu",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "kašmiriešu (arābu)",
+        "ks_Arab_IN": "kašmiriešu (arābu, Indija)",
+>>>>>>> ThomasN
         "ks_IN": "kašmiriešu (Indija)",
         "ku": "kurdu",
         "ku_TR": "kurdu (Turcija)",
@@ -406,6 +411,10 @@
         "mr_IN": "marathu (Indija)",
         "ms": "malajiešu",
         "ms_BN": "malajiešu (Bruneja)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "malajiešu (Indonēzija)",
+>>>>>>> ThomasN
         "ms_MY": "malajiešu (Malaizija)",
         "ms_SG": "malajiešu (Singapūra)",
         "mt": "maltiešu",
@@ -486,6 +495,13 @@
         "rw": "kiņaruanda",
         "rw_RW": "kiņaruanda (Ruanda)",
         "sd": "sindhu",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "sindhu (arābu)",
+        "sd_Arab_PK": "sindhu (arābu, Pakistāna)",
+        "sd_Deva": "sindhu (dēvanāgari)",
+        "sd_Deva_IN": "sindhu (dēvanāgari, Indija)",
+>>>>>>> ThomasN
         "sd_PK": "sindhu (Pakistāna)",
         "se": "ziemeļsāmu",
         "se_FI": "ziemeļsāmu (Somija)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "serbu (latīņu, Serbija)",
         "sr_ME": "serbu (Melnkalne)",
         "sr_RS": "serbu (Serbija)",
+<<<<<<< HEAD
+=======
+        "su": "zundu",
+        "su_ID": "zundu (Indonēzija)",
+        "su_Latn": "zundu (latīņu)",
+        "su_Latn_ID": "zundu (latīņu, Indonēzija)",
+>>>>>>> ThomasN
         "sv": "zviedru",
         "sv_AX": "zviedru (Olandes salas)",
         "sv_FI": "zviedru (Somija)",

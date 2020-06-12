@@ -22,9 +22,12 @@ class SendEmailMessage
     private $message;
     private $envelope;
 
+<<<<<<< HEAD
     /**
      * @internal
      */
+=======
+>>>>>>> ThomasN
     public function __construct(RawMessage $message, Envelope $envelope = null)
     {
         $this->message = $message;

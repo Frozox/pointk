@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -105,10 +108,13 @@
             "BZD",
             "BZD"
         ],
+<<<<<<< HEAD
         "CAD": [
             "CA$",
             "CAD"
         ],
+=======
+>>>>>>> ThomasN
         "CDF": [
             "CDF",
             "CDF"
@@ -341,10 +347,13 @@
             "MRO",
             "MRO"
         ],
+<<<<<<< HEAD
         "MRU": [
             "MRU",
             "MRU"
         ],
+=======
+>>>>>>> ThomasN
         "MTL": [
             "MTL",
             "Lira Maltija"
@@ -385,10 +394,13 @@
             "NIO",
             "NIO"
         ],
+<<<<<<< HEAD
         "NPR": [
             "NPR",
             "NPR"
         ],
+=======
+>>>>>>> ThomasN
         "NZD": [
             "NZ$",
             "NZD"
@@ -565,10 +577,13 @@
             "VEF",
             "VEF"
         ],
+<<<<<<< HEAD
         "VES": [
             "VES",
             "VES"
         ],
+=======
+>>>>>>> ThomasN
         "VND": [
             "₫",
             "VND"

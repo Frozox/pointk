@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Afar",
         "ab": "Abchasisch",
@@ -599,6 +602,10 @@
         "ar_001": "Modernes Hocharabisch",
         "de_AT": "Österreichisches Deutsch",
         "de_CH": "Schweizer Hochdeutsch",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Dari",
+>>>>>>> ThomasN
         "nds_NL": "Niedersächsisch",
         "nl_BE": "Flämisch",
         "ro_MD": "Moldauisch",

@@ -11,7 +11,10 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+<<<<<<< HEAD
 use Symfony\Component\DependencyInjection\ChildDefinition;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
@@ -62,11 +65,15 @@ class ServiceConfigurator extends AbstractServiceConfigurator
         parent::__destruct();
 
         $this->container->removeBindings($this->id);
+<<<<<<< HEAD
 
         if (!$this->definition instanceof ChildDefinition) {
             $this->container->setDefinition($this->id, $this->definition->setInstanceofConditionals($this->instanceof));
         } else {
             $this->container->setDefinition($this->id, $this->definition);
         }
+=======
+        $this->container->setDefinition($this->id, $this->definition->setInstanceofConditionals($this->instanceof));
+>>>>>>> ThomasN
     }
 }

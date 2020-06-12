@@ -144,7 +144,11 @@ class Psr16Cache implements CacheInterface, PruneableInterface, ResettableInterf
         if ($keys instanceof \Traversable) {
             $keys = iterator_to_array($keys, false);
         } elseif (!\is_array($keys)) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Cache keys must be array or Traversable, "%s" given', \is_object($keys) ? \get_class($keys) : \gettype($keys)));
+=======
+            throw new InvalidArgumentException(sprintf('Cache keys must be array or Traversable, "%s" given.', get_debug_type($keys)));
+>>>>>>> ThomasN
         }
 
         try {
@@ -193,7 +197,11 @@ class Psr16Cache implements CacheInterface, PruneableInterface, ResettableInterf
     {
         $valuesIsArray = \is_array($values);
         if (!$valuesIsArray && !$values instanceof \Traversable) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Cache values must be array or Traversable, "%s" given', \is_object($values) ? \get_class($values) : \gettype($values)));
+=======
+            throw new InvalidArgumentException(sprintf('Cache values must be array or Traversable, "%s" given.', get_debug_type($values)));
+>>>>>>> ThomasN
         }
         $items = [];
 
@@ -247,7 +255,11 @@ class Psr16Cache implements CacheInterface, PruneableInterface, ResettableInterf
         if ($keys instanceof \Traversable) {
             $keys = iterator_to_array($keys, false);
         } elseif (!\is_array($keys)) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Cache keys must be array or Traversable, "%s" given', \is_object($keys) ? \get_class($keys) : \gettype($keys)));
+=======
+            throw new InvalidArgumentException(sprintf('Cache keys must be array or Traversable, "%s" given.', get_debug_type($keys)));
+>>>>>>> ThomasN
         }
 
         try {

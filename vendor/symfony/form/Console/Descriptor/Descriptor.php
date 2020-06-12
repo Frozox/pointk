@@ -58,7 +58,11 @@ abstract class Descriptor implements DescriptorInterface
                 $this->describeOption($object, $options);
                 break;
             default:
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('Object of type "%s" is not describable.', \get_class($object)));
+=======
+                throw new \InvalidArgumentException(sprintf('Object of type "%s" is not describable.', get_debug_type($object)));
+>>>>>>> ThomasN
         }
     }
 
@@ -108,7 +112,19 @@ abstract class Descriptor implements DescriptorInterface
 
     protected function getOptionDefinition(OptionsResolver $optionsResolver, string $option)
     {
+<<<<<<< HEAD
         $definition = [
+=======
+        $definition = [];
+
+        if ($info = $optionsResolver->getInfo($option)) {
+            $definition = [
+                'info' => $info,
+            ];
+        }
+
+        $definition += [
+>>>>>>> ThomasN
             'required' => $optionsResolver->isRequired($option),
             'deprecated' => $optionsResolver->isDeprecated($option),
         ];
@@ -121,7 +137,11 @@ abstract class Descriptor implements DescriptorInterface
             'allowedTypes' => 'getAllowedTypes',
             'allowedValues' => 'getAllowedValues',
             'normalizers' => 'getNormalizers',
+<<<<<<< HEAD
             'deprecationMessage' => 'getDeprecationMessage',
+=======
+            'deprecation' => 'getDeprecation',
+>>>>>>> ThomasN
         ];
 
         foreach ($map as $key => $method) {
@@ -132,8 +152,15 @@ abstract class Descriptor implements DescriptorInterface
             }
         }
 
+<<<<<<< HEAD
         if (isset($definition['deprecationMessage']) && \is_string($definition['deprecationMessage'])) {
             $definition['deprecationMessage'] = strtr($definition['deprecationMessage'], ['%name%' => $option]);
+=======
+        if (isset($definition['deprecation']) && isset($definition['deprecation']['message']) && \is_string($definition['deprecation']['message'])) {
+            $definition['deprecationMessage'] = strtr($definition['deprecation']['message'], ['%name%' => $option]);
+            $definition['deprecationPackage'] = $definition['deprecation']['package'];
+            $definition['deprecationVersion'] = $definition['deprecation']['version'];
+>>>>>>> ThomasN
         }
 
         return $definition;

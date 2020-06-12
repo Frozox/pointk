@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -151,7 +154,11 @@
         ],
         "CZK": [
             "CZK",
+<<<<<<< HEAD
             "CZK"
+=======
+            "koruna ya Jamhuri ya Czech"
+>>>>>>> ThomasN
         ],
         "DJF": [
             "DJF",

@@ -20,7 +20,11 @@ use Symfony\Component\Notifier\Recipient\SmsRecipientInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 final class SmsMessage implements MessageInterface
 {
@@ -34,10 +38,17 @@ final class SmsMessage implements MessageInterface
         $this->phone = $phone;
     }
 
+<<<<<<< HEAD
     public static function fromNotification(Notification $notification, Recipient $recipient, string $transport = null): self
     {
         if (!$recipient instanceof SmsRecipientInterface) {
             throw new LogicException(sprintf('To send a SMS message, "%s" should implement "%s" or the recipient should implement "%s".', \get_class($notification), SmsNotificationInterface::class, SmsRecipientInterface::class));
+=======
+    public static function fromNotification(Notification $notification, Recipient $recipient): self
+    {
+        if (!$recipient instanceof SmsRecipientInterface) {
+            throw new LogicException(sprintf('To send a SMS message, "%s" should implement "%s" or the recipient should implement "%s".', get_debug_type($notification), SmsNotificationInterface::class, SmsRecipientInterface::class));
+>>>>>>> ThomasN
         }
 
         return new self($recipient->getPhone(), $notification->getSubject());

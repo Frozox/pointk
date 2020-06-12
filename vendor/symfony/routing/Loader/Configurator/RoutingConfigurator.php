@@ -57,4 +57,18 @@ class RoutingConfigurator
     {
         return new CollectionConfigurator($this->collection, $name);
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * @return static
+     */
+    final public function withPath(string $path): self
+    {
+        $clone = clone $this;
+        $clone->path = $clone->file = $path;
+
+        return $clone;
+    }
+>>>>>>> ThomasN
 }

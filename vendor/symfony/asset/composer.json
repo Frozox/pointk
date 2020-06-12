@@ -16,12 +16,20 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5"
+=======
+        "php": ">=7.2.5"
+>>>>>>> ThomasN
     },
     "suggest": {
         "symfony/http-foundation": ""
     },
     "require-dev": {
+<<<<<<< HEAD
+=======
+        "symfony/http-client": "^4.4|^5.0",
+>>>>>>> ThomasN
         "symfony/http-foundation": "^4.4|^5.0",
         "symfony/http-kernel": "^4.4|^5.0"
     },
@@ -34,7 +42,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "5.0-dev"
+=======
+            "dev-master": "5.1-dev"
+>>>>>>> ThomasN
         }
     }
 }

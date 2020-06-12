@@ -817,8 +817,13 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pStmt_Catch(Stmt\Catch_ $node) {
+<<<<<<< HEAD
         return 'catch (' . $this->pImplode($node->types, '|') . ' '
              . $this->p($node->var)
+=======
+        return 'catch (' . $this->pImplode($node->types, '|')
+             . ($node->var !== null ? ' ' . $this->p($node->var) : '')
+>>>>>>> ThomasN
              . ') {' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 

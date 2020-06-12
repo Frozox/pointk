@@ -933,7 +933,14 @@ SQL
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string      $table
+     * @param string|null $database
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getListTableForeignKeysSQL($table, $database = null)
     {

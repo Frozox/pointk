@@ -12,7 +12,10 @@
 namespace Symfony\Component\Console\Output;
 
 use Symfony\Component\Console\Exception\InvalidArgumentException;
+<<<<<<< HEAD
 use Symfony\Component\Console\Exception\RuntimeException;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\Console\Formatter\OutputFormatterInterface;
 
 /**
@@ -74,10 +77,14 @@ class StreamOutput extends Output
             $message .= PHP_EOL;
         }
 
+<<<<<<< HEAD
         if (false === @fwrite($this->stream, $message)) {
             // should never happen
             throw new RuntimeException('Unable to write output.');
         }
+=======
+        @fwrite($this->stream, $message);
+>>>>>>> ThomasN
 
         fflush($this->stream);
     }

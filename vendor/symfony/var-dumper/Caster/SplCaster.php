@@ -91,6 +91,11 @@ class SplCaster
         ];
 
         $prefix = Caster::PREFIX_VIRTUAL;
+<<<<<<< HEAD
+=======
+        unset($a["\0SplFileInfo\0fileName"]);
+        unset($a["\0SplFileInfo\0pathName"]);
+>>>>>>> ThomasN
 
         if (false === $c->getPathname()) {
             $a[$prefix.'⚠'] = 'The parent constructor was not called: the object is in an invalid state';
@@ -160,6 +165,7 @@ class SplCaster
         return $a;
     }
 
+<<<<<<< HEAD
     public static function castFixedArray(\SplFixedArray $c, array $a, Stub $stub, bool $isNested)
     {
         $a += [
@@ -169,10 +175,16 @@ class SplCaster
         return $a;
     }
 
+=======
+>>>>>>> ThomasN
     public static function castObjectStorage(\SplObjectStorage $c, array $a, Stub $stub, bool $isNested)
     {
         $storage = [];
         unset($a[Caster::PREFIX_DYNAMIC."\0gcdata"]); // Don't hit https://bugs.php.net/65967
+<<<<<<< HEAD
+=======
+        unset($a["\0SplObjectStorage\0storage"]);
+>>>>>>> ThomasN
 
         $clone = clone $c;
         foreach ($clone as $obj) {
@@ -206,14 +218,26 @@ class SplCaster
     private static function castSplArray($c, array $a, Stub $stub, bool $isNested): array
     {
         $prefix = Caster::PREFIX_VIRTUAL;
+<<<<<<< HEAD
         $class = $stub->class;
+=======
+>>>>>>> ThomasN
         $flags = $c->getFlags();
 
         if (!($flags & \ArrayObject::STD_PROP_LIST)) {
             $c->setFlags(\ArrayObject::STD_PROP_LIST);
+<<<<<<< HEAD
             $a = Caster::castObject($c, $class);
             $c->setFlags($flags);
         }
+=======
+            $a = Caster::castObject($c, \get_class($c), method_exists($c, '__debugInfo'), $stub->class);
+            $c->setFlags($flags);
+        }
+        if (\PHP_VERSION_ID < 70400) {
+            $a[$prefix.'storage'] = $c->getArrayCopy();
+        }
+>>>>>>> ThomasN
         $a += [
             $prefix.'flag::STD_PROP_LIST' => (bool) ($flags & \ArrayObject::STD_PROP_LIST),
             $prefix.'flag::ARRAY_AS_PROPS' => (bool) ($flags & \ArrayObject::ARRAY_AS_PROPS),
@@ -221,7 +245,10 @@ class SplCaster
         if ($c instanceof \ArrayObject) {
             $a[$prefix.'iteratorClass'] = new ClassStub($c->getIteratorClass());
         }
+<<<<<<< HEAD
         $a[$prefix.'storage'] = $c->getArrayCopy();
+=======
+>>>>>>> ThomasN
 
         return $a;
     }

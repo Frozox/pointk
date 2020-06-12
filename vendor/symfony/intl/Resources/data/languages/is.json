@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afár",
         "ab": "abkasíska",
@@ -164,7 +167,10 @@
         "gwi": "gvísín",
         "ha": "hása",
         "hai": "haída",
+<<<<<<< HEAD
         "hak": "hak",
+=======
+>>>>>>> ThomasN
         "haw": "havaíska",
         "he": "hebreska",
         "hi": "hindí",
@@ -174,7 +180,10 @@
         "ho": "hírímótú",
         "hr": "króatíska",
         "hsb": "hásorbneska",
+<<<<<<< HEAD
         "hsn": "hsn",
+=======
+>>>>>>> ThomasN
         "ht": "haítíska",
         "hu": "ungverska",
         "hup": "húpa",
@@ -307,7 +316,10 @@
         "myv": "ersja",
         "mzn": "masanderaní",
         "na": "nárúska",
+<<<<<<< HEAD
         "nan": "nan",
+=======
+>>>>>>> ThomasN
         "nap": "napólíska",
         "naq": "nama",
         "nb": "norskt bókmál",
@@ -478,7 +490,10 @@
         "was": "vasjó",
         "wbp": "varlpiri",
         "wo": "volof",
+<<<<<<< HEAD
         "wuu": "wuu",
+=======
+>>>>>>> ThomasN
         "xal": "kalmúkska",
         "xh": "sósa",
         "xog": "sóga",
@@ -510,6 +525,10 @@
         "es_419": "rómönsk-amerísk spænska",
         "es_ES": "evrópsk spænska",
         "es_MX": "mexíkósk spænska",
+<<<<<<< HEAD
+=======
+        "fa_AF": "darí",
+>>>>>>> ThomasN
         "fr_CA": "kanadísk franska",
         "fr_CH": "svissnesk franska",
         "nds_NL": "lágsaxneska",

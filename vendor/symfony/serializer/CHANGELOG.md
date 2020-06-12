@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+ * added support for scalar values denormalization
+ * added support for `\stdClass` to `ObjectNormalizer`
+ * added the ability to ignore properties using metadata (e.g. `@Symfony\Component\Serializer\Annotation\Ignore`)
+ * added an option to serialize constraint violations payloads (e.g. severity)
+
+>>>>>>> ThomasN
 5.0.0
 -----
 
@@ -12,7 +23,11 @@ CHANGELOG
    `AbstractNormalizer::$camelizedAttributes`, `AbstractNormalizer::setCircularReferenceLimit()`,
    `AbstractNormalizer::setCircularReferenceHandler()`, `AbstractNormalizer::setCallbacks()` and
    `AbstractNormalizer::setIgnoredAttributes()`, use the default context instead.
+<<<<<<< HEAD
  * removed `AbstractObjectNormalizer::$maxDepthHandler` and `AbstractObjectNormalizer::setMaxDepthHandler()`, 
+=======
+ * removed `AbstractObjectNormalizer::$maxDepthHandler` and `AbstractObjectNormalizer::setMaxDepthHandler()`,
+>>>>>>> ThomasN
    use the default context instead.
  * removed `XmlEncoder::setRootNodeName()` & `XmlEncoder::getRootNodeName()`, use the default context instead.
  * removed individual encoders/normalizers options as constructor arguments.

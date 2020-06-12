@@ -20,12 +20,21 @@
 namespace Doctrine\ORM\Mapping\Driver;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver as AbstractAnnotationDriver;
+=======
+>>>>>>> ThomasN
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping;
 use Doctrine\ORM\Mapping\Builder\EntityListenerBuilder;
 use Doctrine\ORM\Mapping\MappingException;
+<<<<<<< HEAD
+=======
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\Driver\AnnotationDriver as AbstractAnnotationDriver;
+use function interface_exists;
+>>>>>>> ThomasN
 
 /**
  * The AnnotationDriver reads the mapping metadata from docblock annotations.
@@ -44,7 +53,10 @@ class AnnotationDriver extends AbstractAnnotationDriver
     protected $entityAnnotationClasses = [
         Mapping\Entity::class => 1,
         Mapping\MappedSuperclass::class => 2,
+<<<<<<< HEAD
         Mapping\Embeddable::class => 3,
+=======
+>>>>>>> ThomasN
     ];
 
     /**
@@ -278,8 +290,11 @@ class AnnotationDriver extends AbstractAnnotationDriver
         foreach ($class->getProperties() as $property) {
             if ($metadata->isMappedSuperclass && ! $property->isPrivate()
                 ||
+<<<<<<< HEAD
                 $metadata->isEmbeddedClass && $property->getDeclaringClass()->getName() !== $class->getName()
                 ||
+=======
+>>>>>>> ThomasN
                 $metadata->isInheritedField($property->name)
                 ||
                 $metadata->isInheritedAssociation($property->name)
@@ -674,3 +689,8 @@ class AnnotationDriver extends AbstractAnnotationDriver
         return new self($reader, $paths);
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadata::class);
+>>>>>>> ThomasN

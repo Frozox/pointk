@@ -65,7 +65,11 @@ class ChoicesToValuesTransformer implements DataTransformerInterface
         $choices = $this->choiceList->getChoicesForValues($array);
 
         if (\count($choices) !== \count($array)) {
+<<<<<<< HEAD
             throw new TransformationFailedException('Could not find all matching choices for the given values');
+=======
+            throw new TransformationFailedException('Could not find all matching choices for the given values.');
+>>>>>>> ThomasN
         }
 
         return $choices;

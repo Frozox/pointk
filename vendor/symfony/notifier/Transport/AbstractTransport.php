@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\Notifier\Transport;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\EventDispatcher\Event;
+>>>>>>> ThomasN
 use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Notifier\Event\MessageEvent;
@@ -22,7 +26,11 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 abstract class AbstractTransport implements TransportInterface
 {
@@ -45,7 +53,11 @@ abstract class AbstractTransport implements TransportInterface
             $this->client = HttpClient::create();
         }
 
+<<<<<<< HEAD
         $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
+=======
+        $this->dispatcher = class_exists(Event::class) ? LegacyEventDispatcherProxy::decorate($dispatcher) : $dispatcher;
+>>>>>>> ThomasN
     }
 
     /**

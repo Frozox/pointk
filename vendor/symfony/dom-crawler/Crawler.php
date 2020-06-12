@@ -122,7 +122,11 @@ class Crawler implements \Countable, \IteratorAggregate
         } elseif (\is_string($node)) {
             $this->addContent($node);
         } elseif (null !== $node) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "%s".', \is_object($node) ? \get_class($node) : \gettype($node)));
+=======
+            throw new \InvalidArgumentException(sprintf('Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "%s".', get_debug_type($node)));
+>>>>>>> ThomasN
         }
     }
 
@@ -802,7 +806,11 @@ class Crawler implements \Countable, \IteratorAggregate
         $node = $this->getNode(0);
 
         if (!$node instanceof \DOMElement) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', \get_class($node)));
+=======
+            throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', get_debug_type($node)));
+>>>>>>> ThomasN
         }
 
         return new Link($node, $this->baseHref, $method);
@@ -820,7 +828,11 @@ class Crawler implements \Countable, \IteratorAggregate
         $links = [];
         foreach ($this->nodes as $node) {
             if (!$node instanceof \DOMElement) {
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('The current node list should contain only DOMElement instances, "%s" found.', \get_class($node)));
+=======
+                throw new \InvalidArgumentException(sprintf('The current node list should contain only DOMElement instances, "%s" found.', get_debug_type($node)));
+>>>>>>> ThomasN
             }
 
             $links[] = new Link($node, $this->baseHref, 'get');
@@ -845,7 +857,11 @@ class Crawler implements \Countable, \IteratorAggregate
         $node = $this->getNode(0);
 
         if (!$node instanceof \DOMElement) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', \get_class($node)));
+=======
+            throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', get_debug_type($node)));
+>>>>>>> ThomasN
         }
 
         return new Image($node, $this->baseHref);
@@ -861,7 +877,11 @@ class Crawler implements \Countable, \IteratorAggregate
         $images = [];
         foreach ($this as $node) {
             if (!$node instanceof \DOMElement) {
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('The current node list should contain only DOMElement instances, "%s" found.', \get_class($node)));
+=======
+                throw new \InvalidArgumentException(sprintf('The current node list should contain only DOMElement instances, "%s" found.', get_debug_type($node)));
+>>>>>>> ThomasN
             }
 
             $images[] = new Image($node, $this->baseHref);
@@ -886,7 +906,11 @@ class Crawler implements \Countable, \IteratorAggregate
         $node = $this->getNode(0);
 
         if (!$node instanceof \DOMElement) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', \get_class($node)));
+=======
+            throw new \InvalidArgumentException(sprintf('The selected node should be instance of DOMElement, got "%s".', get_debug_type($node)));
+>>>>>>> ThomasN
         }
 
         $form = new Form($node, $this->uri, $method, $this->baseHref);
@@ -1143,11 +1167,19 @@ class Crawler implements \Countable, \IteratorAggregate
 
         try {
             return mb_convert_encoding($htmlContent, 'HTML-ENTITIES', $charset);
+<<<<<<< HEAD
         } catch (\Exception $e) {
             try {
                 $htmlContent = iconv($charset, 'UTF-8', $htmlContent);
                 $htmlContent = mb_convert_encoding($htmlContent, 'HTML-ENTITIES', 'UTF-8');
             } catch (\Exception $e) {
+=======
+        } catch (\Exception | \ValueError $e) {
+            try {
+                $htmlContent = iconv($charset, 'UTF-8', $htmlContent);
+                $htmlContent = mb_convert_encoding($htmlContent, 'HTML-ENTITIES', 'UTF-8');
+            } catch (\Exception | \ValueError $e) {
+>>>>>>> ThomasN
             }
 
             return $htmlContent;

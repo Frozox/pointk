@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Afak": "afaka",
         "Arab": "arabo",
+=======
+    "Names": {
+        "Afak": "afaka",
+        "Arab": "arabo",
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armi": "aramaico imperiale",
         "Armn": "armeno",
         "Avst": "avestico",
@@ -113,6 +120,10 @@
         "Phnx": "fenicio",
         "Plrd": "fonetica di pollard",
         "Prti": "partico delle iscrizioni",
+<<<<<<< HEAD
+=======
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Rjng": "rejang",
         "Roro": "rongorongo",
         "Runr": "runico",

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Afar",
         "ab": "Abkhaz",
@@ -539,6 +542,10 @@
         "de_CH": "Jerman Tinggi (Swiss)",
         "en_GB": "Inggris (Inggris)",
         "es_ES": "Spanyol (Eropa)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Persia Dari",
+>>>>>>> ThomasN
         "fr_CA": "Perancis (Kanada)",
         "fr_CH": "Perancis (Swiss)",
         "pt_PT": "Portugis (Eropa)",

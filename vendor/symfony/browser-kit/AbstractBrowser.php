@@ -22,9 +22,12 @@ use Symfony\Component\Process\PhpProcess;
  *
  * To make the actual request, you need to implement the doRequest() method.
  *
+<<<<<<< HEAD
  * HttpBrowser is an implementation that uses the HttpClient component
  * to make real HTTP requests.
  *
+=======
+>>>>>>> ThomasN
  * If you want to be able to run requests in their own process (insulated flag),
  * you need to also implement the getScript() method.
  *
@@ -51,9 +54,13 @@ abstract class AbstractBrowser
     private $isMainRequest = true;
 
     /**
+<<<<<<< HEAD
      * @param array     $server    The server parameters (equivalent of $_SERVER)
      * @param History   $history   A History instance to store the browser history
      * @param CookieJar $cookieJar A CookieJar instance to store the cookies
+=======
+     * @param array $server The server parameters (equivalent of $_SERVER)
+>>>>>>> ThomasN
      */
     public function __construct(array $server = [], History $history = null, CookieJar $cookieJar = null)
     {
@@ -297,7 +304,10 @@ abstract class AbstractBrowser
     /**
      * Submits a form.
      *
+<<<<<<< HEAD
      * @param Form  $form             A Form instance
+=======
+>>>>>>> ThomasN
      * @param array $values           An array of form field values
      * @param array $serverParameters An array of server parameters
      *
@@ -366,7 +376,11 @@ abstract class AbstractBrowser
             $uri = preg_replace('{^'.parse_url($uri, PHP_URL_SCHEME).'}', $server['HTTPS'] ? 'https' : 'http', $uri);
         }
 
+<<<<<<< HEAD
         if (!$this->history->isEmpty()) {
+=======
+        if (!isset($server['HTTP_REFERER']) && !$this->history->isEmpty()) {
+>>>>>>> ThomasN
             $server['HTTP_REFERER'] = $this->history->current()->getUri();
         }
 
@@ -451,7 +465,11 @@ abstract class AbstractBrowser
         }
 
         if (!$process->isSuccessful() || !preg_match('/^O\:\d+\:/', $process->getOutput())) {
+<<<<<<< HEAD
             throw new \RuntimeException(sprintf('OUTPUT: %s ERROR OUTPUT: %s', $process->getOutput(), $process->getErrorOutput()));
+=======
+            throw new \RuntimeException(sprintf('OUTPUT: %s ERROR OUTPUT: %s.', $process->getOutput(), $process->getErrorOutput()));
+>>>>>>> ThomasN
         }
 
         return unserialize($process->getOutput());
@@ -481,8 +499,11 @@ abstract class AbstractBrowser
     /**
      * Filters the BrowserKit request to the origin one.
      *
+<<<<<<< HEAD
      * @param Request $request The BrowserKit Request to filter
      *
+=======
+>>>>>>> ThomasN
      * @return object An origin request instance
      */
     protected function filterRequest(Request $request)
@@ -685,8 +706,12 @@ abstract class AbstractBrowser
     /**
      * Makes a request from a Request object directly.
      *
+<<<<<<< HEAD
      * @param Request $request       A Request instance
      * @param bool    $changeHistory Whether to update the history or not (only used internally for back(), forward(), and reload())
+=======
+     * @param bool $changeHistory Whether to update the history or not (only used internally for back(), forward(), and reload())
+>>>>>>> ThomasN
      *
      * @return Crawler
      */
@@ -695,7 +720,11 @@ abstract class AbstractBrowser
         return $this->request($request->getMethod(), $request->getUri(), $request->getParameters(), $request->getFiles(), $request->getServer(), $request->getContent(), $changeHistory);
     }
 
+<<<<<<< HEAD
     private function updateServerFromUri($server, $uri)
+=======
+    private function updateServerFromUri(array $server, string $uri): array
+>>>>>>> ThomasN
     {
         $server['HTTP_HOST'] = $this->extractHost($uri);
         $scheme = parse_url($uri, PHP_URL_SCHEME);
@@ -705,7 +734,11 @@ abstract class AbstractBrowser
         return $server;
     }
 
+<<<<<<< HEAD
     private function extractHost($uri)
+=======
+    private function extractHost(string $uri): ?string
+>>>>>>> ThomasN
     {
         $host = parse_url($uri, PHP_URL_HOST);
 

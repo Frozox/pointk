@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afar",
         "ab": "abxaz",
@@ -113,7 +116,10 @@
         "gv": "men",
         "gwi": "gvichin",
         "ha": "xausa",
+<<<<<<< HEAD
         "hak": "hak",
+=======
+>>>>>>> ThomasN
         "haw": "gavaycha",
         "he": "ivrit",
         "hi": "hind",
@@ -121,7 +127,10 @@
         "hmn": "xmong",
         "hr": "xorvat",
         "hsb": "yuqori sorb",
+<<<<<<< HEAD
         "hsn": "hsn",
+=======
+>>>>>>> ThomasN
         "ht": "gaityan",
         "hu": "venger",
         "hup": "xupa",
@@ -234,7 +243,10 @@
         "myv": "erzya",
         "mzn": "mozandaron",
         "na": "nauru",
+<<<<<<< HEAD
         "nan": "nan",
+=======
+>>>>>>> ThomasN
         "nap": "neapolitan",
         "naq": "nama",
         "nb": "norveg-bokmal",
@@ -365,7 +377,10 @@
         "war": "varay",
         "wbp": "valbiri",
         "wo": "volof",
+<<<<<<< HEAD
         "wuu": "wuu",
+=======
+>>>>>>> ThomasN
         "xal": "qalmoq",
         "xh": "kxosa",
         "xog": "soga",
@@ -391,6 +406,10 @@
         "es_419": "ispan (Lotin Amerikasi)",
         "es_ES": "ispan (Yevropa)",
         "es_MX": "ispan (Meksika)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "fransuz (Kanada)",
         "fr_CH": "fransuz (Shveytsariya)",
         "nds_NL": "quyi sakson",

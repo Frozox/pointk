@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "af": "Afirkanci",
         "agq": "Aghem",
@@ -162,6 +165,10 @@
         "rof": "Rombo",
         "ru": "Rashanci",
         "rw": "Kiniyaruwanda",
+<<<<<<< HEAD
+=======
+        "rwk": "yaren Rwa",
+>>>>>>> ThomasN
         "sa": "Sanskrit",
         "sah": "Sakha",
         "saq": "Samburu",

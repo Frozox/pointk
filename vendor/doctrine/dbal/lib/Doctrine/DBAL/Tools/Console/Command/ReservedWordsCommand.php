@@ -66,9 +66,13 @@ class ReservedWordsCommand extends Command
         $this->keywordListClasses[$name] = $class;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
+=======
+    /** @return void */
+>>>>>>> ThomasN
     protected function configure()
     {
         $this

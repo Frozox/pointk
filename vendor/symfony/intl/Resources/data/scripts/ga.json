@@ -1,7 +1,12 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Adlm": "Adlm",
+=======
+    "Names": {
+        "Adlm": "Adlam",
+>>>>>>> ThomasN
         "Aghb": "Albánach Cugasach",
         "Ahom": "Ahom",
         "Arab": "Arabach",
@@ -9,6 +14,7 @@
         "Armn": "Airméanach",
         "Avst": "Aivéisteach",
         "Bali": "Bailíoch",
+<<<<<<< HEAD
         "Bamu": "Bamu",
         "Bass": "Bass",
         "Batk": "Batacach",
@@ -23,11 +29,21 @@
         "Cans": "Cans",
         "Cari": "Cari",
         "Cham": "Cham",
+=======
+        "Batk": "Batacach",
+        "Beng": "Beangálach",
+        "Bopo": "Bopomofo",
+        "Brai": "Braille",
+        "Bugi": "Buigineach",
+        "Buhd": "Buthaideach",
+        "Cans": "Siollach Bundúchasach Ceanadach Aontaithe",
+>>>>>>> ThomasN
         "Cher": "Seiricíoch",
         "Copt": "Coptach",
         "Cprt": "Cipireach",
         "Cyrl": "Coireallach",
         "Deva": "Déiveanágrach",
+<<<<<<< HEAD
         "Dsrt": "Dsrt",
         "Dupl": "Dupl",
         "Egyd": "Éigipteach coiteann",
@@ -40,12 +56,23 @@
         "Gonm": "Gonm",
         "Goth": "Gotach",
         "Gran": "Gran",
+=======
+        "Dupl": "Gearrscríobh Duployan",
+        "Egyd": "Éigipteach coiteann",
+        "Egyh": "Éigipteach cliarúil",
+        "Egyp": "Iairiglifí Éigipteacha",
+        "Ethi": "Aetópach",
+        "Geor": "Seoirseach",
+        "Glag": "Glagalach",
+        "Goth": "Gotach",
+>>>>>>> ThomasN
         "Grek": "Gréagach",
         "Gujr": "Gúisearátach",
         "Guru": "Gurmúcach",
         "Hanb": "Han agus Bopomofo",
         "Hang": "Hangalach",
         "Hani": "Han",
+<<<<<<< HEAD
         "Hano": "Hano",
         "Hans": "Simplithe",
         "Hant": "Traidisiúnta",
@@ -54,12 +81,20 @@
         "Hira": "Hireagánach",
         "Hluw": "Iairiglifí Anatólacha",
         "Hmng": "Hmng",
+=======
+        "Hans": "Simplithe",
+        "Hant": "Traidisiúnta",
+        "Hebr": "Eabhrach",
+        "Hira": "Hireagánach",
+        "Hluw": "Iairiglifí Anatólacha",
+>>>>>>> ThomasN
         "Hrkt": "Siollabraí Seapánacha",
         "Hung": "Sean-Ungárach",
         "Ital": "Sean-Iodáilic",
         "Jamo": "Seamó",
         "Java": "Iávach",
         "Jpan": "Seapánach",
+<<<<<<< HEAD
         "Kali": "Kali",
         "Kana": "Catacánach",
         "Khar": "Khar",
@@ -73,6 +108,15 @@
         "Latg": "Cló Gaelach",
         "Latn": "Laidineach",
         "Lepc": "Lepc",
+=======
+        "Kana": "Catacánach",
+        "Khmr": "Ciméarach",
+        "Knda": "Cannadach",
+        "Kore": "Cóiréach",
+        "Laoo": "Laosach",
+        "Latg": "Cló Gaelach",
+        "Latn": "Laidineach",
+>>>>>>> ThomasN
         "Limb": "Liombúch",
         "Lina": "Líneach A",
         "Linb": "Líneach B",
@@ -80,6 +124,7 @@
         "Lyci": "Liciach",
         "Lydi": "Lidiach",
         "Mahj": "Mahasánach",
+<<<<<<< HEAD
         "Mand": "Mand",
         "Mani": "Mainicéasach",
         "Marc": "Marc",
@@ -137,12 +182,38 @@
         "Taml": "Tamalach",
         "Tang": "Tang",
         "Tavt": "Tavt",
+=======
+        "Mani": "Mainicéasach",
+        "Maya": "Iairiglifí Máigheacha",
+        "Mend": "Meindeach",
+        "Mlym": "Mailéalamach",
+        "Mong": "Mongólach",
+        "Mult": "Multani",
+        "Mymr": "Maenmarach",
+        "Narb": "Sean-Arabach Thuaidh",
+        "Newa": "Newa",
+        "Ogam": "Ogham",
+        "Orya": "Oiríseach",
+        "Perm": "Sean-Pheirmeach",
+        "Phnx": "Féiníceach",
+        "Plrd": "Pollard Foghrach",
+        "Prti": "Pairtiach Inscríbhinniúil",
+        "Runr": "Rúnach",
+        "Samr": "Samárach",
+        "Sarb": "Sean-Arabach Theas",
+        "Shaw": "Shawach",
+        "Sinh": "Siolónach",
+        "Sund": "Sundainéis",
+        "Syrc": "Siriceach",
+        "Taml": "Tamalach",
+>>>>>>> ThomasN
         "Telu": "Teileagúch",
         "Tfng": "Tifinagh",
         "Tglg": "Tagálagach",
         "Thaa": "Tánach",
         "Thai": "Téalannach",
         "Tibt": "Tibéadach",
+<<<<<<< HEAD
         "Tirh": "Tirh",
         "Ugar": "Úgairíteach",
         "Vaii": "Vaii",
@@ -151,6 +222,12 @@
         "Xsux": "Dingchruthach Suiméar-Acádach",
         "Yiii": "Ís",
         "Zanb": "Zanb",
+=======
+        "Ugar": "Úgairíteach",
+        "Xpeo": "Sean-Pheirseach",
+        "Xsux": "Dingchruthach Suiméar-Acádach",
+        "Yiii": "Ís",
+>>>>>>> ThomasN
         "Zinh": "Oidhreacht",
         "Zmth": "Nodaireacht Mhatamaiticiúil",
         "Zsye": "Emoji",

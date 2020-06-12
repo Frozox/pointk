@@ -105,6 +105,17 @@ abstract class Constraint
      */
     public function __construct($options = null)
     {
+<<<<<<< HEAD
+=======
+        foreach ($this->normalizeOptions($options) as $name => $value) {
+            $this->$name = $value;
+        }
+    }
+
+    protected function normalizeOptions($options): array
+    {
+        $normalizedOptions = [];
+>>>>>>> ThomasN
         $defaultOption = $this->getDefaultOption();
         $invalidOptions = [];
         $missingOptions = array_flip((array) $this->getRequiredOptions());
@@ -128,7 +139,11 @@ abstract class Constraint
         if ($options && \is_array($options) && \is_string(key($options))) {
             foreach ($options as $option => $value) {
                 if (\array_key_exists($option, $knownOptions)) {
+<<<<<<< HEAD
                     $this->$option = $value;
+=======
+                    $normalizedOptions[$option] = $value;
+>>>>>>> ThomasN
                     unset($missingOptions[$option]);
                 } else {
                     $invalidOptions[] = $option;
@@ -140,7 +155,11 @@ abstract class Constraint
             }
 
             if (\array_key_exists($defaultOption, $knownOptions)) {
+<<<<<<< HEAD
                 $this->$defaultOption = $options;
+=======
+                $normalizedOptions[$defaultOption] = $options;
+>>>>>>> ThomasN
                 unset($missingOptions[$defaultOption]);
             } else {
                 $invalidOptions[] = $defaultOption;
@@ -154,6 +173,11 @@ abstract class Constraint
         if (\count($missingOptions) > 0) {
             throw new MissingOptionsException(sprintf('The options "%s" must be set for constraint "%s".', implode('", "', array_keys($missingOptions)), static::class), array_keys($missingOptions));
         }
+<<<<<<< HEAD
+=======
+
+        return $normalizedOptions;
+>>>>>>> ThomasN
     }
 
     /**

@@ -28,8 +28,11 @@ final class NativeClientState extends ClientState
     public $responseCount = 0;
     /** @var string[] */
     public $dnsCache = [];
+<<<<<<< HEAD
     /** @var resource[] */
     public $handles = [];
+=======
+>>>>>>> ThomasN
     /** @var bool */
     public $sleep = false;
 

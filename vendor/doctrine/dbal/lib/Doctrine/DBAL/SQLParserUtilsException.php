@@ -6,6 +6,11 @@ use function sprintf;
 
 /**
  * Doctrine\DBAL\ConnectionException
+<<<<<<< HEAD
+=======
+ *
+ * @psalm-immutable
+>>>>>>> ThomasN
  */
 class SQLParserUtilsException extends DBALException
 {

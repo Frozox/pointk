@@ -25,6 +25,11 @@ use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
  * contains the nested constraints.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
+<<<<<<< HEAD
+=======
+ *
+ * @internal since Symfony 5.1
+>>>>>>> ThomasN
  */
 abstract class Composite extends Constraint
 {
@@ -71,11 +76,19 @@ abstract class Composite extends Constraint
                     $constraint = \get_class($constraint);
                 }
 
+<<<<<<< HEAD
                 throw new ConstraintDefinitionException(sprintf('The value %s is not an instance of Constraint in constraint %s', $constraint, static::class));
             }
 
             if ($constraint instanceof Valid) {
                 throw new ConstraintDefinitionException(sprintf('The constraint Valid cannot be nested inside constraint %s. You can only declare the Valid constraint directly on a field or method.', static::class));
+=======
+                throw new ConstraintDefinitionException(sprintf('The value "%s" is not an instance of Constraint in constraint "%s".', $constraint, static::class));
+            }
+
+            if ($constraint instanceof Valid) {
+                throw new ConstraintDefinitionException(sprintf('The constraint Valid cannot be nested inside constraint "%s". You can only declare the Valid constraint directly on a field or method.', static::class));
+>>>>>>> ThomasN
             }
         }
 
@@ -88,7 +101,12 @@ abstract class Composite extends Constraint
                 }
             }
 
+<<<<<<< HEAD
             $this->groups = array_keys($mergedGroups);
+=======
+            // prevent empty composite constraint to have empty groups
+            $this->groups = array_keys($mergedGroups) ?: [self::DEFAULT_GROUP];
+>>>>>>> ThomasN
             $this->$compositeOption = $nestedConstraints;
 
             return;
@@ -99,7 +117,11 @@ abstract class Composite extends Constraint
                 $excessGroups = array_diff($constraint->groups, $this->groups);
 
                 if (\count($excessGroups) > 0) {
+<<<<<<< HEAD
                     throw new ConstraintDefinitionException(sprintf('The group(s) "%s" passed to the constraint %s should also be passed to its containing constraint %s', implode('", "', $excessGroups), \get_class($constraint), static::class));
+=======
+                    throw new ConstraintDefinitionException(sprintf('The group(s) "%s" passed to the constraint "%s" should also be passed to its containing constraint "%s".', implode('", "', $excessGroups), get_debug_type($constraint), static::class));
+>>>>>>> ThomasN
                 }
             } else {
                 $constraint->groups = $this->groups;

@@ -11,6 +11,15 @@
         <style><?= $this->include('assets/css/exception_full.css'); ?></style>
     </head>
     <body>
+<<<<<<< HEAD
+=======
+        <script>
+            document.body.classList.add(
+                localStorage.getItem('symfony/profiler/theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light')
+            );
+        </script>
+
+>>>>>>> ThomasN
         <?php if (class_exists('Symfony\Component\HttpKernel\Kernel')) { ?>
             <header>
                 <div class="container">

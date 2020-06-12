@@ -203,7 +203,11 @@ class XmlExporter extends AbstractExporter
                 }
 
                 if (isset($field['unique']) && $field['unique']) {
+<<<<<<< HEAD
                     $fieldXml->addAttribute('unique', $field['unique'] ? 'true' : 'false');
+=======
+                    $fieldXml->addAttribute('unique', 'true');
+>>>>>>> ThomasN
                 }
 
                 if (isset($field['options'])) {

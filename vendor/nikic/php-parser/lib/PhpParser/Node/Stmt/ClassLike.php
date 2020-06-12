@@ -54,6 +54,29 @@ abstract class ClassLike extends Node\Stmt
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Gets property with the given name defined directly in this class/interface/trait.
+     *
+     * @param string $name Name of the property
+     *
+     * @return Property|null Property node or null if the property does not exist
+     */
+    public function getProperty(string $name) {
+        foreach ($this->stmts as $stmt) {
+            if ($stmt instanceof Property) {
+                foreach ($stmt->props as $prop) {
+                    if ($prop instanceof PropertyProperty && $name === $prop->name->toString()) {
+                        return $stmt;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+>>>>>>> ThomasN
      * Gets all methods defined directly in this class/interface/trait
      *
      * @return ClassMethod[]

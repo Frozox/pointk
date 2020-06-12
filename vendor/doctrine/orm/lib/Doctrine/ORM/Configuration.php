@@ -25,8 +25,11 @@ use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Annotations\SimpleAnnotationReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\Cache as CacheDriver;
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
 use Doctrine\Common\Persistence\ObjectRepository;
+=======
+>>>>>>> ThomasN
 use Doctrine\Common\Proxy\AbstractProxyFactory;
 use Doctrine\ORM\Cache\CacheConfiguration;
 use Doctrine\ORM\Mapping\ClassMetadataFactory;
@@ -39,6 +42,12 @@ use Doctrine\ORM\Mapping\NamingStrategy;
 use Doctrine\ORM\Mapping\QuoteStrategy;
 use Doctrine\ORM\Repository\DefaultRepositoryFactory;
 use Doctrine\ORM\Repository\RepositoryFactory;
+<<<<<<< HEAD
+=======
+use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use Doctrine\Persistence\ObjectRepository;
+use function interface_exists;
+>>>>>>> ThomasN
 
 /**
  * Configuration container for all configuration options of Doctrine.
@@ -441,6 +450,10 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param string $name
      *
      * @return string|null
+<<<<<<< HEAD
+=======
+     * @psalm-return ?class-string
+>>>>>>> ThomasN
      */
     public function getCustomStringFunction($name)
     {
@@ -493,6 +506,10 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param string $name
      *
      * @return string|null
+<<<<<<< HEAD
+=======
+     * @psalm-return ?class-string
+>>>>>>> ThomasN
      */
     public function getCustomNumericFunction($name)
     {
@@ -533,6 +550,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param string|callable $className Class name or a callable that returns the function.
      *
      * @return void
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param class-string|callable $className
+>>>>>>> ThomasN
      */
     public function addCustomDatetimeFunction($name, $className)
     {
@@ -545,6 +567,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param string $name
      *
      * @return string|null
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-return ?class-string $name
+>>>>>>> ThomasN
      */
     public function getCustomDatetimeFunction($name)
     {
@@ -566,6 +593,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param array $functions The map of custom DQL date/time functions.
      *
      * @return void
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param array<string, string> $functions
+>>>>>>> ThomasN
      */
     public function setCustomDatetimeFunctions(array $functions)
     {
@@ -596,6 +628,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param string $modeName The hydration mode name.
      *
      * @return string|null The hydrator class name.
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-return ?class-string
+>>>>>>> ThomasN
      */
     public function getCustomHydrationMode($modeName)
     {
@@ -623,6 +660,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @param string $cmfName
      *
      * @return void
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-param class-string $cmfName
+>>>>>>> ThomasN
      */
     public function setClassMetadataFactoryName($cmfName)
     {
@@ -631,6 +673,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
 
     /**
      * @return string
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-return class-string
+>>>>>>> ThomasN
      */
     public function getClassMetadataFactoryName()
     {
@@ -657,8 +704,15 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @param string $name The name of the filter.
      *
+<<<<<<< HEAD
      * @return string The class name of the filter, or null if it is not
      *  defined.
+=======
+     * @return string|null The class name of the filter, or null if it is not
+     *  defined.
+     *
+     * @psalm-return ?class-string
+>>>>>>> ThomasN
      */
     public function getFilterClassName($name)
     {
@@ -676,7 +730,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      *
      * @return void
      *
+<<<<<<< HEAD
      * @throws ORMException If not is a \Doctrine\Common\Persistence\ObjectRepository
+=======
+     * @throws ORMException If $classname is not an ObjectRepository.
+>>>>>>> ThomasN
      */
     public function setDefaultRepositoryClassName($className)
     {
@@ -695,6 +753,11 @@ class Configuration extends \Doctrine\DBAL\Configuration
      * @since 2.2
      *
      * @return string
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-return class-string
+>>>>>>> ThomasN
      */
     public function getDefaultRepositoryClassName()
     {
@@ -918,3 +981,8 @@ class Configuration extends \Doctrine\DBAL\Configuration
         $this->_attributes['defaultQueryHints'][$name] = $value;
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(MappingDriver::class);
+>>>>>>> ThomasN

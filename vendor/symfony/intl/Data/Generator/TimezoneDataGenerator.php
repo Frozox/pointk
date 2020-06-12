@@ -94,7 +94,10 @@ class TimezoneDataGenerator extends AbstractDataGenerator
         }
 
         $data = [
+<<<<<<< HEAD
             'Version' => $localeBundle['Version'],
+=======
+>>>>>>> ThomasN
             'Names' => $this->generateZones($reader, $tempDir, $displayLocale),
             'Meta' => self::generateZoneMetadata($localeBundle),
         ];
@@ -131,7 +134,10 @@ class TimezoneDataGenerator extends AbstractDataGenerator
         $rootBundle = $reader->read($tempDir, 'root');
 
         return [
+<<<<<<< HEAD
             'Version' => $rootBundle['Version'],
+=======
+>>>>>>> ThomasN
             'Meta' => self::generateZoneMetadata($rootBundle),
         ];
     }
@@ -149,7 +155,10 @@ class TimezoneDataGenerator extends AbstractDataGenerator
         ksort($this->zoneToCountryMapping);
 
         $data = [
+<<<<<<< HEAD
             'Version' => $rootBundle['Version'],
+=======
+>>>>>>> ThomasN
             'Zones' => $this->zoneIds,
             'ZoneToCountry' => $this->zoneToCountryMapping,
             'CountryToZone' => self::generateCountryToZoneMapping($this->zoneToCountryMapping),

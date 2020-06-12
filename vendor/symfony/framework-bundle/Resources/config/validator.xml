@@ -5,7 +5,10 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+<<<<<<< HEAD
         <parameter key="validator.mapping.cache.prefix" />
+=======
+>>>>>>> ThomasN
         <parameter key="validator.mapping.cache.file">%kernel.cache_dir%/validation.php</parameter>
     </parameters>
 

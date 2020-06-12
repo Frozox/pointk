@@ -181,6 +181,18 @@ abstract class ConstraintValidatorTestCase extends TestCase
             ->willReturn($validator);
     }
 
+<<<<<<< HEAD
+=======
+    protected function expectValidateValue(int $i, $value, array $constraints = [], $group = null)
+    {
+        $contextualValidator = $this->context->getValidator()->inContext($this->context);
+        $contextualValidator->expects($this->at($i))
+            ->method('validate')
+            ->with($value, $constraints, $group)
+            ->willReturn($contextualValidator);
+    }
+
+>>>>>>> ThomasN
     protected function expectValidateValueAt($i, $propertyPath, $value, $constraints, $group = null)
     {
         $contextualValidator = $this->context->getValidator()->inContext($this->context);
@@ -194,6 +206,28 @@ abstract class ConstraintValidatorTestCase extends TestCase
             ->willReturn($contextualValidator);
     }
 
+<<<<<<< HEAD
+=======
+    protected function expectViolationsAt($i, $value, Constraint $constraint)
+    {
+        $context = $this->createContext();
+
+        $validatorClassname = $constraint->validatedBy();
+
+        $validator = new $validatorClassname();
+        $validator->initialize($context);
+        $validator->validate($value, $constraint);
+
+        $this->context->getValidator()
+            ->expects($this->at($i))
+            ->method('validate')
+            ->willReturn($context->getViolations())
+        ;
+
+        return $context->getViolations();
+    }
+
+>>>>>>> ThomasN
     protected function assertNoViolation()
     {
         $this->assertSame(0, $violationsCount = \count($this->context->getViolations()), sprintf('0 violation expected. Got %u.', $violationsCount));

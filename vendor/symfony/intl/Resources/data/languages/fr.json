@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afar",
         "ab": "abkhaze",
@@ -606,6 +609,10 @@
         "es_419": "espagnol d’Amérique latine",
         "es_ES": "espagnol d’Espagne",
         "es_MX": "espagnol du Mexique",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "français canadien",
         "fr_CH": "français suisse",
         "nds_NL": "bas-saxon néerlandais",

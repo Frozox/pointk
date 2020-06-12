@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afara",
         "ab": "abĥaza",
@@ -134,7 +137,10 @@
         "tr": "turka",
         "ts": "conga",
         "tt": "tatara",
+<<<<<<< HEAD
         "tw": "tw",
+=======
+>>>>>>> ThomasN
         "ug": "ujgura",
         "uk": "ukraina",
         "ur": "urduo",

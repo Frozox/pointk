@@ -12,6 +12,11 @@ class LastInsertId
 
     /**
      * @param int $id
+<<<<<<< HEAD
+=======
+     *
+     * @return void
+>>>>>>> ThomasN
      */
     public function setId($id)
     {

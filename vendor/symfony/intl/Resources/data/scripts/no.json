@@ -1,10 +1,17 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Afak": "afaka",
         "Aghb": "kaukasus-albansk",
         "Ahom": "ahom",
         "Arab": "arabisk",
+<<<<<<< HEAD
+=======
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armi": "arameisk",
         "Armn": "armensk",
         "Avst": "avestisk",
@@ -121,6 +128,10 @@
         "Phnx": "fønikisk",
         "Plrd": "pollard-fonetisk",
         "Prti": "inskripsjonsparthisk",
+<<<<<<< HEAD
+=======
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Rjng": "rejang",
         "Roro": "rongorongo",
         "Runr": "runer",

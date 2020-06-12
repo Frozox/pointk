@@ -1,14 +1,24 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Adlm": "Adlam",
         "Aghb": "Kaukasia Albania",
         "Arab": "Arab",
+<<<<<<< HEAD
+=======
+        "Aran": "Nastaliq",
+>>>>>>> ThomasN
         "Armi": "Aramia Imperial",
         "Armn": "Armenia",
         "Avst": "Avestan",
         "Bali": "Bali",
+<<<<<<< HEAD
         "Bamu": "Bamu",
+=======
+>>>>>>> ThomasN
         "Bass": "Bassa Vah",
         "Batk": "Batak",
         "Beng": "Benggala",
@@ -19,7 +29,11 @@
         "Bugi": "Bugis",
         "Buhd": "Buhid",
         "Cakm": "Chakma",
+<<<<<<< HEAD
         "Cans": "Cans",
+=======
+        "Cans": "Suku Kata Orang Asli Kanada Bersatu",
+>>>>>>> ThomasN
         "Cari": "Carian",
         "Cham": "Cham",
         "Cher": "Cherokee",

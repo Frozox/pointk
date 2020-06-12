@@ -379,6 +379,10 @@
         "mr_IN": "Marathi Simi (India)",
         "ms": "Malayo Simi",
         "ms_BN": "Malayo Simi (Brunéi)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Malayo Simi (Indonesia)",
+>>>>>>> ThomasN
         "ms_MY": "Malayo Simi (Malasia)",
         "ms_SG": "Malayo Simi (Singapur)",
         "mt": "Maltes Simi",
@@ -482,6 +486,11 @@
         "sr_BA": "Serbio Simi (Bosnia y Herzegovina)",
         "sr_ME": "Serbio Simi (Montenegro)",
         "sr_RS": "Serbio Simi (Serbia)",
+<<<<<<< HEAD
+=======
+        "su": "Sundanés Simi",
+        "su_ID": "Sundanés Simi (Indonesia)",
+>>>>>>> ThomasN
         "sv": "Sueco Simi",
         "sv_AX": "Sueco Simi (Islas Åland)",
         "sv_FI": "Sueco Simi (Finlandia)",

@@ -244,6 +244,10 @@
         "ko_KR": "chiKoria (Korea, South)",
         "ms": "chiMalay",
         "ms_BN": "chiMalay (Burunei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "chiMalay (Indonesia)",
+>>>>>>> ThomasN
         "ms_MY": "chiMalay (Malaysia)",
         "ms_SG": "chiMalay (Singapore)",
         "my": "chiBurma",

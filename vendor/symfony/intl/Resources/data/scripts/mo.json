@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Arab": "arabă",
+=======
+    "Names": {
+        "Arab": "arabă",
+        "Aran": "nastaaliq",
+>>>>>>> ThomasN
         "Armn": "armeană",
         "Bali": "balineză",
         "Beng": "bengaleză",
@@ -53,9 +59,18 @@
         "Maya": "hieroglife maya",
         "Mlym": "malayalam",
         "Mong": "mongolă",
+<<<<<<< HEAD
         "Mymr": "birmană",
         "Orya": "oriya",
         "Phnx": "feniciană",
+=======
+        "Mtei": "meitei mayek",
+        "Mymr": "birmană",
+        "Olck": "ol chiki",
+        "Orya": "oriya",
+        "Phnx": "feniciană",
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Runr": "runică",
         "Sinh": "singaleză",
         "Syrc": "siriacă",

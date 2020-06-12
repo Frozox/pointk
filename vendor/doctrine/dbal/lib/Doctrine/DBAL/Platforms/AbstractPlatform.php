@@ -156,6 +156,11 @@ abstract class AbstractPlatform
 
     /**
      * Sets the EventManager used by the Platform.
+<<<<<<< HEAD
+=======
+     *
+     * @return void
+>>>>>>> ThomasN
      */
     public function setEventManager(EventManager $eventManager)
     {
@@ -391,6 +396,11 @@ abstract class AbstractPlatform
      * @param string $dbType
      * @param string $doctrineType
      *
+<<<<<<< HEAD
+=======
+     * @return void
+     *
+>>>>>>> ThomasN
      * @throws DBALException If the type is not found.
      */
     public function registerDoctrineTypeMapping($dbType, $doctrineType)
@@ -3291,6 +3301,11 @@ abstract class AbstractPlatform
     /**
      * @deprecated
      *
+<<<<<<< HEAD
+=======
+     * @return string
+     *
+>>>>>>> ThomasN
      * @todo Remove in 3.0
      */
     public function getIdentityColumnNullInsertSQL()

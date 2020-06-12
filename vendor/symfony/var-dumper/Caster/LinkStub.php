@@ -43,7 +43,11 @@ class LinkStub extends ConstStub
 
             return;
         }
+<<<<<<< HEAD
         if (!file_exists($href)) {
+=======
+        if (!is_file($href)) {
+>>>>>>> ThomasN
             return;
         }
         if ($line) {
@@ -72,7 +76,11 @@ class LinkStub extends ConstStub
                 if ('C' === $class[0] && 0 === strpos($class, 'ComposerAutoloaderInit')) {
                     $r = new \ReflectionClass($class);
                     $v = \dirname($r->getFileName(), 2);
+<<<<<<< HEAD
                     if (file_exists($v.'/composer/installed.json')) {
+=======
+                    if (is_file($v.'/composer/installed.json')) {
+>>>>>>> ThomasN
                         self::$vendorRoots[] = $v.\DIRECTORY_SEPARATOR;
                     }
                 }
@@ -91,7 +99,11 @@ class LinkStub extends ConstStub
         }
 
         $parent = $dir;
+<<<<<<< HEAD
         while (!@file_exists($parent.'/composer.json')) {
+=======
+        while (!@is_file($parent.'/composer.json')) {
+>>>>>>> ThomasN
             if (!@file_exists($parent)) {
                 // open_basedir restriction in effect
                 break;

@@ -69,7 +69,10 @@ class ScriptDataGenerator extends AbstractDataGenerator
         // isset() on \ResourceBundle returns true even if the value is null
         if (isset($localeBundle['Scripts']) && null !== $localeBundle['Scripts']) {
             $data = [
+<<<<<<< HEAD
                 'Version' => $localeBundle['Version'],
+=======
+>>>>>>> ThomasN
                 'Names' => array_diff_key(iterator_to_array($localeBundle['Scripts']), self::$blacklist),
             ];
 
@@ -94,14 +97,20 @@ class ScriptDataGenerator extends AbstractDataGenerator
      */
     protected function generateDataForMeta(BundleEntryReaderInterface $reader, string $tempDir): ?array
     {
+<<<<<<< HEAD
         $rootBundle = $reader->read($tempDir, 'root');
 
+=======
+>>>>>>> ThomasN
         $this->scriptCodes = array_unique($this->scriptCodes);
 
         sort($this->scriptCodes);
 
         return [
+<<<<<<< HEAD
             'Version' => $rootBundle['Version'],
+=======
+>>>>>>> ThomasN
             'Scripts' => $this->scriptCodes,
         ];
     }

@@ -24,51 +24,79 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 class NumberToLocalizedStringTransformer implements DataTransformerInterface
 {
     /**
+<<<<<<< HEAD
      * Rounds a number towards positive infinity.
      *
      * Rounds 1.4 to 2 and -1.4 to -1.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_CEILING instead.
+>>>>>>> ThomasN
      */
     const ROUND_CEILING = \NumberFormatter::ROUND_CEILING;
 
     /**
+<<<<<<< HEAD
      * Rounds a number towards negative infinity.
      *
      * Rounds 1.4 to 1 and -1.4 to -2.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_FLOOR instead.
+>>>>>>> ThomasN
      */
     const ROUND_FLOOR = \NumberFormatter::ROUND_FLOOR;
 
     /**
+<<<<<<< HEAD
      * Rounds a number away from zero.
      *
      * Rounds 1.4 to 2 and -1.4 to -2.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_UP instead.
+>>>>>>> ThomasN
      */
     const ROUND_UP = \NumberFormatter::ROUND_UP;
 
     /**
+<<<<<<< HEAD
      * Rounds a number towards zero.
      *
      * Rounds 1.4 to 1 and -1.4 to -1.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_DOWN instead.
+>>>>>>> ThomasN
      */
     const ROUND_DOWN = \NumberFormatter::ROUND_DOWN;
 
     /**
+<<<<<<< HEAD
      * Rounds to the nearest number and halves to the next even number.
      *
      * Rounds 2.5, 1.6 and 1.5 to 2 and 1.4 to 1.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_HALFEVEN instead.
+>>>>>>> ThomasN
      */
     const ROUND_HALF_EVEN = \NumberFormatter::ROUND_HALFEVEN;
 
     /**
+<<<<<<< HEAD
      * Rounds to the nearest number and halves away from zero.
      *
      * Rounds 2.5 to 3, 1.6 and 1.5 to 2 and 1.4 to 1.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_HALFUP instead.
+>>>>>>> ThomasN
      */
     const ROUND_HALF_UP = \NumberFormatter::ROUND_HALFUP;
 
     /**
+<<<<<<< HEAD
      * Rounds to the nearest number and halves towards zero.
      *
      * Rounds 2.5 and 1.6 to 2, 1.5 and 1.4 to 1.
+=======
+     * @deprecated since Symfony 5.1, use \NumberFormatter::ROUND_HALFDOWN instead.
+>>>>>>> ThomasN
      */
     const ROUND_HALF_DOWN = \NumberFormatter::ROUND_HALFDOWN;
 
@@ -79,14 +107,22 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
     private $scale;
     private $locale;
 
+<<<<<<< HEAD
     public function __construct(int $scale = null, ?bool $grouping = false, ?int $roundingMode = self::ROUND_HALF_UP, string $locale = null)
+=======
+    public function __construct(int $scale = null, ?bool $grouping = false, ?int $roundingMode = \NumberFormatter::ROUND_HALFUP, string $locale = null)
+>>>>>>> ThomasN
     {
         if (null === $grouping) {
             $grouping = false;
         }
 
         if (null === $roundingMode) {
+<<<<<<< HEAD
             $roundingMode = self::ROUND_HALF_UP;
+=======
+            $roundingMode = \NumberFormatter::ROUND_HALFUP;
+>>>>>>> ThomasN
         }
 
         $this->scale = $scale;
@@ -149,7 +185,11 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
         }
 
         if (\in_array($value, ['NaN', 'NAN', 'nan'], true)) {
+<<<<<<< HEAD
             throw new TransformationFailedException('"NaN" is not a valid number');
+=======
+            throw new TransformationFailedException('"NaN" is not a valid number.');
+>>>>>>> ThomasN
         }
 
         $position = 0;
@@ -180,7 +220,11 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
         }
 
         if ($result >= PHP_INT_MAX || $result <= -PHP_INT_MAX) {
+<<<<<<< HEAD
             throw new TransformationFailedException('I don\'t have a clear idea what infinity looks like');
+=======
+            throw new TransformationFailedException('I don\'t have a clear idea what infinity looks like.');
+>>>>>>> ThomasN
         }
 
         $result = $this->castParsedValue($result);
@@ -201,7 +245,11 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
             $remainder = trim($remainder, " \t\n\r\0\x0b\xc2\xa0");
 
             if ('' !== $remainder) {
+<<<<<<< HEAD
                 throw new TransformationFailedException(sprintf('The number contains unrecognized characters: "%s"', $remainder));
+=======
+                throw new TransformationFailedException(sprintf('The number contains unrecognized characters: "%s".', $remainder));
+>>>>>>> ThomasN
             }
         }
 
@@ -256,6 +304,7 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
             $number = (string) ($number * $roundingCoef);
 
             switch ($this->roundingMode) {
+<<<<<<< HEAD
                 case self::ROUND_CEILING:
                     $number = ceil($number);
                     break;
@@ -275,6 +324,27 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
                     $number = round($number, 0, PHP_ROUND_HALF_UP);
                     break;
                 case self::ROUND_HALF_DOWN:
+=======
+                case \NumberFormatter::ROUND_CEILING:
+                    $number = ceil($number);
+                    break;
+                case \NumberFormatter::ROUND_FLOOR:
+                    $number = floor($number);
+                    break;
+                case \NumberFormatter::ROUND_UP:
+                    $number = $number > 0 ? ceil($number) : floor($number);
+                    break;
+                case \NumberFormatter::ROUND_DOWN:
+                    $number = $number > 0 ? floor($number) : ceil($number);
+                    break;
+                case \NumberFormatter::ROUND_HALFEVEN:
+                    $number = round($number, 0, PHP_ROUND_HALF_EVEN);
+                    break;
+                case \NumberFormatter::ROUND_HALFUP:
+                    $number = round($number, 0, PHP_ROUND_HALF_UP);
+                    break;
+                case \NumberFormatter::ROUND_HALFDOWN:
+>>>>>>> ThomasN
                     $number = round($number, 0, PHP_ROUND_HALF_DOWN);
                     break;
             }

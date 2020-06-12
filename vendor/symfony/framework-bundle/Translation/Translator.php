@@ -58,6 +58,14 @@ class Translator extends BaseTranslator implements WarmableInterface
     private $scannedDirectories;
 
     /**
+<<<<<<< HEAD
+=======
+     * @var string[]
+     */
+    private $enabledLocales;
+
+    /**
+>>>>>>> ThomasN
      * Constructor.
      *
      * Available options:
@@ -69,10 +77,18 @@ class Translator extends BaseTranslator implements WarmableInterface
      *
      * @throws InvalidArgumentException
      */
+<<<<<<< HEAD
     public function __construct(ContainerInterface $container, MessageFormatterInterface $formatter, string $defaultLocale, array $loaderIds = [], array $options = [])
     {
         $this->container = $container;
         $this->loaderIds = $loaderIds;
+=======
+    public function __construct(ContainerInterface $container, MessageFormatterInterface $formatter, string $defaultLocale, array $loaderIds = [], array $options = [], array $enabledLocales = [])
+    {
+        $this->container = $container;
+        $this->loaderIds = $loaderIds;
+        $this->enabledLocales = $enabledLocales;
+>>>>>>> ThomasN
 
         // check option names
         if ($diff = array_diff(array_keys($options), array_keys($this->options))) {
@@ -89,6 +105,11 @@ class Translator extends BaseTranslator implements WarmableInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
+=======
+     *
+     * @return string[]
+>>>>>>> ThomasN
      */
     public function warmUp(string $cacheDir)
     {
@@ -97,8 +118,14 @@ class Translator extends BaseTranslator implements WarmableInterface
             return;
         }
 
+<<<<<<< HEAD
         $locales = array_merge($this->getFallbackLocales(), [$this->getLocale()], $this->resourceLocales);
         foreach (array_unique($locales) as $locale) {
+=======
+        $localesToWarmUp = $this->enabledLocales ?: array_merge($this->getFallbackLocales(), [$this->getLocale()], $this->resourceLocales);
+
+        foreach (array_unique($localesToWarmUp) as $locale) {
+>>>>>>> ThomasN
             // reset catalogue in case it's already loaded during the dump of the other locales.
             if (isset($this->catalogues[$locale])) {
                 unset($this->catalogues[$locale]);
@@ -106,6 +133,11 @@ class Translator extends BaseTranslator implements WarmableInterface
 
             $this->loadCatalogue($locale);
         }
+<<<<<<< HEAD
+=======
+
+        return [];
+>>>>>>> ThomasN
     }
 
     public function addResource(string $format, $resource, string $locale, string $domain = null)

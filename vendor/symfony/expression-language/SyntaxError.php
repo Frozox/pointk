@@ -15,7 +15,11 @@ class SyntaxError extends \LogicException
 {
     public function __construct(string $message, int $cursor = 0, string $expression = '', string $subject = null, array $proposals = null)
     {
+<<<<<<< HEAD
         $message = sprintf('%s around position %d', $message, $cursor);
+=======
+        $message = sprintf('%s around position %d', rtrim($message, '.'), $cursor);
+>>>>>>> ThomasN
         if ($expression) {
             $message = sprintf('%s for expression `%s`', $message, $expression);
         }

@@ -27,11 +27,19 @@ trait ValidatorExtensionTrait
     protected function getValidatorExtension(): ValidatorExtension
     {
         if (!interface_exists(ValidatorInterface::class)) {
+<<<<<<< HEAD
             throw new \Exception('In order to use the "ValidatorExtensionTrait", the symfony/validator component must be installed');
         }
 
         if (!$this instanceof TypeTestCase) {
             throw new \Exception(sprintf('The trait "ValidatorExtensionTrait" can only be added to a class that extends %s', TypeTestCase::class));
+=======
+            throw new \Exception('In order to use the "ValidatorExtensionTrait", the symfony/validator component must be installed.');
+        }
+
+        if (!$this instanceof TypeTestCase) {
+            throw new \Exception(sprintf('The trait "ValidatorExtensionTrait" can only be added to a class that extends "%s".', TypeTestCase::class));
+>>>>>>> ThomasN
         }
 
         $this->validator = $this->getMockBuilder(ValidatorInterface::class)->getMock();

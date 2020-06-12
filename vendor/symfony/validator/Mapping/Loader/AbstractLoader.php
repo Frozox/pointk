@@ -72,7 +72,11 @@ abstract class AbstractLoader implements LoaderInterface
             list($prefix, $className) = explode(':', $name, 2);
 
             if (!isset($this->namespaces[$prefix])) {
+<<<<<<< HEAD
                 throw new MappingException(sprintf('Undefined namespace prefix "%s"', $prefix));
+=======
+                throw new MappingException(sprintf('Undefined namespace prefix "%s".', $prefix));
+>>>>>>> ThomasN
             }
 
             $className = $this->namespaces[$prefix].$className;

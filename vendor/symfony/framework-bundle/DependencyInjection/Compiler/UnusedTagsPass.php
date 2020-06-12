@@ -32,10 +32,20 @@ class UnusedTagsPass implements CompilerPassInterface
         'container.env_var_loader',
         'container.env_var_processor',
         'container.hot_path',
+<<<<<<< HEAD
+=======
+        'container.no_preload',
+        'container.preload',
+        'container.private',
+>>>>>>> ThomasN
         'container.reversible',
         'container.service_locator',
         'container.service_locator_context',
         'container.service_subscriber',
+<<<<<<< HEAD
+=======
+        'container.stack',
+>>>>>>> ThomasN
         'controller.argument_value_resolver',
         'controller.service_arguments',
         'data_collector',
@@ -50,6 +60,10 @@ class UnusedTagsPass implements CompilerPassInterface
         'kernel.fragment_renderer',
         'kernel.locale_aware',
         'kernel.reset',
+<<<<<<< HEAD
+=======
+        'ldap',
+>>>>>>> ThomasN
         'mailer.transport_factory',
         'messenger.bus',
         'messenger.message_handler',
@@ -63,6 +77,10 @@ class UnusedTagsPass implements CompilerPassInterface
         'property_info.list_extractor',
         'property_info.type_extractor',
         'proxy',
+<<<<<<< HEAD
+=======
+        'routing.expression_language_function',
+>>>>>>> ThomasN
         'routing.expression_language_provider',
         'routing.loader',
         'routing.route_loader',

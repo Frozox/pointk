@@ -50,7 +50,11 @@ class TokenBasedRememberMeServices extends AbstractRememberMeServices
         }
 
         if (!$user instanceof UserInterface) {
+<<<<<<< HEAD
             throw new \RuntimeException(sprintf('The UserProviderInterface implementation must return an instance of UserInterface, but returned "%s".', \get_class($user)));
+=======
+            throw new \RuntimeException(sprintf('The UserProviderInterface implementation must return an instance of UserInterface, but returned "%s".', get_debug_type($user)));
+>>>>>>> ThomasN
         }
 
         if (true !== hash_equals($this->generateCookieHash($class, $username, $expires, $user->getPassword()), $hash)) {
@@ -83,7 +87,11 @@ class TokenBasedRememberMeServices extends AbstractRememberMeServices
                 $this->options['secure'] ?? $request->isSecure(),
                 $this->options['httponly'],
                 false,
+<<<<<<< HEAD
                 $this->options['samesite'] ?? null
+=======
+                $this->options['samesite']
+>>>>>>> ThomasN
             )
         );
     }

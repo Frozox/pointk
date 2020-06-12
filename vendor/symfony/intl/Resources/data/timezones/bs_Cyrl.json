@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Гриничко средње вријеме (Абиџан)",
         "Africa\/Accra": "Гриничко средње вријеме (Акра)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Аргентина вријеме (Рио Гаљегос)",
         "America\/Argentina\/Salta": "Аргентина вријеме (Салта)",
         "America\/Argentina\/San_Juan": "Аргентина вријеме (Сан Хуан)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Западна Аргентина вријеме (Сан Луи)",
+=======
+        "America\/Argentina\/San_Luis": "Аргентина вријеме (Сан Луи)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Аргентина вријеме (Тукуман)",
         "America\/Argentina\/Ushuaia": "Аргентина вријеме (Ушуаија)",
         "America\/Aruba": "Атланско вријеме (Аруба)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Брунеј Дарусалам вријеме (Брунеји)",
         "Asia\/Calcutta": "Индијско стандардно вријеме (Калкута)",
         "Asia\/Chita": "Јакутск вријеме (Чита)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Чојбалсан вријеме",
+=======
+        "Asia\/Choibalsan": "Улан Батор вријеме (Чојбалсан)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Индијско стандардно вријеме (Коломбо)",
         "Asia\/Damascus": "Источноевропско вријеме (Дамаск)",
         "Asia\/Dhaka": "Бангладеш вријеме (Дака)",

@@ -1,12 +1,21 @@
 <?php
+<<<<<<< HEAD
+=======
+
+declare(strict_types=1);
+
+>>>>>>> ThomasN
 /**
  * This file is part of phpDocumentor.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
+<<<<<<< HEAD
  * @copyright 2010-2015 Mike van Riel<mike@phpdoc.org>
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
+=======
+>>>>>>> ThomasN
  * @link      http://phpdoc.org
  */
 
@@ -14,7 +23,11 @@ namespace phpDocumentor\Reflection\DocBlock;
 
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter;
 use phpDocumentor\Reflection\DocBlock\Tags\Formatter\PassthroughFormatter;
+<<<<<<< HEAD
 use Webmozart\Assert\Assert;
+=======
+use function vsprintf;
+>>>>>>> ThomasN
 
 /**
  * Object representing to description for a DocBlock.
@@ -59,6 +72,7 @@ class Description
     /**
      * Initializes a Description with its body (template) and a listing of the tags used in the body template.
      *
+<<<<<<< HEAD
      * @param string $bodyTemplate
      * @param Tag[] $tags
      */
@@ -68,6 +82,22 @@ class Description
 
         $this->bodyTemplate = $bodyTemplate;
         $this->tags = $tags;
+=======
+     * @param Tag[] $tags
+     */
+    public function __construct(string $bodyTemplate, array $tags = [])
+    {
+        $this->bodyTemplate = $bodyTemplate;
+        $this->tags         = $tags;
+    }
+
+    /**
+     * Returns the body template.
+     */
+    public function getBodyTemplate() : string
+    {
+        return $this->bodyTemplate;
+>>>>>>> ThomasN
     }
 
     /**
@@ -75,7 +105,11 @@ class Description
      *
      * @return Tag[]
      */
+<<<<<<< HEAD
     public function getTags()
+=======
+    public function getTags() : array
+>>>>>>> ThomasN
     {
         return $this->tags;
     }
@@ -83,12 +117,17 @@ class Description
     /**
      * Renders this description as a string where the provided formatter will format the tags in the expected string
      * format.
+<<<<<<< HEAD
      *
      * @param Formatter|null $formatter
      *
      * @return string
      */
     public function render(Formatter $formatter = null)
+=======
+     */
+    public function render(?Formatter $formatter = null) : string
+>>>>>>> ThomasN
     {
         if ($formatter === null) {
             $formatter = new PassthroughFormatter();
@@ -104,10 +143,15 @@ class Description
 
     /**
      * Returns a plain string representation of this description.
+<<<<<<< HEAD
      *
      * @return string
      */
     public function __toString()
+=======
+     */
+    public function __toString() : string
+>>>>>>> ThomasN
     {
         return $this->render();
     }

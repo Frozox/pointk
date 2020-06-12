@@ -46,11 +46,16 @@ class IntegerType extends AbstractType
         $resolver->setDefaults([
             'grouping' => false,
             // Integer cast rounds towards 0, so do the same when displaying fractions
+<<<<<<< HEAD
             'rounding_mode' => IntegerToLocalizedStringTransformer::ROUND_DOWN,
+=======
+            'rounding_mode' => \NumberFormatter::ROUND_DOWN,
+>>>>>>> ThomasN
             'compound' => false,
         ]);
 
         $resolver->setAllowedValues('rounding_mode', [
+<<<<<<< HEAD
             IntegerToLocalizedStringTransformer::ROUND_FLOOR,
             IntegerToLocalizedStringTransformer::ROUND_DOWN,
             IntegerToLocalizedStringTransformer::ROUND_HALF_DOWN,
@@ -58,6 +63,15 @@ class IntegerType extends AbstractType
             IntegerToLocalizedStringTransformer::ROUND_HALF_UP,
             IntegerToLocalizedStringTransformer::ROUND_UP,
             IntegerToLocalizedStringTransformer::ROUND_CEILING,
+=======
+            \NumberFormatter::ROUND_FLOOR,
+            \NumberFormatter::ROUND_DOWN,
+            \NumberFormatter::ROUND_HALFDOWN,
+            \NumberFormatter::ROUND_HALFEVEN,
+            \NumberFormatter::ROUND_HALFUP,
+            \NumberFormatter::ROUND_UP,
+            \NumberFormatter::ROUND_CEILING,
+>>>>>>> ThomasN
         ]);
     }
 

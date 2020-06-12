@@ -44,7 +44,11 @@ final class SecretsGenerateKeysCommand extends Command
     protected function configure()
     {
         $this
+<<<<<<< HEAD
             ->setDescription('Generates new encryption keys.')
+=======
+            ->setDescription('Generates new encryption keys')
+>>>>>>> ThomasN
             ->addOption('local', 'l', InputOption::VALUE_NONE, 'Updates the local vault.')
             ->addOption('rotate', 'r', InputOption::VALUE_NONE, 'Re-encrypts existing secrets with the newly generated keys.')
             ->setHelp(<<<'EOF'

@@ -37,6 +37,11 @@ class OraclePlatform extends AbstractPlatform
      *
      * @param string $identifier
      *
+<<<<<<< HEAD
+=======
+     * @return void
+     *
+>>>>>>> ThomasN
      * @throws DBALException
      */
     public static function assertValidIdentifier($identifier)
@@ -59,7 +64,13 @@ class OraclePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string $type
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getNowExpression($type = 'timestamp')
     {

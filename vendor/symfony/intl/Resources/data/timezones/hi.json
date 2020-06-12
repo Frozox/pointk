@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "ग्रीनविच मीन टाइम (अबिदजान)",
         "Africa\/Accra": "ग्रीनविच मीन टाइम (एक्रा)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "अर्जेंटीना समय (रियो गालेगोस)",
         "America\/Argentina\/Salta": "अर्जेंटीना समय (साल्टा)",
         "America\/Argentina\/San_Juan": "अर्जेंटीना समय (सैन ह्वान)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "पश्चिमी अर्जेंटीना समय (सैन लूई)",
+=======
+        "America\/Argentina\/San_Luis": "अर्जेंटीना समय (सैन लूई)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "अर्जेंटीना समय (टोकूमन)",
         "America\/Argentina\/Ushuaia": "अर्जेंटीना समय (उशुआइया)",
         "America\/Aruba": "अटलांटिक समय (अरूबा)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "ब्रूनेई दारूस्सलम समय",
         "Asia\/Calcutta": "भारतीय मानक समय (कोलकाता)",
         "Asia\/Chita": "याकुत्स्क समय (त्शिता)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "कॉइबाल्सन समय (चोइबालसन)",
+=======
+        "Asia\/Choibalsan": "उलान बटोर समय (चोइबालसन)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "भारतीय मानक समय (कोलंबो)",
         "Asia\/Damascus": "पूर्वी यूरोपीय समय (दमास्कस)",
         "Asia\/Dhaka": "बांग्लादेश समय (ढाका)",

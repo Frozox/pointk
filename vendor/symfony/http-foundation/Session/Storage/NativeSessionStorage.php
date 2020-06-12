@@ -17,6 +17,14 @@ use Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandle
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\AbstractProxy;
 use Symfony\Component\HttpFoundation\Session\Storage\Proxy\SessionHandlerProxy;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(MetadataBag::class);
+class_exists(StrictSessionHandler::class);
+class_exists(SessionHandlerProxy::class);
+
+>>>>>>> ThomasN
 /**
  * This provides a base class for session attribute storage.
  *
@@ -149,7 +157,11 @@ class NativeSessionStorage implements SessionStorageInterface
 
         // ok to try and start the session
         if (!session_start()) {
+<<<<<<< HEAD
             throw new \RuntimeException('Failed to start the session');
+=======
+            throw new \RuntimeException('Failed to start the session.');
+>>>>>>> ThomasN
         }
 
         if (null !== $this->emulateSameSite) {
@@ -210,8 +222,15 @@ class NativeSessionStorage implements SessionStorageInterface
             return false;
         }
 
+<<<<<<< HEAD
         if (null !== $lifetime) {
             ini_set('session.cookie_lifetime', $lifetime);
+=======
+        if (null !== $lifetime && $lifetime != ini_get('session.cookie_lifetime')) {
+            $this->save();
+            ini_set('session.cookie_lifetime', $lifetime);
+            $this->start();
+>>>>>>> ThomasN
         }
 
         if ($destroy) {
@@ -220,10 +239,13 @@ class NativeSessionStorage implements SessionStorageInterface
 
         $isRegenerated = session_regenerate_id($destroy);
 
+<<<<<<< HEAD
         // The reference to $_SESSION in session bags is lost in PHP7 and we need to re-create it.
         // @see https://bugs.php.net/70013
         $this->loadSession();
 
+=======
+>>>>>>> ThomasN
         if (null !== $this->emulateSameSite) {
             $originalCookie = SessionUtils::popSessionCookie(session_name(), session_id());
             if (null !== $originalCookie) {
@@ -311,7 +333,11 @@ class NativeSessionStorage implements SessionStorageInterface
     public function getBag(string $name)
     {
         if (!isset($this->bags[$name])) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The SessionBagInterface %s is not registered.', $name));
+=======
+            throw new \InvalidArgumentException(sprintf('The SessionBagInterface "%s" is not registered.', $name));
+>>>>>>> ThomasN
         }
 
         if (!$this->started && $this->saveHandler->isActive()) {

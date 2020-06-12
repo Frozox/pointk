@@ -45,7 +45,11 @@ final class CrawlerSelectorTextContains extends Constraint
             return false;
         }
 
+<<<<<<< HEAD
         return false !== mb_strpos($crawler->text(), $this->expectedText);
+=======
+        return false !== mb_strpos($crawler->text(null, true), $this->expectedText);
+>>>>>>> ThomasN
     }
 
     /**

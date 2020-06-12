@@ -36,6 +36,13 @@ class ProcessHelper extends Helper
      */
     public function run(OutputInterface $output, $cmd, string $error = null, callable $callback = null, int $verbosity = OutputInterface::VERBOSITY_VERY_VERBOSE): Process
     {
+<<<<<<< HEAD
+=======
+        if (!class_exists(Process::class)) {
+            throw new \LogicException('The ProcessHelper cannot be run as the Process component is not installed. Try running "compose require symfony/process".');
+        }
+
+>>>>>>> ThomasN
         if ($output instanceof ConsoleOutputInterface) {
             $output = $output->getErrorOutput();
         }
@@ -47,7 +54,11 @@ class ProcessHelper extends Helper
         }
 
         if (!\is_array($cmd)) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('The "command" argument of "%s()" must be an array or a "%s" instance, "%s" given.', __METHOD__, Process::class, \is_object($cmd) ? \get_class($cmd) : \gettype($cmd)));
+=======
+            throw new \TypeError(sprintf('The "command" argument of "%s()" must be an array or a "%s" instance, "%s" given.', __METHOD__, Process::class, get_debug_type($cmd)));
+>>>>>>> ThomasN
         }
 
         if (\is_string($cmd[0] ?? null)) {

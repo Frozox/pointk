@@ -9,7 +9,11 @@ class Catch_ extends Node\Stmt
 {
     /** @var Node\Name[] Types of exceptions to catch */
     public $types;
+<<<<<<< HEAD
     /** @var Expr\Variable Variable for exception */
+=======
+    /** @var Expr\Variable|null Variable for exception */
+>>>>>>> ThomasN
     public $var;
     /** @var Node\Stmt[] Statements */
     public $stmts;
@@ -17,6 +21,7 @@ class Catch_ extends Node\Stmt
     /**
      * Constructs a catch node.
      *
+<<<<<<< HEAD
      * @param Node\Name[]   $types      Types of exceptions to catch
      * @param Expr\Variable $var        Variable for exception
      * @param Node\Stmt[]   $stmts      Statements
@@ -24,6 +29,15 @@ class Catch_ extends Node\Stmt
      */
     public function __construct(
         array $types, Expr\Variable $var, array $stmts = [], array $attributes = []
+=======
+     * @param Node\Name[]           $types      Types of exceptions to catch
+     * @param Expr\Variable|null    $var        Variable for exception
+     * @param Node\Stmt[]           $stmts      Statements
+     * @param array                 $attributes Additional attributes
+     */
+    public function __construct(
+        array $types, Expr\Variable $var = null, array $stmts = [], array $attributes = []
+>>>>>>> ThomasN
     ) {
         $this->attributes = $attributes;
         $this->types = $types;
@@ -34,7 +48,11 @@ class Catch_ extends Node\Stmt
     public function getSubNodeNames() : array {
         return ['types', 'var', 'stmts'];
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> ThomasN
     public function getType() : string {
         return 'Stmt_Catch';
     }

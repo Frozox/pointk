@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Afak": "Afaka",
         "Aghb": "Kaukasisch-Albanisch",
         "Arab": "Arabisch",
+<<<<<<< HEAD
+=======
+        "Aran": "Nastaliq",
+>>>>>>> ThomasN
         "Armn": "Armenisch",
         "Avst": "Avestisch",
         "Bali": "Balinesisch",
@@ -42,6 +49,10 @@
         "Grek": "Griechisch",
         "Gujr": "Gujarati",
         "Guru": "Gurmukhi",
+<<<<<<< HEAD
+=======
+        "Hanb": "Han mit Bopomofo",
+>>>>>>> ThomasN
         "Hang": "Hangul",
         "Hani": "Chinesisch",
         "Hano": "Hanunoo",
@@ -114,6 +125,10 @@
         "Phnx": "Phönizisch",
         "Plrd": "Pollard Phonetisch",
         "Prti": "Parthisch",
+<<<<<<< HEAD
+=======
+        "Qaag": "Zawgyi",
+>>>>>>> ThomasN
         "Rjng": "Rejang",
         "Roro": "Rongorongo",
         "Runr": "Runenschrift",

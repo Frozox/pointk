@@ -7,6 +7,11 @@ use Exception;
 
 /**
  * Base class for all errors detected in the driver.
+<<<<<<< HEAD
+=======
+ *
+ * @psalm-immutable
+>>>>>>> ThomasN
  */
 class DriverException extends DBALException
 {

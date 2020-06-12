@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\Notifier;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\EventDispatcher\Event;
+>>>>>>> ThomasN
 use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Notifier\Event\MessageEvent;
@@ -21,7 +25,11 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 final class Chatter implements ChatterInterface
 {
@@ -33,7 +41,11 @@ final class Chatter implements ChatterInterface
     {
         $this->transport = $transport;
         $this->bus = $bus;
+<<<<<<< HEAD
         $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
+=======
+        $this->dispatcher = class_exists(Event::class) ? LegacyEventDispatcherProxy::decorate($dispatcher) : $dispatcher;
+>>>>>>> ThomasN
     }
 
     public function __toString(): string

@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+ * added `RemoteJsonManifestVersionStrategy` to download manifest over HTTP.
+
+>>>>>>> ThomasN
 4.2.0
 -----
 

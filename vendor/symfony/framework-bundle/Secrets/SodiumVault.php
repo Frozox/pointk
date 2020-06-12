@@ -28,13 +28,22 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
     private $secretsDir;
 
     /**
+<<<<<<< HEAD
      * @param string|object|null $decryptionKey A string or a stringable object that defines the private key to use to decrypt the vault
      *                                          or null to store generated keys in the provided $secretsDir
+=======
+     * @param string|\Stringable|null $decryptionKey A string or a stringable object that defines the private key to use to decrypt the vault
+     *                                               or null to store generated keys in the provided $secretsDir
+>>>>>>> ThomasN
      */
     public function __construct(string $secretsDir, $decryptionKey = null)
     {
         if (null !== $decryptionKey && !\is_string($decryptionKey) && !(\is_object($decryptionKey) && method_exists($decryptionKey, '__toString'))) {
+<<<<<<< HEAD
             throw new \TypeError(sprintf('Decryption key should be a string or an object that implements the __toString() method, %s given.', \gettype($decryptionKey)));
+=======
+            throw new \TypeError(sprintf('Decryption key should be a string or an object that implements the __toString() method, "%s" given.', get_debug_type($decryptionKey)));
+>>>>>>> ThomasN
         }
 
         $this->pathPrefix = rtrim(strtr($secretsDir, '/', \DIRECTORY_SEPARATOR), \DIRECTORY_SEPARATOR).\DIRECTORY_SEPARATOR.basename($secretsDir).'.';
@@ -58,7 +67,11 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
             // ignore failures to load keys
         }
 
+<<<<<<< HEAD
         if ('' !== $this->decryptionKey && !file_exists($this->pathPrefix.'encrypt.public.php')) {
+=======
+        if ('' !== $this->decryptionKey && !is_file($this->pathPrefix.'encrypt.public.php')) {
+>>>>>>> ThomasN
             $this->export('encrypt.public', $this->encryptionKey);
         }
 
@@ -99,7 +112,11 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
         $this->lastMessage = null;
         $this->validateName($name);
 
+<<<<<<< HEAD
         if (!file_exists($file = $this->pathPrefix.$name.'.'.substr_replace(md5($name), '.php', -26))) {
+=======
+        if (!is_file($file = $this->pathPrefix.$name.'.'.substr_replace(md5($name), '.php', -26))) {
+>>>>>>> ThomasN
             $this->lastMessage = sprintf('Secret "%s" not found in "%s".', $name, $this->getPrettyPath(\dirname($this->pathPrefix).\DIRECTORY_SEPARATOR));
 
             return null;
@@ -133,7 +150,11 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
         $this->lastMessage = null;
         $this->validateName($name);
 
+<<<<<<< HEAD
         if (!file_exists($file = $this->pathPrefix.$name.'.'.substr_replace(md5($name), '.php', -26))) {
+=======
+        if (!is_file($file = $this->pathPrefix.$name.'.'.substr_replace(md5($name), '.php', -26))) {
+>>>>>>> ThomasN
             $this->lastMessage = sprintf('Secret "%s" not found in "%s".', $name, $this->getPrettyPath(\dirname($this->pathPrefix).\DIRECTORY_SEPARATOR));
 
             return false;
@@ -152,7 +173,11 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
     {
         $this->lastMessage = null;
 
+<<<<<<< HEAD
         if (!file_exists($file = $this->pathPrefix.'list.php')) {
+=======
+        if (!is_file($file = $this->pathPrefix.'list.php')) {
+>>>>>>> ThomasN
             return [];
         }
 
@@ -177,18 +202,30 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
     private function loadKeys(): void
     {
         if (!\function_exists('sodium_crypto_box_seal')) {
+<<<<<<< HEAD
             throw new \LogicException('The "sodium" PHP extension is required to deal with secrets. Alternatively, try running "composer require paragonie/sodium_compat" if you cannot enable the extension."');
+=======
+            throw new \LogicException('The "sodium" PHP extension is required to deal with secrets. Alternatively, try running "composer require paragonie/sodium_compat" if you cannot enable the extension.".');
+>>>>>>> ThomasN
         }
 
         if (null !== $this->encryptionKey || '' !== $this->decryptionKey = (string) $this->decryptionKey) {
             return;
         }
 
+<<<<<<< HEAD
         if (file_exists($this->pathPrefix.'decrypt.private.php')) {
             $this->decryptionKey = (string) include $this->pathPrefix.'decrypt.private.php';
         }
 
         if (file_exists($this->pathPrefix.'encrypt.public.php')) {
+=======
+        if (is_file($this->pathPrefix.'decrypt.private.php')) {
+            $this->decryptionKey = (string) include $this->pathPrefix.'decrypt.private.php';
+        }
+
+        if (is_file($this->pathPrefix.'encrypt.public.php')) {
+>>>>>>> ThomasN
             $this->encryptionKey = (string) include $this->pathPrefix.'encrypt.public.php';
         } elseif ('' !== $this->decryptionKey) {
             $this->encryptionKey = sodium_crypto_box_publickey($this->decryptionKey);
@@ -214,7 +251,11 @@ class SodiumVault extends AbstractVault implements EnvVarLoaderInterface
     private function createSecretsDir(): void
     {
         if ($this->secretsDir && !is_dir($this->secretsDir) && !@mkdir($this->secretsDir, 0777, true) && !is_dir($this->secretsDir)) {
+<<<<<<< HEAD
             throw new \RuntimeException(sprintf('Unable to create the secrets directory (%s)', $this->secretsDir));
+=======
+            throw new \RuntimeException(sprintf('Unable to create the secrets directory (%s).', $this->secretsDir));
+>>>>>>> ThomasN
         }
 
         $this->secretsDir = null;

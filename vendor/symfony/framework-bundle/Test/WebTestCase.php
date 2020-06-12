@@ -22,7 +22,10 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 abstract class WebTestCase extends KernelTestCase
 {
     use WebTestAssertionsTrait;
+<<<<<<< HEAD
     use MailerAssertionsTrait;
+=======
+>>>>>>> ThomasN
 
     protected function tearDown(): void
     {
@@ -41,7 +44,11 @@ abstract class WebTestCase extends KernelTestCase
     protected static function createClient(array $options = [], array $server = [])
     {
         if (static::$booted) {
+<<<<<<< HEAD
             throw new \LogicException(sprintf('Booting the kernel before calling %s() is not supported, the kernel should only be booted once.', __METHOD__));
+=======
+            throw new \LogicException(sprintf('Booting the kernel before calling "%s()" is not supported, the kernel should only be booted once.', __METHOD__));
+>>>>>>> ThomasN
         }
 
         $kernel = static::bootKernel($options);
@@ -52,7 +59,11 @@ abstract class WebTestCase extends KernelTestCase
             if (class_exists(KernelBrowser::class)) {
                 throw new \LogicException('You cannot create the client used in functional tests if the "framework.test" config is not set to true.');
             }
+<<<<<<< HEAD
             throw new \LogicException('You cannot create the client used in functional tests if the BrowserKit component is not available. Try running "composer require symfony/browser-kit"');
+=======
+            throw new \LogicException('You cannot create the client used in functional tests if the BrowserKit component is not available. Try running "composer require symfony/browser-kit".');
+>>>>>>> ThomasN
         }
 
         $client->setServerParameters($server);

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "af": "Afrikaanka",
         "agq": "Ageem",
@@ -55,6 +58,10 @@
         "fil": "Tagalog",
         "fo": "Farowsi",
         "fr": "Faransiis",
+<<<<<<< HEAD
+=======
+        "frc": "Faransiiska Cajun",
+>>>>>>> ThomasN
         "fur": "Firiyuuliyaan",
         "fy": "Firiisiyan Galbeed",
         "ga": "Ayrish",
@@ -113,12 +120,20 @@
         "lkt": "Laakoota",
         "ln": "Lingala",
         "lo": "Lao",
+<<<<<<< HEAD
+=======
+        "lou": "Louisiana Creole",
+>>>>>>> ThomasN
         "lrc": "Koonfurta Luuri",
         "lt": "Lituwaanays",
         "lu": "Luuba-kataanga",
         "luo": "Luwada",
         "luy": "Luhya",
         "lv": "Laatfiyaan",
+<<<<<<< HEAD
+=======
+        "mai": "Dadka Maithili",
+>>>>>>> ThomasN
         "mas": "Masaay",
         "mer": "Meeru",
         "mfe": "Moorisayn",
@@ -227,6 +242,10 @@
         "en_US": "Ingiriis Maraykan",
         "es_419": "Isbaanishka Laatiin Ameerika",
         "es_ES": "Isbaanish (Isbayn)",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Faarsi",
+>>>>>>> ThomasN
         "fr_CA": "Faransiiska Kanada",
         "fr_CH": "Faransiis (Iswiiserlaand)",
         "nl_BE": "Af faleemi",

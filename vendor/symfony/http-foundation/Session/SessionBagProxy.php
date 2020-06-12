@@ -21,17 +21,33 @@ final class SessionBagProxy implements SessionBagInterface
     private $bag;
     private $data;
     private $usageIndex;
+<<<<<<< HEAD
 
     public function __construct(SessionBagInterface $bag, array &$data, ?int &$usageIndex)
+=======
+    private $usageReporter;
+
+    public function __construct(SessionBagInterface $bag, array &$data, ?int &$usageIndex, ?callable $usageReporter)
+>>>>>>> ThomasN
     {
         $this->bag = $bag;
         $this->data = &$data;
         $this->usageIndex = &$usageIndex;
+<<<<<<< HEAD
+=======
+        $this->usageReporter = $usageReporter;
+>>>>>>> ThomasN
     }
 
     public function getBag(): SessionBagInterface
     {
         ++$this->usageIndex;
+<<<<<<< HEAD
+=======
+        if ($this->usageReporter && 0 <= $this->usageIndex) {
+            ($this->usageReporter)();
+        }
+>>>>>>> ThomasN
 
         return $this->bag;
     }
@@ -42,6 +58,12 @@ final class SessionBagProxy implements SessionBagInterface
             return true;
         }
         ++$this->usageIndex;
+<<<<<<< HEAD
+=======
+        if ($this->usageReporter && 0 <= $this->usageIndex) {
+            ($this->usageReporter)();
+        }
+>>>>>>> ThomasN
 
         return empty($this->data[$this->bag->getStorageKey()]);
     }
@@ -60,6 +82,13 @@ final class SessionBagProxy implements SessionBagInterface
     public function initialize(array &$array): void
     {
         ++$this->usageIndex;
+<<<<<<< HEAD
+=======
+        if ($this->usageReporter && 0 <= $this->usageIndex) {
+            ($this->usageReporter)();
+        }
+
+>>>>>>> ThomasN
         $this->data[$this->bag->getStorageKey()] = &$array;
 
         $this->bag->initialize($array);

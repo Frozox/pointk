@@ -13,6 +13,7 @@ namespace Symfony\Component\Routing\Loader\Configurator\Traits;
 
 use Symfony\Component\Routing\Loader\Configurator\CollectionConfigurator;
 use Symfony\Component\Routing\Loader\Configurator\RouteConfigurator;
+<<<<<<< HEAD
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\RouteCompiler;
@@ -27,12 +28,30 @@ trait AddTrait
     private $name = '';
 
     private $prefixes;
+=======
+use Symfony\Component\Routing\RouteCollection;
+
+/**
+ * @author Nicolas Grekas <p@tchwork.com>
+ */
+trait AddTrait
+{
+    use LocalizedRouteTrait;
+
+    /**
+     * @var RouteCollection
+     */
+    protected $collection;
+    protected $name = '';
+    protected $prefixes;
+>>>>>>> ThomasN
 
     /**
      * Adds a route.
      *
      * @param string|array $path the path, or the localized paths of the route
      */
+<<<<<<< HEAD
     final public function add(string $name, $path): RouteConfigurator
     {
         $paths = [];
@@ -73,6 +92,14 @@ trait AddTrait
         }
 
         return new RouteConfigurator($this->collection, $routes, $this->name, $parentConfigurator, $this->prefixes);
+=======
+    public function add(string $name, $path): RouteConfigurator
+    {
+        $parentConfigurator = $this instanceof CollectionConfigurator ? $this : ($this instanceof RouteConfigurator ? $this->parentConfigurator : null);
+        $route = $this->createLocalizedRoute($this->collection, $name, $path, $this->name, $this->prefixes);
+
+        return new RouteConfigurator($this->collection, $route, $this->name, $parentConfigurator, $this->prefixes);
+>>>>>>> ThomasN
     }
 
     /**
@@ -80,6 +107,7 @@ trait AddTrait
      *
      * @param string|array $path the path, or the localized paths of the route
      */
+<<<<<<< HEAD
     final public function __invoke(string $name, $path): RouteConfigurator
     {
         return $this->add($name, $path);
@@ -89,4 +117,10 @@ trait AddTrait
     {
         return new Route($path);
     }
+=======
+    public function __invoke(string $name, $path): RouteConfigurator
+    {
+        return $this->add($name, $path);
+    }
+>>>>>>> ThomasN
 }

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afari",
         "ab": "abhaasi",
@@ -168,7 +171,10 @@
         "fur": "friuuli",
         "fy": "läänefriisi",
         "ga": "iiri",
+<<<<<<< HEAD
         "gaa": "gaa",
+=======
+>>>>>>> ThomasN
         "gag": "gagauusi",
         "gan": "kani",
         "gay": "gajo",
@@ -598,6 +604,10 @@
         "es_419": "Ladina-Ameerika hispaania",
         "es_ES": "Euroopa hispaania",
         "es_MX": "Mehhiko hispaania",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "Kanada prantsuse",
         "fr_CH": "Šveitsi prantsuse",
         "nds_NL": "Hollandi alamsaksa",

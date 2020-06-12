@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "گرین وچ مین ٹائم (عابدجان)",
         "Africa\/Accra": "گرین وچ مین ٹائم (اکرا)",
@@ -17,7 +20,10 @@
         "Africa\/Ouagadougou": "گرین وچ مین ٹائم (اؤگاڈؤگوو)",
         "Africa\/Sao_Tome": "گرین وچ مین ٹائم (ساؤ ٹوم)",
         "Africa\/Tunis": "وسطی یورپ کا وقت (تیونس)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "مغربی ارجنٹینا ٹائم (سان لوئس)",
+=======
+>>>>>>> ThomasN
         "America\/Asuncion": "پیراگوئے ٹائم (اسنسیئن)",
         "America\/Boa_Vista": "ایمیزون ٹائم (بوآ وسٹا)",
         "America\/Cambridge_Bay": "ماؤنٹین ٹائم (کیمبرج بے)",

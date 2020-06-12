@@ -17,7 +17,11 @@ use Symfony\Component\Notifier\Transport\Dsn;
 /**
  * @author Konstantin Myakshin <molodchick@gmail.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 class UnsupportedSchemeException extends LogicException
 {
@@ -30,14 +34,47 @@ class UnsupportedSchemeException extends LogicException
             'class' => Bridge\Telegram\TelegramTransportFactory::class,
             'package' => 'symfony/telegram-notifier',
         ],
+<<<<<<< HEAD
+=======
+        'mattermost' => [
+            'class' => Bridge\Mattermost\MattermostTransportFactory::class,
+            'package' => 'symfony/mattermost-notifier',
+        ],
+>>>>>>> ThomasN
         'nexmo' => [
             'class' => Bridge\Nexmo\NexmoTransportFactory::class,
             'package' => 'symfony/nexmo-notifier',
         ],
+<<<<<<< HEAD
+=======
+        'rocketchat' => [
+            'class' => Bridge\RocketChat\RocketChatTransportFactory::class,
+            'package' => 'rocketchat-notifier',
+        ],
+>>>>>>> ThomasN
         'twilio' => [
             'class' => Bridge\Twilio\TwilioTransportFactory::class,
             'package' => 'symfony/twilio-notifier',
         ],
+<<<<<<< HEAD
+=======
+        'firebase' => [
+            'class' => Bridge\Firebase\FirebaseTransportFactory::class,
+            'package' => 'symfony/firebase-notifier',
+        ],
+        'freemobile' => [
+            'class' => Bridge\FreeMobile\FreeMobileTransportFactory::class,
+            'package' => 'symfony/freemobile-notifier',
+        ],
+        'ovhcloud' => [
+            'class' => Bridge\OvhCloud\OvhCloudTransportFactory::class,
+            'package' => 'symfony/ovhcloud-notifier',
+        ],
+        'sinch' => [
+            'class' => Bridge\Sinch\SinchTransportFactory::class,
+            'package' => 'symfony/sinch-notifier',
+        ],
+>>>>>>> ThomasN
     ];
 
     /**

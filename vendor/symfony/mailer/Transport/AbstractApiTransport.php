@@ -31,7 +31,11 @@ abstract class AbstractApiTransport extends AbstractHttpTransport
         try {
             $email = MessageConverter::toEmail($message->getOriginalMessage());
         } catch (\Exception $e) {
+<<<<<<< HEAD
             throw new RuntimeException(sprintf('Unable to send message with the "%s" transport: %s', __CLASS__, $e->getMessage()), 0, $e);
+=======
+            throw new RuntimeException(sprintf('Unable to send message with the "%s" transport: ', __CLASS__).$e->getMessage(), 0, $e);
+>>>>>>> ThomasN
         }
 
         return $this->doSendApi($message, $email, $message->getEnvelope());

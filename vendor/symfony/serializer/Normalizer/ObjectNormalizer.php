@@ -62,6 +62,13 @@ class ObjectNormalizer extends AbstractObjectNormalizer
      */
     protected function extractAttributes(object $object, string $format = null, array $context = [])
     {
+<<<<<<< HEAD
+=======
+        if (\stdClass::class === \get_class($object)) {
+            return array_keys((array) $object);
+        }
+
+>>>>>>> ThomasN
         // If not using groups, detect manually
         $attributes = [];
 

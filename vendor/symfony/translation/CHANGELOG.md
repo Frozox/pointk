@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+
+ * added support for `name` attribute on `unit` element from xliff2 to be used as a translation key instead of always the `source` element
+
+>>>>>>> ThomasN
 5.0.0
 -----
 

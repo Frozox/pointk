@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Средно гринуичко време (Абиджан)",
         "Africa\/Accra": "Средно гринуичко време (Акра)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Аржентинско време (Рио Галегос)",
         "America\/Argentina\/Salta": "Аржентинско време (Салта)",
         "America\/Argentina\/San_Juan": "Аржентинско време (Сан Хуан)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Западноаржентинско време (Сан Луис)",
+=======
+        "America\/Argentina\/San_Luis": "Аржентинско време (Сан Луис)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Аржентинско време (Тукуман)",
         "America\/Argentina\/Ushuaia": "Аржентинско време (Ушуая)",
         "America\/Aruba": "Северноамериканско атлантическо време (Аруба)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Бруней Даруссалам",
         "Asia\/Calcutta": "Индийско време (Колката)",
         "Asia\/Chita": "Якутско време (Чита)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Чойбалсанско време",
+=======
+        "Asia\/Choibalsan": "Уланбаторско време (Чойбалсан)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Индийско време (Коломбо)",
         "Asia\/Damascus": "Източноевропейско време (Дамаск)",
         "Asia\/Dhaka": "Бангладешко време (Дака)",

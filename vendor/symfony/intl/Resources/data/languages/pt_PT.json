@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "af": "africanês",
         "alt": "altai do sul",
@@ -96,6 +99,10 @@
         "es_419": "espanhol latino-americano",
         "es_ES": "espanhol europeu",
         "es_MX": "espanhol mexicano",
+<<<<<<< HEAD
+=======
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "fr_CA": "francês canadiano",
         "fr_CH": "francês suíço",
         "nds_NL": "baixo-saxão",

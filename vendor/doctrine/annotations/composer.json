@@ -13,7 +13,12 @@
         {"name": "Johannes Schmitt", "email": "schmittjoh@gmail.com"}
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.1",
+=======
+        "php": "^7.1 || ^8.0",
+        "ext-tokenizer": "*",
+>>>>>>> ThomasN
         "doctrine/lexer": "1.*"
     },
     "require-dev": {
@@ -37,7 +42,11 @@
     },
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "1.7.x-dev"
+=======
+            "dev-master": "1.9.x-dev"
+>>>>>>> ThomasN
         }
     }
 }

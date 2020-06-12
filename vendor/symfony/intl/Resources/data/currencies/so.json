@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -25,6 +28,25 @@
             "AOA",
             "Kawansada Angola"
         ],
+<<<<<<< HEAD
+=======
+        "ARA": [
+            "ARA",
+            "Argentine Austral"
+        ],
+        "ARL": [
+            "ARL",
+            "Beesada Ley ee Arjentiin (1970–1983)"
+        ],
+        "ARM": [
+            "ARM",
+            "Beesada Ley ee Arjentiin (1881–1970)"
+        ],
+        "ARP": [
+            "ARP",
+            "Beesada Ley ee Arjentiin (1883–1985)"
+        ],
+>>>>>>> ThomasN
         "ARS": [
             "ARS",
             "Beesada Arjentiin"
@@ -41,6 +63,13 @@
             "AZN",
             "Manaata Asarbeyjan"
         ],
+<<<<<<< HEAD
+=======
+        "BAD": [
+            "BAD",
+            "Diinaarka BBosnia-Hersogofina 1.00 konfatibal maakta Bosnia-Hersogofina 1 konfatibal maaka Bosnia-Hersogofina (1992–1994)"
+        ],
+>>>>>>> ThomasN
         "BAM": [
             "BAM",
             "Konfatibal Maakta Bosnia-Hersogofina"
@@ -77,6 +106,13 @@
             "BOB",
             "Bolifiyanada Bolifiya"
         ],
+<<<<<<< HEAD
+=======
+        "BOL": [
+            "BOL",
+            "Bolifiyaabka Bolifiyaano(1863–1963)"
+        ],
+>>>>>>> ThomasN
         "BRL": [
             "R$",
             "Realka Barasil"
@@ -165,6 +201,13 @@
             "DZD",
             "Dinaarka Aljeriya"
         ],
+<<<<<<< HEAD
+=======
+        "EEK": [
+            "EEK",
+            "Kroonka Estooniya"
+        ],
+>>>>>>> ThomasN
         "EGP": [
             "EGP",
             "Bowndka Masar"
@@ -181,6 +224,13 @@
             "€",
             "Yuuroo"
         ],
+<<<<<<< HEAD
+=======
+        "FIM": [
+            "FIM",
+            "Markkada Fiinishka ah"
+        ],
+>>>>>>> ThomasN
         "FJD": [
             "FJD",
             "Doolarka Fiji"
@@ -245,6 +295,13 @@
             "IDR",
             "Rubiah Indonesiya"
         ],
+<<<<<<< HEAD
+=======
+        "IEP": [
+            "IEP",
+            "baawnka Ayrishka"
+        ],
+>>>>>>> ThomasN
         "ILS": [
             "₪",
             "Niyuu Shekelka Israaiil"
@@ -329,6 +386,13 @@
             "LRD",
             "Doolarka Liberiya"
         ],
+<<<<<<< HEAD
+=======
+        "LVR": [
+            "LVR",
+            "Rubalka Latfiya"
+        ],
+>>>>>>> ThomasN
         "LYD": [
             "LYD",
             "Dinaarka Libya"

@@ -84,16 +84,28 @@ class IdReader
      *
      * This method assumes that the object has a single-column ID.
      *
+<<<<<<< HEAD
      * @return mixed The ID value
+=======
+     * @return string The ID value
+>>>>>>> ThomasN
      */
     public function getIdValue(object $object = null)
     {
         if (!$object) {
+<<<<<<< HEAD
             return null;
         }
 
         if (!$this->om->contains($object)) {
             throw new RuntimeException(sprintf('Entity of type "%s" passed to the choice field must be managed. Maybe you forget to persist it in the entity manager?', \get_class($object)));
+=======
+            return '';
+        }
+
+        if (!$this->om->contains($object)) {
+            throw new RuntimeException(sprintf('Entity of type "%s" passed to the choice field must be managed. Maybe you forget to persist it in the entity manager?', get_debug_type($object)));
+>>>>>>> ThomasN
         }
 
         $this->om->initializeObject($object);
@@ -104,7 +116,11 @@ class IdReader
             $idValue = $this->associationIdReader->getIdValue($idValue);
         }
 
+<<<<<<< HEAD
         return $idValue;
+=======
+        return (string) $idValue;
+>>>>>>> ThomasN
     }
 
     /**

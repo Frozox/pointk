@@ -11,7 +11,10 @@
 
 namespace Symfony\Component\Routing\Loader\Configurator;
 
+<<<<<<< HEAD
 use Symfony\Component\Routing\Route;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\Routing\RouteCollection;
 
 /**
@@ -19,6 +22,11 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class ImportConfigurator
 {
+<<<<<<< HEAD
+=======
+    use Traits\HostTrait;
+    use Traits\PrefixTrait;
+>>>>>>> ThomasN
     use Traits\RouteTrait;
 
     private $parent;
@@ -43,6 +51,7 @@ class ImportConfigurator
      */
     final public function prefix($prefix, bool $trailingSlashOnRoot = true): self
     {
+<<<<<<< HEAD
         if (!\is_array($prefix)) {
             $this->route->addPrefix($prefix);
             if (!$trailingSlashOnRoot) {
@@ -75,6 +84,9 @@ class ImportConfigurator
                 }
             }
         }
+=======
+        $this->addPrefix($this->route, $prefix, $trailingSlashOnRoot);
+>>>>>>> ThomasN
 
         return $this;
     }
@@ -90,4 +102,21 @@ class ImportConfigurator
 
         return $this;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Sets the host to use for all child routes.
+     *
+     * @param string|array $host the host, or the localized hosts
+     *
+     * @return $this
+     */
+    final public function host($host): self
+    {
+        $this->addHost($this->route, $host);
+
+        return $this;
+    }
+>>>>>>> ThomasN
 }

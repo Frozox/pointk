@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block stylesheets %}
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Point K</a>
+      </button>
+      <button class="btn btn-danger">Déconnexion</button>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card m-4">
+            <div class="card-header">Achats</div>
+            <div class="card-body" id="formHe">
+              <p class="card-text">Produits disponibles :</p>
+              <form method="post" action="/">
+                <div class="form-row">
+                  <div class="col">
+                    <div class="input-group">
+                      <input class="form-control" type="text" value="Café" readonly />
+                      <input class="form-control tim" type="text" value=2 readonly />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-danger moins">-</button>
+                      </div>
+                      <input class="form-control nb" type="text" value=0 name="nCafe" readonly />
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-success plus">+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col">
+                    <div class="input-group">
+                      <input class="form-control" type="text" value="Thé" readonly />
+                      <input class="form-control tim" type="text" value=0.5 readonly />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-danger moins">-</button>
+                      </div>
+                      <input class="form-control nb" type="text" value=0 name="nThe" readonly />
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-success plus">+</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="input-group mt-3">
+                  <input class="form-control col" type="text" value="A payer" readonly />
+                  <input class="form-control col-3 total" type="text" value=0 readonly />
+                </div>
+                <center><input type="submit" class="btn btn-primary mt-3" value="Commander" /></center>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="card m-4">
+            <div class="card-header">Commandes</div>
+            <div class="card-body" id="command">
+              <p class="card-text">Commandes en cours :</p>
+              <div class="input-group">
+                <input class="form-control" type="text" value="Commande 1" disabled />
+                <div class="input-group-append">
+                  <button class="btn btn-secondary modify">Modifier</button>
+                </div>
+              </div>
+              <div class="input-group">
+                <input class="form-control" type="text" value="Commande 2" disabled />
+                <div class="input-group-append">
+                  <button class="btn btn-secondary modify">Modifier</button>
+                </div>
+              </div>
+
+              <p class="card-text mt-4">Commandes terminées :</p>
+              <div class="input-group">
+                <input class="form-control" type="text" value="Commande 3" disabled />
+                <div class="input-group-append">
+                  <button class="btn btn-secondary affich">Afficher</button>
+                </div>
+              </div>
+              <div class="input-group">
+                <input class="form-control" type="text" value="Commande 4" disabled />
+                <div class="input-group-append">
+                  <button class="btn btn-secondary affich">Afficher</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="card m-4">
+            <div class="card-header">Utilisateur</div>
+            <div class="card-body">
+              <div style="display: flex; justify-content: space-between;" id="tab">
+                <div>Nom :</div>
+                <div id="name">Andy Swider</div>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <div>Compte restant :</div>
+                <div style="color: green;">3,50 Châtaignes</div>
+              </div>
+
+              <center><button class="btn btn-primary mt-3" id="mod">Modifier</button></center>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6">
+          <div class="card m-4">
+            <div class="card-header">Four</div>
+            <div class="card-body">
+              Find four
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="./js/pointk.js"></script>
+{% endblock %}

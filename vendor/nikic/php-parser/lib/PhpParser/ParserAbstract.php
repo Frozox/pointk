@@ -648,7 +648,11 @@ abstract class ParserAbstract implements Parser
     }
 
     protected function handleBuiltinTypes(Name $name) {
+<<<<<<< HEAD
         $scalarTypes = [
+=======
+        $builtinTypes = [
+>>>>>>> ThomasN
             'bool'     => true,
             'int'      => true,
             'float'    => true,
@@ -658,6 +662,10 @@ abstract class ParserAbstract implements Parser
             'object'   => true,
             'null'     => true,
             'false'    => true,
+<<<<<<< HEAD
+=======
+            'mixed'    => true,
+>>>>>>> ThomasN
         ];
 
         if (!$name->isUnqualified()) {
@@ -665,7 +673,11 @@ abstract class ParserAbstract implements Parser
         }
 
         $lowerName = $name->toLowerString();
+<<<<<<< HEAD
         if (!isset($scalarTypes[$lowerName])) {
+=======
+        if (!isset($builtinTypes[$lowerName])) {
+>>>>>>> ThomasN
             return $name;
         }
 
@@ -842,6 +854,7 @@ abstract class ParserAbstract implements Parser
     }
 
     /**
+<<<<<<< HEAD
      * Create attributes for a zero-length node with the given start attributes.
      *
      * @param array $startAttributes
@@ -857,6 +870,31 @@ abstract class ParserAbstract implements Parser
         }
         if (isset($startAttributes['startFilePos'])) {
             $attributes['endFilePos'] = $startAttributes['startFilePos'] - 1;
+=======
+     * Create attributes for a zero-length common-capturing nop.
+     *
+     * @param Comment[] $comments
+     * @return array
+     */
+    protected function createCommentNopAttributes(array $comments) {
+        $comment = $comments[count($comments) - 1];
+        $commentEndLine = $comment->getEndLine();
+        $commentEndFilePos = $comment->getEndFilePos();
+        $commentEndTokenPos = $comment->getEndTokenPos();
+
+        $attributes = ['comments' => $comments];
+        if (-1 !== $commentEndLine) {
+            $attributes['startLine'] = $commentEndLine;
+            $attributes['endLine'] = $commentEndLine;
+        }
+        if (-1 !== $commentEndFilePos) {
+            $attributes['startFilePos'] = $commentEndFilePos + 1;
+            $attributes['endFilePos'] = $commentEndFilePos;
+        }
+        if (-1 !== $commentEndTokenPos) {
+            $attributes['startTokenPos'] = $commentEndTokenPos + 1;
+            $attributes['endTokenPos'] = $commentEndTokenPos;
+>>>>>>> ThomasN
         }
         return $attributes;
     }

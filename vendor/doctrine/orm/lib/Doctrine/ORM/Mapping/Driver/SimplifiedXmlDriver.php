@@ -19,7 +19,11 @@
 
 namespace Doctrine\ORM\Mapping\Driver;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator;
+=======
+use Doctrine\Persistence\Mapping\Driver\SymfonyFileLocator;
+>>>>>>> ThomasN
 
 /**
  * XmlDriver that additionally looks for mapping information in a global file.

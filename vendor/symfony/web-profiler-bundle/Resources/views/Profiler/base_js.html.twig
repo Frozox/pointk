@@ -131,6 +131,7 @@
                 removeClass(ajaxToolbarPanel, 'sf-ajax-request-loading');
                 removeClass(ajaxToolbarPanel, 'sf-toolbar-status-red');
             }
+<<<<<<< HEAD
 
             addEventListener(document.querySelector('.sf-toolbar-ajax-clear'), 'click', function() {
                 requestStack = [];
@@ -138,6 +139,8 @@
                 successStreak = 4;
                 document.querySelector('.sf-toolbar-ajax-request-list').innerHTML = '';
             });
+=======
+>>>>>>> ThomasN
         };
 
         var startAjaxRequest = function(index) {
@@ -506,6 +509,15 @@
                             setPreference('toolbar/displayState', 'block');
                         });
                         renderAjaxRequests();
+<<<<<<< HEAD
+=======
+                        addEventListener(document.querySelector('.sf-toolbar-ajax-clear'), 'click', function() {
+                            requestStack = [];
+                            renderAjaxRequests();
+                            successStreak = 4;
+                            document.querySelector('.sf-toolbar-ajax-request-list').innerHTML = '';
+                        });
+>>>>>>> ThomasN
                         addEventListener(document.querySelector('.sf-toolbar-block-ajax'), 'mouseenter', function (event) {
                             var elem = document.querySelector('.sf-toolbar-block-ajax .sf-toolbar-info');
                             elem.scrollTop = elem.scrollHeight;

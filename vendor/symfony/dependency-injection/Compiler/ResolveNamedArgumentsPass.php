@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\DependencyInjection\Compiler;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
@@ -28,6 +32,13 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
      */
     protected function processValue($value, bool $isRoot = false)
     {
+<<<<<<< HEAD
+=======
+        if ($value instanceof AbstractArgument && $value->getText().'.' === $value->getTextWithContext()) {
+            $value->setContext(sprintf('A value found in service "%s"', $this->currentId));
+        }
+
+>>>>>>> ThomasN
         if (!$value instanceof Definition) {
             return parent::processValue($value, $isRoot);
         }
@@ -41,6 +52,13 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
             $resolvedArguments = [];
 
             foreach ($arguments as $key => $argument) {
+<<<<<<< HEAD
+=======
+                if ($argument instanceof AbstractArgument && $argument->getText().'.' === $argument->getTextWithContext()) {
+                    $argument->setContext(sprintf('Argument '.(\is_int($key) ? 1 + $key : '"%3$s"').' of '.('__construct' === $method ? 'service "%s"' : 'method call "%s::%s()"'), $this->currentId, $method, $key));
+                }
+
+>>>>>>> ThomasN
                 if (\is_int($key)) {
                     $resolvedArguments[$key] = $argument;
                     continue;
@@ -76,7 +94,11 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                 }
 
                 if (null !== $argument && !$argument instanceof Reference && !$argument instanceof Definition) {
+<<<<<<< HEAD
                     throw new InvalidArgumentException(sprintf('Invalid service "%s": the value of argument "%s" of method "%s()" must be null, an instance of %s or an instance of %s, %s given.', $this->currentId, $key, $class !== $this->currentId ? $class.'::'.$method : $method, Reference::class, Definition::class, \gettype($argument)));
+=======
+                    throw new InvalidArgumentException(sprintf('Invalid service "%s": the value of argument "%s" of method "%s()" must be null, an instance of "%s" or an instance of "%s", "%s" given.', $this->currentId, $key, $class !== $this->currentId ? $class.'::'.$method : $method, Reference::class, Definition::class, get_debug_type($argument)));
+>>>>>>> ThomasN
                 }
 
                 $typeFound = false;
@@ -107,6 +129,15 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
             $value->setMethodCalls($calls);
         }
 
+<<<<<<< HEAD
+=======
+        foreach ($value->getProperties() as $key => $argument) {
+            if ($argument instanceof AbstractArgument && $argument->getText().'.' === $argument->getTextWithContext()) {
+                $argument->setContext(sprintf('Property "%s" of service "%s"', $key, $this->currentId));
+            }
+        }
+
+>>>>>>> ThomasN
         return parent::processValue($value, $isRoot);
     }
 }

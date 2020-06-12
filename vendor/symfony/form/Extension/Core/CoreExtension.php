@@ -75,7 +75,11 @@ class CoreExtension extends AbstractExtension
             new Type\ResetType(),
             new Type\CurrencyType(),
             new Type\TelType(),
+<<<<<<< HEAD
             new Type\ColorType(),
+=======
+            new Type\ColorType($this->translator),
+>>>>>>> ThomasN
             new Type\WeekType(),
         ];
     }

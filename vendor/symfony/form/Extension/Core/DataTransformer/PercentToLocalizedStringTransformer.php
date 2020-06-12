@@ -31,6 +31,10 @@ class PercentToLocalizedStringTransformer implements DataTransformerInterface
         self::INTEGER,
     ];
 
+<<<<<<< HEAD
+=======
+    private $roundingMode;
+>>>>>>> ThomasN
     private $type;
     private $scale;
 
@@ -42,7 +46,11 @@ class PercentToLocalizedStringTransformer implements DataTransformerInterface
      *
      * @throws UnexpectedTypeException if the given value of type is unknown
      */
+<<<<<<< HEAD
     public function __construct(int $scale = null, string $type = null)
+=======
+    public function __construct(int $scale = null, string $type = null, ?int $roundingMode = null)
+>>>>>>> ThomasN
     {
         if (null === $scale) {
             $scale = 0;
@@ -52,12 +60,23 @@ class PercentToLocalizedStringTransformer implements DataTransformerInterface
             $type = self::FRACTIONAL;
         }
 
+<<<<<<< HEAD
+=======
+        if (null === $roundingMode && (\func_num_args() < 4 || func_get_arg(3))) {
+            trigger_deprecation('symfony/form', '5.1', 'Not passing a rounding mode to "%s()" is deprecated. Starting with Symfony 6.0 it will default to "\NumberFormatter::ROUND_HALFUP".', __METHOD__);
+        }
+
+>>>>>>> ThomasN
         if (!\in_array($type, self::$types, true)) {
             throw new UnexpectedTypeException($type, implode('", "', self::$types));
         }
 
         $this->type = $type;
         $this->scale = $scale;
+<<<<<<< HEAD
+=======
+        $this->roundingMode = $roundingMode;
+>>>>>>> ThomasN
     }
 
     /**
@@ -162,11 +181,19 @@ class PercentToLocalizedStringTransformer implements DataTransformerInterface
             $remainder = trim($remainder, " \t\n\r\0\x0b\xc2\xa0");
 
             if ('' !== $remainder) {
+<<<<<<< HEAD
                 throw new TransformationFailedException(sprintf('The number contains unrecognized characters: "%s"', $remainder));
             }
         }
 
         return $result;
+=======
+                throw new TransformationFailedException(sprintf('The number contains unrecognized characters: "%s".', $remainder));
+            }
+        }
+
+        return $this->round($result);
+>>>>>>> ThomasN
     }
 
     /**
@@ -180,6 +207,65 @@ class PercentToLocalizedStringTransformer implements DataTransformerInterface
 
         $formatter->setAttribute(\NumberFormatter::FRACTION_DIGITS, $this->scale);
 
+<<<<<<< HEAD
         return $formatter;
     }
+=======
+        if (null !== $this->roundingMode) {
+            $formatter->setAttribute(\NumberFormatter::ROUNDING_MODE, $this->roundingMode);
+        }
+
+        return $formatter;
+    }
+
+    /**
+     * Rounds a number according to the configured scale and rounding mode.
+     *
+     * @param int|float $number A number
+     *
+     * @return int|float The rounded number
+     */
+    private function round($number)
+    {
+        if (null !== $this->scale && null !== $this->roundingMode) {
+            // shift number to maintain the correct scale during rounding
+            $roundingCoef = pow(10, $this->scale);
+
+            if (self::FRACTIONAL == $this->type) {
+                $roundingCoef *= 100;
+            }
+
+            // string representation to avoid rounding errors, similar to bcmul()
+            $number = (string) ($number * $roundingCoef);
+
+            switch ($this->roundingMode) {
+                case \NumberFormatter::ROUND_CEILING:
+                    $number = ceil($number);
+                    break;
+                case \NumberFormatter::ROUND_FLOOR:
+                    $number = floor($number);
+                    break;
+                case \NumberFormatter::ROUND_UP:
+                    $number = $number > 0 ? ceil($number) : floor($number);
+                    break;
+                case \NumberFormatter::ROUND_DOWN:
+                    $number = $number > 0 ? floor($number) : ceil($number);
+                    break;
+                case \NumberFormatter::ROUND_HALFEVEN:
+                    $number = round($number, 0, PHP_ROUND_HALF_EVEN);
+                    break;
+                case \NumberFormatter::ROUND_HALFUP:
+                    $number = round($number, 0, PHP_ROUND_HALF_UP);
+                    break;
+                case \NumberFormatter::ROUND_HALFDOWN:
+                    $number = round($number, 0, PHP_ROUND_HALF_DOWN);
+                    break;
+            }
+
+            $number = 1 === $roundingCoef ? (int) $number : $number / $roundingCoef;
+        }
+
+        return $number;
+    }
+>>>>>>> ThomasN
 }

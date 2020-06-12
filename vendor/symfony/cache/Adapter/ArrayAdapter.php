@@ -15,10 +15,21 @@ use Psr\Cache\CacheItemInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Symfony\Component\Cache\CacheItem;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Cache\Exception\InvalidArgumentException;
+>>>>>>> ThomasN
 use Symfony\Component\Cache\ResettableInterface;
 use Symfony\Contracts\Cache\CacheInterface;
 
 /**
+<<<<<<< HEAD
+=======
+ * An in-memory cache storage.
+ *
+ * Acts as a least-recently-used (LRU) storage when configured with a maximum number of items.
+ *
+>>>>>>> ThomasN
  * @author Nicolas Grekas <p@tchwork.com>
  */
 class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInterface, ResettableInterface
@@ -29,13 +40,34 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
     private $values = [];
     private $expiries = [];
     private $createCacheItem;
+<<<<<<< HEAD
+=======
+    private $maxLifetime;
+    private $maxItems;
+>>>>>>> ThomasN
 
     /**
      * @param bool $storeSerialized Disabling serialization can lead to cache corruptions when storing mutable values but increases performance otherwise
      */
+<<<<<<< HEAD
     public function __construct(int $defaultLifetime = 0, bool $storeSerialized = true)
     {
         $this->storeSerialized = $storeSerialized;
+=======
+    public function __construct(int $defaultLifetime = 0, bool $storeSerialized = true, float $maxLifetime = 0, int $maxItems = 0)
+    {
+        if (0 > $maxLifetime) {
+            throw new InvalidArgumentException(sprintf('Argument $maxLifetime must be positive, %F passed.', $maxLifetime));
+        }
+
+        if (0 > $maxItems) {
+            throw new InvalidArgumentException(sprintf('Argument $maxItems must be a positive integer, %d passed.', $maxItems));
+        }
+
+        $this->storeSerialized = $storeSerialized;
+        $this->maxLifetime = $maxLifetime;
+        $this->maxItems = $maxItems;
+>>>>>>> ThomasN
         $this->createCacheItem = \Closure::bind(
             static function ($key, $value, $isHit) use ($defaultLifetime) {
                 $item = new CacheItem();
@@ -84,6 +116,16 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
     public function hasItem($key)
     {
         if (\is_string($key) && isset($this->expiries[$key]) && $this->expiries[$key] > microtime(true)) {
+<<<<<<< HEAD
+=======
+            if ($this->maxItems) {
+                // Move the item last in the storage
+                $value = $this->values[$key];
+                unset($this->values[$key]);
+                $this->values[$key] = $value;
+            }
+
+>>>>>>> ThomasN
             return true;
         }
         CacheItem::validateKey($key);
@@ -97,7 +139,16 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
     public function getItem($key)
     {
         if (!$isHit = $this->hasItem($key)) {
+<<<<<<< HEAD
             $this->values[$key] = $value = null;
+=======
+            $value = null;
+
+            if (!$this->maxItems) {
+                // Track misses in non-LRU mode only
+                $this->values[$key] = null;
+            }
+>>>>>>> ThomasN
         } else {
             $value = $this->storeSerialized ? $this->unfreeze($key, $isHit) : $this->values[$key];
         }
@@ -164,7 +215,13 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
         $value = $item["\0*\0value"];
         $expiry = $item["\0*\0expiry"];
 
+<<<<<<< HEAD
         if (null !== $expiry && $expiry <= microtime(true)) {
+=======
+        $now = microtime(true);
+
+        if (null !== $expiry && $expiry <= $now) {
+>>>>>>> ThomasN
             $this->deleteItem($key);
 
             return true;
@@ -173,7 +230,27 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
             return false;
         }
         if (null === $expiry && 0 < $item["\0*\0defaultLifetime"]) {
+<<<<<<< HEAD
             $expiry = microtime(true) + $item["\0*\0defaultLifetime"];
+=======
+            $expiry = $item["\0*\0defaultLifetime"];
+            $expiry = $now + ($expiry > ($this->maxLifetime ?: $expiry) ? $this->maxLifetime : $expiry);
+        } elseif ($this->maxLifetime && (null === $expiry || $expiry > $now + $this->maxLifetime)) {
+            $expiry = $now + $this->maxLifetime;
+        }
+
+        if ($this->maxItems) {
+            unset($this->values[$key]);
+
+            // Iterate items and vacuum expired ones while we are at it
+            foreach ($this->values as $k => $v) {
+                if ($this->expiries[$k] > $now && \count($this->values) < $this->maxItems) {
+                    break;
+                }
+
+                unset($this->values[$k], $this->expiries[$k]);
+            }
+>>>>>>> ThomasN
         }
 
         $this->values[$key] = $value;
@@ -210,6 +287,7 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
     public function clear(string $prefix = '')
     {
         if ('' !== $prefix) {
+<<<<<<< HEAD
             foreach ($this->values as $key => $value) {
                 if (0 === strpos($key, $prefix)) {
                     unset($this->values[$key], $this->expiries[$key]);
@@ -219,6 +297,23 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
             $this->values = $this->expiries = [];
         }
 
+=======
+            $now = microtime(true);
+
+            foreach ($this->values as $key => $value) {
+                if (!isset($this->expiries[$key]) || $this->expiries[$key] <= $now || 0 === strpos($key, $prefix)) {
+                    unset($this->values[$key], $this->expiries[$key]);
+                }
+            }
+
+            if ($this->values) {
+                return true;
+            }
+        }
+
+        $this->values = $this->expiries = [];
+
+>>>>>>> ThomasN
         return true;
     }
 
@@ -258,8 +353,25 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
     {
         foreach ($keys as $i => $key) {
             if (!$isHit = isset($this->expiries[$key]) && ($this->expiries[$key] > $now || !$this->deleteItem($key))) {
+<<<<<<< HEAD
                 $this->values[$key] = $value = null;
             } else {
+=======
+                $value = null;
+
+                if (!$this->maxItems) {
+                    // Track misses in non-LRU mode only
+                    $this->values[$key] = null;
+                }
+            } else {
+                if ($this->maxItems) {
+                    // Move the item last in the storage
+                    $value = $this->values[$key];
+                    unset($this->values[$key]);
+                    $this->values[$key] = $value;
+                }
+
+>>>>>>> ThomasN
                 $value = $this->storeSerialized ? $this->unfreeze($key, $isHit) : $this->values[$key];
             }
             unset($keys[$i]);
@@ -286,9 +398,15 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
             try {
                 $serialized = serialize($value);
             } catch (\Exception $e) {
+<<<<<<< HEAD
                 $type = \is_object($value) ? \get_class($value) : \gettype($value);
                 $message = sprintf('Failed to save key "{key}" of type %s: %s', $type, $e->getMessage());
                 CacheItem::log($this->logger, $message, ['key' => $key, 'exception' => $e]);
+=======
+                $type = get_debug_type($value);
+                $message = sprintf('Failed to save key "{key}" of type %s: %s', $type, $e->getMessage());
+                CacheItem::log($this->logger, $message, ['key' => $key, 'exception' => $e, 'cache-adapter' => get_debug_type($this)]);
+>>>>>>> ThomasN
 
                 return;
             }
@@ -310,12 +428,25 @@ class ArrayAdapter implements AdapterInterface, CacheInterface, LoggerAwareInter
             try {
                 $value = unserialize($value);
             } catch (\Exception $e) {
+<<<<<<< HEAD
                 CacheItem::log($this->logger, 'Failed to unserialize key "{key}": '.$e->getMessage(), ['key' => $key, 'exception' => $e]);
                 $value = false;
             }
             if (false === $value) {
                 $this->values[$key] = $value = null;
                 $isHit = false;
+=======
+                CacheItem::log($this->logger, 'Failed to unserialize key "{key}": '.$e->getMessage(), ['key' => $key, 'exception' => $e, 'cache-adapter' => get_debug_type($this)]);
+                $value = false;
+            }
+            if (false === $value) {
+                $value = null;
+                $isHit = false;
+
+                if (!$this->maxItems) {
+                    $this->values[$key] = null;
+                }
+>>>>>>> ThomasN
             }
         }
 

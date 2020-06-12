@@ -31,9 +31,13 @@ class Route
     private $methods = [];
     private $schemes = [];
     private $condition;
+<<<<<<< HEAD
     private $locale;
     private $format;
     private $utf8;
+=======
+    private $priority;
+>>>>>>> ThomasN
 
     /**
      * @param array $data An array of key/value parameters
@@ -71,6 +75,14 @@ class Route
             unset($data['utf8']);
         }
 
+<<<<<<< HEAD
+=======
+        if (isset($data['stateless'])) {
+            $data['defaults']['_stateless'] = filter_var($data['stateless'], FILTER_VALIDATE_BOOLEAN) ?: false;
+            unset($data['stateless']);
+        }
+
+>>>>>>> ThomasN
         foreach ($data as $key => $value) {
             $method = 'set'.str_replace('_', '', $key);
             if (!method_exists($this, $method)) {
@@ -179,4 +191,17 @@ class Route
     {
         return $this->condition;
     }
+<<<<<<< HEAD
+=======
+
+    public function setPriority(int $priority): void
+    {
+        $this->priority = $priority;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+>>>>>>> ThomasN
 }

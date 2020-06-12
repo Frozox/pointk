@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "ace": "acehnés",
         "alt": "altái meridional",
@@ -17,7 +20,10 @@
         "gmh": "alemán de la alta edad media",
         "grc": "griego antiguo",
         "gu": "gurayatí",
+<<<<<<< HEAD
         "hak": "hak",
+=======
+>>>>>>> ThomasN
         "hil": "hiligainón",
         "hsn": "xiang (China)",
         "ht": "criollo haitiano",
@@ -27,10 +33,15 @@
         "lo": "lao",
         "lus": "lushai",
         "mga": "irlandés medieval",
+<<<<<<< HEAD
         "nan": "nan",
         "nr": "ndebele meridional",
         "nso": "sotho septentrional",
         "pcm": "pcm",
+=======
+        "nr": "ndebele meridional",
+        "nso": "sotho septentrional",
+>>>>>>> ThomasN
         "rm": "romanche",
         "rn": "kiroundi",
         "shu": "árabe chadiano",
@@ -42,7 +53,10 @@
         "tn": "setchwana",
         "tyv": "tuviniano",
         "wo": "wolof",
+<<<<<<< HEAD
         "wuu": "wuu",
+=======
+>>>>>>> ThomasN
         "xal": "kalmyk"
     },
     "LocalizedNames": {

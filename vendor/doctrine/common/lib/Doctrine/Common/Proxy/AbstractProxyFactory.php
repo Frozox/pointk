@@ -1,8 +1,13 @@
 <?php
 namespace Doctrine\Common\Proxy;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\Common\Persistence\Mapping\ClassMetadataFactory;
+=======
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\Persistence\Mapping\ClassMetadataFactory;
+>>>>>>> ThomasN
 use Doctrine\Common\Proxy\Exception\InvalidArgumentException;
 use Doctrine\Common\Proxy\Exception\OutOfBoundsException;
 use Doctrine\Common\Util\ClassUtils;
@@ -11,8 +16,11 @@ use Doctrine\Common\Util\ClassUtils;
  * Abstract factory for proxy objects.
  *
  * @author Benjamin Eberlei <kontakt@beberlei.de>
+<<<<<<< HEAD
  *
  * @deprecated The Doctrine\Common\Proxy component is deprecated, please use ocramius/proxy-manager instead.
+=======
+>>>>>>> ThomasN
  */
 abstract class AbstractProxyFactory
 {
@@ -61,7 +69,11 @@ abstract class AbstractProxyFactory
     ];
 
     /**
+<<<<<<< HEAD
      * @var \Doctrine\Common\Persistence\Mapping\ClassMetadataFactory
+=======
+     * @var \Doctrine\Persistence\Mapping\ClassMetadataFactory
+>>>>>>> ThomasN
      */
     private $metadataFactory;
 
@@ -81,9 +93,15 @@ abstract class AbstractProxyFactory
     private $definitions = [];
 
     /**
+<<<<<<< HEAD
      * @param \Doctrine\Common\Proxy\ProxyGenerator                     $proxyGenerator
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadataFactory $metadataFactory
      * @param bool|int                                                  $autoGenerate
+=======
+     * @param \Doctrine\Common\Proxy\ProxyGenerator              $proxyGenerator
+     * @param \Doctrine\Persistence\Mapping\ClassMetadataFactory $metadataFactory
+     * @param bool|int                                           $autoGenerate
+>>>>>>> ThomasN
      *
      * @throws \Doctrine\Common\Proxy\Exception\InvalidArgumentException When auto generate mode is not valid.
      */
@@ -131,8 +149,13 @@ abstract class AbstractProxyFactory
     /**
      * Generates proxy classes for all given classes.
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadata[] $classes The classes (ClassMetadata instances)
      *                                                                      for which to generate proxies.
+=======
+     * @param \Doctrine\Persistence\Mapping\ClassMetadata[] $classes The classes (ClassMetadata instances)
+     *                                                               for which to generate proxies.
+>>>>>>> ThomasN
      * @param string $proxyDir The target directory of the proxy classes. If not specified, the
      *                         directory configured on the Configuration of the EntityManager used
      *                         by this factory is used.
@@ -230,7 +253,11 @@ abstract class AbstractProxyFactory
     /**
      * Determine if this class should be skipped during proxy generation.
      *
+<<<<<<< HEAD
      * @param \Doctrine\Common\Persistence\Mapping\ClassMetadata $metadata
+=======
+     * @param \Doctrine\Persistence\Mapping\ClassMetadata $metadata
+>>>>>>> ThomasN
      *
      * @return bool
      */
@@ -243,3 +270,9 @@ abstract class AbstractProxyFactory
      */
     abstract protected function createProxyDefinition($className);
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadata::class);
+interface_exists(ClassMetadataFactory::class);
+>>>>>>> ThomasN

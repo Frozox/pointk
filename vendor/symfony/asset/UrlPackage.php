@@ -124,7 +124,11 @@ class UrlPackage extends Package
             if ('https://' === substr($url, 0, 8) || '//' === substr($url, 0, 2)) {
                 $sslUrls[] = $url;
             } elseif (null === parse_url($url, PHP_URL_SCHEME)) {
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('"%s" is not a valid URL', $url));
+=======
+                throw new InvalidArgumentException(sprintf('"%s" is not a valid URL.', $url));
+>>>>>>> ThomasN
             }
         }
 

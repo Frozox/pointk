@@ -15,6 +15,12 @@ use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(CliDumper::class);
+
+>>>>>>> ThomasN
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

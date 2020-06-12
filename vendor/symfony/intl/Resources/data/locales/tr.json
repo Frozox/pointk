@@ -368,6 +368,11 @@
         "ko_KP": "Korece (Kuzey Kore)",
         "ko_KR": "Korece (Güney Kore)",
         "ks": "Keşmir dili",
+<<<<<<< HEAD
+=======
+        "ks_Arab": "Keşmir dili (Arap)",
+        "ks_Arab_IN": "Keşmir dili (Arap, Hindistan)",
+>>>>>>> ThomasN
         "ks_IN": "Keşmir dili (Hindistan)",
         "ku": "Kürtçe",
         "ku_TR": "Kürtçe (Türkiye)",
@@ -406,6 +411,10 @@
         "mr_IN": "Marathi dili (Hindistan)",
         "ms": "Malayca",
         "ms_BN": "Malayca (Brunei)",
+<<<<<<< HEAD
+=======
+        "ms_ID": "Malayca (Endonezya)",
+>>>>>>> ThomasN
         "ms_MY": "Malayca (Malezya)",
         "ms_SG": "Malayca (Singapur)",
         "mt": "Maltaca",
@@ -486,6 +495,13 @@
         "rw": "Kinyarwanda",
         "rw_RW": "Kinyarwanda (Ruanda)",
         "sd": "Sindhi dili",
+<<<<<<< HEAD
+=======
+        "sd_Arab": "Sindhi dili (Arap)",
+        "sd_Arab_PK": "Sindhi dili (Arap, Pakistan)",
+        "sd_Deva": "Sindhi dili (Devanagari)",
+        "sd_Deva_IN": "Sindhi dili (Devanagari, Hindistan)",
+>>>>>>> ThomasN
         "sd_PK": "Sindhi dili (Pakistan)",
         "se": "Kuzey Laponcası",
         "se_FI": "Kuzey Laponcası (Finlandiya)",
@@ -523,6 +539,13 @@
         "sr_Latn_RS": "Sırpça (Latin, Sırbistan)",
         "sr_ME": "Sırpça (Karadağ)",
         "sr_RS": "Sırpça (Sırbistan)",
+<<<<<<< HEAD
+=======
+        "su": "Sunda dili",
+        "su_ID": "Sunda dili (Endonezya)",
+        "su_Latn": "Sunda dili (Latin)",
+        "su_Latn_ID": "Sunda dili (Latin, Endonezya)",
+>>>>>>> ThomasN
         "sv": "İsveççe",
         "sv_AX": "İsveççe (Åland Adaları)",
         "sv_FI": "İsveççe (Finlandiya)",

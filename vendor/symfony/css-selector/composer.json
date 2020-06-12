@@ -20,7 +20,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5"
+=======
+        "php": ">=7.2.5"
+>>>>>>> ThomasN
     },
     "autoload": {
         "psr-4": { "Symfony\\Component\\CssSelector\\": "" },
@@ -31,7 +35,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "5.0-dev"
+=======
+            "dev-master": "5.1-dev"
+>>>>>>> ThomasN
         }
     }
 }

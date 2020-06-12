@@ -57,12 +57,20 @@ class Lexer
             } elseif (false !== strpos(')]}', $expression[$cursor])) {
                 // closing bracket
                 if (empty($brackets)) {
+<<<<<<< HEAD
                     throw new SyntaxError(sprintf('Unexpected "%s"', $expression[$cursor]), $cursor, $expression);
+=======
+                    throw new SyntaxError(sprintf('Unexpected "%s".', $expression[$cursor]), $cursor, $expression);
+>>>>>>> ThomasN
                 }
 
                 list($expect, $cur) = array_pop($brackets);
                 if ($expression[$cursor] != strtr($expect, '([{', ')]}')) {
+<<<<<<< HEAD
                     throw new SyntaxError(sprintf('Unclosed "%s"', $expect), $cur, $expression);
+=======
+                    throw new SyntaxError(sprintf('Unclosed "%s".', $expect), $cur, $expression);
+>>>>>>> ThomasN
                 }
 
                 $tokens[] = new Token(Token::PUNCTUATION_TYPE, $expression[$cursor], $cursor + 1);
@@ -85,7 +93,11 @@ class Lexer
                 $cursor += \strlen($match[0]);
             } else {
                 // unlexable
+<<<<<<< HEAD
                 throw new SyntaxError(sprintf('Unexpected character "%s"', $expression[$cursor]), $cursor, $expression);
+=======
+                throw new SyntaxError(sprintf('Unexpected character "%s".', $expression[$cursor]), $cursor, $expression);
+>>>>>>> ThomasN
             }
         }
 
@@ -93,7 +105,11 @@ class Lexer
 
         if (!empty($brackets)) {
             list($expect, $cur) = array_pop($brackets);
+<<<<<<< HEAD
             throw new SyntaxError(sprintf('Unclosed "%s"', $expect), $cur, $expression);
+=======
+            throw new SyntaxError(sprintf('Unclosed "%s".', $expect), $cur, $expression);
+>>>>>>> ThomasN
         }
 
         return new TokenStream($tokens, $expression);

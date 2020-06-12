@@ -46,7 +46,11 @@ class PreloadedExtension implements FormExtensionInterface
     public function getType(string $name)
     {
         if (!isset($this->types[$name])) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('The type "%s" can not be loaded by this extension', $name));
+=======
+            throw new InvalidArgumentException(sprintf('The type "%s" can not be loaded by this extension.', $name));
+>>>>>>> ThomasN
         }
 
         return $this->types[$name];

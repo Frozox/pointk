@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Arab": "arabski",
         "Armi": "imperialno-aramejski",
@@ -15,7 +18,10 @@
         "Bugi": "buginski",
         "Buhd": "buhidski",
         "Cans": "poenotena zlogovna pisava kanadskih staroselcev",
+<<<<<<< HEAD
         "Cham": "Cham",
+=======
+>>>>>>> ThomasN
         "Cher": "čerokeški",
         "Cirt": "kirt",
         "Copt": "koptski",

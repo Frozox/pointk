@@ -26,7 +26,11 @@ final class SocketStream extends AbstractStream
     private $url;
     private $host = 'localhost';
     private $port = 465;
+<<<<<<< HEAD
     private $timeout = 5;
+=======
+    private $timeout;
+>>>>>>> ThomasN
     private $tls = true;
     private $sourceIp;
     private $streamContextOptions = [];
@@ -40,7 +44,11 @@ final class SocketStream extends AbstractStream
 
     public function getTimeout(): float
     {
+<<<<<<< HEAD
         return $this->timeout;
+=======
+        return $this->timeout ?? (float) ini_get('default_socket_timeout');
+>>>>>>> ThomasN
     }
 
     /**
@@ -134,17 +142,30 @@ final class SocketStream extends AbstractStream
         $options['ssl']['crypto_method'] = $options['ssl']['crypto_method'] ?? STREAM_CRYPTO_METHOD_TLS_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT | STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT;
         $streamContext = stream_context_create($options);
 
+<<<<<<< HEAD
         set_error_handler(function ($type, $msg) {
             throw new TransportException(sprintf('Connection could not be established with host "%s": %s.', $this->url, $msg));
         });
         try {
             $this->stream = stream_socket_client($this->url, $errno, $errstr, $this->timeout, STREAM_CLIENT_CONNECT, $streamContext);
+=======
+        $timeout = $this->getTimeout();
+        set_error_handler(function ($type, $msg) {
+            throw new TransportException(sprintf('Connection could not be established with host "%s": ', $this->url).$msg);
+        });
+        try {
+            $this->stream = stream_socket_client($this->url, $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT, $streamContext);
+>>>>>>> ThomasN
         } finally {
             restore_error_handler();
         }
 
         stream_set_blocking($this->stream, true);
+<<<<<<< HEAD
         stream_set_timeout($this->stream, $this->timeout);
+=======
+        stream_set_timeout($this->stream, $timeout);
+>>>>>>> ThomasN
         $this->in = &$this->stream;
         $this->out = &$this->stream;
     }

@@ -38,6 +38,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class TranslationDebugCommand extends Command
 {
+<<<<<<< HEAD
+=======
+    const EXIT_CODE_GENERAL_ERROR = 64;
+    const EXIT_CODE_MISSING = 65;
+    const EXIT_CODE_UNUSED = 66;
+    const EXIT_CODE_FALLBACK = 68;
+>>>>>>> ThomasN
     const MESSAGE_MISSING = 0;
     const MESSAGE_UNUSED = 1;
     const MESSAGE_EQUALS_FALLBACK = 2;
@@ -123,6 +130,12 @@ EOF
 
         $locale = $input->getArgument('locale');
         $domain = $input->getOption('domain');
+<<<<<<< HEAD
+=======
+
+        $exitCode = 0;
+
+>>>>>>> ThomasN
         /** @var KernelInterface $kernel */
         $kernel = $this->getApplication()->getKernel();
 
@@ -191,7 +204,11 @@ EOF
 
             $io->getErrorStyle()->warning($outputMessage);
 
+<<<<<<< HEAD
             return 0;
+=======
+            return self::EXIT_CODE_GENERAL_ERROR;
+>>>>>>> ThomasN
         }
 
         // Load the fallback catalogues
@@ -212,9 +229,19 @@ EOF
                 if ($extractedCatalogue->defines($messageId, $domain)) {
                     if (!$currentCatalogue->defines($messageId, $domain)) {
                         $states[] = self::MESSAGE_MISSING;
+<<<<<<< HEAD
                     }
                 } elseif ($currentCatalogue->defines($messageId, $domain)) {
                     $states[] = self::MESSAGE_UNUSED;
+=======
+
+                        $exitCode = $exitCode | self::EXIT_CODE_MISSING;
+                    }
+                } elseif ($currentCatalogue->defines($messageId, $domain)) {
+                    $states[] = self::MESSAGE_UNUSED;
+
+                    $exitCode = $exitCode | self::EXIT_CODE_UNUSED;
+>>>>>>> ThomasN
                 }
 
                 if (!\in_array(self::MESSAGE_UNUSED, $states) && true === $input->getOption('only-unused')
@@ -226,6 +253,11 @@ EOF
                     if ($fallbackCatalogue->defines($messageId, $domain) && $value === $fallbackCatalogue->get($messageId, $domain)) {
                         $states[] = self::MESSAGE_EQUALS_FALLBACK;
 
+<<<<<<< HEAD
+=======
+                        $exitCode = $exitCode | self::EXIT_CODE_FALLBACK;
+
+>>>>>>> ThomasN
                         break;
                     }
                 }
@@ -241,7 +273,11 @@ EOF
 
         $io->table($headers, $rows);
 
+<<<<<<< HEAD
         return 0;
+=======
+        return $exitCode;
+>>>>>>> ThomasN
     }
 
     private function formatState(int $state): string

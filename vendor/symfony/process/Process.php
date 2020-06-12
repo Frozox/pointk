@@ -277,7 +277,11 @@ class Process implements \IteratorAggregate
     public function start(callable $callback = null, array $env = [])
     {
         if ($this->isRunning()) {
+<<<<<<< HEAD
             throw new RuntimeException('Process is already running');
+=======
+            throw new RuntimeException('Process is already running.');
+>>>>>>> ThomasN
         }
 
         $this->resetProcessData();
@@ -332,7 +336,11 @@ class Process implements \IteratorAggregate
             throw new RuntimeException(sprintf('The provided cwd "%s" does not exist.', $this->cwd));
         }
 
+<<<<<<< HEAD
         $this->process = proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $options);
+=======
+        $this->process = @proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $options);
+>>>>>>> ThomasN
 
         if (!\is_resource($this->process)) {
             throw new RuntimeException('Unable to launch a new process.');
@@ -371,7 +379,11 @@ class Process implements \IteratorAggregate
     public function restart(callable $callback = null, array $env = []): self
     {
         if ($this->isRunning()) {
+<<<<<<< HEAD
             throw new RuntimeException('Process is already running');
+=======
+            throw new RuntimeException('Process is already running.');
+>>>>>>> ThomasN
         }
 
         $process = clone $this;
@@ -404,7 +416,11 @@ class Process implements \IteratorAggregate
         if (null !== $callback) {
             if (!$this->processPipes->haveReadSupport()) {
                 $this->stop(0);
+<<<<<<< HEAD
                 throw new LogicException('Pass the callback to the "Process::start" method or call enableOutput to use a callback with "Process::wait"');
+=======
+                throw new LogicException('Pass the callback to the "Process::start" method or call enableOutput to use a callback with "Process::wait".');
+>>>>>>> ThomasN
             }
             $this->callback = $this->buildCallback($callback);
         }
@@ -1209,6 +1225,21 @@ class Process implements \IteratorAggregate
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @throws LogicException in case process is not started
+     */
+    public function getStartTime(): float
+    {
+        if (!$this->isStarted()) {
+            throw new LogicException('Start time is only available after process start.');
+        }
+
+        return $this->starttime;
+    }
+
+    /**
+>>>>>>> ThomasN
      * Returns whether TTY is supported on the current operating system.
      */
     public static function isTtySupported(): bool
@@ -1554,7 +1585,11 @@ class Process implements \IteratorAggregate
     private function requireProcessIsStarted(string $functionName)
     {
         if (!$this->isStarted()) {
+<<<<<<< HEAD
             throw new LogicException(sprintf('Process must be started before calling %s.', $functionName));
+=======
+            throw new LogicException(sprintf('Process must be started before calling "%s()".', $functionName));
+>>>>>>> ThomasN
         }
     }
 
@@ -1566,7 +1601,11 @@ class Process implements \IteratorAggregate
     private function requireProcessIsTerminated(string $functionName)
     {
         if (!$this->isTerminated()) {
+<<<<<<< HEAD
             throw new LogicException(sprintf('Process must be terminated before calling %s.', $functionName));
+=======
+            throw new LogicException(sprintf('Process must be terminated before calling "%s()".', $functionName));
+>>>>>>> ThomasN
         }
     }
 
@@ -1596,7 +1635,11 @@ class Process implements \IteratorAggregate
     {
         return preg_replace_callback('/"\$\{:([_a-zA-Z]++[_a-zA-Z0-9]*+)\}"/', function ($matches) use ($commandline, $env) {
             if (!isset($env[$matches[1]]) || false === $env[$matches[1]]) {
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('Command line is missing a value for parameter "%s": %s.', $matches[1], $commandline));
+=======
+                throw new InvalidArgumentException(sprintf('Command line is missing a value for parameter "%s": ', $matches[1]).$commandline);
+>>>>>>> ThomasN
             }
 
             return $this->escapeArgument($env[$matches[1]]);

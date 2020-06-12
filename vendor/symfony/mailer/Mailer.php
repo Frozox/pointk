@@ -11,6 +11,10 @@
 
 namespace Symfony\Component\Mailer;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\EventDispatcher\Event;
+>>>>>>> ThomasN
 use Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy;
 use Symfony\Component\Mailer\Event\MessageEvent;
 use Symfony\Component\Mailer\Messenger\SendEmailMessage;
@@ -32,7 +36,11 @@ final class Mailer implements MailerInterface
     {
         $this->transport = $transport;
         $this->bus = $bus;
+<<<<<<< HEAD
         $this->dispatcher = LegacyEventDispatcherProxy::decorate($dispatcher);
+=======
+        $this->dispatcher = class_exists(Event::class) ? LegacyEventDispatcherProxy::decorate($dispatcher) : $dispatcher;
+>>>>>>> ThomasN
     }
 
     public function send(RawMessage $message, Envelope $envelope = null): void
@@ -44,9 +52,15 @@ final class Mailer implements MailerInterface
         }
 
         if (null !== $this->dispatcher) {
+<<<<<<< HEAD
             $message = clone $message;
             $envelope = null !== $envelope ? clone $envelope : Envelope::create($message);
             $event = new MessageEvent($message, $envelope, (string) $this->transport, true);
+=======
+            $clonedMessage = clone $message;
+            $clonedEnvelope = null !== $envelope ? clone $envelope : Envelope::create($clonedMessage);
+            $event = new MessageEvent($clonedMessage, $clonedEnvelope, (string) $this->transport, true);
+>>>>>>> ThomasN
             $this->dispatcher->dispatch($event);
         }
 

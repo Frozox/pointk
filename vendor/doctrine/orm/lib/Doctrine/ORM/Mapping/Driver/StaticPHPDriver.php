@@ -19,12 +19,20 @@
 
 namespace Doctrine\ORM\Mapping\Driver;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\Driver\StaticPHPDriver as CommonStaticPHPDriver;
+=======
+use Doctrine\Persistence\Mapping\Driver\StaticPHPDriver as CommonStaticPHPDriver;
+>>>>>>> ThomasN
 
 /**
  * {@inheritDoc}
  *
+<<<<<<< HEAD
  * @deprecated this driver will be removed. Use Doctrine\Common\Persistence\Mapping\Driver\StaticPHPDriver instead
+=======
+ * @deprecated this driver will be removed. Use Doctrine\Persistence\Mapping\Driver\StaticPHPDriver instead
+>>>>>>> ThomasN
  */
 class StaticPHPDriver extends CommonStaticPHPDriver
 {

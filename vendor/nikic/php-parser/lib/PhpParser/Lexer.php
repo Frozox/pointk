@@ -300,6 +300,7 @@ class Lexer
                 $this->line += substr_count($value, "\n");
                 $this->filePos += \strlen($value);
             } else {
+<<<<<<< HEAD
                 if (\T_COMMENT === $token[0] || \T_DOC_COMMENT === $token[0]) {
                     if ($this->attributeCommentsUsed) {
                         $comment = \T_DOC_COMMENT === $token[0]
@@ -311,6 +312,25 @@ class Lexer
 
                 $this->line += substr_count($token[1], "\n");
                 $this->filePos += \strlen($token[1]);
+=======
+                $origLine = $this->line;
+                $origFilePos = $this->filePos;
+                $this->line += substr_count($token[1], "\n");
+                $this->filePos += \strlen($token[1]);
+
+                if (\T_COMMENT === $token[0] || \T_DOC_COMMENT === $token[0]) {
+                    if ($this->attributeCommentsUsed) {
+                        $comment = \T_DOC_COMMENT === $token[0]
+                            ? new Comment\Doc($token[1],
+                                $origLine, $origFilePos, $this->pos,
+                                $this->line, $this->filePos - 1, $this->pos)
+                            : new Comment($token[1],
+                                $origLine, $origFilePos, $this->pos,
+                                $this->line, $this->filePos - 1, $this->pos);
+                        $startAttributes['comments'][] = $comment;
+                    }
+                }
+>>>>>>> ThomasN
                 continue;
             }
 

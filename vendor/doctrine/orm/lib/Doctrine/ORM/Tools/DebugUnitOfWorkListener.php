@@ -19,12 +19,19 @@
 
 namespace Doctrine\ORM\Tools;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Proxy;
+=======
+>>>>>>> ThomasN
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\PersistentCollection;
 use Doctrine\ORM\UnitOfWork;
+<<<<<<< HEAD
+=======
+use Doctrine\Persistence\Proxy;
+>>>>>>> ThomasN
 
 /**
  * Use this logger to dump the identity map during the onFlush event. This is useful for debugging

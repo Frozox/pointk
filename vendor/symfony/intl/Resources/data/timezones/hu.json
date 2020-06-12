@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "greenwichi középidő, téli idő (Abidjan)",
         "Africa\/Accra": "greenwichi középidő, téli idő (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "argentínai idő (Río Gallegos)",
         "America\/Argentina\/Salta": "argentínai idő (Salta)",
         "America\/Argentina\/San_Juan": "argentínai idő (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "nyugat-argentínai időzóna (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "argentínai idő (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "argentínai idő (Tucumán)",
         "America\/Argentina\/Ushuaia": "argentínai idő (Ushuaia)",
         "America\/Aruba": "atlanti-óceáni idő (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Brunei Darussalam-i idő",
         "Asia\/Calcutta": "indiai téli idő (Kalkutta)",
         "Asia\/Chita": "jakutszki idő (Csita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "csojbalszani idő",
+=======
+        "Asia\/Choibalsan": "ulánbátori idő (Csojbalszan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "indiai téli idő (Colombo)",
         "Asia\/Damascus": "kelet-európai időzóna (Damaszkusz)",
         "Asia\/Dhaka": "bangladesi idő (Dakka)",

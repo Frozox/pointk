@@ -335,7 +335,14 @@ class DrizzlePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string      $table
+     * @param string|null $database
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getListTableForeignKeysSQL($table, $database = null)
     {
@@ -435,7 +442,13 @@ class DrizzlePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string $table
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     protected function getDropPrimaryKeySQL($table)
     {

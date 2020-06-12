@@ -57,7 +57,11 @@ class DataPart extends TextPart
         }
 
         if (false === $handle = @fopen($path, 'r', false)) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Unable to open path "%s"', $path));
+=======
+            throw new InvalidArgumentException(sprintf('Unable to open path "%s".', $path));
+>>>>>>> ThomasN
         }
         $p = new self($handle, $name ?: basename($path), $contentType);
         $p->handle = $handle;

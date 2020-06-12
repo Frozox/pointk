@@ -17,8 +17,11 @@ use Symfony\Contracts\Translation\LocaleAwareInterface;
 
 /**
  * @author Titouan Galopin <galopintitouan@gmail.com>
+<<<<<<< HEAD
  *
  * @experimental in 5.0
+=======
+>>>>>>> ThomasN
  */
 class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
 {
@@ -53,6 +56,12 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
     ];
 
     private $defaultLocale;
+<<<<<<< HEAD
+=======
+    private $symbolsMap = [
+        'en' => ['@' => 'at', '&' => 'and'],
+    ];
+>>>>>>> ThomasN
 
     /**
      * Cache of transliterators per locale.
@@ -61,9 +70,16 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
      */
     private $transliterators = [];
 
+<<<<<<< HEAD
     public function __construct(string $defaultLocale = null)
     {
         $this->defaultLocale = $defaultLocale;
+=======
+    public function __construct(string $defaultLocale = null, array $symbolsMap = null)
+    {
+        $this->defaultLocale = $defaultLocale;
+        $this->symbolsMap = $symbolsMap ?? $this->symbolsMap;
+>>>>>>> ThomasN
     }
 
     /**
@@ -97,9 +113,21 @@ class AsciiSlugger implements SluggerInterface, LocaleAwareInterface
             $transliterator = (array) $this->createTransliterator($locale);
         }
 
+<<<<<<< HEAD
         return (new UnicodeString($string))
             ->ascii($transliterator)
             ->replace('@', $separator.'at'.$separator)
+=======
+        $unicodeString = (new UnicodeString($string))->ascii($transliterator);
+
+        if (isset($this->symbolsMap[$locale])) {
+            foreach ($this->symbolsMap[$locale] as $char => $replace) {
+                $unicodeString = $unicodeString->replace($char, ' '.$replace.' ');
+            }
+        }
+
+        return $unicodeString
+>>>>>>> ThomasN
             ->replaceMatches('/[^A-Za-z0-9]++/', $separator)
             ->trim($separator)
         ;

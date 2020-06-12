@@ -27,6 +27,10 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Utility\HierarchyDiscriminatorResolver;
 use Doctrine\ORM\Utility\PersisterHelper;
+<<<<<<< HEAD
+=======
+use function trim;
+>>>>>>> ThomasN
 
 /**
  * The SqlWalker is a TreeWalker that walks over a DQL AST and constructs
@@ -141,6 +145,11 @@ class SqlWalker implements TreeWalker
      * Map of all components/classes that appear in the DQL query.
      *
      * @var array
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-var array<string, array{metadata: ClassMetadata}>
+>>>>>>> ThomasN
      */
     private $queryComponents;
 
@@ -198,7 +207,11 @@ class SqlWalker implements TreeWalker
     /**
      * Gets the Query instance used by the walker.
      *
+<<<<<<< HEAD
      * @return Query.
+=======
+     * @return Query
+>>>>>>> ThomasN
      */
     public function getQuery()
     {
@@ -231,6 +244,11 @@ class SqlWalker implements TreeWalker
      * @param string $dqlAlias The DQL alias.
      *
      * @return array
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-return array{metadata: ClassMetadata}
+>>>>>>> ThomasN
      */
     public function getQueryComponent($dqlAlias)
     {
@@ -1521,7 +1539,11 @@ class SqlWalker implements TreeWalker
     /**
      * @param \Doctrine\ORM\Query\AST\ParenthesisExpression $parenthesisExpression
      *
+<<<<<<< HEAD
      * @return string.
+=======
+     * @return string
+>>>>>>> ThomasN
      */
     public function walkParenthesisExpression(AST\ParenthesisExpression $parenthesisExpression)
     {
@@ -1553,12 +1575,29 @@ class SqlWalker implements TreeWalker
                     break;
 
                 case ($e instanceof AST\PathExpression):
+<<<<<<< HEAD
                     $dqlAlias  = $e->identificationVariable;
                     $qComp     = $this->queryComponents[$dqlAlias];
                     $class     = $qComp['metadata'];
                     $fieldType = $class->fieldMappings[$e->field]['type'];
 
                     $sqlSelectExpressions[] = trim($e->dispatch($this)) . ' AS ' . $columnAlias;
+=======
+                    $dqlAlias     = $e->identificationVariable;
+                    $qComp        = $this->queryComponents[$dqlAlias];
+                    $class        = $qComp['metadata'];
+                    $fieldType    = $class->fieldMappings[$e->field]['type'];
+                    $fieldName    = $e->field;
+                    $fieldMapping = $class->fieldMappings[$fieldName];
+                    $col          = trim($e->dispatch($this));
+
+                    if (isset($fieldMapping['requireSQLConversion'])) {
+                        $type = Type::getType($fieldType);
+                        $col  = $type->convertToPHPValueSQL($col, $this->platform);
+                    }
+
+                    $sqlSelectExpressions[] = $col . ' AS ' . $columnAlias;
+>>>>>>> ThomasN
                     break;
 
                 case ($e instanceof AST\Literal):

@@ -2,8 +2,14 @@
 
 namespace Doctrine\ORM\Utility;
 
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\ORM\EntityManagerInterface;
+=======
+use Doctrine\Persistence\Mapping\ClassMetadata;
+use Doctrine\ORM\EntityManagerInterface;
+use function interface_exists;
+>>>>>>> ThomasN
 
 /**
  * @internal This class exists only to avoid code duplication, do not reuse it externally
@@ -39,3 +45,8 @@ final class HierarchyDiscriminatorResolver
         return $discriminators;
     }
 }
+<<<<<<< HEAD
+=======
+
+interface_exists(ClassMetadata::class);
+>>>>>>> ThomasN

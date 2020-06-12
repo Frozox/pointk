@@ -37,6 +37,11 @@ class TemplateCacheWarmer implements CacheWarmerInterface, ServiceSubscriberInte
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
+=======
+     *
+     * @return string[] A list of template files to preload on PHP 7.4+
+>>>>>>> ThomasN
      */
     public function warmUp(string $cacheDir)
     {
@@ -44,14 +49,31 @@ class TemplateCacheWarmer implements CacheWarmerInterface, ServiceSubscriberInte
             $this->twig = $this->container->get('twig');
         }
 
+<<<<<<< HEAD
         foreach ($this->iterator as $template) {
             try {
                 $this->twig->load($template);
+=======
+        $files = [];
+
+        foreach ($this->iterator as $template) {
+            try {
+                $template = $this->twig->load($template);
+
+                if (\is_callable([$template, 'unwrap'])) {
+                    $files[] = (new \ReflectionClass($template->unwrap()))->getFileName();
+                }
+>>>>>>> ThomasN
             } catch (Error $e) {
                 // problem during compilation, give up
                 // might be a syntax error or a non-Twig template
             }
         }
+<<<<<<< HEAD
+=======
+
+        return $files;
+>>>>>>> ThomasN
     }
 
     /**

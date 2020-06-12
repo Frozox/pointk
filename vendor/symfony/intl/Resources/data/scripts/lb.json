@@ -1,8 +1,13 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Arab": "Arabesch",
         "Armi": "Armi",
+=======
+    "Names": {
+        "Arab": "Arabesch",
+>>>>>>> ThomasN
         "Armn": "Armenesch",
         "Avst": "Avestesch",
         "Bali": "Balinesesch",
@@ -16,7 +21,10 @@
         "Buhd": "Buhid",
         "Cans": "UCAS",
         "Cari": "Karesch",
+<<<<<<< HEAD
         "Cham": "Cham",
+=======
+>>>>>>> ThomasN
         "Cher": "Cherokee",
         "Cirt": "Cirth",
         "Copt": "Koptesch",

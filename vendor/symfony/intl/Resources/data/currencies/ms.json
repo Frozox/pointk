@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AED": [
             "AED",
@@ -175,7 +178,11 @@
         ],
         "ERN": [
             "ERN",
+<<<<<<< HEAD
             "ERN"
+=======
+            "Nakfa Eritrea"
+>>>>>>> ThomasN
         ],
         "ETB": [
             "ETB",
@@ -361,6 +368,13 @@
             "MGA",
             "Ariary Malagasy"
         ],
+<<<<<<< HEAD
+=======
+        "MGF": [
+            "MGF",
+            "Franc Malagasy"
+        ],
+>>>>>>> ThomasN
         "MKD": [
             "MKD",
             "Denar Macedonia"
@@ -405,6 +419,17 @@
             "RM",
             "Ringgit Malaysia"
         ],
+<<<<<<< HEAD
+=======
+        "MZE": [
+            "MZE",
+            "Escudo Mozambique"
+        ],
+        "MZM": [
+            "MZM",
+            "Metical Mozambique (1980–2006)"
+        ],
+>>>>>>> ThomasN
         "MZN": [
             "MZN",
             "Metikal Mozambique"
@@ -469,6 +494,13 @@
             "QAR",
             "Rial Qatar"
         ],
+<<<<<<< HEAD
+=======
+        "RHD": [
+            "RHD",
+            "Dolar Rhodesia"
+        ],
+>>>>>>> ThomasN
         "RON": [
             "RON",
             "Leu Romania"
@@ -585,6 +617,13 @@
             "UAH",
             "Hryvnia Ukraine"
         ],
+<<<<<<< HEAD
+=======
+        "UGS": [
+            "UGS",
+            "Shilling Uganda (1966–1987)"
+        ],
+>>>>>>> ThomasN
         "UGX": [
             "UGX",
             "Syiling Uganda"
@@ -652,6 +691,21 @@
         "ZMW": [
             "ZMW",
             "Kwacha Zambia"
+<<<<<<< HEAD
+=======
+        ],
+        "ZWD": [
+            "ZWD",
+            "Dolar Zimbabwe (1980–2008)"
+        ],
+        "ZWL": [
+            "ZWL",
+            "Dolar Zimbabwe (2009)"
+        ],
+        "ZWR": [
+            "ZWR",
+            "Dolar Zimbabwe (2008)"
+>>>>>>> ThomasN
         ]
     }
 }

@@ -15,6 +15,10 @@ use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentToken;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;
+>>>>>>> ThomasN
 use Symfony\Component\Security\Core\Authentication\RememberMe\TokenProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -29,6 +33,11 @@ use Symfony\Component\Security\Core\Exception\CookieTheftException;
  */
 class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices
 {
+<<<<<<< HEAD
+=======
+    private const HASHED_TOKEN_PREFIX = 'sha256_';
+
+>>>>>>> ThomasN
     /** @var TokenProviderInterface */
     private $tokenProvider;
 
@@ -66,7 +75,11 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices
         list($series, $tokenValue) = $cookieParts;
         $persistentToken = $this->tokenProvider->loadTokenBySeries($series);
 
+<<<<<<< HEAD
         if (!hash_equals($persistentToken->getTokenValue(), $tokenValue)) {
+=======
+        if (!$this->isTokenValueValid($persistentToken, $tokenValue)) {
+>>>>>>> ThomasN
             throw new CookieTheftException('This token was already used. The account is possibly compromised.');
         }
 
@@ -75,7 +88,11 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices
         }
 
         $tokenValue = base64_encode(random_bytes(64));
+<<<<<<< HEAD
         $this->tokenProvider->updateToken($series, $tokenValue, new \DateTime());
+=======
+        $this->tokenProvider->updateToken($series, $this->generateHash($tokenValue), new \DateTime());
+>>>>>>> ThomasN
         $request->attributes->set(self::COOKIE_ATTR_NAME,
             new Cookie(
                 $this->options['name'],
@@ -86,7 +103,11 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices
                 $this->options['secure'] ?? $request->isSecure(),
                 $this->options['httponly'],
                 false,
+<<<<<<< HEAD
                 $this->options['samesite'] ?? null
+=======
+                $this->options['samesite']
+>>>>>>> ThomasN
             )
         );
 
@@ -106,7 +127,11 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices
                 \get_class($user = $token->getUser()),
                 $user->getUsername(),
                 $series,
+<<<<<<< HEAD
                 $tokenValue,
+=======
+                $this->generateHash($tokenValue),
+>>>>>>> ThomasN
                 new \DateTime()
             )
         );
@@ -121,8 +146,29 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices
                 $this->options['secure'] ?? $request->isSecure(),
                 $this->options['httponly'],
                 false,
+<<<<<<< HEAD
                 $this->options['samesite'] ?? null
             )
         );
     }
+=======
+                $this->options['samesite']
+            )
+        );
+    }
+
+    private function generateHash(string $tokenValue): string
+    {
+        return self::HASHED_TOKEN_PREFIX.hash_hmac('sha256', $tokenValue, $this->getSecret());
+    }
+
+    private function isTokenValueValid(PersistentTokenInterface $persistentToken, string $tokenValue): bool
+    {
+        if (0 === strpos($persistentToken->getTokenValue(), self::HASHED_TOKEN_PREFIX)) {
+            return hash_equals($persistentToken->getTokenValue(), $this->generateHash($tokenValue));
+        }
+
+        return hash_equals($persistentToken->getTokenValue(), $tokenValue);
+    }
+>>>>>>> ThomasN
 }

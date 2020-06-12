@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "afarski",
         "ab": "abhaski",
@@ -506,6 +509,11 @@
     },
     "LocalizedNames": {
         "ar_001": "moderni standardni arapski",
+<<<<<<< HEAD
+=======
+        "de_CH": "visoki njemački (Švicarska)",
+        "fa_AF": "dari",
+>>>>>>> ThomasN
         "nds_NL": "donjosaksonski",
         "nl_BE": "flamanski",
         "ro_MD": "moldavski",

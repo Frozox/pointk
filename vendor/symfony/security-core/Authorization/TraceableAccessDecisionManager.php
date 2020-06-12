@@ -47,8 +47,15 @@ class TraceableAccessDecisionManager implements AccessDecisionManagerInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     public function decide(TokenInterface $token, array $attributes, $object = null): bool
+=======
+     *
+     * @param bool $allowMultipleAttributes Whether to allow passing multiple values to the $attributes array
+     */
+    public function decide(TokenInterface $token, array $attributes, $object = null/*, bool $allowMultipleAttributes = false*/): bool
+>>>>>>> ThomasN
     {
         $currentDecisionLog = [
             'attributes' => $attributes,
@@ -58,7 +65,11 @@ class TraceableAccessDecisionManager implements AccessDecisionManagerInterface
 
         $this->currentLog[] = &$currentDecisionLog;
 
+<<<<<<< HEAD
         $result = $this->manager->decide($token, $attributes, $object);
+=======
+        $result = $this->manager->decide($token, $attributes, $object, 3 < \func_num_args() && func_get_arg(3));
+>>>>>>> ThomasN
 
         $currentDecisionLog['result'] = $result;
 

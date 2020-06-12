@@ -22,6 +22,14 @@ abstract class AbstractConfigurator
 {
     const FACTORY = 'unknown';
 
+<<<<<<< HEAD
+=======
+    /**
+     * @var callable(mixed $value, bool $allowService)|null
+     */
+    public static $valuePreProcessor;
+
+>>>>>>> ThomasN
     /** @internal */
     protected $definition;
 
@@ -31,7 +39,11 @@ abstract class AbstractConfigurator
             return $this->{'set'.$method}(...$args);
         }
 
+<<<<<<< HEAD
         throw new \BadMethodCallException(sprintf('Call to undefined method %s::%s()', static::class, $method));
+=======
+        throw new \BadMethodCallException(sprintf('Call to undefined method "%s::%s()".', static::class, $method));
+>>>>>>> ThomasN
     }
 
     /**
@@ -49,7 +61,15 @@ abstract class AbstractConfigurator
                 $value[$k] = static::processValue($v, $allowServices);
             }
 
+<<<<<<< HEAD
             return $value;
+=======
+            return self::$valuePreProcessor ? (self::$valuePreProcessor)($value, $allowServices) : $value;
+        }
+
+        if (self::$valuePreProcessor) {
+            $value = (self::$valuePreProcessor)($value, $allowServices);
+>>>>>>> ThomasN
         }
 
         if ($value instanceof ReferenceConfigurator) {
@@ -82,6 +102,10 @@ abstract class AbstractConfigurator
                 }
         }
 
+<<<<<<< HEAD
         throw new InvalidArgumentException(sprintf('Cannot use values of type "%s" in service configuration files.', \is_object($value) ? \get_class($value) : \gettype($value)));
+=======
+        throw new InvalidArgumentException(sprintf('Cannot use values of type "%s" in service configuration files.', get_debug_type($value)));
+>>>>>>> ThomasN
     }
 }

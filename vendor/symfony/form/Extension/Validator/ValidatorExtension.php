@@ -13,7 +13,11 @@ namespace Symfony\Component\Form\Extension\Validator;
 
 use Symfony\Component\Form\AbstractExtension;
 use Symfony\Component\Form\Extension\Validator\Constraints\Form;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints\Valid;
+=======
+use Symfony\Component\Validator\Constraints\Traverse;
+>>>>>>> ThomasN
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -37,7 +41,11 @@ class ValidatorExtension extends AbstractExtension
 
         /* @var $metadata ClassMetadata */
         $metadata->addConstraint(new Form());
+<<<<<<< HEAD
         $metadata->addPropertyConstraint('children', new Valid());
+=======
+        $metadata->addConstraint(new Traverse(false));
+>>>>>>> ThomasN
 
         $this->validator = $validator;
     }

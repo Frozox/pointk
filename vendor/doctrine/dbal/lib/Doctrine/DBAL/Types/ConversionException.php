@@ -15,6 +15,11 @@ use function substr;
 
 /**
  * Conversion Exception is thrown when the database to PHP conversion fails.
+<<<<<<< HEAD
+=======
+ *
+ * @psalm-immutable
+>>>>>>> ThomasN
  */
 class ConversionException extends DBALException
 {
@@ -26,11 +31,19 @@ class ConversionException extends DBALException
      *
      * @return \Doctrine\DBAL\Types\ConversionException
      */
+<<<<<<< HEAD
     public static function conversionFailed($value, $toType)
     {
         $value = strlen($value) > 32 ? substr($value, 0, 20) . '...' : $value;
 
         return new self('Could not convert database value "' . $value . '" to Doctrine Type ' . $toType);
+=======
+    public static function conversionFailed($value, $toType, ?Throwable $previous = null)
+    {
+        $value = strlen($value) > 32 ? substr($value, 0, 20) . '...' : $value;
+
+        return new self('Could not convert database value "' . $value . '" to Doctrine Type ' . $toType, 0, $previous);
+>>>>>>> ThomasN
     }
 
     /**
@@ -64,8 +77,17 @@ class ConversionException extends DBALException
      *
      * @return \Doctrine\DBAL\Types\ConversionException
      */
+<<<<<<< HEAD
     public static function conversionFailedInvalidType($value, $toType, array $possibleTypes)
     {
+=======
+    public static function conversionFailedInvalidType(
+        $value,
+        $toType,
+        array $possibleTypes,
+        ?Throwable $previous = null
+    ) {
+>>>>>>> ThomasN
         $actualType = is_object($value) ? get_class($value) : gettype($value);
 
         if (is_scalar($value)) {
@@ -75,7 +97,11 @@ class ConversionException extends DBALException
                 $actualType,
                 $toType,
                 implode(', ', $possibleTypes)
+<<<<<<< HEAD
             ));
+=======
+            ), 0, $previous);
+>>>>>>> ThomasN
         }
 
         return new self(sprintf(
@@ -83,9 +109,22 @@ class ConversionException extends DBALException
             $actualType,
             $toType,
             implode(', ', $possibleTypes)
+<<<<<<< HEAD
         ));
     }
 
+=======
+        ), 0, $previous);
+    }
+
+    /**
+     * @param mixed  $value
+     * @param string $format
+     * @param string $error
+     *
+     * @return ConversionException
+     */
+>>>>>>> ThomasN
     public static function conversionFailedSerialization($value, $format, $error)
     {
         $actualType = is_object($value) ? get_class($value) : gettype($value);

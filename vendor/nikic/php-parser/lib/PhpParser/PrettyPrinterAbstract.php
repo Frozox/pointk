@@ -756,6 +756,7 @@ abstract class PrettyPrinterAbstract
                 $itemEndPos = $origArrItem->getEndTokenPos();
                 \assert($itemStartPos >= 0 && $itemEndPos >= 0);
 
+<<<<<<< HEAD
                 if ($itemEndPos < $itemStartPos) {
                     // End can be before start for Nop nodes, because offsets refer to non-whitespace
                     // locations, which for an "empty" node might result in an inverted order.
@@ -763,13 +764,19 @@ abstract class PrettyPrinterAbstract
                     continue;
                 }
 
+=======
+>>>>>>> ThomasN
                 $origIndentLevel = $this->indentLevel;
                 $lastElemIndentLevel = $this->origTokens->getIndentationBefore($itemStartPos) + $indentAdjustment;
                 $this->setIndentLevel($lastElemIndentLevel);
 
                 $comments = $arrItem->getComments();
                 $origComments = $origArrItem->getComments();
+<<<<<<< HEAD
                 $commentStartPos = $origComments ? $origComments[0]->getTokenPos() : $itemStartPos;
+=======
+                $commentStartPos = $origComments ? $origComments[0]->getStartTokenPos() : $itemStartPos;
+>>>>>>> ThomasN
                 \assert($commentStartPos >= 0);
 
                 $commentsChanged = $comments !== $origComments;

@@ -16,6 +16,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Dumper\Preloader;
+>>>>>>> ThomasN
 use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate;
 
 /**
@@ -77,7 +81,15 @@ EOF
             $this->cacheWarmer->enableOptionalWarmers();
         }
 
+<<<<<<< HEAD
         $this->cacheWarmer->warmUp($kernel->getContainer()->getParameter('kernel.cache_dir'));
+=======
+        $preload = $this->cacheWarmer->warmUp($cacheDir = $kernel->getContainer()->getParameter('kernel.cache_dir'));
+
+        if ($preload && file_exists($preloadFile = $cacheDir.'/'.$kernel->getContainer()->getParameter('kernel.container_class').'.preload.php')) {
+            Preloader::append($preloadFile, $preload);
+        }
+>>>>>>> ThomasN
 
         $io->success(sprintf('Cache for the "%s" environment (debug=%s) was successfully warmed.', $kernel->getEnvironment(), var_export($kernel->isDebug(), true)));
 

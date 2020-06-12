@@ -13,6 +13,17 @@ namespace Symfony\Component\Form\Extension\Core\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\ChoiceListInterface;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceAttr;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceFieldName;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceFilter;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceLabel;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceLoader;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\ChoiceValue;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\GroupBy;
+use Symfony\Component\Form\ChoiceList\Factory\Cache\PreferredChoice;
+>>>>>>> ThomasN
 use Symfony\Component\Form\ChoiceList\Factory\CachingFactoryDecorator;
 use Symfony\Component\Form\ChoiceList\Factory\ChoiceListFactoryInterface;
 use Symfony\Component\Form\ChoiceList\Factory\DefaultChoiceListFactory;
@@ -33,6 +44,10 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+<<<<<<< HEAD
+=======
+use Symfony\Component\PropertyAccess\PropertyPath;
+>>>>>>> ThomasN
 
 class ChoiceType extends AbstractType
 {
@@ -45,6 +60,20 @@ class ChoiceType extends AbstractType
                 new DefaultChoiceListFactory()
             )
         );
+<<<<<<< HEAD
+=======
+
+        // BC, to be removed in 6.0
+        if ($this->choiceListFactory instanceof CachingFactoryDecorator) {
+            return;
+        }
+
+        $ref = new \ReflectionMethod($this->choiceListFactory, 'createListFromChoices');
+
+        if ($ref->getNumberOfParameters() < 3) {
+            trigger_deprecation('symfony/form', '5.1', 'Not defining a third parameter "callable|null $filter" in "%s::%s()" is deprecated.', $ref->class, $ref->name);
+        }
+>>>>>>> ThomasN
     }
 
     /**
@@ -300,6 +329,10 @@ class ChoiceType extends AbstractType
             'multiple' => false,
             'expanded' => false,
             'choices' => [],
+<<<<<<< HEAD
+=======
+            'choice_filter' => null,
+>>>>>>> ThomasN
             'choice_loader' => null,
             'choice_label' => null,
             'choice_name' => null,
@@ -324,6 +357,7 @@ class ChoiceType extends AbstractType
 
         $resolver->setAllowedTypes('choices', ['null', 'array', '\Traversable']);
         $resolver->setAllowedTypes('choice_translation_domain', ['null', 'bool', 'string']);
+<<<<<<< HEAD
         $resolver->setAllowedTypes('choice_loader', ['null', 'Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface']);
         $resolver->setAllowedTypes('choice_label', ['null', 'bool', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
         $resolver->setAllowedTypes('choice_name', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
@@ -331,6 +365,16 @@ class ChoiceType extends AbstractType
         $resolver->setAllowedTypes('choice_attr', ['null', 'array', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
         $resolver->setAllowedTypes('preferred_choices', ['array', '\Traversable', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
         $resolver->setAllowedTypes('group_by', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath']);
+=======
+        $resolver->setAllowedTypes('choice_loader', ['null', 'Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface', ChoiceLoader::class]);
+        $resolver->setAllowedTypes('choice_filter', ['null', 'callable', 'string', PropertyPath::class, ChoiceFilter::class]);
+        $resolver->setAllowedTypes('choice_label', ['null', 'bool', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath', ChoiceLabel::class]);
+        $resolver->setAllowedTypes('choice_name', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath', ChoiceFieldName::class]);
+        $resolver->setAllowedTypes('choice_value', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath', ChoiceValue::class]);
+        $resolver->setAllowedTypes('choice_attr', ['null', 'array', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath', ChoiceAttr::class]);
+        $resolver->setAllowedTypes('preferred_choices', ['array', '\Traversable', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath', PreferredChoice::class]);
+        $resolver->setAllowedTypes('group_by', ['null', 'callable', 'string', 'Symfony\Component\PropertyAccess\PropertyPath', GroupBy::class]);
+>>>>>>> ThomasN
     }
 
     /**
@@ -389,14 +433,27 @@ class ChoiceType extends AbstractType
         if (null !== $options['choice_loader']) {
             return $this->choiceListFactory->createListFromLoader(
                 $options['choice_loader'],
+<<<<<<< HEAD
                 $options['choice_value']
+=======
+                $options['choice_value'],
+                $options['choice_filter']
+>>>>>>> ThomasN
             );
         }
 
         // Harden against NULL values (like in EntityType and ModelType)
         $choices = null !== $options['choices'] ? $options['choices'] : [];
 
+<<<<<<< HEAD
         return $this->choiceListFactory->createListFromChoices($choices, $options['choice_value']);
+=======
+        return $this->choiceListFactory->createListFromChoices(
+            $choices,
+            $options['choice_value'],
+            $options['choice_filter']
+        );
+>>>>>>> ThomasN
     }
 
     private function createChoiceListView(ChoiceListInterface $choiceList, array $options)

@@ -15,6 +15,18 @@ use Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(AcceptHeader::class);
+class_exists(FileBag::class);
+class_exists(HeaderBag::class);
+class_exists(HeaderUtils::class);
+class_exists(InputBag::class);
+class_exists(ParameterBag::class);
+class_exists(ServerBag::class);
+
+>>>>>>> ThomasN
 /**
  * Request represents an HTTP request.
  *
@@ -76,14 +88,22 @@ class Request
     /**
      * Request body parameters ($_POST).
      *
+<<<<<<< HEAD
      * @var ParameterBag
+=======
+     * @var InputBag
+>>>>>>> ThomasN
      */
     public $request;
 
     /**
      * Query string parameters ($_GET).
      *
+<<<<<<< HEAD
      * @var ParameterBag
+=======
+     * @var InputBag
+>>>>>>> ThomasN
      */
     public $query;
 
@@ -104,7 +124,11 @@ class Request
     /**
      * Cookies ($_COOKIE).
      *
+<<<<<<< HEAD
      * @var ParameterBag
+=======
+     * @var InputBag
+>>>>>>> ThomasN
      */
     public $cookies;
 
@@ -199,6 +223,14 @@ class Request
     private $isHostValid = true;
     private $isForwardedValid = true;
 
+<<<<<<< HEAD
+=======
+    /**
+     * @var bool|null
+     */
+    private $isSafeContentPreferred;
+
+>>>>>>> ThomasN
     private static $trustedHeaderSet = -1;
 
     private static $forwardedParams = [
@@ -254,10 +286,17 @@ class Request
      */
     public function initialize(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     {
+<<<<<<< HEAD
         $this->request = new ParameterBag($request);
         $this->query = new ParameterBag($query);
         $this->attributes = new ParameterBag($attributes);
         $this->cookies = new ParameterBag($cookies);
+=======
+        $this->request = new InputBag($request);
+        $this->query = new InputBag($query);
+        $this->attributes = new ParameterBag($attributes);
+        $this->cookies = new InputBag($cookies);
+>>>>>>> ThomasN
         $this->files = new FileBag($files);
         $this->server = new ServerBag($server);
         $this->headers = new HeaderBag($this->server->getHeaders());
@@ -288,7 +327,11 @@ class Request
             && \in_array(strtoupper($request->server->get('REQUEST_METHOD', 'GET')), ['PUT', 'DELETE', 'PATCH'])
         ) {
             parse_str($request->getContent(), $data);
+<<<<<<< HEAD
             $request->request = new ParameterBag($data);
+=======
+            $request->request = new InputBag($data);
+>>>>>>> ThomasN
         }
 
         return $request;
@@ -430,16 +473,27 @@ class Request
     {
         $dup = clone $this;
         if (null !== $query) {
+<<<<<<< HEAD
             $dup->query = new ParameterBag($query);
         }
         if (null !== $request) {
             $dup->request = new ParameterBag($request);
+=======
+            $dup->query = new InputBag($query);
+        }
+        if (null !== $request) {
+            $dup->request = new InputBag($request);
+>>>>>>> ThomasN
         }
         if (null !== $attributes) {
             $dup->attributes = new ParameterBag($attributes);
         }
         if (null !== $cookies) {
+<<<<<<< HEAD
             $dup->cookies = new ParameterBag($cookies);
+=======
+            $dup->cookies = new InputBag($cookies);
+>>>>>>> ThomasN
         }
         if (null !== $files) {
             $dup->files = new FileBag($files);
@@ -695,12 +749,21 @@ class Request
             return $result;
         }
 
+<<<<<<< HEAD
         if ($this !== $result = $this->query->get($key, $this)) {
             return $result;
         }
 
         if ($this !== $result = $this->request->get($key, $this)) {
             return $result;
+=======
+        if ($this->query->has($key)) {
+            return $this->query->all()[$key];
+        }
+
+        if ($this->request->has($key)) {
+            return $this->request->all()[$key];
+>>>>>>> ThomasN
         }
 
         return $default;
@@ -1551,9 +1614,17 @@ class Request
 
     /**
      * Gets the preferred format for the response by inspecting, in the following order:
+<<<<<<< HEAD
      *   * the request format set using setRequestFormat
      *   * the values of the Accept HTTP header
      *   * the content type of the body of the request.
+=======
+     *   * the request format set using setRequestFormat;
+     *   * the values of the Accept HTTP header.
+     *
+     * Note that if you use this method, you should send the "Vary: Accept" header
+     * in the response to prevent any issues with intermediary HTTP caches.
+>>>>>>> ThomasN
      */
     public function getPreferredFormat(?string $default = 'html'): ?string
     {
@@ -1702,6 +1773,32 @@ class Request
         return 'XMLHttpRequest' == $this->headers->get('X-Requested-With');
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Checks whether the client browser prefers safe content or not according to RFC8674.
+     *
+     * @see https://tools.ietf.org/html/rfc8674
+     */
+    public function preferSafeContent(): bool
+    {
+        if (null !== $this->isSafeContentPreferred) {
+            return $this->isSafeContentPreferred;
+        }
+
+        if (!$this->isSecure()) {
+            // see https://tools.ietf.org/html/rfc8674#section-3
+            $this->isSafeContentPreferred = false;
+
+            return $this->isSafeContentPreferred;
+        }
+
+        $this->isSafeContentPreferred = AcceptHeader::fromString($this->headers->get('Prefer'))->has('safe');
+
+        return $this->isSafeContentPreferred;
+    }
+
+>>>>>>> ThomasN
     /*
      * The following methods are derived from code of the Zend Framework (1.10dev - 2010-01-24)
      *

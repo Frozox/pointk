@@ -2,7 +2,11 @@
 namespace Doctrine\Common\Util;
 
 use Doctrine\Common\Collections\Collection;
+<<<<<<< HEAD
 use Doctrine\Common\Persistence\Proxy;
+=======
+use Doctrine\Persistence\Proxy;
+>>>>>>> ThomasN
 
 /**
  * Static class containing most used debug methods.

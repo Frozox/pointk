@@ -14,6 +14,10 @@ namespace Symfony\Component\Serializer\Mapping\Loader;
 use Doctrine\Common\Annotations\Reader;
 use Symfony\Component\Serializer\Annotation\DiscriminatorMap;
 use Symfony\Component\Serializer\Annotation\Groups;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Serializer\Annotation\Ignore;
+>>>>>>> ThomasN
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 use Symfony\Component\Serializer\Exception\MappingException;
@@ -71,6 +75,11 @@ class AnnotationLoader implements LoaderInterface
                         $attributesMetadata[$property->name]->setMaxDepth($annotation->getMaxDepth());
                     } elseif ($annotation instanceof SerializedName) {
                         $attributesMetadata[$property->name]->setSerializedName($annotation->getSerializedName());
+<<<<<<< HEAD
+=======
+                    } elseif ($annotation instanceof Ignore) {
+                        $attributesMetadata[$property->name]->setIgnore(true);
+>>>>>>> ThomasN
                     }
 
                     $loaded = true;
@@ -116,6 +125,11 @@ class AnnotationLoader implements LoaderInterface
                     }
 
                     $attributeMetadata->setSerializedName($annotation->getSerializedName());
+<<<<<<< HEAD
+=======
+                } elseif ($annotation instanceof Ignore) {
+                    $attributeMetadata->setIgnore(true);
+>>>>>>> ThomasN
                 }
 
                 $loaded = true;

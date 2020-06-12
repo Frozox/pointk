@@ -69,7 +69,11 @@ class RegisterEventListenersAndSubscribersPass implements CompilerPassInterface
             $connections = isset($tag['connection']) ? [$tag['connection']] : array_keys($this->connections);
             foreach ($connections as $con) {
                 if (!isset($this->connections[$con])) {
+<<<<<<< HEAD
                     throw new RuntimeException(sprintf('The Doctrine connection "%s" referenced in service "%s" does not exist. Available connections names: %s', $con, $id, implode(', ', array_keys($this->connections))));
+=======
+                    throw new RuntimeException(sprintf('The Doctrine connection "%s" referenced in service "%s" does not exist. Available connections names: "%s".', $con, $id, implode('", "', array_keys($this->connections))));
+>>>>>>> ThomasN
                 }
 
                 $this->getEventManagerDef($container, $con)->addMethodCall('addEventSubscriber', [new Reference($id)]);
@@ -92,7 +96,11 @@ class RegisterEventListenersAndSubscribersPass implements CompilerPassInterface
             $connections = isset($tag['connection']) ? [$tag['connection']] : array_keys($this->connections);
             foreach ($connections as $con) {
                 if (!isset($this->connections[$con])) {
+<<<<<<< HEAD
                     throw new RuntimeException(sprintf('The Doctrine connection "%s" referenced in service "%s" does not exist. Available connections names: %s', $con, $id, implode(', ', array_keys($this->connections))));
+=======
+                    throw new RuntimeException(sprintf('The Doctrine connection "%s" referenced in service "%s" does not exist. Available connections names: "%s".', $con, $id, implode('", "', array_keys($this->connections))));
+>>>>>>> ThomasN
                 }
                 $listenerRefs[$con][$id] = new Reference($id);
 

@@ -12,6 +12,10 @@
 namespace Symfony\Component\DependencyInjection\Compiler;
 
 use Symfony\Component\Config\Definition\BaseNode;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+>>>>>>> ThomasN
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
@@ -52,7 +56,11 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
                 $values = [];
                 if (false === $i = strpos($env, ':')) {
                     $default = $defaultBag->has("env($env)") ? $defaultBag->get("env($env)") : self::$typeFixtures['string'];
+<<<<<<< HEAD
                     $defaultType = null !== $default ? self::getType($default) : 'string';
+=======
+                    $defaultType = null !== $default ? get_debug_type($default) : 'string';
+>>>>>>> ThomasN
                     $values[$defaultType] = $default;
                 } else {
                     $prefix = substr($env, 0, $i);
@@ -68,14 +76,26 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
             $processor = new Processor();
 
             foreach ($extensions as $name => $extension) {
+<<<<<<< HEAD
                 if (!$extension instanceof ConfigurationExtensionInterface || !$config = array_filter($container->getExtensionConfig($name))) {
+=======
+                if (!($extension instanceof ConfigurationExtensionInterface || $extension instanceof ConfigurationInterface)
+                    || !$config = array_filter($container->getExtensionConfig($name))
+                ) {
+>>>>>>> ThomasN
                     // this extension has no semantic configuration or was not called
                     continue;
                 }
 
                 $config = $resolvingBag->resolveValue($config);
 
+<<<<<<< HEAD
                 if (null === $configuration = $extension->getConfiguration($config, $container)) {
+=======
+                if ($extension instanceof ConfigurationInterface) {
+                    $configuration = $extension;
+                } elseif (null === $configuration = $extension->getConfiguration($config, $container)) {
+>>>>>>> ThomasN
                     continue;
                 }
 
@@ -99,6 +119,7 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
             $this->extensionConfig = [];
         }
     }
+<<<<<<< HEAD
 
     private static function getType($value): string
     {
@@ -113,4 +134,6 @@ class ValidateEnvPlaceholdersPass implements CompilerPassInterface
 
         return $type;
     }
+=======
+>>>>>>> ThomasN
 }

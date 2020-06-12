@@ -16,8 +16,14 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5",
         "symfony/polyfill-mbstring": "~1.0"
+=======
+        "php": ">=7.2.5",
+        "symfony/polyfill-mbstring": "~1.0",
+        "symfony/polyfill-php80": "^1.15"
+>>>>>>> ThomasN
     },
     "require-dev": {
         "ext-iconv": "*",
@@ -47,7 +53,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "5.0-dev"
+=======
+            "dev-master": "5.1-dev"
+>>>>>>> ThomasN
         }
     }
 }

@@ -28,6 +28,10 @@ class Parser
 
     private $filename;
     private $offset = 0;
+<<<<<<< HEAD
+=======
+    private $numberOfParsedLines = 0;
+>>>>>>> ThomasN
     private $totalNumberOfLines;
     private $lines = [];
     private $currentLineNb = -1;
@@ -99,6 +103,10 @@ class Parser
             }
             $this->lines = [];
             $this->currentLine = '';
+<<<<<<< HEAD
+=======
+            $this->numberOfParsedLines = 0;
+>>>>>>> ThomasN
             $this->refs = [];
             $this->skippedLineNumbers = [];
             $this->locallySkippedLineNumbers = [];
@@ -113,10 +121,18 @@ class Parser
         $this->currentLine = '';
         $value = $this->cleanup($value);
         $this->lines = explode("\n", $value);
+<<<<<<< HEAD
         $this->locallySkippedLineNumbers = [];
 
         if (null === $this->totalNumberOfLines) {
             $this->totalNumberOfLines = \count($this->lines);
+=======
+        $this->numberOfParsedLines = \count($this->lines);
+        $this->locallySkippedLineNumbers = [];
+
+        if (null === $this->totalNumberOfLines) {
+            $this->totalNumberOfLines = $this->numberOfParsedLines;
+>>>>>>> ThomasN
         }
 
         if (!$this->moveToNextLine()) {
@@ -153,7 +169,11 @@ class Parser
             $isRef = $mergeNode = false;
             if ('-' === $this->currentLine[0] && self::preg_match('#^\-((?P<leadspaces>\s+)(?P<value>.+))?$#u', rtrim($this->currentLine), $values)) {
                 if ($context && 'mapping' == $context) {
+<<<<<<< HEAD
                     throw new ParseException('You cannot define a sequence item when in a mapping', $this->getRealCurrentLineNb() + 1, $this->currentLine, $this->filename);
+=======
+                    throw new ParseException('You cannot define a sequence item when in a mapping.', $this->getRealCurrentLineNb() + 1, $this->currentLine, $this->filename);
+>>>>>>> ThomasN
                 }
                 $context = 'sequence';
 
@@ -199,7 +219,11 @@ class Parser
                 && (false === strpos($values['key'], ' #') || \in_array($values['key'][0], ['"', "'"]))
             ) {
                 if ($context && 'sequence' == $context) {
+<<<<<<< HEAD
                     throw new ParseException('You cannot define a mapping item when in a sequence', $this->currentLineNb + 1, $this->currentLine, $this->filename);
+=======
+                    throw new ParseException('You cannot define a mapping item when in a sequence.', $this->currentLineNb + 1, $this->currentLine, $this->filename);
+>>>>>>> ThomasN
                 }
                 $context = 'mapping';
 
@@ -291,7 +315,11 @@ class Parser
                 $subTag = null;
                 if ($mergeNode) {
                     // Merge keys
+<<<<<<< HEAD
                 } elseif (!isset($values['value']) || '' === $values['value'] || 0 === strpos($values['value'], '#') || (null !== $subTag = $this->getLineTag($values['value'], $flags)) || '<<' === $key) {
+=======
+                } elseif (!isset($values['value']) || '' === $values['value'] || '#' === ($values['value'][0] ?? '') || (null !== $subTag = $this->getLineTag($values['value'], $flags)) || '<<' === $key) {
+>>>>>>> ThomasN
                     // hash
                     // if next line is less indented or equal, then it means that the current value is null
                     if (!$this->isNextLineIndented() && !$this->isNextLineUnIndentedCollection()) {
@@ -430,7 +458,12 @@ class Parser
                     $value = '';
 
                     foreach ($this->lines as $line) {
+<<<<<<< HEAD
                         if ('' !== ltrim($line) && '#' === ltrim($line)[0]) {
+=======
+                        $trimmedLine = trim($line);
+                        if ('#' === ($trimmedLine[0] ?? '')) {
+>>>>>>> ThomasN
                             continue;
                         }
                         // If the indentation is not consistent at offset 0, it is to be considered as a ParseError
@@ -442,12 +475,17 @@ class Parser
                             throw new ParseException('Mapping values are not allowed in multi-line blocks.', $this->getRealCurrentLineNb() + 1, $this->currentLine, $this->filename);
                         }
 
+<<<<<<< HEAD
                         if ('' === trim($line)) {
+=======
+                        if ('' === $trimmedLine) {
+>>>>>>> ThomasN
                             $value .= "\n";
                         } elseif (!$previousLineWasNewline && !$previousLineWasTerminatedWithBackslash) {
                             $value .= ' ';
                         }
 
+<<<<<<< HEAD
                         if ('' !== trim($line) && '\\' === substr($line, -1)) {
                             $value .= ltrim(substr($line, 0, -1));
                         } elseif ('' !== trim($line)) {
@@ -458,6 +496,18 @@ class Parser
                             $previousLineWasNewline = true;
                             $previousLineWasTerminatedWithBackslash = false;
                         } elseif ('\\' === substr($line, -1)) {
+=======
+                        if ('' !== $trimmedLine && '\\' === $line[-1]) {
+                            $value .= ltrim(substr($line, 0, -1));
+                        } elseif ('' !== $trimmedLine) {
+                            $value .= $trimmedLine;
+                        }
+
+                        if ('' === $trimmedLine) {
+                            $previousLineWasNewline = true;
+                            $previousLineWasTerminatedWithBackslash = false;
+                        } elseif ('\\' === $line[-1]) {
+>>>>>>> ThomasN
                             $previousLineWasNewline = false;
                             $previousLineWasTerminatedWithBackslash = true;
                         } else {
@@ -481,7 +531,11 @@ class Parser
             $data = new TaggedValue($tag, $data);
         }
 
+<<<<<<< HEAD
         if (Yaml::PARSE_OBJECT_FOR_MAP & $flags && !\is_object($data) && 'mapping' === $context) {
+=======
+        if (Yaml::PARSE_OBJECT_FOR_MAP & $flags && 'mapping' === $context && !\is_object($data)) {
+>>>>>>> ThomasN
             $object = new \stdClass();
 
             foreach ($data as $key => $value) {
@@ -545,6 +599,13 @@ class Parser
      */
     private function getCurrentLineIndentation(): int
     {
+<<<<<<< HEAD
+=======
+        if (' ' !== ($this->currentLine[0] ?? '')) {
+            return 0;
+        }
+
+>>>>>>> ThomasN
         return \strlen($this->currentLine) - \strlen(ltrim($this->currentLine, ' '));
     }
 
@@ -618,8 +679,19 @@ class Parser
         }
 
         $isItUnindentedCollection = $this->isStringUnIndentedCollectionItem();
+<<<<<<< HEAD
 
         while ($this->moveToNextLine()) {
+=======
+        $isItComment = $this->isCurrentLineComment();
+
+        while ($this->moveToNextLine()) {
+            if ($isItComment && !$isItUnindentedCollection) {
+                $isItUnindentedCollection = $this->isStringUnIndentedCollectionItem();
+                $isItComment = $this->isCurrentLineComment();
+            }
+
+>>>>>>> ThomasN
             $indent = $this->getCurrentLineIndentation();
 
             if ($isItUnindentedCollection && !$this->isCurrentLineEmpty() && !$this->isStringUnIndentedCollectionItem() && $newIndent === $indent) {
@@ -653,7 +725,11 @@ class Parser
      */
     private function moveToNextLine(): bool
     {
+<<<<<<< HEAD
         if ($this->currentLineNb >= \count($this->lines) - 1) {
+=======
+        if ($this->currentLineNb >= $this->numberOfParsedLines - 1) {
+>>>>>>> ThomasN
             return false;
         }
 
@@ -689,7 +765,11 @@ class Parser
      */
     private function parseValue(string $value, int $flags, string $context)
     {
+<<<<<<< HEAD
         if (0 === strpos($value, '*')) {
+=======
+        if ('*' === ($value[0] ?? '')) {
+>>>>>>> ThomasN
             if (false !== $pos = strpos($value, '#')) {
                 $value = substr($value, 1, $pos - 2);
             } else {
@@ -750,7 +830,12 @@ class Parser
                 $lines[] = trim($this->currentLine);
 
                 // quoted string values end with a line that is terminated with the quotation character
+<<<<<<< HEAD
                 if ('' !== $this->currentLine && substr($this->currentLine, -1) === $quotation) {
+=======
+                $escapedLine = str_replace(['\\\\', '\\"'], '', $this->currentLine);
+                if ('' !== $escapedLine && $escapedLine[-1] === $quotation) {
+>>>>>>> ThomasN
                     break;
                 }
             }
@@ -944,7 +1029,11 @@ class Parser
      */
     private function isCurrentLineBlank(): bool
     {
+<<<<<<< HEAD
         return '' == trim($this->currentLine, ' ');
+=======
+        return '' === $this->currentLine || '' === trim($this->currentLine, ' ');
+>>>>>>> ThomasN
     }
 
     /**
@@ -955,7 +1044,11 @@ class Parser
     private function isCurrentLineComment(): bool
     {
         //checking explicitly the first char of the trim is faster than loops or strpos
+<<<<<<< HEAD
         $ltrimmedLine = ltrim($this->currentLine, ' ');
+=======
+        $ltrimmedLine = '' !== $this->currentLine && ' ' === $this->currentLine[0] ? ltrim($this->currentLine, ' ') : $this->currentLine;
+>>>>>>> ThomasN
 
         return '' !== $ltrimmedLine && '#' === $ltrimmedLine[0];
     }
@@ -1041,7 +1134,11 @@ class Parser
      */
     private function isStringUnIndentedCollectionItem(): bool
     {
+<<<<<<< HEAD
         return '-' === rtrim($this->currentLine) || 0 === strpos($this->currentLine, '- ');
+=======
+        return 0 === strncmp($this->currentLine, '- ', 2) || '-' === rtrim($this->currentLine);
+>>>>>>> ThomasN
     }
 
     /**
@@ -1144,12 +1241,18 @@ class Parser
         $value = '';
 
         for ($i = 0, $linesCount = \count($lines), $previousLineWasNewline = false, $previousLineWasTerminatedWithBackslash = false; $i < $linesCount; ++$i) {
+<<<<<<< HEAD
             if ('' === trim($lines[$i])) {
+=======
+            $trimmedLine = trim($lines[$i]);
+            if ('' === $trimmedLine) {
+>>>>>>> ThomasN
                 $value .= "\n";
             } elseif (!$previousLineWasNewline && !$previousLineWasTerminatedWithBackslash) {
                 $value .= ' ';
             }
 
+<<<<<<< HEAD
             if ('' !== trim($lines[$i]) && '\\' === substr($lines[$i], -1)) {
                 $value .= ltrim(substr($lines[$i], 0, -1));
             } elseif ('' !== trim($lines[$i])) {
@@ -1160,6 +1263,18 @@ class Parser
                 $previousLineWasNewline = true;
                 $previousLineWasTerminatedWithBackslash = false;
             } elseif ('\\' === substr($lines[$i], -1)) {
+=======
+            if ('' !== $trimmedLine && '\\' === $lines[$i][-1]) {
+                $value .= ltrim(substr($lines[$i], 0, -1));
+            } elseif ('' !== $trimmedLine) {
+                $value .= $trimmedLine;
+            }
+
+            if ('' === $trimmedLine) {
+                $previousLineWasNewline = true;
+                $previousLineWasTerminatedWithBackslash = false;
+            } elseif ('\\' === $lines[$i][-1]) {
+>>>>>>> ThomasN
                 $previousLineWasNewline = false;
                 $previousLineWasTerminatedWithBackslash = true;
             } else {

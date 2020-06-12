@@ -88,6 +88,7 @@ final class DriverManager
      *
      * $params must contain at least one of the following.
      *
+<<<<<<< HEAD
      * Either 'driver' with one of the following values:
      *
      *     pdo_mysql
@@ -102,6 +103,9 @@ final class DriverManager
      *     ibm_db2 (unstable)
      *     drizzle_pdo_mysql
      *
+=======
+     * Either 'driver' with one of the array keys of {@link $_driverMap},
+>>>>>>> ThomasN
      * OR 'driverClass' that contains the full class name (with namespace) of the
      * driver class to instantiate.
      *

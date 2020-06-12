@@ -29,10 +29,19 @@ class DelegatingLoader extends BaseDelegatingLoader
 {
     private $loading = false;
     private $defaultOptions;
+<<<<<<< HEAD
 
     public function __construct(LoaderResolverInterface $resolver, array $defaultOptions = [])
     {
         $this->defaultOptions = $defaultOptions;
+=======
+    private $defaultRequirements;
+
+    public function __construct(LoaderResolverInterface $resolver, array $defaultOptions = [], array $defaultRequirements = [])
+    {
+        $this->defaultOptions = $defaultOptions;
+        $this->defaultRequirements = $defaultRequirements;
+>>>>>>> ThomasN
 
         parent::__construct($resolver);
     }
@@ -73,6 +82,12 @@ class DelegatingLoader extends BaseDelegatingLoader
             if ($this->defaultOptions) {
                 $route->setOptions($route->getOptions() + $this->defaultOptions);
             }
+<<<<<<< HEAD
+=======
+            if ($this->defaultRequirements) {
+                $route->setRequirements($route->getRequirements() + $this->defaultRequirements);
+            }
+>>>>>>> ThomasN
             if (!\is_string($controller = $route->getDefault('_controller'))) {
                 continue;
             }

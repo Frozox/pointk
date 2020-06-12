@@ -61,7 +61,11 @@ class ComposerResource implements SelfCheckingResourceInterface
             if ('C' === $class[0] && 0 === strpos($class, 'ComposerAutoloaderInit')) {
                 $r = new \ReflectionClass($class);
                 $v = \dirname($r->getFileName(), 2);
+<<<<<<< HEAD
                 if (file_exists($v.'/composer/installed.json')) {
+=======
+                if (is_file($v.'/composer/installed.json')) {
+>>>>>>> ThomasN
                     self::$runtimeVendors[$v] = @filemtime($v.'/composer/installed.json');
                 }
             }

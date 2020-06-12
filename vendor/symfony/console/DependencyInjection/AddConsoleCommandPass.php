@@ -28,11 +28,21 @@ class AddConsoleCommandPass implements CompilerPassInterface
 {
     private $commandLoaderServiceId;
     private $commandTag;
+<<<<<<< HEAD
 
     public function __construct(string $commandLoaderServiceId = 'console.command_loader', string $commandTag = 'console.command')
     {
         $this->commandLoaderServiceId = $commandLoaderServiceId;
         $this->commandTag = $commandTag;
+=======
+    private $noPreloadTag;
+
+    public function __construct(string $commandLoaderServiceId = 'console.command_loader', string $commandTag = 'console.command', string $noPreloadTag = 'container.no_preload')
+    {
+        $this->commandLoaderServiceId = $commandLoaderServiceId;
+        $this->commandTag = $commandTag;
+        $this->noPreloadTag = $noPreloadTag;
+>>>>>>> ThomasN
     }
 
     public function process(ContainerBuilder $container)
@@ -44,6 +54,10 @@ class AddConsoleCommandPass implements CompilerPassInterface
 
         foreach ($commandServices as $id => $tags) {
             $definition = $container->getDefinition($id);
+<<<<<<< HEAD
+=======
+            $definition->addTag($this->noPreloadTag);
+>>>>>>> ThomasN
             $class = $container->getParameterBag()->resolveValue($definition->getClass());
 
             if (isset($tags[0]['command'])) {
@@ -91,6 +105,10 @@ class AddConsoleCommandPass implements CompilerPassInterface
         $container
             ->register($this->commandLoaderServiceId, ContainerCommandLoader::class)
             ->setPublic(true)
+<<<<<<< HEAD
+=======
+            ->addTag($this->noPreloadTag)
+>>>>>>> ThomasN
             ->setArguments([ServiceLocatorTagPass::register($container, $lazyCommandRefs), $lazyCommandMap]);
 
         $container->setParameter('console.command.ids', $serviceIds);

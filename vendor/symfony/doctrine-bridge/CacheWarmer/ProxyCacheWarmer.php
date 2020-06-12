@@ -43,9 +43,18 @@ class ProxyCacheWarmer implements CacheWarmerInterface
 
     /**
      * {@inheritdoc}
+<<<<<<< HEAD
      */
     public function warmUp(string $cacheDir)
     {
+=======
+     *
+     * @return string[] A list of files to preload on PHP 7.4+
+     */
+    public function warmUp(string $cacheDir)
+    {
+        $files = [];
+>>>>>>> ThomasN
         foreach ($this->registry->getManagers() as $em) {
             // we need the directory no matter the proxy cache generation strategy
             if (!is_dir($proxyCacheDir = $em->getConfiguration()->getProxyDir())) {
@@ -64,6 +73,18 @@ class ProxyCacheWarmer implements CacheWarmerInterface
             $classes = $em->getMetadataFactory()->getAllMetadata();
 
             $em->getProxyFactory()->generateProxyClasses($classes);
+<<<<<<< HEAD
         }
+=======
+
+            foreach (scandir($proxyCacheDir) as $file) {
+                if (!is_dir($file = $proxyCacheDir.'/'.$file)) {
+                    $files[] = $file;
+                }
+            }
+        }
+
+        return $files;
+>>>>>>> ThomasN
     }
 }

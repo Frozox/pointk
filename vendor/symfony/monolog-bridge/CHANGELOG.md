@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+5.1.0
+-----
+ * Added `MailerHandler`
+
+>>>>>>> ThomasN
 5.0.0
 -----
 

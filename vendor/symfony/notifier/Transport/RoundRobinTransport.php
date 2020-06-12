@@ -21,7 +21,11 @@ use Symfony\Component\Notifier\Message\MessageInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  *
+<<<<<<< HEAD
  * @experimental in 5.0
+=======
+ * @experimental in 5.1
+>>>>>>> ThomasN
  */
 class RoundRobinTransport implements TransportInterface
 {
@@ -88,6 +92,10 @@ class RoundRobinTransport implements TransportInterface
             $transport = $this->transports[$cursor];
 
             if (!$transport->supports($message)) {
+<<<<<<< HEAD
+=======
+                $cursor = $this->moveCursor($cursor);
+>>>>>>> ThomasN
                 continue;
             }
 

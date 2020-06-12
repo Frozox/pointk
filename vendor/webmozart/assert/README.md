@@ -115,7 +115,11 @@ Method                                                   | Description
 ### Comparison Assertions
 
 Method                                          | Description
+<<<<<<< HEAD
 ----------------------------------------------- | --------------------------------------------------
+=======
+----------------------------------------------- | ------------------------------------------------------------------
+>>>>>>> ThomasN
 `true($value, $message = '')`                   | Check that a value is `true`
 `false($value, $message = '')`                  | Check that a value is `false`
 `notFalse($value, $message = '')`               | Check that a value is not `false`
@@ -132,7 +136,12 @@ Method                                          | Description
 `lessThan($value, $value2, $message = '')`      | Check that a value is less than another
 `lessThanEq($value, $value2, $message = '')`    | Check that a value is less than or equal to another
 `range($value, $min, $max, $message = '')`      | Check that a value is within a range
+<<<<<<< HEAD
 `oneOf($value, array $values, $message = '')`   | Check that a value is one of a list of values
+=======
+`inArray($value, array $values, $message = '')` | Check that a value is one of a list of values
+`oneOf($value, array $values, $message = '')`   | Check that a value is one of a list of values (alias of `inArray`)
+>>>>>>> ThomasN
 
 ### String Assertions
 
@@ -144,8 +153,15 @@ Method                                              | Description
 `contains($value, $subString, $message = '')`       | Check that a string contains a substring
 `notContains($value, $subString, $message = '')`    | Check that a string does not contains a substring
 `startsWith($value, $prefix, $message = '')`        | Check that a string has a prefix
+<<<<<<< HEAD
 `startsWithLetter($value, $message = '')`           | Check that a string starts with a letter
 `endsWith($value, $suffix, $message = '')`          | Check that a string has a suffix
+=======
+`notStartsWith($value, $prefix, $message = '')`     | Check that a string does not have a prefix
+`startsWithLetter($value, $message = '')`           | Check that a string starts with a letter
+`endsWith($value, $suffix, $message = '')`          | Check that a string has a suffix
+`notEndsWith($value, $suffix, $message = '')`       | Check that a string does not have a suffix
+>>>>>>> ThomasN
 `regex($value, $pattern, $message = '')`            | Check that a string matches a regular expression
 `notRegex($value, $pattern, $message = '')`         | Check that a string does not match a regular expression
 `unicodeLetters($value, $message = '')`             | Check that a string contains Unicode letters only

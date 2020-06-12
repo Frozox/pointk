@@ -64,7 +64,11 @@ class Envelope
         $this->recipients = [];
         foreach ($recipients as $recipient) {
             if (!$recipient instanceof Address) {
+<<<<<<< HEAD
                 throw new InvalidArgumentException(sprintf('A recipient must be an instance of "%s" (got "%s").', Address::class, \is_object($recipient) ? \get_class($recipient) : \gettype($recipient)));
+=======
+                throw new InvalidArgumentException(sprintf('A recipient must be an instance of "%s" (got "%s").', Address::class, get_debug_type($recipient)));
+>>>>>>> ThomasN
             }
             $this->recipients[] = new Address($recipient->getAddress());
         }

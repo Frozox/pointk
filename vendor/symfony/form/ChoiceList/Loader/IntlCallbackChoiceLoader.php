@@ -24,6 +24,7 @@ class IntlCallbackChoiceLoader extends CallbackChoiceLoader
      */
     public function loadChoicesForValues(array $values, callable $value = null)
     {
+<<<<<<< HEAD
         // Optimize
         $values = array_filter($values);
         if (empty($values)) {
@@ -31,6 +32,9 @@ class IntlCallbackChoiceLoader extends CallbackChoiceLoader
         }
 
         return $this->loadChoiceList($value)->getChoicesForValues($values);
+=======
+        return parent::loadChoicesForValues(array_filter($values), $value);
+>>>>>>> ThomasN
     }
 
     /**
@@ -38,17 +42,25 @@ class IntlCallbackChoiceLoader extends CallbackChoiceLoader
      */
     public function loadValuesForChoices(array $choices, callable $value = null)
     {
+<<<<<<< HEAD
         // Optimize
         $choices = array_filter($choices);
         if (empty($choices)) {
             return [];
         }
+=======
+        $choices = array_filter($choices);
+>>>>>>> ThomasN
 
         // If no callable is set, choices are the same as values
         if (null === $value) {
             return $choices;
         }
 
+<<<<<<< HEAD
         return $this->loadChoiceList($value)->getValuesForChoices($choices);
+=======
+        return parent::loadValuesForChoices($choices, $value);
+>>>>>>> ThomasN
     }
 }

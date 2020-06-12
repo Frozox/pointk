@@ -16,7 +16,11 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Container;
 
 /**
+<<<<<<< HEAD
  * A controller resolver searching for a controller in a psr-11 container when using the "service:method" notation.
+=======
+ * A controller resolver searching for a controller in a psr-11 container when using the "service::method" notation.
+>>>>>>> ThomasN
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
@@ -36,7 +40,11 @@ class ContainerControllerResolver extends ControllerResolver
     {
         if (1 === substr_count($controller, ':')) {
             $controller = str_replace(':', '::', $controller);
+<<<<<<< HEAD
             // TODO deprecate this in 5.1
+=======
+            trigger_deprecation('symfony/http-kernel', '5.1', 'Referencing controllers with a single colon is deprecated. Use "%s" instead.', $controller);
+>>>>>>> ThomasN
         }
 
         return parent::createController($controller);
@@ -64,7 +72,11 @@ class ContainerControllerResolver extends ControllerResolver
             throw new \InvalidArgumentException(sprintf('Controller "%s" has required constructor arguments and does not exist in the container. Did you forget to define the controller as a service?', $class), 0, $e);
         }
 
+<<<<<<< HEAD
         throw new \InvalidArgumentException(sprintf('Controller "%s" does neither exist as service nor as class', $class), 0, $e);
+=======
+        throw new \InvalidArgumentException(sprintf('Controller "%s" does neither exist as service nor as class.', $class), 0, $e);
+>>>>>>> ThomasN
     }
 
     private function throwExceptionIfControllerWasRemoved(string $controller, \Throwable $previous)

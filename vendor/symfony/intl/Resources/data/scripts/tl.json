@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Arab": "Arabic",
         "Armn": "Armenian",
@@ -13,7 +16,11 @@
         "Grek": "Greek",
         "Gujr": "Gujarati",
         "Guru": "Gurmukhi",
+<<<<<<< HEAD
         "Hanb": "Hanb",
+=======
+        "Hanb": "Han na may Bopomofo",
+>>>>>>> ThomasN
         "Hang": "Hangul",
         "Hani": "Han",
         "Hans": "Pinasimple",

@@ -11,6 +11,11 @@
 
 namespace Symfony\Component\Console\Helper;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\Console\Cursor;
+use Symfony\Component\Console\Exception\MissingInputException;
+>>>>>>> ThomasN
 use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Formatter\OutputFormatter;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
@@ -22,6 +27,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Terminal;
+<<<<<<< HEAD
+=======
+use function Symfony\Component\String\s;
+>>>>>>> ThomasN
 
 /**
  * The QuestionHelper class provides helpers to interact with the user.
@@ -32,7 +41,11 @@ class QuestionHelper extends Helper
 {
     private $inputStream;
     private static $shell;
+<<<<<<< HEAD
     private static $stty;
+=======
+    private static $stty = true;
+>>>>>>> ThomasN
 
     /**
      * Asks a question to the user.
@@ -48,6 +61,7 @@ class QuestionHelper extends Helper
         }
 
         if (!$input->isInteractive()) {
+<<<<<<< HEAD
             $default = $question->getDefault();
 
             if (null === $default) {
@@ -71,12 +85,16 @@ class QuestionHelper extends Helper
             }
 
             return $default;
+=======
+            return $this->getDefaultAnswer($question);
+>>>>>>> ThomasN
         }
 
         if ($input instanceof StreamableInputInterface && $stream = $input->getStream()) {
             $this->inputStream = $stream;
         }
 
+<<<<<<< HEAD
         if (!$question->getValidator()) {
             return $this->doAsk($output, $question);
         }
@@ -86,6 +104,27 @@ class QuestionHelper extends Helper
         };
 
         return $this->validateAttempts($interviewer, $output, $question);
+=======
+        try {
+            if (!$question->getValidator()) {
+                return $this->doAsk($output, $question);
+            }
+
+            $interviewer = function () use ($output, $question) {
+                return $this->doAsk($output, $question);
+            };
+
+            return $this->validateAttempts($interviewer, $output, $question);
+        } catch (MissingInputException $exception) {
+            $input->setInteractive(false);
+
+            if (null === $fallbackOutput = $this->getDefaultAnswer($question)) {
+                throw $exception;
+            }
+
+            return $fallbackOutput;
+        }
+>>>>>>> ThomasN
     }
 
     /**
@@ -118,7 +157,11 @@ class QuestionHelper extends Helper
         $inputStream = $this->inputStream ?: STDIN;
         $autocomplete = $question->getAutocompleterCallback();
 
+<<<<<<< HEAD
         if (null === $autocomplete || !Terminal::hasSttyAvailable()) {
+=======
+        if (null === $autocomplete || !self::$stty || !Terminal::hasSttyAvailable()) {
+>>>>>>> ThomasN
             $ret = false;
             if ($question->isHidden()) {
                 try {
@@ -134,7 +177,11 @@ class QuestionHelper extends Helper
             if (false === $ret) {
                 $ret = fgets($inputStream, 4096);
                 if (false === $ret) {
+<<<<<<< HEAD
                     throw new RuntimeException('Aborted.');
+=======
+                    throw new MissingInputException('Aborted.');
+>>>>>>> ThomasN
                 }
                 if ($question->isTrimmable()) {
                     $ret = trim($ret);
@@ -159,6 +206,39 @@ class QuestionHelper extends Helper
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * @return mixed
+     */
+    private function getDefaultAnswer(Question $question)
+    {
+        $default = $question->getDefault();
+
+        if (null === $default) {
+            return $default;
+        }
+
+        if ($validator = $question->getValidator()) {
+            return \call_user_func($question->getValidator(), $default);
+        } elseif ($question instanceof ChoiceQuestion) {
+            $choices = $question->getChoices();
+
+            if (!$question->isMultiselect()) {
+                return isset($choices[$default]) ? $choices[$default] : $default;
+            }
+
+            $default = explode(',', $default);
+            foreach ($default as $k => $v) {
+                $v = $question->isTrimmable() ? trim($v) : $v;
+                $default[$k] = isset($choices[$v]) ? $choices[$v] : $v;
+            }
+        }
+
+        return $default;
+    }
+
+    /**
+>>>>>>> ThomasN
      * Outputs the question prompt.
      */
     protected function writePrompt(OutputInterface $output, Question $question)
@@ -215,6 +295,11 @@ class QuestionHelper extends Helper
      */
     private function autocomplete(OutputInterface $output, Question $question, $inputStream, callable $autocomplete): string
     {
+<<<<<<< HEAD
+=======
+        $cursor = new Cursor($output, $inputStream);
+
+>>>>>>> ThomasN
         $fullChoice = '';
         $ret = '';
 
@@ -238,6 +323,7 @@ class QuestionHelper extends Helper
             // as opposed to fgets(), fread() returns an empty string when the stream content is empty, not false.
             if (false === $c || ('' === $ret && '' === $c && null === $question->getDefault())) {
                 shell_exec(sprintf('stty %s', $sttyMode));
+<<<<<<< HEAD
                 throw new RuntimeException('Aborted.');
             } elseif ("\177" === $c) { // Backspace Character
                 if (0 === $numMatches && 0 !== $i) {
@@ -245,6 +331,15 @@ class QuestionHelper extends Helper
                     $fullChoice = self::substr($fullChoice, 0, $i);
                     // Move cursor backwards
                     $output->write("\033[1D");
+=======
+                throw new MissingInputException('Aborted.');
+            } elseif ("\177" === $c) { // Backspace Character
+                if (0 === $numMatches && 0 !== $i) {
+                    --$i;
+                    $cursor->moveLeft(s($fullChoice)->slice(-1)->width(false));
+
+                    $fullChoice = self::substr($fullChoice, 0, $i);
+>>>>>>> ThomasN
                 }
 
                 if (0 === $i) {
@@ -330,6 +425,7 @@ class QuestionHelper extends Helper
                 }
             }
 
+<<<<<<< HEAD
             // Erase characters from cursor to end of line
             $output->write("\033[K");
 
@@ -341,6 +437,16 @@ class QuestionHelper extends Helper
                 $output->write('<hl>'.OutputFormatter::escapeTrailingBackslash(substr($matches[$ofs], $charactersEntered)).'</hl>');
                 // Restore cursor position
                 $output->write("\0338");
+=======
+            $cursor->clearLineAfter();
+
+            if ($numMatches > 0 && -1 !== $ofs) {
+                $cursor->savePosition();
+                // Write highlighted text, complete the partially entered response
+                $charactersEntered = \strlen(trim($this->mostRecentlyEnteredValue($fullChoice)));
+                $output->write('<hl>'.OutputFormatter::escapeTrailingBackslash(substr($matches[$ofs], $charactersEntered)).'</hl>');
+                $cursor->restorePosition();
+>>>>>>> ThomasN
             }
         }
 
@@ -396,7 +502,11 @@ class QuestionHelper extends Helper
             return $value;
         }
 
+<<<<<<< HEAD
         if (Terminal::hasSttyAvailable()) {
+=======
+        if (self::$stty && Terminal::hasSttyAvailable()) {
+>>>>>>> ThomasN
             $sttyMode = shell_exec('stty -g');
 
             shell_exec('stty -echo');
@@ -404,7 +514,11 @@ class QuestionHelper extends Helper
             shell_exec(sprintf('stty %s', $sttyMode));
 
             if (false === $value) {
+<<<<<<< HEAD
                 throw new RuntimeException('Aborted.');
+=======
+                throw new MissingInputException('Aborted.');
+>>>>>>> ThomasN
             }
             if ($trimmable) {
                 $value = trim($value);
@@ -416,7 +530,11 @@ class QuestionHelper extends Helper
 
         if (false !== $shell = $this->getShell()) {
             $readCmd = 'csh' === $shell ? 'set mypassword = $<' : 'read -r mypassword';
+<<<<<<< HEAD
             $command = sprintf("/usr/bin/env %s -c 'stty -echo; %s; stty echo; echo \$mypassword'", $shell, $readCmd);
+=======
+            $command = sprintf("/usr/bin/env %s -c 'stty -echo; %s; stty echo; echo \$mypassword' 2> /dev/null", $shell, $readCmd);
+>>>>>>> ThomasN
             $sCommand = shell_exec($command);
             $value = $trimmable ? rtrim($sCommand) : $sCommand;
             $output->writeln('');
@@ -440,6 +558,10 @@ class QuestionHelper extends Helper
     {
         $error = null;
         $attempts = $question->getMaxAttempts();
+<<<<<<< HEAD
+=======
+
+>>>>>>> ThomasN
         while (null === $attempts || $attempts--) {
             if (null !== $error) {
                 $this->writeError($output, $error);
@@ -451,6 +573,11 @@ class QuestionHelper extends Helper
                 throw $e;
             } catch (\Exception $error) {
             }
+<<<<<<< HEAD
+=======
+
+            $attempts = $attempts ?? -(int) $this->isTty();
+>>>>>>> ThomasN
         }
 
         throw $error;
@@ -482,4 +609,22 @@ class QuestionHelper extends Helper
 
         return self::$shell;
     }
+<<<<<<< HEAD
+=======
+
+    private function isTty(): bool
+    {
+        $inputStream = !$this->inputStream && \defined('STDIN') ? STDIN : $this->inputStream;
+
+        if (\function_exists('stream_isatty')) {
+            return stream_isatty($inputStream);
+        }
+
+        if (\function_exists('posix_isatty')) {
+            return posix_isatty($inputStream);
+        }
+
+        return true;
+    }
+>>>>>>> ThomasN
 }

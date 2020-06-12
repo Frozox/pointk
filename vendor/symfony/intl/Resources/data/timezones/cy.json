@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Africa\/Abidjan": "Amser Safonol Greenwich (Abidjan)",
         "Africa\/Accra": "Amser Safonol Greenwich (Accra)",
@@ -62,7 +65,11 @@
         "America\/Argentina\/Rio_Gallegos": "Amser yr Ariannin (Rio Gallegos)",
         "America\/Argentina\/Salta": "Amser yr Ariannin (Salta)",
         "America\/Argentina\/San_Juan": "Amser yr Ariannin (San Juan)",
+<<<<<<< HEAD
         "America\/Argentina\/San_Luis": "Amser Gorllewin Ariannin (San Luis)",
+=======
+        "America\/Argentina\/San_Luis": "Amser yr Ariannin (San Luis)",
+>>>>>>> ThomasN
         "America\/Argentina\/Tucuman": "Amser yr Ariannin (Tucumán)",
         "America\/Argentina\/Ushuaia": "Amser yr Ariannin (Ushuaia)",
         "America\/Aruba": "Amser Cefnfor yr Iwerydd (Aruba)",
@@ -232,7 +239,11 @@
         "Asia\/Brunei": "Amser Brunei Darussalam",
         "Asia\/Calcutta": "Amser India (Kolkata)",
         "Asia\/Chita": "Amser Yakutsk (Chita)",
+<<<<<<< HEAD
         "Asia\/Choibalsan": "Amser Choibalsan",
+=======
+        "Asia\/Choibalsan": "Amser Ulan Bator (Choibalsan)",
+>>>>>>> ThomasN
         "Asia\/Colombo": "Amser India (Colombo)",
         "Asia\/Damascus": "Amser Dwyrain Ewrop (Damascus)",
         "Asia\/Dhaka": "Amser Bangladesh (Dhaka)",

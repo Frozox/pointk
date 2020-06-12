@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Afak": "afaka",
         "Aghb": "kavkazskoalbánské",
         "Arab": "arabské",
+<<<<<<< HEAD
+=======
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armi": "aramejské (imperiální)",
         "Armn": "arménské",
         "Avst": "avestánské",
@@ -118,6 +125,10 @@
         "Phnx": "fénické",
         "Plrd": "Pollardova fonetická abeceda",
         "Prti": "parthské klínové",
+<<<<<<< HEAD
+=======
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Rjng": "redžanské",
         "Roro": "rongorongo",
         "Runr": "runové",

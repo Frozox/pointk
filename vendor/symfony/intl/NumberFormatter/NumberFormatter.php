@@ -250,8 +250,13 @@ abstract class NumberFormatter
      *                             described in the ICU DecimalFormat or ICU RuleBasedNumberFormat documentation
      *
      * @see https://php.net/numberformatter.create
+<<<<<<< HEAD
      * @see http://www.icu-project.org/apiref/icu4c/classDecimalFormat.html#_details
      * @see http://www.icu-project.org/apiref/icu4c/classRuleBasedNumberFormat.html#_details
+=======
+     * @see https://unicode-org.github.io/icu-docs/apidoc/released/icu4c/classicu_1_1DecimalFormat.html#details
+     * @see https://unicode-org.github.io/icu-docs/apidoc/released/icu4c/classicu_1_1RuleBasedNumberFormat.html#details
+>>>>>>> ThomasN
      *
      * @throws MethodArgumentValueNotImplementedException When $locale different than "en" or null is passed
      * @throws MethodArgumentValueNotImplementedException When the $style is not supported
@@ -360,7 +365,11 @@ abstract class NumberFormatter
         }
 
         if (self::CURRENCY === $this->style) {
+<<<<<<< HEAD
             throw new NotImplementedException(sprintf('%s() method does not support the formatting of currencies (instance with CURRENCY style). %s', __METHOD__, NotImplementedException::INTL_INSTALL_MESSAGE));
+=======
+            throw new NotImplementedException(sprintf('"%s()" method does not support the formatting of currencies (instance with CURRENCY style). "%s".', __METHOD__, NotImplementedException::INTL_INSTALL_MESSAGE));
+>>>>>>> ThomasN
         }
 
         // Only the default type is supported.

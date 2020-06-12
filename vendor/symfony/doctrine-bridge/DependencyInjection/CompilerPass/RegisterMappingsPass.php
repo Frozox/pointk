@@ -125,7 +125,11 @@ abstract class RegisterMappingsPass implements CompilerPassInterface
         $this->driverPattern = $driverPattern;
         $this->enabledParameter = $enabledParameter;
         if (\count($aliasMap) && (!$configurationPattern || !$registerAliasMethodName)) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException('configurationPattern and registerAliasMethodName are required to register namespace alias');
+=======
+            throw new \InvalidArgumentException('configurationPattern and registerAliasMethodName are required to register namespace alias.');
+>>>>>>> ThomasN
         }
         $this->configurationPattern = $configurationPattern;
         $this->registerAliasMethodName = $registerAliasMethodName;
@@ -218,7 +222,11 @@ abstract class RegisterMappingsPass implements CompilerPassInterface
             }
         }
 
+<<<<<<< HEAD
         throw new InvalidArgumentException(sprintf('Could not find the manager name parameter in the container. Tried the following parameter names: "%s"', implode('", "', $this->managerParameters)));
+=======
+        throw new InvalidArgumentException(sprintf('Could not find the manager name parameter in the container. Tried the following parameter names: "%s".', implode('", "', $this->managerParameters)));
+>>>>>>> ThomasN
     }
 
     /**

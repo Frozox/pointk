@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "AD": "Andora",
         "AE": "Imaaraadka Carabta ee Midoobay",
@@ -49,6 +52,10 @@
         "CL": "Jili",
         "CM": "Kaameruun",
         "CN": "Shiinaha",
+<<<<<<< HEAD
+=======
+        "CO": "Koloombiya",
+>>>>>>> ThomasN
         "CR": "Kosta Riika",
         "CU": "Kuuba",
         "CV": "Jasiiradda Kayb Faarde",
@@ -93,6 +100,10 @@
         "GT": "Guwaatamaala",
         "GU": "Guaam",
         "GW": "Gini-Bisaaw",
+<<<<<<< HEAD
+=======
+        "GY": "Guyana",
+>>>>>>> ThomasN
         "HK": "Hong Kong",
         "HM": "Jasiiradda Haad & MakDonald",
         "HN": "Honduras",

@@ -47,6 +47,11 @@
         "sr_Latn_BA": "serbio (latín, Bosnia-Herzegovina)",
         "sr_Latn_ME": "serbio (latín, Montenegro)",
         "sr_Latn_RS": "serbio (latín, Serbia)",
+<<<<<<< HEAD
+=======
+        "su_Latn": "sundanés (latín)",
+        "su_Latn_ID": "sundanés (latín, Indonesia)",
+>>>>>>> ThomasN
         "sw": "swahili",
         "sw_CD": "swahili (República Democrática del Congo)",
         "sw_KE": "swahili (Kenia)",

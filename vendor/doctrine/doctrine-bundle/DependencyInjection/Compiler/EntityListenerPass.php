@@ -6,6 +6,10 @@ use Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver;
 use Doctrine\Bundle\DoctrineBundle\Mapping\EntityListenerServiceResolver;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+<<<<<<< HEAD
+=======
+use Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
+>>>>>>> ThomasN
 use Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -17,17 +21,32 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class EntityListenerPass implements CompilerPassInterface
 {
+<<<<<<< HEAD
+=======
+    use PriorityTaggedServiceTrait;
+
+>>>>>>> ThomasN
     /**
      * {@inheritDoc}
      */
     public function process(ContainerBuilder $container)
     {
+<<<<<<< HEAD
         $resolvers = $container->findTaggedServiceIds('doctrine.orm.entity_listener');
 
         $lazyServiceReferencesByResolver = [];
 
         foreach ($resolvers as $id => $tagAttributes) {
             foreach ($tagAttributes as $attributes) {
+=======
+        $resolvers = $this->findAndSortTaggedServices('doctrine.orm.entity_listener', $container);
+
+        $lazyServiceReferencesByResolver = [];
+
+        foreach ($resolvers as $reference) {
+            $id = $reference->__toString();
+            foreach ($container->getDefinition($id)->getTag('doctrine.orm.entity_listener') as $attributes) {
+>>>>>>> ThomasN
                 $name          = isset($attributes['entity_manager']) ? $attributes['entity_manager'] : $container->getParameter('doctrine.default_entity_manager');
                 $entityManager = sprintf('doctrine.orm.%s_entity_manager', $name);
 
@@ -62,10 +81,13 @@ class EntityListenerPass implements CompilerPassInterface
                 if (! isset($attributes['lazy']) && $resolverSupportsLazyListeners || $lazyByAttribute) {
                     $listener = $container->findDefinition($id);
 
+<<<<<<< HEAD
                     if ($listener->isAbstract()) {
                         throw new InvalidArgumentException(sprintf('The service "%s" must not be abstract as this entity listener is lazy-loaded.', $id));
                     }
 
+=======
+>>>>>>> ThomasN
                     $resolver->addMethodCall('registerService', [$this->getConcreteDefinitionClass($listener, $container, $id), $id]);
 
                     // if the resolver uses the default class we will use a service locator for all listeners

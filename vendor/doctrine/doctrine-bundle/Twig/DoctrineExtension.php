@@ -2,7 +2,13 @@
 
 namespace Doctrine\Bundle\DoctrineBundle\Twig;
 
+<<<<<<< HEAD
 use SqlFormatter;
+=======
+use Doctrine\SqlFormatter\HtmlHighlighter;
+use Doctrine\SqlFormatter\NullHighlighter;
+use Doctrine\SqlFormatter\SqlFormatter;
+>>>>>>> ThomasN
 use Symfony\Component\VarDumper\Cloner\Data;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -12,6 +18,12 @@ use Twig\TwigFilter;
  */
 class DoctrineExtension extends AbstractExtension
 {
+<<<<<<< HEAD
+=======
+    /** @var SqlFormatter */
+    private $sqlFormatter;
+
+>>>>>>> ThomasN
     /**
      * Define our functions
      *
@@ -20,7 +32,13 @@ class DoctrineExtension extends AbstractExtension
     public function getFilters()
     {
         return [
+<<<<<<< HEAD
             new TwigFilter('doctrine_pretty_query', [$this, 'formatQuery'], ['is_safe' => ['html']]),
+=======
+            new TwigFilter('doctrine_pretty_query', [$this, 'formatQuery'], ['is_safe' => ['html'], 'deprecated' => true]),
+            new TwigFilter('doctrine_prettify_sql', [$this, 'prettifySql'], ['is_safe' => ['html']]),
+            new TwigFilter('doctrine_format_sql', [$this, 'formatSql'], ['is_safe' => ['html']]),
+>>>>>>> ThomasN
             new TwigFilter('doctrine_replace_query_parameters', [$this, 'replaceQueryParameters']),
         ];
     }
@@ -96,7 +114,11 @@ class DoctrineExtension extends AbstractExtension
                     $value = static::escapeFunction($value);
                 }
 
+<<<<<<< HEAD
                 $result = implode(', ', $result);
+=======
+                $result = implode(', ', $result) ?: 'NULL';
+>>>>>>> ThomasN
                 break;
 
             case is_object($result):
@@ -164,6 +186,7 @@ class DoctrineExtension extends AbstractExtension
      */
     public function formatQuery($sql, $highlightOnly = false)
     {
+<<<<<<< HEAD
         SqlFormatter::$pre_attributes            = 'class="highlight highlight-sql"';
         SqlFormatter::$quote_attributes          = 'class="string"';
         SqlFormatter::$backtick_quote_attributes = 'class="string"';
@@ -184,6 +207,50 @@ class DoctrineExtension extends AbstractExtension
         }
 
         return $html;
+=======
+        @trigger_error(sprintf('The "%s()" method is deprecated and will be removed in DoctrineBundle 3.0.', __METHOD__), E_USER_DEPRECATED);
+
+        $this->setUpSqlFormatter(true, true);
+
+        if ($highlightOnly) {
+            return $this->sqlFormatter->highlight($sql);
+        }
+
+        return sprintf(
+            '<div class="highlight highlight-sql"><pre>%s</pre></div>',
+            $this->sqlFormatter->format($sql)
+        );
+    }
+
+    public function prettifySql(string $sql) : string
+    {
+        $this->setUpSqlFormatter();
+
+        return $this->sqlFormatter->highlight($sql);
+    }
+
+    public function formatSql(string $sql, bool $highlight) : string
+    {
+        $this->setUpSqlFormatter($highlight);
+
+        return $this->sqlFormatter->format($sql);
+    }
+
+    private function setUpSqlFormatter(bool $highlight = true, bool $legacy = false) : void
+    {
+        $this->sqlFormatter = new SqlFormatter($highlight ? new HtmlHighlighter([
+            HtmlHighlighter::HIGHLIGHT_PRE            => 'class="highlight highlight-sql"',
+            HtmlHighlighter::HIGHLIGHT_QUOTE          => 'class="string"',
+            HtmlHighlighter::HIGHLIGHT_BACKTICK_QUOTE => 'class="string"',
+            HtmlHighlighter::HIGHLIGHT_RESERVED       => 'class="keyword"',
+            HtmlHighlighter::HIGHLIGHT_BOUNDARY       => 'class="symbol"',
+            HtmlHighlighter::HIGHLIGHT_NUMBER         => 'class="number"',
+            HtmlHighlighter::HIGHLIGHT_WORD           => 'class="word"',
+            HtmlHighlighter::HIGHLIGHT_ERROR          => 'class="error"',
+            HtmlHighlighter::HIGHLIGHT_COMMENT        => 'class="comment"',
+            HtmlHighlighter::HIGHLIGHT_VARIABLE       => 'class="variable"',
+        ], ! $legacy) : new NullHighlighter());
+>>>>>>> ThomasN
     }
 
     /**

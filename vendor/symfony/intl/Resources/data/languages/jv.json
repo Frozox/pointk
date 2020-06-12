@@ -1,7 +1,12 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "af": "af",
+=======
+    "Names": {
+        "af": "Afrika",
+>>>>>>> ThomasN
         "agq": "Aghem",
         "ak": "Akan",
         "am": "Amharik",
@@ -10,9 +15,14 @@
         "asa": "Asu",
         "ast": "Asturia",
         "az": "Azerbaijan",
+<<<<<<< HEAD
         "ban": "ban",
         "bas": "Basaa",
         "be": "be",
+=======
+        "bas": "Basaa",
+        "be": "Belarus",
+>>>>>>> ThomasN
         "bem": "Bemba",
         "bez": "Bena",
         "bg": "Bulgaria",
@@ -21,7 +31,11 @@
         "bo": "Tibet",
         "br": "Breton",
         "brx": "Bodo",
+<<<<<<< HEAD
         "bs": "bs",
+=======
+        "bs": "Bosnia lan Hercegovina",
+>>>>>>> ThomasN
         "ca": "Katala",
         "ccp": "Chakma",
         "ce": "Chechen",

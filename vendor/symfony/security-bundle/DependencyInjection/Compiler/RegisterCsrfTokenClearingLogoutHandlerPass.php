@@ -11,6 +11,7 @@
 
 namespace Symfony\Bundle\SecurityBundle\DependencyInjection\Compiler;
 
+<<<<<<< HEAD
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -38,5 +39,23 @@ class RegisterCsrfTokenClearingLogoutHandlerPass implements CompilerPassInterfac
             ->setPublic(false);
 
         $container->findDefinition('security.logout_listener')->addMethodCall('addHandler', [new Reference('security.logout.handler.csrf_token_clearing')]);
+=======
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+trigger_deprecation('symfony/security-bundle', '5.1', 'The "%s" class is deprecated.', RegisterCsrfTokenClearingLogoutHandlerPass::class);
+
+/**
+ * @deprecated since symfony/security-bundle 5.1
+ */
+class RegisterCsrfTokenClearingLogoutHandlerPass extends RegisterCsrfFeaturesPass
+{
+    public function process(ContainerBuilder $container)
+    {
+        if (!$container->has('security.csrf.token_storage')) {
+            return;
+        }
+
+        $this->registerLogoutHandler($container);
+>>>>>>> ThomasN
     }
 }

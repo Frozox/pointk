@@ -39,6 +39,10 @@ abstract class AbstractRememberMeServices implements RememberMeServicesInterface
     protected $options = [
         'secure' => false,
         'httponly' => true,
+<<<<<<< HEAD
+=======
+        'samesite' => null,
+>>>>>>> ThomasN
     ];
     private $providerKey;
     private $secret;
@@ -47,7 +51,11 @@ abstract class AbstractRememberMeServices implements RememberMeServicesInterface
     /**
      * @throws \InvalidArgumentException
      */
+<<<<<<< HEAD
     public function __construct(array $userProviders, string $secret, string $providerKey, array $options = [], LoggerInterface $logger = null)
+=======
+    public function __construct(iterable $userProviders, string $secret, string $providerKey, array $options = [], LoggerInterface $logger = null)
+>>>>>>> ThomasN
     {
         if (empty($secret)) {
             throw new \InvalidArgumentException('$secret must not be empty.');
@@ -55,6 +63,12 @@ abstract class AbstractRememberMeServices implements RememberMeServicesInterface
         if (empty($providerKey)) {
             throw new \InvalidArgumentException('$providerKey must not be empty.');
         }
+<<<<<<< HEAD
+=======
+        if (!\is_array($userProviders) && !$userProviders instanceof \Countable) {
+            $userProviders = iterator_to_array($userProviders, false);
+        }
+>>>>>>> ThomasN
         if (0 === \count($userProviders)) {
             throw new \InvalidArgumentException('You must provide at least one user provider.');
         }
@@ -258,7 +272,11 @@ abstract class AbstractRememberMeServices implements RememberMeServicesInterface
     {
         foreach ($cookieParts as $cookiePart) {
             if (false !== strpos($cookiePart, self::COOKIE_DELIMITER)) {
+<<<<<<< HEAD
                 throw new \InvalidArgumentException(sprintf('$cookieParts should not contain the cookie delimiter "%s"', self::COOKIE_DELIMITER));
+=======
+                throw new \InvalidArgumentException(sprintf('$cookieParts should not contain the cookie delimiter "%s".', self::COOKIE_DELIMITER));
+>>>>>>> ThomasN
             }
         }
 
@@ -274,7 +292,11 @@ abstract class AbstractRememberMeServices implements RememberMeServicesInterface
             $this->logger->debug('Clearing remember-me cookie.', ['name' => $this->options['name']]);
         }
 
+<<<<<<< HEAD
         $request->attributes->set(self::COOKIE_ATTR_NAME, new Cookie($this->options['name'], null, 1, $this->options['path'], $this->options['domain'], $this->options['secure'] ?? $request->isSecure(), $this->options['httponly'], false, $this->options['samesite'] ?? null));
+=======
+        $request->attributes->set(self::COOKIE_ATTR_NAME, new Cookie($this->options['name'], null, 1, $this->options['path'], $this->options['domain'], $this->options['secure'] ?? $request->isSecure(), $this->options['httponly'], false, $this->options['samesite']));
+>>>>>>> ThomasN
     }
 
     /**

@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "Deva": "devanagari",
         "Gujr": "gujarati",
@@ -7,6 +10,10 @@
         "Hans": "idéogrammes han simplifiés",
         "Hant": "idéogrammes han traditionnels",
         "Hrkt": "syllabaires japonais",
+<<<<<<< HEAD
+=======
+        "Olck": "ol chiki",
+>>>>>>> ThomasN
         "Zsye": "zsye"
     }
 }

@@ -110,10 +110,19 @@ class TextDescriptor extends Descriptor
         if ($definition['deprecated']) {
             $map = [
                 'Deprecated' => 'deprecated',
+<<<<<<< HEAD
+=======
+                'Deprecation package' => 'deprecationPackage',
+                'Deprecation version' => 'deprecationVersion',
+>>>>>>> ThomasN
                 'Deprecation message' => 'deprecationMessage',
             ];
         }
         $map += [
+<<<<<<< HEAD
+=======
+            'Info' => 'info',
+>>>>>>> ThomasN
             'Required' => 'required',
             'Default' => 'default',
             'Allowed types' => 'allowedTypes',

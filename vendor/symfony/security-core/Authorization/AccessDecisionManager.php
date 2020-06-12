@@ -26,6 +26,10 @@ class AccessDecisionManager implements AccessDecisionManagerInterface
     const STRATEGY_AFFIRMATIVE = 'affirmative';
     const STRATEGY_CONSENSUS = 'consensus';
     const STRATEGY_UNANIMOUS = 'unanimous';
+<<<<<<< HEAD
+=======
+    const STRATEGY_PRIORITY = 'priority';
+>>>>>>> ThomasN
 
     private $voters;
     private $strategy;
@@ -54,12 +58,26 @@ class AccessDecisionManager implements AccessDecisionManagerInterface
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritdoc}
      */
     public function decide(TokenInterface $token, array $attributes, $object = null)
     {
         if (\count($attributes) > 1) {
             throw new InvalidArgumentException(sprintf('Passing more than one Security attribute to %s() is not supported.', __METHOD__));
+=======
+     * @param bool $allowMultipleAttributes Whether to allow passing multiple values to the $attributes array
+     *
+     * {@inheritdoc}
+     */
+    public function decide(TokenInterface $token, array $attributes, $object = null/*, bool $allowMultipleAttributes = false*/)
+    {
+        $allowMultipleAttributes = 3 < \func_num_args() && func_get_arg(3);
+
+        // Special case for AccessListener, do not remove the right side of the condition before 6.0
+        if (\count($attributes) > 1 && !$allowMultipleAttributes) {
+            throw new InvalidArgumentException(sprintf('Passing more than one Security attribute to "%s()" is not supported.', __METHOD__));
+>>>>>>> ThomasN
         }
 
         return $this->{$this->strategy}($token, $attributes, $object);
@@ -166,4 +184,31 @@ class AccessDecisionManager implements AccessDecisionManagerInterface
 
         return $this->allowIfAllAbstainDecisions;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Grant or deny access depending on the first voter that does not abstain.
+     * The priority of voters can be used to overrule a decision.
+     *
+     * If all voters abstained from voting, the decision will be based on the
+     * allowIfAllAbstainDecisions property value (defaults to false).
+     */
+    private function decidePriority(TokenInterface $token, array $attributes, $object = null)
+    {
+        foreach ($this->voters as $voter) {
+            $result = $voter->vote($token, $object, $attributes);
+
+            if (VoterInterface::ACCESS_GRANTED === $result) {
+                return true;
+            }
+
+            if (VoterInterface::ACCESS_DENIED === $result) {
+                return false;
+            }
+        }
+
+        return $this->allowIfAllAbstainDecisions;
+    }
+>>>>>>> ThomasN
 }

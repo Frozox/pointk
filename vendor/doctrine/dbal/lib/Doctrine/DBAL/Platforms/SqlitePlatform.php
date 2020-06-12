@@ -55,7 +55,13 @@ class SqlitePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string $type
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getNowExpression($type = 'timestamp')
     {
@@ -166,11 +172,19 @@ class SqlitePlatform extends AbstractPlatform
     {
         switch ($level) {
             case TransactionIsolationLevel::READ_UNCOMMITTED:
+<<<<<<< HEAD
                 return 0;
             case TransactionIsolationLevel::READ_COMMITTED:
             case TransactionIsolationLevel::REPEATABLE_READ:
             case TransactionIsolationLevel::SERIALIZABLE:
                 return 1;
+=======
+                return '0';
+            case TransactionIsolationLevel::READ_COMMITTED:
+            case TransactionIsolationLevel::REPEATABLE_READ:
+            case TransactionIsolationLevel::SERIALIZABLE:
+                return '1';
+>>>>>>> ThomasN
             default:
                 return parent::_getTransactionIsolationLevelSQL($level);
         }
@@ -222,7 +236,13 @@ class SqlitePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param array<string, mixed> $field
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getTinyIntTypeDeclarationSql(array $field)
     {
@@ -248,7 +268,13 @@ class SqlitePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param array<string, mixed> $field
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getMediumIntTypeDeclarationSql(array $field)
     {
@@ -600,7 +626,11 @@ class SqlitePlatform extends AbstractPlatform
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
     public function getForUpdateSql()
+=======
+    public function getForUpdateSQL()
+>>>>>>> ThomasN
     {
         return '';
     }
@@ -801,6 +831,11 @@ class SqlitePlatform extends AbstractPlatform
 
     /**
      * {@inheritDoc}
+<<<<<<< HEAD
+=======
+     *
+     * @param int|null $createFlags
+>>>>>>> ThomasN
      */
     public function getCreateTableSQL(Table $table, $createFlags = null)
     {
@@ -810,7 +845,14 @@ class SqlitePlatform extends AbstractPlatform
     }
 
     /**
+<<<<<<< HEAD
      * {@inheritDoc}
+=======
+     * @param string      $table
+     * @param string|null $database
+     *
+     * @return string
+>>>>>>> ThomasN
      */
     public function getListTableForeignKeysSQL($table, $database = null)
     {

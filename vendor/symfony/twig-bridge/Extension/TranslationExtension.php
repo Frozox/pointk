@@ -21,6 +21,12 @@ use Twig\Extension\AbstractExtension;
 use Twig\NodeVisitor\NodeVisitorInterface;
 use Twig\TwigFilter;
 
+<<<<<<< HEAD
+=======
+// Help opcache.preload discover always-needed symbols
+class_exists(TranslatorInterface::class);
+
+>>>>>>> ThomasN
 /**
  * Provides integration of the Translation component with Twig.
  *

@@ -13,7 +13,10 @@ namespace Symfony\Component\Cache\Adapter;
 
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
+<<<<<<< HEAD
 use Psr\Log\NullLogger;
+=======
+>>>>>>> ThomasN
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Cache\Exception\InvalidArgumentException;
 use Symfony\Component\Cache\ResettableInterface;
@@ -41,7 +44,11 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
     {
         $this->namespace = '' === $namespace ? '' : CacheItem::validateKey($namespace).static::NS_SEPARATOR;
         if (null !== $this->maxIdLength && \strlen($namespace) > $this->maxIdLength - 24) {
+<<<<<<< HEAD
             throw new InvalidArgumentException(sprintf('Namespace must be %d chars max, %d given ("%s")', $this->maxIdLength - 24, \strlen($namespace), $namespace));
+=======
+            throw new InvalidArgumentException(sprintf('Namespace must be %d chars max, %d given ("%s").', $this->maxIdLength - 24, \strlen($namespace), $namespace));
+>>>>>>> ThomasN
         }
         $this->createCacheItem = \Closure::bind(
             static function ($key, $value, $isHit) use ($defaultLifetime) {
@@ -112,10 +119,19 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
             return $opcache;
         }
 
+<<<<<<< HEAD
         $apcu = new ApcuAdapter($namespace, $defaultLifetime / 5, $version);
         if ('cli' === \PHP_SAPI && !filter_var(ini_get('apc.enable_cli'), FILTER_VALIDATE_BOOLEAN)) {
             $apcu->setLogger(new NullLogger());
         } elseif (null !== $logger) {
+=======
+        if (\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) && !filter_var(ini_get('apc.enable_cli'), FILTER_VALIDATE_BOOLEAN)) {
+            return $opcache;
+        }
+
+        $apcu = new ApcuAdapter($namespace, (int) $defaultLifetime / 5, $version);
+        if (null !== $logger) {
+>>>>>>> ThomasN
             $apcu->setLogger($logger);
         }
 
@@ -130,8 +146,16 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
         if (0 === strpos($dsn, 'memcached:')) {
             return MemcachedAdapter::createConnection($dsn, $options);
         }
+<<<<<<< HEAD
 
         throw new InvalidArgumentException(sprintf('Unsupported DSN: %s.', $dsn));
+=======
+        if (0 === strpos($dsn, 'couchbase:')) {
+            return CouchbaseBucketAdapter::createConnection($dsn, $options);
+        }
+
+        throw new InvalidArgumentException(sprintf('Unsupported DSN: "%s".', $dsn));
+>>>>>>> ThomasN
     }
 
     /**
@@ -161,9 +185,15 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
                 foreach (\is_array($e) ? $e : array_keys($values) as $id) {
                     $ok = false;
                     $v = $values[$id];
+<<<<<<< HEAD
                     $type = \is_object($v) ? \get_class($v) : \gettype($v);
                     $message = sprintf('Failed to save key "{key}" of type %s%s', $type, $e instanceof \Exception ? ': '.$e->getMessage() : '.');
                     CacheItem::log($this->logger, $message, ['key' => substr($id, \strlen($this->namespace)), 'exception' => $e instanceof \Exception ? $e : null]);
+=======
+                    $type = get_debug_type($v);
+                    $message = sprintf('Failed to save key "{key}" of type %s%s', $type, $e instanceof \Exception ? ': '.$e->getMessage() : '.');
+                    CacheItem::log($this->logger, $message, ['key' => substr($id, \strlen($this->namespace)), 'exception' => $e instanceof \Exception ? $e : null, 'cache-adapter' => get_debug_type($this)]);
+>>>>>>> ThomasN
                 }
             } else {
                 foreach ($values as $id => $v) {
@@ -184,9 +214,15 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
                     continue;
                 }
                 $ok = false;
+<<<<<<< HEAD
                 $type = \is_object($v) ? \get_class($v) : \gettype($v);
                 $message = sprintf('Failed to save key "{key}" of type %s%s', $type, $e instanceof \Exception ? ': '.$e->getMessage() : '.');
                 CacheItem::log($this->logger, $message, ['key' => substr($id, \strlen($this->namespace)), 'exception' => $e instanceof \Exception ? $e : null]);
+=======
+                $type = get_debug_type($v);
+                $message = sprintf('Failed to save key "{key}" of type %s%s', $type, $e instanceof \Exception ? ': '.$e->getMessage() : '.');
+                CacheItem::log($this->logger, $message, ['key' => substr($id, \strlen($this->namespace)), 'exception' => $e instanceof \Exception ? $e : null, 'cache-adapter' => get_debug_type($this)]);
+>>>>>>> ThomasN
             }
         }
 

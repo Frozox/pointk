@@ -49,7 +49,11 @@ abstract class AbstractUriElement
         $elementUriIsRelative = null === parse_url(trim($this->getRawUri()), PHP_URL_SCHEME);
         $baseUriIsAbsolute = \in_array(strtolower(substr($this->currentUri, 0, 4)), ['http', 'file']);
         if ($elementUriIsRelative && !$baseUriIsAbsolute) {
+<<<<<<< HEAD
             throw new \InvalidArgumentException(sprintf('The URL of the element is relative, so you must define its base URI passing an absolute URL to the constructor of the %s class ("%s" was passed).', __CLASS__, $this->currentUri));
+=======
+            throw new \InvalidArgumentException(sprintf('The URL of the element is relative, so you must define its base URI passing an absolute URL to the constructor of the "%s" class ("%s" was passed).', __CLASS__, $this->currentUri));
+>>>>>>> ThomasN
         }
     }
 
@@ -80,6 +84,7 @@ abstract class AbstractUriElement
      */
     public function getUri()
     {
+<<<<<<< HEAD
         $uri = trim($this->getRawUri());
 
         // absolute URL?
@@ -120,6 +125,9 @@ abstract class AbstractUriElement
         $path = $this->canonicalizePath(substr($path, 0, strrpos($path, '/')).'/'.$uri);
 
         return $baseUri.('' === $path || '/' !== $path[0] ? '/' : '').$path;
+=======
+        return UriResolver::resolve($this->getRawUri(), $this->currentUri);
+>>>>>>> ThomasN
     }
 
     /**
@@ -167,6 +175,7 @@ abstract class AbstractUriElement
      * @throws \LogicException If given node is not an anchor
      */
     abstract protected function setNode(\DOMElement $node);
+<<<<<<< HEAD
 
     /**
      * Removes the query string and the anchor from the given uri.
@@ -199,4 +208,6 @@ abstract class AbstractUriElement
 
         return $uri;
     }
+=======
+>>>>>>> ThomasN
 }

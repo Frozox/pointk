@@ -85,7 +85,11 @@ class SwiftMailerHandler extends BaseSwiftMailerHandler
         }
 
         if (null === $this->transport) {
+<<<<<<< HEAD
             throw new \Exception('No transport available to flush mail queue');
+=======
+            throw new \Exception('No transport available to flush mail queue.');
+>>>>>>> ThomasN
         }
 
         $spool->flushQueue($this->transport);

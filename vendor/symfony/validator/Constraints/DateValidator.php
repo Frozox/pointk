@@ -21,7 +21,11 @@ use Symfony\Component\Validator\Exception\UnexpectedValueException;
  */
 class DateValidator extends ConstraintValidator
 {
+<<<<<<< HEAD
     const PATTERN = '/^(\d{4})-(\d{2})-(\d{2})$/';
+=======
+    const PATTERN = '/^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})$/';
+>>>>>>> ThomasN
 
     /**
      * Checks whether a date is valid.
@@ -61,7 +65,15 @@ class DateValidator extends ConstraintValidator
             return;
         }
 
+<<<<<<< HEAD
         if (!self::checkDate($matches[1], $matches[2], $matches[3])) {
+=======
+        if (!self::checkDate(
+          $matches['year'] ?? $matches[1],
+          $matches['month'] ?? $matches[2],
+          $matches['day'] ?? $matches[3]
+        )) {
+>>>>>>> ThomasN
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $this->formatValue($value))
                 ->setCode(Date::INVALID_DATE_ERROR)

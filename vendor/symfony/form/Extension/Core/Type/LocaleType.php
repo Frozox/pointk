@@ -12,6 +12,10 @@
 namespace Symfony\Component\Form\Extension\Core\Type;
 
 use Symfony\Component\Form\AbstractType;
+<<<<<<< HEAD
+=======
+use Symfony\Component\Form\ChoiceList\ChoiceList;
+>>>>>>> ThomasN
 use Symfony\Component\Form\ChoiceList\Loader\IntlCallbackChoiceLoader;
 use Symfony\Component\Intl\Locales;
 use Symfony\Component\OptionsResolver\Options;
@@ -28,9 +32,15 @@ class LocaleType extends AbstractType
             'choice_loader' => function (Options $options) {
                 $choiceTranslationLocale = $options['choice_translation_locale'];
 
+<<<<<<< HEAD
                 return new IntlCallbackChoiceLoader(function () use ($choiceTranslationLocale) {
                     return array_flip(Locales::getNames($choiceTranslationLocale));
                 });
+=======
+                return ChoiceList::loader($this, new IntlCallbackChoiceLoader(function () use ($choiceTranslationLocale) {
+                    return array_flip(Locales::getNames($choiceTranslationLocale));
+                }), $choiceTranslationLocale);
+>>>>>>> ThomasN
             },
             'choice_translation_domain' => false,
             'choice_translation_locale' => null,

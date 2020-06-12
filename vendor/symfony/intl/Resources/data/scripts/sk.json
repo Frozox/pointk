@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     "Version": "36",
     "Names": {
         "Arab": "arabské",
+=======
+    "Names": {
+        "Arab": "arabské",
+        "Aran": "nastaliq",
+>>>>>>> ThomasN
         "Armn": "arménske",
         "Bali": "balijský",
         "Beng": "bengálske",
@@ -38,9 +44,18 @@
         "Maya": "mayské hieroglyfy",
         "Mlym": "malajálamske",
         "Mong": "mongolské",
+<<<<<<< HEAD
         "Mymr": "barmské",
         "Orya": "uríjske",
         "Osma": "osmanský",
+=======
+        "Mtei": "mejtej majek (manipurské)",
+        "Mymr": "barmské",
+        "Olck": "santálske (ol chiki)",
+        "Orya": "uríjske",
+        "Osma": "osmanský",
+        "Qaag": "zawgyi",
+>>>>>>> ThomasN
         "Runr": "Runové písmo",
         "Sinh": "sinhálske",
         "Taml": "tamilské",

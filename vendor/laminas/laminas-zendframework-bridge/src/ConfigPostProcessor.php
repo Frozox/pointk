@@ -8,12 +8,19 @@
 
 namespace Laminas\ZendFrameworkBridge;
 
+<<<<<<< HEAD
 use function array_flip;
+=======
+>>>>>>> ThomasN
 use function array_intersect_key;
 use function array_key_exists;
 use function array_pop;
 use function array_push;
 use function count;
+<<<<<<< HEAD
+=======
+use function in_array;
+>>>>>>> ThomasN
 use function is_array;
 use function is_callable;
 use function is_int;
@@ -21,6 +28,17 @@ use function is_string;
 
 class ConfigPostProcessor
 {
+<<<<<<< HEAD
+=======
+    /** @internal */
+    const SERVICE_MANAGER_KEYS_OF_INTEREST = [
+        'aliases'    => true,
+        'factories'  => true,
+        'invokables' => true,
+        'services'   => true,
+    ];
+
+>>>>>>> ThomasN
     /** @var array String keys => string values */
     private $exactReplacements = [
         'zend-expressive' => 'mezzio',
@@ -75,9 +93,13 @@ class ConfigPostProcessor
 
             // service- and pluginmanager handling
             function ($value) {
+<<<<<<< HEAD
                 $keysOfInterest = ['aliases', 'invokables', 'factories'];
 
                 return is_array($value) && array_intersect_key(array_flip($keysOfInterest), $value) !== []
+=======
+                return is_array($value) && array_intersect_key(self::SERVICE_MANAGER_KEYS_OF_INTEREST, $value) !== []
+>>>>>>> ThomasN
                     ? [$this, 'replaceDependencyConfiguration']
                     : null;
             },
@@ -244,13 +266,33 @@ class ConfigPostProcessor
 
     private function replaceDependencyConfiguration(array $config)
     {
+<<<<<<< HEAD
         $aliases = isset($config['aliases']) ? $this->replaceDependencyAliases($config['aliases']) : [];
+=======
+        $aliases = isset($config['aliases']) && is_array($config['aliases'])
+            ? $this->replaceDependencyAliases($config['aliases'])
+            : [];
+
+>>>>>>> ThomasN
         if ($aliases) {
             $config['aliases'] = $aliases;
         }
 
         $config = $this->replaceDependencyInvokables($config);
         $config = $this->replaceDependencyFactories($config);
+<<<<<<< HEAD
+=======
+        $config = $this->replaceDependencyServices($config);
+
+        $keys = self::SERVICE_MANAGER_KEYS_OF_INTEREST;
+        foreach ($config as $key => $data) {
+            if (isset($keys[$key])) {
+                continue;
+            }
+
+            $config[$key] = is_array($data) ? $this->__invoke($data, [$key]) :  $data;
+        }
+>>>>>>> ThomasN
 
         return $config;
     }
@@ -267,6 +309,13 @@ class ConfigPostProcessor
     private function replaceDependencyAliases(array $aliases)
     {
         foreach ($aliases as $alias => $target) {
+<<<<<<< HEAD
+=======
+            if (! is_string($alias) || ! is_string($target)) {
+                continue;
+            }
+
+>>>>>>> ThomasN
             $newTarget = $this->replacements->replace($target);
             $newAlias  = $this->replacements->replace($alias);
 
@@ -307,11 +356,22 @@ class ConfigPostProcessor
      */
     private function replaceDependencyInvokables(array $config)
     {
+<<<<<<< HEAD
         if (empty($config['invokables'])) {
+=======
+        if (empty($config['invokables']) || ! is_array($config['invokables'])) {
+>>>>>>> ThomasN
             return $config;
         }
 
         foreach ($config['invokables'] as $alias => $target) {
+<<<<<<< HEAD
+=======
+            if (! is_string($alias)) {
+                continue;
+            }
+
+>>>>>>> ThomasN
             $newTarget = $this->replacements->replace($target);
             $newAlias  = $this->replacements->replace($alias);
 
@@ -345,11 +405,22 @@ class ConfigPostProcessor
 
     private function replaceDependencyFactories(array $config)
     {
+<<<<<<< HEAD
         if (empty($config['factories'])) {
+=======
+        if (empty($config['factories']) || ! is_array($config['factories'])) {
+>>>>>>> ThomasN
             return $config;
         }
 
         foreach ($config['factories'] as $service => $factory) {
+<<<<<<< HEAD
+=======
+            if (! is_string($service)) {
+                continue;
+            }
+
+>>>>>>> ThomasN
             $replacedService = $this->replacements->replace($service);
             $factory         = is_string($factory) ? $this->replacements->replace($factory) : $factory;
             $config['factories'][$replacedService] = $factory;
@@ -368,4 +439,39 @@ class ConfigPostProcessor
 
         return $config;
     }
+<<<<<<< HEAD
+=======
+
+    private function replaceDependencyServices(array $config)
+    {
+        if (empty($config['services']) || ! is_array($config['services'])) {
+            return $config;
+        }
+
+        foreach ($config['services'] as $service => $serviceInstance) {
+            if (! is_string($service)) {
+                continue;
+            }
+
+            $replacedService = $this->replacements->replace($service);
+            $serviceInstance = is_array($serviceInstance) ? $this->__invoke($serviceInstance) : $serviceInstance;
+
+            $config['services'][$replacedService] = $serviceInstance;
+
+            if ($service === $replacedService) {
+                continue;
+            }
+
+            unset($config['services'][$service]);
+
+            if (isset($config['aliases'][$service])) {
+                continue;
+            }
+
+            $config['aliases'][$service] = $replacedService;
+        }
+
+        return $config;
+    }
+>>>>>>> ThomasN
 }

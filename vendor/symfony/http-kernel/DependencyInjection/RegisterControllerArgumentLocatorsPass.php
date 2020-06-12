@@ -53,6 +53,16 @@ class RegisterControllerArgumentLocatorsPass implements CompilerPassInterface
         $parameterBag = $container->getParameterBag();
         $controllers = [];
 
+<<<<<<< HEAD
+=======
+        $publicAliases = [];
+        foreach ($container->getAliases() as $id => $alias) {
+            if ($alias->isPublic() && !$alias->isPrivate()) {
+                $publicAliases[(string) $alias][] = $id;
+            }
+        }
+
+>>>>>>> ThomasN
         foreach ($container->findTaggedServiceIds($this->controllerTag, true) as $id => $tags) {
             $def = $container->getDefinition($id);
             $def->setPublic(true);
@@ -170,15 +180,33 @@ class RegisterControllerArgumentLocatorsPass implements CompilerPassInterface
                             $message .= ' Did you forget to add a use statement?';
                         }
 
+<<<<<<< HEAD
                         throw new InvalidArgumentException($message);
                     }
 
                     $target = ltrim($target, '\\');
                     $args[$p->name] = $type ? new TypedReference($target, $type, $invalidBehavior, $p->name) : new Reference($target, $invalidBehavior);
+=======
+                        $container->register($erroredId = '.errored.'.$container->hash($message), $type)
+                            ->addError($message);
+
+                        $args[$p->name] = new Reference($erroredId, ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE);
+                    } else {
+                        $target = ltrim($target, '\\');
+                        $args[$p->name] = $type ? new TypedReference($target, $type, $invalidBehavior, $p->name) : new Reference($target, $invalidBehavior);
+                    }
+>>>>>>> ThomasN
                 }
                 // register the maps as a per-method service-locators
                 if ($args) {
                     $controllers[$id.'::'.$r->name] = ServiceLocatorTagPass::register($container, $args);
+<<<<<<< HEAD
+=======
+
+                    foreach ($publicAliases[$id] ?? [] as $alias) {
+                        $controllers[$alias.'::'.$r->name] = clone $controllers[$id.'::'.$r->name];
+                    }
+>>>>>>> ThomasN
                 }
             }
         }

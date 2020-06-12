@@ -409,7 +409,11 @@ class XmlEncoder implements EncoderInterface, DecoderInterface, NormalizationAwa
 
         if (\is_object($data)) {
             if (null === $this->serializer) {
+<<<<<<< HEAD
                 throw new BadMethodCallException(sprintf('The serializer needs to be set to allow %s() to be used with object data.', __METHOD__));
+=======
+                throw new BadMethodCallException(sprintf('The serializer needs to be set to allow "%s()" to be used with object data.', __METHOD__));
+>>>>>>> ThomasN
             }
 
             $data = $this->serializer->normalize($data, $this->format, $this->context);
@@ -428,7 +432,11 @@ class XmlEncoder implements EncoderInterface, DecoderInterface, NormalizationAwa
             return $this->appendNode($parentNode, $data, 'data');
         }
 
+<<<<<<< HEAD
         throw new NotEncodableValueException(sprintf('An unexpected value could not be serialized: %s', !\is_resource($data) ? var_export($data, true) : sprintf('%s resource', get_resource_type($data))));
+=======
+        throw new NotEncodableValueException('An unexpected value could not be serialized: '.(!\is_resource($data) ? var_export($data, true) : sprintf('%s resource', get_resource_type($data))));
+>>>>>>> ThomasN
     }
 
     /**
@@ -475,7 +483,11 @@ class XmlEncoder implements EncoderInterface, DecoderInterface, NormalizationAwa
             $this->buildXml($node, $val);
         } elseif (\is_object($val)) {
             if (null === $this->serializer) {
+<<<<<<< HEAD
                 throw new BadMethodCallException(sprintf('The serializer needs to be set to allow %s() to be used with object data.', __METHOD__));
+=======
+                throw new BadMethodCallException(sprintf('The serializer needs to be set to allow "%s()" to be used with object data.', __METHOD__));
+>>>>>>> ThomasN
             }
 
             return $this->selectNodeType($node, $this->serializer->normalize($val, $this->format, $this->context));

@@ -30,6 +30,11 @@ class DefaultEntityListenerResolver implements EntityListenerResolver
 {
     /**
      * @var array Map to store entity listener instances.
+<<<<<<< HEAD
+=======
+     *
+     * @psalm-var array<class-string, object>
+>>>>>>> ThomasN
      */
     private $instances = [];
 

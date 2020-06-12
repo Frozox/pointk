@@ -10,6 +10,10 @@ CHANGELOG
 -----
 
  * support for passing a `null` value to `Filesystem::isAbsolutePath()` is deprecated and will be removed in 5.0
+<<<<<<< HEAD
+=======
+ * `tempnam()` now accepts a third argument `$suffix`.
+>>>>>>> ThomasN
 
 4.3.0
 -----

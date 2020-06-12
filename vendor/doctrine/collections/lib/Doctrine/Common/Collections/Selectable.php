@@ -14,6 +14,10 @@ namespace Doctrine\Common\Collections;
  * this API can implement efficient database access without having to ask the
  * EntityManager or Repositories.
  *
+<<<<<<< HEAD
+=======
+ * @phpstan-template TKey
+>>>>>>> ThomasN
  * @psalm-template TKey as array-key
  * @psalm-template T
  */

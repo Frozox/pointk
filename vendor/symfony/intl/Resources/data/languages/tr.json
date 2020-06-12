@@ -1,5 +1,8 @@
 {
+<<<<<<< HEAD
     "Version": "36",
+=======
+>>>>>>> ThomasN
     "Names": {
         "aa": "Afar",
         "ab": "Abhazca",
@@ -607,6 +610,10 @@
         "es_419": "Latin Amerika İspanyolcası",
         "es_ES": "Avrupa İspanyolcası",
         "es_MX": "Meksika İspanyolcası",
+<<<<<<< HEAD
+=======
+        "fa_AF": "Darice",
+>>>>>>> ThomasN
         "fr_CA": "Kanada Fransızcası",
         "fr_CH": "İsviçre Fransızcası",
         "nds_NL": "Aşağı Saksonca",
