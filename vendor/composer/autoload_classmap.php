@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\DefaultController' => $baseDir . '/src/Controller/DefaultController.php',
+    'App\\Entity\\dbcontroller' => $baseDir . '/src/Entity/dbcontroller.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'Collator' => $vendorDir . '/symfony/intl/Resources/stubs/Collator.php',
     'Doctrine\\Bundle\\DoctrineBundle\\Command\\CreateDatabaseDoctrineCommand' => $vendorDir . '/doctrine/doctrine-bundle/Command/CreateDatabaseDoctrineCommand.php',
@@ -1827,6 +1829,8 @@ return array(
     'Symfony\\Bridge\\PhpUnit\\Legacy\\CoverageListenerForV6' => $vendorDir . '/symfony/phpunit-bridge/Legacy/CoverageListenerForV6.php',
     'Symfony\\Bridge\\PhpUnit\\Legacy\\CoverageListenerForV7' => $vendorDir . '/symfony/phpunit-bridge/Legacy/CoverageListenerForV7.php',
     'Symfony\\Bridge\\PhpUnit\\Legacy\\CoverageListenerTrait' => $vendorDir . '/symfony/phpunit-bridge/Legacy/CoverageListenerTrait.php',
+    'Symfony\\Bridge\\PhpUnit\\Legacy\\ExpectDeprecationTraitBeforeV8_4' => $vendorDir . '/symfony/phpunit-bridge/Legacy/ExpectDeprecationTraitBeforeV8_4.php',
+    'Symfony\\Bridge\\PhpUnit\\Legacy\\ExpectDeprecationTraitForV8_4' => $vendorDir . '/symfony/phpunit-bridge/Legacy/ExpectDeprecationTraitForV8_4.php',
     'Symfony\\Bridge\\PhpUnit\\Legacy\\PolyfillAssertTrait' => $vendorDir . '/symfony/phpunit-bridge/Legacy/PolyfillAssertTrait.php',
     'Symfony\\Bridge\\PhpUnit\\Legacy\\PolyfillTestCaseTrait' => $vendorDir . '/symfony/phpunit-bridge/Legacy/PolyfillTestCaseTrait.php',
     'Symfony\\Bridge\\PhpUnit\\Legacy\\SetUpTearDownTraitForV5' => $vendorDir . '/symfony/phpunit-bridge/Legacy/SetUpTearDownTraitForV5.php',
@@ -2071,6 +2075,7 @@ return array(
     'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\AddExpressionLanguageProvidersPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/AddExpressionLanguageProvidersPass.php',
     'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\AddSecurityVotersPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/AddSecurityVotersPass.php',
     'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\AddSessionDomainConstraintPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/AddSessionDomainConstraintPass.php',
+    'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterCsrfFeaturesPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterCsrfFeaturesPass.php',
     'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterCsrfTokenClearingLogoutHandlerPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterCsrfTokenClearingLogoutHandlerPass.php',
     'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterLdapLocatorPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterLdapLocatorPass.php',
     'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterTokenUsageTrackingPass' => $vendorDir . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterTokenUsageTrackingPass.php',

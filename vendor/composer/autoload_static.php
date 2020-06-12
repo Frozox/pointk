@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6
+class ComposerStaticInit3b5cfa370b2111740d99a9750d771da7
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -563,6 +563,8 @@ class ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6
     );
 
     public static $classMap = array (
+        'App\\Controller\\DefaultController' => __DIR__ . '/../..' . '/src/Controller/DefaultController.php',
+        'App\\Entity\\dbcontroller' => __DIR__ . '/../..' . '/src/Entity/dbcontroller.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\CreateDatabaseDoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/CreateDatabaseDoctrineCommand.php',
@@ -2384,6 +2386,8 @@ class ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6
         'Symfony\\Bridge\\PhpUnit\\Legacy\\CoverageListenerForV6' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/CoverageListenerForV6.php',
         'Symfony\\Bridge\\PhpUnit\\Legacy\\CoverageListenerForV7' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/CoverageListenerForV7.php',
         'Symfony\\Bridge\\PhpUnit\\Legacy\\CoverageListenerTrait' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/CoverageListenerTrait.php',
+        'Symfony\\Bridge\\PhpUnit\\Legacy\\ExpectDeprecationTraitBeforeV8_4' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/ExpectDeprecationTraitBeforeV8_4.php',
+        'Symfony\\Bridge\\PhpUnit\\Legacy\\ExpectDeprecationTraitForV8_4' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/ExpectDeprecationTraitForV8_4.php',
         'Symfony\\Bridge\\PhpUnit\\Legacy\\PolyfillAssertTrait' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/PolyfillAssertTrait.php',
         'Symfony\\Bridge\\PhpUnit\\Legacy\\PolyfillTestCaseTrait' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/PolyfillTestCaseTrait.php',
         'Symfony\\Bridge\\PhpUnit\\Legacy\\SetUpTearDownTraitForV5' => __DIR__ . '/..' . '/symfony/phpunit-bridge/Legacy/SetUpTearDownTraitForV5.php',
@@ -2628,6 +2632,7 @@ class ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6
         'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\AddExpressionLanguageProvidersPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/AddExpressionLanguageProvidersPass.php',
         'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\AddSecurityVotersPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/AddSecurityVotersPass.php',
         'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\AddSessionDomainConstraintPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/AddSessionDomainConstraintPass.php',
+        'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterCsrfFeaturesPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterCsrfFeaturesPass.php',
         'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterCsrfTokenClearingLogoutHandlerPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterCsrfTokenClearingLogoutHandlerPass.php',
         'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterLdapLocatorPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterLdapLocatorPass.php',
         'Symfony\\Bundle\\SecurityBundle\\DependencyInjection\\Compiler\\RegisterTokenUsageTrackingPass' => __DIR__ . '/..' . '/symfony/security-bundle/DependencyInjection/Compiler/RegisterTokenUsageTrackingPass.php',
@@ -5106,9 +5111,9 @@ class ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit29606cbc8ed42d193e57a4e87493f5e6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3b5cfa370b2111740d99a9750d771da7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3b5cfa370b2111740d99a9750d771da7::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3b5cfa370b2111740d99a9750d771da7::$classMap;
 
         }, null, ClassLoader::class);
     }
