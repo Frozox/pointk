@@ -4,31 +4,19 @@
 use App\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
-<<<<<<< HEAD
-use Symfony\Component\ErrorHandler\Debug;
-
-if (false === in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
-    echo 'Warning: The console should be invoked via the CLI version of PHP, not the '.\PHP_SAPI.' SAPI'.\PHP_EOL;
-=======
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 
 if (!in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
     echo 'Warning: The console should be invoked via the CLI version of PHP, not the '.PHP_SAPI.' SAPI'.PHP_EOL;
->>>>>>> ThomasN
 }
 
 set_time_limit(0);
 
 require dirname(__DIR__).'/vendor/autoload.php';
 
-<<<<<<< HEAD
-if (!class_exists(Application::class)) {
-    throw new RuntimeException('You need to add "symfony/framework-bundle" as a Composer dependency.');
-=======
 if (!class_exists(Application::class) || !class_exists(Dotenv::class)) {
     throw new LogicException('You need to add "symfony/framework-bundle" and "symfony/dotenv" as Composer dependencies.');
->>>>>>> ThomasN
 }
 
 $input = new ArgvInput();
@@ -40,11 +28,7 @@ if ($input->hasParameterOption('--no-debug', true)) {
     putenv('APP_DEBUG='.$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = '0');
 }
 
-<<<<<<< HEAD
-require dirname(__DIR__).'/config/bootstrap.php';
-=======
 (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
->>>>>>> ThomasN
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
