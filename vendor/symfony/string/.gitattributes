@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-=======
-/Resources/bin/update-data.php export-ignore
-/Resources/WcswidthDataGenerator.php export-ignore
->>>>>>> ThomasN
-/Tests export-ignore
-/phpunit.xml.dist export-ignore
-/.gitignore export-ignore
