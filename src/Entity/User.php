@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
@@ -25,6 +27,21 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $telephone;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $solde;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -34,6 +51,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="commande_user")
+     */
+    private $commandes;
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +87,42 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?int
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(int $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getSolde(): ?float
+    {
+        return $this->solde;
+    }
+
+    public function setSolde(float $solde): self
+    {
+        $this->solde = $solde;
+
+        return $this;
     }
 
     /**
@@ -111,5 +174,35 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setCommandeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getCommandeUser() === $this) {
+                $commande->setCommandeUser(null);
+            }
+        }
+
+        return $this;
     }
 }
