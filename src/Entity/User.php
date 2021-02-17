@@ -6,11 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Gregwar\CaptchaBundle\Type\CaptchaType;
+use Adamski\Symfony\PhoneNumberBundle\Model\PhoneNumber;
+use Adamski\Symfony\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="Cette email est déjà utilisée")
  */
 class User implements UserInterface
 {
@@ -32,7 +35,9 @@ class User implements UserInterface
     private $nom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var string
+     * @AssertPhoneNumber
+     * @ORM\Column(name="telephone", type="phone_number", nullable=true)
      */
     private $telephone;
 
@@ -53,6 +58,11 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $confirmationToken;
+
+    /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="commande_user")
      */
     private $commandes;
@@ -60,6 +70,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->confirmationToken = rtrim(strtr(base64_encode(random_bytes(150)), '+/', '-_'), '=');
+        $this->solde = 0;
     }
 
     public function getId(): ?int
@@ -89,6 +101,9 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getNom(): ?string
     {
         return $this->nom;
@@ -101,18 +116,24 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getTelephone(): ?int
+    /**
+     * @see UserInterface
+     */
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(PhoneNumber $telephone = null): self
     {
         $this->telephone = $telephone;
 
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getSolde(): ?float
     {
         return $this->solde;
@@ -155,6 +176,21 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getConfirmationToken(): ?string
+    {
+        return $this->confirmationToken;
+    }
+
+    public function setConfirmationToken(?string $confirmationToken): self
+    {
+        $this->confirmationToken = $confirmationToken;
 
         return $this;
     }
