@@ -6,11 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Gregwar\CaptchaBundle\Type\CaptchaType;
+use Adamski\Symfony\PhoneNumberBundle\Model\PhoneNumber;
+use Adamski\Symfony\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="Cette email est déjà utilisée")
  */
 class User implements UserInterface
 {
@@ -32,7 +35,9 @@ class User implements UserInterface
     private $nom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var string
+     * @AssertPhoneNumber
+     * @ORM\Column(name="telephone", type="phone_number", nullable=true)
      */
     private $telephone;
 
@@ -60,6 +65,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->solde = 0;
     }
 
     public function getId(): ?int
@@ -101,12 +107,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(PhoneNumber $telephone = null): self
     {
         $this->telephone = $telephone;
 

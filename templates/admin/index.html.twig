@@ -16,5 +16,14 @@
         <li>Your controller at <code><a href="{{ 'C:/Users/BLS/PhpstormProjects/pointk/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/BLS/PhpstormProjects/pointk/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
     </ul>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.nom) }}
+        {{ form_row(registrationForm.telephone) }}
+        {{ form_row(registrationForm.roles) }}
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+
 </div>
 {% endblock %}
