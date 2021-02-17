@@ -5,20 +5,18 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use function Sodium\randombytes_uniform;
 
 class AdminController extends AbstractController
 {
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer): Response
+    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
     {
         if(!$this->getUser()){
             return $this->redirectToRoute('login');
@@ -33,13 +31,11 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             $user->setRoles(
                 $form->get('roles')->getData()
             );
 
-            $randomPassword =  bin2hex(random_bytes(6));
+            $randomPassword =  rtrim(strtr(base64_encode(random_bytes(10)), '+/', '-_'), '=');
 
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -48,39 +44,47 @@ class AdminController extends AbstractController
                 )
             );
 
-            var_dump($randomPassword);
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            /*$email = (new Email())
-                ->from('pointk@geeps.centralesupelec.fr')
-                ->to($form->get('email')->getData())
-                ->subject('Nouveau compte Pointk')
-                ->text('Ceci est le contenu du mail et ele mdp: ' . $randomPassword)
-                ->html('<p>Et tu peux également le mettre en html<br>mdp:' . $randomPassword . '</p>');
-            $mailer->send($email);*/
+            $userId = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()])->getId();
 
-            // encode the plain password
-            /*$user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
+            $urlConfirmation = $this->getParameter('pointk.domain_name') . $this->generateUrl(
+                'confirm_account',
+                [
+                    'userId' => $userId,
+                    'token' => $user->getConfirmationToken()
+                ]
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email*/
-
-            //return $this->redirectToRoute('admin');
+            $this->SendMailToUser($mailer, $form, $randomPassword, $urlConfirmation);
         }
 
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    private function SendMailToUser(\Swift_Mailer $mailer, FormInterface $form, String $randomPassword, String $urlConfirmation){
+        $email = (new \Swift_Message('Bienvenu dans le Pointk ' . $form->get('nom')->getData()))
+            ->setFrom('pointk.geeps@gmail.com')
+            ->setTo($form->get('email')->getData())
+            ->setBody(
+                $this->renderView(
+                    'email/userConfirmationRegisterEmail.twig',
+                    [
+                        'token',
+                        'nom' => $form->get('nom')->getData(),
+                        'telephone' => $form->get('telephone')->getData(),
+                        'role' => $form->get('roles')->getData()[0],
+                        'password' => $randomPassword,
+                        'url_confirmation' => $urlConfirmation
+                    ]
+                ),
+                'text/html'
+            );
+        $mailer->send($email);
     }
 }

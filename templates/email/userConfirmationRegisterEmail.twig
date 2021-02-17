@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenu Dans le Pointk !{% endblock %}
+
+{% block body %}
+    <pre>Nom de compte: {{ nom }}</pre>
+    <pre>telephone: {{ telephone }}</pre>
+        {% if role == 'ROLE_ADMIN' %}
+            <pre>role: Administrateur</pre>
+        {% elseif role == 'ROLE_USER'%}
+            <pre>role: Utilisateur</pre>
+        {% endif %}
+    <pre>mot de passe temporaire: {{ password }}</pre>
+    <pre><a href="{{ url_confirmation }}">Confirmer la création du compte</a></pre>
+{% endblock %}

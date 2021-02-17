@@ -58,6 +58,11 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $confirmationToken;
+
+    /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="commande_user")
      */
     private $commandes;
@@ -65,6 +70,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->confirmationToken = rtrim(strtr(base64_encode(random_bytes(150)), '+/', '-_'), '=');
         $this->solde = 0;
     }
 
@@ -95,6 +101,9 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getNom(): ?string
     {
         return $this->nom;
@@ -107,6 +116,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getTelephone(): ?string
     {
         return $this->telephone;
@@ -119,6 +131,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getSolde(): ?float
     {
         return $this->solde;
@@ -161,6 +176,21 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getConfirmationToken(): ?string
+    {
+        return $this->confirmationToken;
+    }
+
+    public function setConfirmationToken(?string $confirmationToken): self
+    {
+        $this->confirmationToken = $confirmationToken;
 
         return $this;
     }
