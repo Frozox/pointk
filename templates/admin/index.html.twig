@@ -1,29 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="accordion" id="accordion_produit">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 class="card-title">Produits</h4><hr>
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item" id="heading_collapse_produit_create">
+                                    <button class="accordion-button nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_produit_create" aria-expanded="true" aria-controls="collapse_produit_create">Créer</button>
+                                </li>
+                                <li class="nav-item" id="heading_collapse_produit_list">
+                                    <button class="accordion-button collapsed nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_produit_list" aria-expanded="false" aria-controls="collapse_produit_list">Touts Les Produits</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="accordion-collapse collapse show" id="collapse_produit_create" aria-labelledby="heading_collapse_produit_create" data-bs-parent="#accordion_produit">
+                            <p>Créer un produit</p>
+                        </div>
+                        <div class="accordion-collapse collapse" id="collapse_produit_list" aria-labelledby="heading_collapse_produit_list" data-bs-parent="#accordion_produit">
+                            <p>Liste des produits</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="accordion" id="accordion_user">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 class="card-title">Comptes Utilisateur</h4><hr>
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item" id="heading_collapse_user_register">
+                                    <button class="accordion-button nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_user_register" aria-expanded="true" aria-controls="collapse_user_register">Créer</button>
+                                </li>
+                                <li class="nav-item" id="heading_collapse_user_search">
+                                    <button class="accordion-button collapsed nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_user_search" aria-expanded="false" aria-controls="collapse_user_search">Rechercher</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="accordion-collapse collapse show" id="collapse_user_register" aria-labelledby="heading_collapse_user_register" data-bs-parent="#accordion_user">
+                            <div class="card-body">
+                                {{ form_start(registrationForm) }}
+                                {{ form_row(registrationForm.email) }}
+                                {{ form_row(registrationForm.nom) }}
+                                {{ form_row(registrationForm.telephone) }}
+                                {{ form_row(registrationForm.roles) }}
+                                <hr><button class="btn btn-primary" type="submit">Créer Le Compte</button>
+                                {{ form_end(registrationForm) }}
+                            </div>
+                        </div>
+                        <div class="accordion-collapse collapse" id="collapse_user_search" aria-labelledby="heading_collapse_user_search" data-bs-parent="#accordion_user">
+                            <div class="card-body">
+                                <hr><button class="btn btn-primary" type="button">Editer Le Compte</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="accordion" id="accordion_commande">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 class="card-title">Commandes</h4><hr>
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item" id="heading_collapse_commandes_history">
+                                    <button class="accordion-button nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_commandes_history" aria-expanded="true" aria-controls="collapse_commandes_history">Historique Des Commandes</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="accordion-collapse collapse show" id="collapse_commandes_history" aria-labelledby="heading_collapse_commandes_history" data-bs-parent="#accordion_commande">
+                            <p>Historique des commandes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/BLS/PhpstormProjects/pointk/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/BLS/PhpstormProjects/pointk/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.nom) }}
-        {{ form_row(registrationForm.telephone) }}
-        {{ form_row(registrationForm.roles) }}
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-
-</div>
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}
