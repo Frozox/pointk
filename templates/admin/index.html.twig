@@ -3,45 +3,41 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="accordion" id="accordion_produit">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h4 class="card-title">Produits</h4><hr>
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item" id="heading_collapse_produit_create">
-                                    <button class="accordion-button nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_produit_create" aria-expanded="true" aria-controls="collapse_produit_create">Créer</button>
-                                </li>
-                                <li class="nav-item" id="heading_collapse_produit_list">
-                                    <button class="accordion-button collapsed nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_produit_list" aria-expanded="false" aria-controls="collapse_produit_list">Touts Les Produits</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="accordion-collapse collapse show" id="collapse_produit_create" aria-labelledby="heading_collapse_produit_create" data-bs-parent="#accordion_produit">
-                            <p>Créer un produit</p>
-                        </div>
-                        <div class="accordion-collapse collapse" id="collapse_produit_list" aria-labelledby="heading_collapse_produit_list" data-bs-parent="#accordion_produit">
-                            <p>Liste des produits</p>
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#product">Produits</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user">Utilisateurs</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#commande">Commandes</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="product" class="tab-pane fade show active">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#product-edit">Editer</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#product-create">Créer</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="product-edit" class="tab-pane fade show active">
+                                <h3>Liste des produits</h3>
+                            </div>
+                            <div id="product-create" class="tab-pane fade">
+                                <h3>Créer un produit</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="accordion" id="accordion_user">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h4 class="card-title">Comptes Utilisateur</h4><hr>
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item" id="heading_collapse_user_register">
-                                    <button class="accordion-button nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_user_register" aria-expanded="true" aria-controls="collapse_user_register">Créer</button>
-                                </li>
-                                <li class="nav-item" id="heading_collapse_user_search">
-                                    <button class="accordion-button collapsed nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_user_search" aria-expanded="false" aria-controls="collapse_user_search">Rechercher</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="accordion-collapse collapse show" id="collapse_user_register" aria-labelledby="heading_collapse_user_register" data-bs-parent="#accordion_user">
-                            <div class="card-body">
+                    <div id="user" class="tab-pane fade">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#user-edit">Editer</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user-create">Créer</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="user-edit" class="tab-pane fade show active">
+                                <h3>Liste des utilisateurs</h3>
+                            </div>
+                            <div id="user-create" class="tab-pane fade">
+                                <h3>Créer un utilisateur</h3>
                                 {{ form_start(registrationForm) }}
                                 {{ form_row(registrationForm.email) }}
                                 {{ form_row(registrationForm.nom) }}
@@ -51,28 +47,9 @@
                                 {{ form_end(registrationForm) }}
                             </div>
                         </div>
-                        <div class="accordion-collapse collapse" id="collapse_user_search" aria-labelledby="heading_collapse_user_search" data-bs-parent="#accordion_user">
-                            <div class="card-body">
-                                <hr><button class="btn btn-primary" type="button">Editer Le Compte</button>
-                            </div>
-                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="accordion" id="accordion_commande">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h4 class="card-title">Commandes</h4><hr>
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item" id="heading_collapse_commandes_history">
-                                    <button class="accordion-button nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_commandes_history" aria-expanded="true" aria-controls="collapse_commandes_history">Historique Des Commandes</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="accordion-collapse collapse show" id="collapse_commandes_history" aria-labelledby="heading_collapse_commandes_history" data-bs-parent="#accordion_commande">
-                            <p>Historique des commandes</p>
-                        </div>
+                    <div id="commande" class="tab-pane fade">
+                        <h3>Liste des commandes</h3>
                     </div>
                 </div>
             </div>
