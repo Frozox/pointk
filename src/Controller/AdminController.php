@@ -16,7 +16,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
+    public function addUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
     {
         if(!$this->getUser()){
             return $this->redirectToRoute('login');
@@ -62,7 +62,6 @@ class AdminController extends AbstractController
         }
 
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
             'registrationForm' => $form->createView(),
         ]);
     }
