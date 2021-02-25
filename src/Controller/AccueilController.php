@@ -17,8 +17,6 @@ class AccueilController extends AbstractController
             return $this->redirectToRoute('login');
         }
 
-        return $this->render('accueil/index.html.twig', [
-            'controller_name' => 'AccueilController',
-        ]);
+        return $this->render('accueil/index.html.twig');
     }
 }
