@@ -35,16 +35,19 @@
                         <div class="tab-content">
                             <div id="user-edit" class="tab-pane fade show active">
                                 <h3>Liste des utilisateurs</h3>
+                                <div id="user-list">
+                                    {% for user in users %}
+                                        {% if user != app.user() %}
+                                            <div>{{ user.email() }}
+                                                <span id="delete-{{ user.id() }}" class="btn btn-primary">Supprimer</span>
+                                                <span id="edit-{{ user.id() }}" class="btn btn-primary">Editer</span> <hr>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             </div>
                             <div id="user-create" class="tab-pane fade">
-                                <h3>Créer un utilisateur</h3>
-                                {{ form_start(registrationForm) }}
-                                {{ form_row(registrationForm.email) }}
-                                {{ form_row(registrationForm.nom) }}
-                                {{ form_row(registrationForm.telephone) }}
-                                {{ form_row(registrationForm.roles) }}
-                                <hr><button class="btn btn-primary" type="submit">Créer Le Compte</button>
-                                {{ form_end(registrationForm) }}
+                                {{ include('admin/ajax.adduser.form.html.twig') }}
                             </div>
                         </div>
                     </div>
@@ -59,4 +62,64 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            //AJAX pour formulaire de création utilisateur
+            $('#user-create-form').on('submit', function (event){
+                var form = $('#user-create-form');
+                event.preventDefault();
+                form.children().each((i, e) =>{
+                    $(form.find('[id*="-error"]')).empty();
+                });
+
+                $.ajax({
+                    method: "POST",
+                    url: "{{ path('adduser') }}",
+                    data: form.serialize(),
+                    success: function (data) {
+                        //Si le formulaire est valide
+                        if(data['code'] === 200){
+                            form[0].reset();
+                            $('#user-create-form-result').html('<div class="alert alert-success">L\'utilisateur a été créé</div>').hide();
+                            $('#user-create-form-result').fadeIn('slow').delay(5000).fadeOut('slow');
+                            //$('#user-list').append('<div>' + data['email'] + '<span id="delete-' + data['id'] + '" class="btn btn-primary">Supprimer</span><span id="edit-' + data['id'] + '" class="btn btn-primary">Editer</span><hr></div>');
+                        }
+                        //Si le formulaire est invalide
+                        else if(data['code'] === 400){
+                            for(var key in data['errors']){
+                                $(form.find('[id*="'+key+'-error"]')[0]).append('<div class="alert alert-danger" role="alert">' + data['errors'][key] + '</div>');
+                            }
+                        }
+                        event.stopPropagation();
+                    },
+                    //S'il y a une erreur de traitement
+                    error: function (data){
+                        console.log(data);
+                    }
+                });
+            });
+
+            //AJAX pour supression et edition d'utilisateurs
+            $('#user-list span').on('click', function (event){
+                var parent = this.parentElement;
+                var elemid = this.id;
+
+                if(/^delete-\d+$/.test(elemid)){
+                    var id = elemid.match(/\d+$/)[0];
+                    $.ajax({
+                        method: "POST",
+                        url: "{{ path('deleteuser', {'user': 'userid'}) }}".replace('userid', id),
+                        success: function (data) {
+                            if(data['code'] === 200){
+                                parent.remove();
+                            }
+                        },
+                    });
+                }
+                else if (/^edit-\d+$/.test(elemid)) {
+                    var id = elemid.match(/\d+$/)[0];
+                }
+            });
+        });
+    </script>
 {% endblock %}
