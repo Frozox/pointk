@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use function Sodium\add;
 
 /**
  * @Route("/admin")
@@ -39,10 +42,19 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Ajout de produits avec ajax (doit être admin pour ajouter)
+     * @Route("/addproduit", name="addproduit")
+     */
+    public function addProduit(Request $request)
+    {
+
+    }
+
+    /**
      * Ajout d'utilisateurs avec ajax (doit être admin pour ajouter)
      * @Route("/adduser", name="adduser")
      */
-    public function AddUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
+    public function addUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
     {
         if($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
@@ -78,7 +90,7 @@ class AdminController extends AbstractController
                         ]
                     );
 
-                    $this->SendMailToUser($mailer, $registrationForm, $randomPassword, $urlConfirmation);
+                    $this->sendMailToUser($mailer, $registrationForm, $randomPassword, $urlConfirmation);
 
                     return new JsonResponse([
                         'code' => 200,
@@ -100,14 +112,23 @@ class AdminController extends AbstractController
         return new JsonResponse([
             'code' => 403,
             'message' => "Unauthorized",
-        ], 403);
+        ]);
+    }
+
+    /**
+     * Suppression de produits avec ajax (doit être admin pour supprimer)
+     * @Route("/deleteproduit/{produit}", name="deleteproduit")
+     */
+    public function deleteProduit(Request $request, Produit $produit): Response
+    {
+
     }
 
     /**
      * Suppression d'utilisateurs avec ajax (doit être admin pour supprimer, ne peut pas se supprimer sois même)
      * @Route("/deleteuser/{user}", name="deleteuser")
      */
-    public function DeleteUser(Request $request, User $user): Response
+    public function deleteUser(Request $request, User $user): Response
     {
         if($this->getUser() && $this->isGranted('ROLE_ADMIN')){
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
@@ -128,18 +149,126 @@ class AdminController extends AbstractController
         return new JsonResponse([
             'code' => 403,
             'message' => "Unauthorized"
-        ], 403);
+        ]);
     }
 
-    public function RefreshUserList(Request $request): Response
+    /**
+     * Rafraichit la liste des produits avec ajax (doit être admin pour rafraichir)
+     * @Route("/refreshproduits", name="refreshproduits")
+     */
+    public function refreshProduitList(Request $request): Response
     {
-        //permet de raffraichir la liste d'utilisateur après l'ajout d'un nouvel utilisateur
+
+    }
+
+    /**
+     * Rafraichit la liste des utilisateurs avec ajax (doit être admin pour rafraichir)
+     * @Route("/refreshusers", name="refreshusers")
+     */
+    public function refreshUserList(Request $request): Response
+    {
+        if($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $users = $entityManager->getRepository(User::class)->findAll();
+                $content = '';
+
+                foreach ($users as $user){
+                    if($user != $this->getUser())
+                    {
+                        $id = $user->getId();
+                        $solde = null;
+                        $nom = $user->getNom();
+                        $email = $user->getEmail();
+                        $telephone = null;
+                        $role = $user->getRoles()[0];
+                        $badgeclass = null;
+                        $status = null;
+                        $buttons = null;
+
+                        if($user->getSolde() < 0){
+                            $solde = "table-danger";
+                        }
+                        elseif ($user->getSolde() == 0)
+                        {
+                            $solde = "table-warning";
+                        }
+                        else{
+                            $solde = "table-success";
+                        }
+
+                        if($user->getTelephone() == null){
+                            $telephone = "-";
+                        }
+                        else{
+                            $telephone = $user->getTelephone();
+                        }
+
+                        if($role == "ROLE_ADMIN"){
+                            $role = "Administrateur";
+                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-eye"></i></button></li>';
+                        }
+                        elseif ($role == "ROLE_USER"){
+                            $role = "Utilisateur";
+                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-pencil-square"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete"><i class="bi bi-trash"></i></button></li>';
+                        }
+
+                        if($user->getConfirmationToken() == null){
+                            $badgeclass = "badge-success";
+                            $status = "Confirmé";
+                        }
+                        else{
+                            $badgeclass = "badge-warning";
+                            $status = "En attente";
+                        }
+
+                        $content .= sprintf(
+                            '<tr id="user-%s" class="%s">
+                                        <td>%s</td>
+                                        <td><a href="mailto:%s">%s</a></td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>
+                                            <div class="badge %s">%s</div>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline-item m-0">
+                                                %s
+                                            </ul>
+                                        </td>
+                                    </tr>'
+                            , $id, $solde, $nom, $email, $email, $telephone, $role, $badgeclass, $status, $buttons
+                        );
+                    }
+                }
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'message' => "refresh user list",
+                    'content' => $content//'<tr id="user-44" class="table-warning"><td>Tom</td><td><a href="mailto:tom.cuillandre@universite-paris-saclay.fr">tom.cuillandre@universite-paris-saclay.fr</a></td><td>-</td><td>Utilisateur</td><td><div class="badge badge-warning">En attente</div></td><td><ul class="list-inline-item m-0"><li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-pencil-square"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete"><i class="bi bi-trash"></i></button></li></ul></td></tr>'
+                ]);
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
+    }
+
+    /**
+     * Rafraichit la liste des commandes avec ajax (doit être admin pour rafraichir)
+     * @Route("/refreshcommandes", name="refreshcommandes")
+     */
+    public function refreshCommandeList(Request $request): Response
+    {
+
     }
 
     /*
      * Récupère les erreurs d'un formulaire
      */
-    private function getErrorsFromForm(FormInterface $form)
+    private function getErrorsFromForm(FormInterface $form): array
     {
         $errors = array();
         foreach ($form->getErrors() as $error) {
@@ -158,7 +287,7 @@ class AdminController extends AbstractController
     /*
      * Envoie un mail à un utilisateur avec les informations de son compte
      */
-    private function SendMailToUser(\Swift_Mailer $mailer, FormInterface $form, String $randomPassword, String $urlConfirmation){
+    private function sendMailToUser(\Swift_Mailer $mailer, FormInterface $form, String $randomPassword, String $urlConfirmation){
         $email = (new \Swift_Message('Bienvenu dans le Pointk ' . $form->get('nom')->getData()))
             ->setFrom('pointk.geeps@gmail.com')
             ->setTo($form->get('email')->getData())

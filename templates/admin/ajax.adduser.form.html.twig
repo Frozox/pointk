@@ -1,12 +1,20 @@
-<h3>Créer un utilisateur</h3>
-{{ form_start(registrationForm, {'attr': {'id': 'user-create-form'}}) }}
-<div id="user-create-form-result"></div>
-<div id="user-create-form-email-error"></div>
-{{ form_row(registrationForm.email) }}
-<div id="user-create-form-nom-error"></div>
-{{ form_row(registrationForm.nom) }}
-<div id="user-create-form-telephone-error"></div>
-{{ form_row(registrationForm.telephone) }}
-{{ form_row(registrationForm.roles) }}
-<hr><button type="submit" class="btn btn-primary">Créer Le Compte</button>
-{{ form_end(registrationForm) }}
+<div class="card">
+    <div class="card-header">
+        <h3 class="mt-2">Créer un utilisateur</h3>
+    </div>
+    <div class="card-body">
+        {{ form_start(registrationForm, {'attr': {'id': 'user-create-form'}}) }}
+        <div id="user-create-form-result"></div>
+        <div id="user-create-form-email-error"></div>
+        {{ form_row(registrationForm.email) }}
+        <div id="user-create-form-nom-error"></div>
+        {{ form_row(registrationForm.nom) }}
+        <div id="user-create-form-telephone-error"></div>
+        {{ form_row(registrationForm.telephone) }}
+        {{ form_row(registrationForm.roles) }}
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Créer Le Compte</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
