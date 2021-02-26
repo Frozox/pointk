@@ -4,7 +4,6 @@ namespace App\Form;
 
 use Adamski\Symfony\PhoneNumberBundle\Form\PhoneNumberType;
 use App\Entity\User;
-use Doctrine\DBAL\Types\ArrayType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -30,9 +29,10 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Please enter a name',
                     ]),
                     new Length([
-                        'min' => 2,
-                        'max' => 30,
-                        'minMessage' => 'Your name should be at least {{ limit }} characters',
+                        'min' => 3,
+                        'max' => 20,
+                        'minMessage' => 'Le nom est trop court, il doit au minimum faire {{ limit }} caractères',
+                        'maxMessage' => 'Le nom est trop long, il doit au maximum faire {{ limit }} caractères',
                     ]),
                 ],
             ])

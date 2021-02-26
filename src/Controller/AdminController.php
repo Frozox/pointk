@@ -6,6 +6,7 @@ use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use function Sodium\add;
 
 /**
  * @Route("/admin")
@@ -110,7 +112,7 @@ class AdminController extends AbstractController
         return new JsonResponse([
             'code' => 403,
             'message' => "Unauthorized",
-        ], 403);
+        ]);
     }
 
     /**
@@ -147,7 +149,7 @@ class AdminController extends AbstractController
         return new JsonResponse([
             'code' => 403,
             'message' => "Unauthorized"
-        ], 403);
+        ]);
     }
 
     /**
@@ -165,7 +167,93 @@ class AdminController extends AbstractController
      */
     public function refreshUserList(Request $request): Response
     {
+        if($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $users = $entityManager->getRepository(User::class)->findAll();
+                $content = '';
 
+                foreach ($users as $user){
+                    if($user != $this->getUser())
+                    {
+                        $id = $user->getId();
+                        $solde = null;
+                        $nom = $user->getNom();
+                        $email = $user->getEmail();
+                        $telephone = null;
+                        $role = $user->getRoles()[0];
+                        $badgeclass = null;
+                        $status = null;
+                        $buttons = null;
+
+                        if($user->getSolde() < 0){
+                            $solde = "table-danger";
+                        }
+                        elseif ($user->getSolde() == 0)
+                        {
+                            $solde = "table-warning";
+                        }
+                        else{
+                            $solde = "table-success";
+                        }
+
+                        if($user->getTelephone() == null){
+                            $telephone = "-";
+                        }
+                        else{
+                            $telephone = $user->getTelephone();
+                        }
+
+                        if($role == "ROLE_ADMIN"){
+                            $role = "Administrateur";
+                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-eye"></i></button></li>';
+                        }
+                        elseif ($role == "ROLE_USER"){
+                            $role = "Utilisateur";
+                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-pencil-square"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete"><i class="bi bi-trash"></i></button></li>';
+                        }
+
+                        if($user->getConfirmationToken() == null){
+                            $badgeclass = "badge-success";
+                            $status = "Confirmé";
+                        }
+                        else{
+                            $badgeclass = "badge-warning";
+                            $status = "En attente";
+                        }
+
+                        $content .= sprintf(
+                            '<tr id="user-%s" class="%s">
+                                        <td>%s</td>
+                                        <td><a href="mailto:%s">%s</a></td>
+                                        <td>%s</td>
+                                        <td>%s</td>
+                                        <td>
+                                            <div class="badge %s">%s</div>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline-item m-0">
+                                                %s
+                                            </ul>
+                                        </td>
+                                    </tr>'
+                            , $id, $solde, $nom, $email, $email, $telephone, $role, $badgeclass, $status, $buttons
+                        );
+                    }
+                }
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'message' => "refresh user list",
+                    'content' => $content//'<tr id="user-44" class="table-warning"><td>Tom</td><td><a href="mailto:tom.cuillandre@universite-paris-saclay.fr">tom.cuillandre@universite-paris-saclay.fr</a></td><td>-</td><td>Utilisateur</td><td><div class="badge badge-warning">En attente</div></td><td><ul class="list-inline-item m-0"><li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-pencil-square"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete"><i class="bi bi-trash"></i></button></li></ul></td></tr>'
+                ]);
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
 
     /**
