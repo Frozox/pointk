@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
@@ -39,10 +40,19 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Ajout de produits avec ajax (doit être admin pour ajouter)
+     * @Route("/addproduit", name="addproduit")
+     */
+    public function addProduit(Request $request)
+    {
+
+    }
+
+    /**
      * Ajout d'utilisateurs avec ajax (doit être admin pour ajouter)
      * @Route("/adduser", name="adduser")
      */
-    public function AddUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
+    public function addUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
     {
         if($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
@@ -78,7 +88,7 @@ class AdminController extends AbstractController
                         ]
                     );
 
-                    $this->SendMailToUser($mailer, $registrationForm, $randomPassword, $urlConfirmation);
+                    $this->sendMailToUser($mailer, $registrationForm, $randomPassword, $urlConfirmation);
 
                     return new JsonResponse([
                         'code' => 200,
@@ -104,10 +114,19 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Suppression de produits avec ajax (doit être admin pour supprimer)
+     * @Route("/deleteproduit/{produit}", name="deleteproduit")
+     */
+    public function deleteProduit(Request $request, Produit $produit): Response
+    {
+
+    }
+
+    /**
      * Suppression d'utilisateurs avec ajax (doit être admin pour supprimer, ne peut pas se supprimer sois même)
      * @Route("/deleteuser/{user}", name="deleteuser")
      */
-    public function DeleteUser(Request $request, User $user): Response
+    public function deleteUser(Request $request, User $user): Response
     {
         if($this->getUser() && $this->isGranted('ROLE_ADMIN')){
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
@@ -131,15 +150,37 @@ class AdminController extends AbstractController
         ], 403);
     }
 
-    public function RefreshUserList(Request $request): Response
+    /**
+     * Rafraichit la liste des produits avec ajax (doit être admin pour rafraichir)
+     * @Route("/refreshproduits", name="refreshproduits")
+     */
+    public function refreshProduitList(Request $request): Response
     {
-        //permet de raffraichir la liste d'utilisateur après l'ajout d'un nouvel utilisateur
+
+    }
+
+    /**
+     * Rafraichit la liste des utilisateurs avec ajax (doit être admin pour rafraichir)
+     * @Route("/refreshusers", name="refreshusers")
+     */
+    public function refreshUserList(Request $request): Response
+    {
+
+    }
+
+    /**
+     * Rafraichit la liste des commandes avec ajax (doit être admin pour rafraichir)
+     * @Route("/refreshcommandes", name="refreshcommandes")
+     */
+    public function refreshCommandeList(Request $request): Response
+    {
+
     }
 
     /*
      * Récupère les erreurs d'un formulaire
      */
-    private function getErrorsFromForm(FormInterface $form)
+    private function getErrorsFromForm(FormInterface $form): array
     {
         $errors = array();
         foreach ($form->getErrors() as $error) {
@@ -158,7 +199,7 @@ class AdminController extends AbstractController
     /*
      * Envoie un mail à un utilisateur avec les informations de son compte
      */
-    private function SendMailToUser(\Swift_Mailer $mailer, FormInterface $form, String $randomPassword, String $urlConfirmation){
+    private function sendMailToUser(\Swift_Mailer $mailer, FormInterface $form, String $randomPassword, String $urlConfirmation){
         $email = (new \Swift_Message('Bienvenu dans le Pointk ' . $form->get('nom')->getData()))
             ->setFrom('pointk.geeps@gmail.com')
             ->setTo($form->get('email')->getData())
