@@ -7,6 +7,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -50,6 +51,12 @@ class RegistrationFormType extends AbstractType
                     'Administrateur' => 'ROLE_ADMIN',
                 ],
             ])
+            ->add('date_fin', DateType::class, [
+                'label' => 'Date d\'expiration du compte',
+                'required' => false,
+                'invalid_message' => 'La date est invalide',
+            ])
+
             ->get('roles')
             ->addModelTransformer(new CallbackTransformer(
                 function ($rolesArray) {
