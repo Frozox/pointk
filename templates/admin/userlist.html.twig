@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" >
     <div class="card-header">
         <h3 class="mt-2">Liste des utilisateurs</h3>
     </div>
@@ -13,6 +13,9 @@
                     <th scope="col">Téléphone</th>
                     <th scope="col">Rôle</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Solde</th>
+                    <th scope="col">Création</th>
+                    <th scope="col">Expération</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -24,25 +27,16 @@
                             {% else %}class="table-success"{% endif %}>
                             <td>{{ user.nom() }}</td>
                             <td><a href="mailto:{{ user.email() }}">{{ user.email() }}</a></td>
-                            {% if user.telephone() is not none %}
-                                <td>{{ user.telephone() }}</td>
-                            {% else %}
-                                <td>-</td>
-                            {% endif %}
+                            <td>{{ user.telephone() is empty ? "-" : user.telephone() }}</td>
                             {% if user.roles()[0] == "ROLE_ADMIN" %}
                                 <td>Administrateur</td>
                             {% elseif user.roles()[0] == "ROLE_USER" %}
                                 <td>Utilisateur</td>
                             {% endif %}
-                            {% if user.confirmationToken is null %}
-                                <td>
-                                    <div class="badge badge-success">Confirmé</div>
-                                </td>
-                            {% else %}
-                                <td>
-                                    <div class="badge badge-warning">En attente</div>
-                                </td>
-                            {% endif %}
+                            <td>{{ user.confirmationToken() is empty ? '<div class="badge badge-success">Confirmé</div>' : '<div class="badge badge-warning">En attente</div>' }}</td>
+                            <td>{{ user.solde() }}</td>
+                            <td>{{ user.dateCrea()|date("m/d/Y") }}</td>
+                            <td>{{ user.dateFin() is empty ? "-" : user.dateFin()|date("m/d/Y") }}</td>
                             <td>
                                 <ul class="list-inline-item m-0">
                                     {% if user.roles()[0] == "ROLE_ADMIN" %}
@@ -58,7 +52,8 @@
                                                     name="edit-user" data-original-title="Edit">
                                                 <i class="far fa-edit"></i>
                                             </button>
-                                        </li><li class="list-inline-item">
+                                        </li>
+                                        <li class="list-inline-item">
                                             <button class="btn btn-danger btn-sm rounded-0" type="button"
                                                     name="delete-user" data-original-title="Delete">
                                                 <i class="far fa-trash-alt"></i>
