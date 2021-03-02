@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //AJAX pour formulaire de création utilisateur
-    $('#user-create-form').on('submit', function (event){
+    $(document).on('submit', '#user-create-form', function (event){
 
         event.preventDefault();
 
@@ -10,9 +10,12 @@ $(document).ready(function() {
             $(form.find('[id*="-error"]')).empty();
         });
 
+        $('#submit-form-user').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
         $.ajax({
             method: "POST",
             url: addUserUrl,
+            async: false,
             data: form.serialize(),
             success: function (data) {
                 //Si le formulaire est valide
@@ -29,16 +32,30 @@ $(document).ready(function() {
                     }
                     event.stopPropagation();
                 }
+
+                $('#submit-form-user').children('i').remove();
             },
             //S'il y a une erreur de traitement
             error: function (data){
+                $('#submit-form-user').children('i').remove();
                 event.stopPropagation();
             }
         });
     });
 
-    //AJAX pour supression et edition d'utilisateurs
-    $('#user-list tbody').children('tr').children('td').children('ul').children('li').children('button[name*="delete"]').on('click', function (event){
+    //AJAX pour édition d'utilisateurs
+    $(document).on('click', 'button[name*="edit-user"]', function(event){
+      
+        event.preventDefault();
+
+        var user = $(this).parent().parent().parent().parent();
+        var id = user.attr('id').toString().match(/\d+$/)[0];
+
+        window.confirm("sometext");
+    });
+
+    //AJAX pour supression d'utilisateurs
+    $(document).on('click', 'button[name*="delete-user"]', function (event){
 
         event.preventDefault();
 
@@ -48,6 +65,7 @@ $(document).ready(function() {
         $.ajax({
             method: "POST",
             url: deleteUserUrl.replace('userid', id),
+            async: false,
             success: function (data) {
                 if(data['code'] === 200){
                     user.remove();
@@ -61,23 +79,27 @@ $(document).ready(function() {
     });
 
     //AJAX rafraichit la liste des utilisateurs
-    $('#refresh-user-list').on('click', function (event){
+    $(document).on('click', '#refresh-user-list', function (event){
 
         event.preventDefault();
 
         var userlist = $('#user-list').children('tbody');
+        $('#refresh-user-list').append(' <i class="fas fa-sync-alt fa-spin"></i>');
 
         $.ajax({
            method: "POST",
            url: refreshUserList,
+           async: false,
            success: function (data){
                if(data['code'] === 200){
                    userlist.empty();
                    userlist.append(data['content'])
+                   $('#refresh-user-list').children('i').remove();
                }
                event.stopPropagation();
            },
            error: function (data){
+               $('#refresh-user-list').children('i').remove();
                event.stopPropagation();
            }
         });

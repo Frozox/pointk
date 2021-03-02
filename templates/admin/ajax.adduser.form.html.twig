@@ -12,9 +12,11 @@
         <div id="user-create-form-telephone-error"></div>
         {{ form_row(registrationForm.telephone) }}
         {{ form_row(registrationForm.roles) }}
+        <div id="user-create-form-date_fin-error"></div>
+        {{ form_row(registrationForm.date_fin) }}
     </div>
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Créer Le Compte</button>
+        <button id="submit-form-user" type="submit" class="btn btn-primary">Créer Le Compte</button>
         {{ form_end(registrationForm) }}
     </div>
 </div>

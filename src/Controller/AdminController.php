@@ -206,11 +206,11 @@ class AdminController extends AbstractController
 
                         if($role == "ROLE_ADMIN"){
                             $role = "Administrateur";
-                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-eye"></i></button></li>';
+                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit-user" data-original-title="Edit"><i class="far fa-eye"></i></button></li>';
                         }
                         elseif ($role == "ROLE_USER"){
                             $role = "Utilisateur";
-                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-pencil-square"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete"><i class="bi bi-trash"></i></button></li>';
+                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit-user" data-original-title="Edit"><i class="far fa-edit"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete-user" data-original-title="Delete"><i class="far fa-trash-alt"></i></button></li>';
                         }
 
                         if($user->getConfirmationToken() == null){
@@ -222,23 +222,7 @@ class AdminController extends AbstractController
                             $status = "En attente";
                         }
 
-                        $content .= sprintf(
-                            '<tr id="user-%s" class="%s">
-                                        <td>%s</td>
-                                        <td><a href="mailto:%s">%s</a></td>
-                                        <td>%s</td>
-                                        <td>%s</td>
-                                        <td>
-                                            <div class="badge %s">%s</div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline-item m-0">
-                                                %s
-                                            </ul>
-                                        </td>
-                                    </tr>'
-                            , $id, $solde, $nom, $email, $email, $telephone, $role, $badgeclass, $status, $buttons
-                        );
+                        $content .= sprintf('<tr id="user-%s" class="%s"><td>%s</td><td><a href="mailto:%s">%s</a></td><td>%s</td><td>%s</td><td><div class="badge %s">%s</div></td><td><ul class="list-inline-item m-0">%s</ul></td></tr>', $id, $solde, $nom, $email, $email, $telephone, $role, $badgeclass, $status, $buttons);
                     }
                 }
 

@@ -25,7 +25,7 @@ class AccountConfirmationController extends AbstractController{
                     $user->setConfirmationToken(null);
 
                     $entityManager->persist($user);
-                    $entityManager->flush();;
+                    $entityManager->flush();
 
                     return $this->redirectToRoute('login');
                 }

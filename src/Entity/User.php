@@ -63,6 +63,16 @@ class User implements UserInterface
     private $confirmationToken;
 
     /**
+     * @ORM\Column(type="date")
+     */
+    private $date_crea;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date_fin;
+
+    /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="commande_user")
      */
     private $commandes;
@@ -72,6 +82,7 @@ class User implements UserInterface
         $this->commandes = new ArrayCollection();
         $this->confirmationToken = rtrim(strtr(base64_encode(random_bytes(150)), '+/', '-_'), '=');
         $this->solde = 0;
+        $this->date_crea = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -191,6 +202,30 @@ class User implements UserInterface
     public function setConfirmationToken(?string $confirmationToken): self
     {
         $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
+
+    public function getDateCrea(): ?\DateTimeInterface
+    {
+        return $this->date_crea;
+    }
+
+    public function setDateCrea(\DateTimeInterface $date_crea): self
+    {
+        $this->date_crea = $date_crea;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->date_fin;
+    }
+
+    public function setDateFin(?\DateTimeInterface $date_fin): self
+    {
+        $this->date_fin = $date_fin;
 
         return $this;
     }
