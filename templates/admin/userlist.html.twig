@@ -19,7 +19,9 @@
                 <tbody class="text-truncate">
                 {% for user in users %}
                     {% if user != app.user() %}
-                        <tr id="user-{{ user.id() }}" {% if user.solde() < 0 %}class="table-danger"{% elseif user.solde() == 0 %}class="table-warning"{% else %}class="table-success"{% endif %}>
+                        <tr id="user-{{ user.id() }}" {% if user.solde() < 0 %}class="table-danger"
+                            {% elseif user.solde() == 0 %}class="table-warning"
+                            {% else %}class="table-success"{% endif %}>
                             <td>{{ user.nom() }}</td>
                             <td><a href="mailto:{{ user.email() }}">{{ user.email() }}</a></td>
                             {% if user.telephone() is not none %}
@@ -33,27 +35,33 @@
                                 <td>Utilisateur</td>
                             {% endif %}
                             {% if user.confirmationToken is null %}
-                                <td><div class="badge badge-success">Confirmé</div></td>
+                                <td>
+                                    <div class="badge badge-success">Confirmé</div>
+                                </td>
                             {% else %}
-                                <td><div class="badge badge-warning">En attente</div></td>
+                                <td>
+                                    <div class="badge badge-warning">En attente</div>
+                                </td>
                             {% endif %}
                             <td>
                                 <ul class="list-inline-item m-0">
                                     {% if user.roles()[0] == "ROLE_ADMIN" %}
                                         <li class="list-inline-item">
-                                            <button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit">
-                                                <i class="bi bi-eye"></i>
+                                            <button class="btn btn-success btn-sm rounded-0" type="button"
+                                                    name="edit-user" data-original-title="Edit">
+                                                <i class="far fa-eye"></i>
                                             </button>
                                         </li>
                                     {% else %}
                                         <li class="list-inline-item">
-                                            <button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit">
-                                                <i class="bi bi-pencil-square"></i>
+                                            <button class="btn btn-success btn-sm rounded-0" type="button"
+                                                    name="edit-user" data-original-title="Edit">
+                                                <i class="far fa-edit"></i>
                                             </button>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete">
-                                                <i class="bi bi-trash"></i>
+                                        </li><li class="list-inline-item">
+                                            <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                                    name="delete-user" data-original-title="Delete">
+                                                <i class="far fa-trash-alt"></i>
                                             </button>
                                         </li>
                                     {% endif %}
