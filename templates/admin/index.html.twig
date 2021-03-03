@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
+    {{ include('loading.html.twig') }}
+    <div class="container-fluid" style="display: none;">
         <div class="row">
             <div class="col-sm-12">
                 <ul class="nav nav-tabs mb-3">
@@ -11,35 +12,51 @@
                 </ul>
                 <div class="tab-content">
                     <div id="product" class="tab-pane fade show active">
-                        <ul class="nav nav-tabs">
+                        <ul class="nav nav-tabs mb-3">
                             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#product-edit">Editer</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#product-create">Créer</a></li>
                         </ul>
-                        <div class="tab-content">
-                            <div id="product-edit" class="tab-pane fade show active">
-                                {{ include('admin/produitlist.html.twig') }}
-                            </div>
-                            <div id="product-create" class="tab-pane fade">
-                                {{ include('admin/ajax.addproduit.form.html.twig') }}
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                                <div class="tab-content">
+                                    <div id="product-edit" class="tab-pane fade show active">
+                                        {{ include('admin/produit/list.html.twig') }}
+                                    </div>
+                                    <div id="product-create" class="tab-pane fade">
+                                        {{ include('admin/produit/form.html.twig') }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div id="user" class="tab-pane fade">
-                        <ul class="nav nav-tabs">
+                        <ul class="nav nav-tabs mb-3">
                             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#user-edit">Editer</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user-create">Créer</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user-create">Créer</a>
+                            </li>
                         </ul>
-                        <div class="tab-content">
-                            <div id="user-edit" class="tab-pane fade show active">
-                                {{ include('admin/userlist.html.twig') }}
-                            </div>
-                            <div id="user-create" class="tab-pane fade">
-                                {{ include('admin/ajax.adduser.form.html.twig') }}
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                                <div class="tab-content">
+                                    <div id="user-edit" class="tab-pane fade show active">
+                                        {{ include('admin/user/list.html.twig') }}
+                                    </div>
+                                    <div id="user-create" class="tab-pane fade">
+                                        {{ include('admin/user/form.html.twig') }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div id="commande" class="tab-pane fade">
-                        {{ include('admin/commandelist.html.twig') }}
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
+                                {{ include('admin/commande/list.html.twig') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

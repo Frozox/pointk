@@ -105,3 +105,13 @@ $(document).ready(function() {
         });
     });
 });
+
+$(document).ready(function (){
+    $('#refresh-produit-list').click();
+    $('#refresh-user-list').click();
+    $('#refresh-commande-list').click();
+    $('#loading').hide("puff").delay(10).queue(function(){
+        $('#loading').remove();
+        $('.container-fluid').show();
+    });
+});

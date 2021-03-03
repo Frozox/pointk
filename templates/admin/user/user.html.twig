@@ -1,0 +1,43 @@
+{% for user in users %}
+    <tr id="user-{{ user.id() }}" {% if user.solde() < 0 %}class="table-danger"
+        {% elseif user.solde() == 0 %}class="table-warning"
+        {% else %}class="table-success"{% endif %}>
+        <td>{{ user.nom() }}</td>
+        <td><a href="mailto:{{ user.email() }}">{{ user.email() }}</a></td>
+        <td>{{ user.telephone() is empty ? "-" : user.telephone() }}</td>
+        {% if user.roles()[0] == "ROLE_ADMIN" %}
+            <td>Administrateur</td>
+        {% elseif user.roles()[0] == "ROLE_USER" %}
+            <td>Utilisateur</td>
+        {% endif %}
+        <td>{{ user.confirmationToken() is empty ? '<div class="badge badge-success">Confirmé</div>' : '<div class="badge badge-warning">En attente</div>' }}</td>
+        <td>{{ user.solde() }}</td>
+        <td>{{ user.dateCrea()|date("m/d/Y") }}</td>
+        <td>{{ user.dateFin() is empty ? "-" : user.dateFin()|date("m/d/Y") }}</td>
+        <td>
+            <ul class="list-inline-item m-0">
+                {% if user.roles()[0] == "ROLE_ADMIN" %}
+                    <li class="list-inline-item">
+                        <button class="btn btn-success btn-sm rounded-0" type="button"
+                                name="edit-user" data-original-title="Edit">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </li>
+                {% else %}
+                    <li class="list-inline-item">
+                        <button class="btn btn-success btn-sm rounded-0" type="button"
+                                name="edit-user" data-original-title="Edit">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </li>
+                    <li class="list-inline-item">
+                        <button class="btn btn-danger btn-sm rounded-0" type="button"
+                                name="delete-user" data-original-title="Delete">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </li>
+                {% endif %}
+            </ul>
+        </td>
+    </tr>
+{% endfor %}
