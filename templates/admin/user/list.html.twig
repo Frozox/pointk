@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="mt-2">Liste des utilisateurs</h3>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="user-list" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="far fa-user ml-2"></i><span class="ml-1">Nom</span></th>
+                        <th scope="col"><i class="far fa-envelope"></i><span class="ml-1">Email</span></th>
+                        <th scope="col"><i class="fas fa-phone"></i><span class="ml-1">Téléphone</span></th>
+                        <th scope="col"><i class="fas fa-gavel"></i><span class="ml-1">Rôle</span></th>
+                        <th scope="col"><i class="far fa-question-circle"></i><span class="ml-1">Status</span></th>
+                        <th scope="col"><i class="fas fa-search-dollar"></i><span class="ml-1">Solde</span></th>
+                        <th scope="col"><i class="far fa-calendar-plus"></i><span class="ml-1">Création</span></th>
+                        <th scope="col"><i class="far fa-calendar-times"></i><span class="ml-1">Expiration</span></th>
+                        <th scope="col"><input type="search" id="user-list-search" class="form-control" placeholder="Rechercher"/></th>
+                    </tr>
+                </thead>
+                <tbody class="text-truncate"></tbody>
+            </table>
+        </div>
+        <div id="paginate-user"></div>
+    </div>
+</div>

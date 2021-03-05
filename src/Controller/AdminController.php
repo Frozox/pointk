@@ -6,7 +6,6 @@ use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use function Sodium\add;
 
 /**
  * @Route("/admin")
@@ -26,11 +24,11 @@ class AdminController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
-        if(!$this->getUser()){
+        if (!$this->getUser()) {
             return $this->redirectToRoute('login');
         }
 
-        if(!$this->isGranted('ROLE_ADMIN')){
+        if (!$this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('accueil');
         }
 
@@ -56,7 +54,7 @@ class AdminController extends AbstractController
      */
     public function addUser(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
     {
-        if($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
                 $user = new User();
                 $registrationForm = $this->createForm(RegistrationFormType::class, $user);
@@ -67,7 +65,7 @@ class AdminController extends AbstractController
                         $registrationForm->get('roles')->getData()
                     );
 
-                    $randomPassword =  rtrim(strtr(base64_encode(random_bytes(10)), '+/', '-_'), '=');
+                    $randomPassword = rtrim(strtr(base64_encode(random_bytes(10)), '+/', '-_'), '=');
 
                     $user->setPassword(
                         $passwordEncoder->encodePassword(
@@ -83,12 +81,12 @@ class AdminController extends AbstractController
                     $userId = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()])->getId();
 
                     $urlConfirmation = $this->getParameter('pointk.domain_name') . $this->generateUrl(
-                        'confirm_account',
-                        [
-                            'userId' => $userId,
-                            'token' => $user->getConfirmationToken()
-                        ]
-                    );
+                            'confirm_account',
+                            [
+                                'userId' => $userId,
+                                'token' => $user->getConfirmationToken()
+                            ]
+                        );
 
                     $this->sendMailToUser($mailer, $registrationForm, $randomPassword, $urlConfirmation);
 
@@ -98,8 +96,7 @@ class AdminController extends AbstractController
                         'id' => $userId,
                         'email' => $user->getEmail()
                     ]);
-                }
-                else if ($registrationForm->isSubmitted() && !$registrationForm->isValid()) {
+                } else if ($registrationForm->isSubmitted() && !$registrationForm->isValid()) {
                     return new JsonResponse([
                         'code' => 400,
                         'message' => "Formulaire invalide",
@@ -117,30 +114,84 @@ class AdminController extends AbstractController
 
     /**
      * Suppression de produits avec ajax (doit être admin pour supprimer)
-     * @Route("/deleteproduit/{produit}", name="deleteproduit")
+     * @Route("/deleteproduit", name="deleteproduit")
      */
-    public function deleteProduit(Request $request, Produit $produit): Response
+    public function deleteProduit(Request $request): Response
     {
 
     }
 
     /**
      * Suppression d'utilisateurs avec ajax (doit être admin pour supprimer, ne peut pas se supprimer sois même)
-     * @Route("/deleteuser/{user}", name="deleteuser")
+     * @Route("/deleteuser", name="deleteuser")
      */
-    public function deleteUser(Request $request, User $user): Response
+    public function deleteUser(Request $request): Response
     {
-        if($this->getUser() && $this->isGranted('ROLE_ADMIN')){
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-                if($user != $this->getUser()){
+                if ($request->get('user')) {
                     $entityManager = $this->getDoctrine()->getManager();
-                    $entityManager->remove($user);
-                    $entityManager->flush();
+                    $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $request->get('user')]);
+
+                    if ($user != $this->getUser()) {
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $entityManager->remove($user);
+                        $entityManager->flush();
+
+                        return new JsonResponse([
+                            'code' => 200,
+                            'id' => $user->getId(),
+                            'delete' => true
+                        ]);
+                    }
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
+    }
+
+    /**
+     * @Route("/findproduits", name="findproduits")
+     */
+    public function findProduitsToList(Request $request): Response
+    {
+
+    }
+
+    /**
+     * @Route("/findusers", name="findusers")
+     */
+    public function findUsersToList(Request $request): Response
+    {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                if ($request->get('page') != null) {
+                    $search = $request->get('search');
+                    $page = $request->get('page');
+                    $limit = $this->getParameter('itemperpage');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $users = $entityManager->getRepository(User::class)->findBySearch($search, $page, $limit);
+                    $nbusers = $entityManager->getRepository(User::class)->countBySearch($search);
+
+                    $content = $this->renderView('admin/user/user.html.twig', [
+                        'users' => $users,
+                    ]);
+
+                    $paginate = $this->renderView('paginate.html.twig', [
+                        'page' => $page,
+                        'nbusers' => $nbusers,
+                        'limit' => $limit
+                    ]);
 
                     return new JsonResponse([
                         'code' => 200,
-                        'id' => $user->getId(),
-                        'delete' => true
+                        'content' => $content,
+                        'paginate' => $paginate,
                     ]);
                 }
             }
@@ -153,98 +204,9 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Rafraichit la liste des produits avec ajax (doit être admin pour rafraichir)
-     * @Route("/refreshproduits", name="refreshproduits")
+     * @Route("/findcommandes", name="findcommandes")
      */
-    public function refreshProduitList(Request $request): Response
-    {
-
-    }
-
-    /**
-     * Rafraichit la liste des utilisateurs avec ajax (doit être admin pour rafraichir)
-     * @Route("/refreshusers", name="refreshusers")
-     */
-    public function refreshUserList(Request $request): Response
-    {
-        if($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
-            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $users = $entityManager->getRepository(User::class)->findAll();
-                $content = '';
-
-                foreach ($users as $user){
-                    if($user != $this->getUser())
-                    {
-                        $id = $user->getId();
-                        $solde = null;
-                        $nom = $user->getNom();
-                        $email = $user->getEmail();
-                        $telephone = null;
-                        $role = $user->getRoles()[0];
-                        $badgeclass = null;
-                        $status = null;
-                        $buttons = null;
-
-                        if($user->getSolde() < 0){
-                            $solde = "table-danger";
-                        }
-                        elseif ($user->getSolde() == 0)
-                        {
-                            $solde = "table-warning";
-                        }
-                        else{
-                            $solde = "table-success";
-                        }
-
-                        if($user->getTelephone() == null){
-                            $telephone = "-";
-                        }
-                        else{
-                            $telephone = $user->getTelephone();
-                        }
-
-                        if($role == "ROLE_ADMIN"){
-                            $role = "Administrateur";
-                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit-user" data-original-title="Edit"><i class="far fa-eye"></i></button></li>';
-                        }
-                        elseif ($role == "ROLE_USER"){
-                            $role = "Utilisateur";
-                            $buttons = '<li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit-user" data-original-title="Edit"><i class="far fa-edit"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete-user" data-original-title="Delete"><i class="far fa-trash-alt"></i></button></li>';
-                        }
-
-                        if($user->getConfirmationToken() == null){
-                            $badgeclass = "badge-success";
-                            $status = "Confirmé";
-                        }
-                        else{
-                            $badgeclass = "badge-warning";
-                            $status = "En attente";
-                        }
-
-                        $content .= sprintf('<tr id="user-%s" class="%s"><td>%s</td><td><a href="mailto:%s">%s</a></td><td>%s</td><td>%s</td><td><div class="badge %s">%s</div></td><td><ul class="list-inline-item m-0">%s</ul></td></tr>', $id, $solde, $nom, $email, $email, $telephone, $role, $badgeclass, $status, $buttons);
-                    }
-                }
-
-                return new JsonResponse([
-                    'code' => 200,
-                    'message' => "refresh user list",
-                    'content' => $content//'<tr id="user-44" class="table-warning"><td>Tom</td><td><a href="mailto:tom.cuillandre@universite-paris-saclay.fr">tom.cuillandre@universite-paris-saclay.fr</a></td><td>-</td><td>Utilisateur</td><td><div class="badge badge-warning">En attente</div></td><td><ul class="list-inline-item m-0"><li class="list-inline-item"><button class="btn btn-success btn-sm rounded-0" type="button" name="edit" data-original-title="Edit"><i class="bi bi-pencil-square"></i></button></li><li class="list-inline-item"><button class="btn btn-danger btn-sm rounded-0" type="button" name="delete" data-original-title="Delete"><i class="bi bi-trash"></i></button></li></ul></td></tr>'
-                ]);
-            }
-        }
-
-        return new JsonResponse([
-            'code' => 403,
-            'message' => "Unauthorized"
-        ]);
-    }
-
-    /**
-     * Rafraichit la liste des commandes avec ajax (doit être admin pour rafraichir)
-     * @Route("/refreshcommandes", name="refreshcommandes")
-     */
-    public function refreshCommandeList(Request $request): Response
+    public function findCommandesToList(Request $request): Response
     {
 
     }
@@ -271,22 +233,20 @@ class AdminController extends AbstractController
     /*
      * Envoie un mail à un utilisateur avec les informations de son compte
      */
-    private function sendMailToUser(\Swift_Mailer $mailer, FormInterface $form, String $randomPassword, String $urlConfirmation){
+    private function sendMailToUser(\Swift_Mailer $mailer, FormInterface $form, string $randomPassword, string $urlConfirmation)
+    {
         $email = (new \Swift_Message('Bienvenu dans le Pointk ' . $form->get('nom')->getData()))
             ->setFrom('pointk.geeps@gmail.com')
             ->setTo($form->get('email')->getData())
             ->setBody(
-                $this->renderView(
-                    'email/userConfirmationRegisterEmail.twig',
-                    [
-                        'token',
-                        'nom' => $form->get('nom')->getData(),
-                        'telephone' => $form->get('telephone')->getData(),
-                        'role' => $form->get('roles')->getData()[0],
-                        'password' => $randomPassword,
-                        'url_confirmation' => $urlConfirmation
-                    ]
-                ),
+                $this->renderView('email/userConfirmationRegisterEmail.twig', [
+                    'token',
+                    'nom' => $form->get('nom')->getData(),
+                    'telephone' => $form->get('telephone')->getData(),
+                    'role' => $form->get('roles')->getData()[0],
+                    'password' => $randomPassword,
+                    'url_confirmation' => $urlConfirmation
+                ]),
                 'text/html'
             );
         $mailer->send($email);
