@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -34,6 +35,66 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newEncodedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function findUserWithoutFilter($page){
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.id', 'DESC')
+            ->setFirstResult(10 * ($page - 1))
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function findBySearch($value, $page, $limit){
+        $builder = $this->createQueryBuilder('u')
+            ->orWhere("u.nom LIKE :val")
+            ->orWhere("u.email LIKE :val")
+            ->orWhere("u.telephone LIKE REPLACE(:val, ' ', '+')")
+            ->orWhere("REPLACE(REPLACE(u.roles, 'ROLE_ADMIN', 'administrateur'), 'ROLE_USER', 'utilisateur') LIKE :val")
+            ->orWhere("IFNULL(u.confirmationToken, 'confirmé') LIKE :val")
+            ->orWhere("REPLACE(u.confirmationToken, u.confirmationToken, 'en attente') LIKE :val")
+            ->orWhere("u.solde LIKE :val")
+            ->orWhere("DATE_FORMAT(u.date_crea, '%d-%m-%Y') LIKE :val")
+            ->orWhere("DATE_FORMAT(u.date_fin, '%d-%m-%Y') LIKE :val")
+            ->setParameter('val', "%".$value."%")
+            ->setFirstResult($limit * ($page - 1))
+            ->setMaxResults($limit);
+
+        if($value == null){
+            $result = $builder->orderBy('u.id', 'DESC')->getQuery()->getResult();
+        }
+        else{
+            $result = $builder->getQuery()->getResult();
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return int
+     */
+    public function countBySearch($value){
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->orWhere("u.nom LIKE :val")
+            ->orWhere("u.email LIKE :val")
+            ->orWhere("u.telephone LIKE REPLACE(:val, ' ', '+')")
+            ->orWhere("REPLACE(REPLACE(u.roles, 'ROLE_ADMIN', 'administrateur'), 'ROLE_USER', 'utilisateur') LIKE :val")
+            ->orWhere("IFNULL(u.confirmationToken, 'confirmé') LIKE :val")
+            ->orWhere("REPLACE(u.confirmationToken, u.confirmationToken, 'en attente') LIKE :val")
+            ->orWhere("u.solde LIKE :val")
+            ->orWhere("DATE_FORMAT(u.date_crea, '%d-%m-%Y') LIKE :val")
+            ->orWhere("DATE_FORMAT(u.date_fin, '%d-%m-%Y') LIKE :val")
+            ->setParameter('val', "%".$value."%")
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     // /**

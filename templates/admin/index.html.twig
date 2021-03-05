@@ -69,10 +69,10 @@
     <script>
         //Variables twig mise en js pour implémentation dans admin.js
         var addUserUrl = "{{ path('adduser') }}";
-        var deleteUserUrl = "{{ path('deleteuser', {'user': 'userid'}) }}";
-        var refreshProduitList = "{{ path('refreshproduits') }}";
-        var refreshUserList = "{{ path('refreshusers') }}";
-        var refreshCommandeList = "{{ path('refreshcommandes') }}";
+        var deleteUserUrl = "{{ path('deleteuser') }}";
+        var findProduitsToList = "{{ path('findproduits') }}";
+        var findUsersToList = "{{ path('findusers') }}";
+        var findCommandesToList = "{{ path('findcommandes') }}";
     </script>
     <script src="{{ asset('js/admin.js') }}"></script>
 {% endblock %}

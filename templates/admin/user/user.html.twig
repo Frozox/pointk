@@ -12,8 +12,8 @@
         {% endif %}
         <td>{{ user.confirmationToken() is empty ? '<div class="badge badge-success">Confirmé</div>' : '<div class="badge badge-warning">En attente</div>' }}</td>
         <td>{{ user.solde() }}</td>
-        <td>{{ user.dateCrea()|date("m/d/Y") }}</td>
-        <td>{{ user.dateFin() is empty ? "-" : user.dateFin()|date("m/d/Y") }}</td>
+        <td>{{ user.dateCrea()|date("d-m-Y") }}</td>
+        <td>{{ user.dateFin() is empty ? "-" : user.dateFin()|date("d-m-Y") }}</td>
         <td>
             <ul class="list-inline-item m-0">
                 {% if user.roles()[0] == "ROLE_ADMIN" %}
