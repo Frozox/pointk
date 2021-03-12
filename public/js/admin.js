@@ -36,7 +36,7 @@ $(document).ready(function () {
                     form[0].reset();
                     $('#user-create-form-result').html('<div class="alert alert-success">L\'utilisateur a été créé</div>').hide();
                     $('#user-create-form-result').fadeIn('slow').delay(5000).fadeOut('slow');
-                    $('#user-list-search').trigger('keyup');
+                    loadUserList();
                 }
                 //Si le formulaire est invalide
                 else if (data['code'] === 400) {
@@ -67,7 +67,7 @@ $(document).ready(function () {
         var user = $(this).parent().parent().parent().parent();
         var id = user.attr('id').toString().match(/\d+$/)[0];
 
-        window.confirm("sometext");
+        window.confirm("edit user-"+id);
     });
 
     //AJAX pour supression de produit
@@ -79,7 +79,7 @@ $(document).ready(function () {
     $(document).on('click', 'button[name*="delete-user"]', function () {
         var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
 
-        $.ajax({
+        /*$.ajax({
             method: "POST",
             url: deleteUserUrl,
             async: false,
@@ -88,19 +88,54 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data['code'] === 200) {
-                    $('#user-list-search').trigger('keyup');
+                    loadUserList();
+                }
+            }
+        });*/
+        window.confirm("delete user-"+id);
+    });
+
+    //AJAX load produit list
+    function loadProduitList(){
+
+    }
+
+    //AJAX load user list
+    function loadUserList(){
+        var userlist = $('#user-list').children('tbody');
+
+        $.ajax({
+            method: "POST",
+            url: findUsersToList,
+            success: function (data) {
+                if(data['code'] === 200){
+                    userlist.parent().DataTable().clear();
+                    userlist.parent().DataTable().destroy();
+                    userlist.append(data['content']);
+                    userlist.parent().DataTable({
+                        "bLengthChange": false,
+                        "bInfo": false,
+                        columnDefs: [
+                            { targets: 8, orderable: false }
+                        ]
+                    });
                 }
             }
         });
-    });
+    }
+
+    //AJAX load commande list
+    function loadCommandeList(){
+
+    }
 
     //AJAX pour afficher des produits selon les informations entrées dans la barre de recherche
-    $("#produit-list-search").on("keyup", function () {
+    /*$("#produit-list-search").on("keyup", function () {
 
-    });
+    });*/
 
     //AJAX pour afficher des utilisateurs selon les informations entrées dans la barre de recherche
-    $("#user-list-search").on("keyup", function () {
+    /*$("#user-list-search").on("keyup", function () {
         clearTimeout(user_search_timedout);
 
         user_search_timedout = setTimeout(() => {
@@ -127,15 +162,15 @@ $(document).ready(function () {
                 }
             });
         }, 750);
-    });
+    });*/
 
     //AJAX pour afficher des produits selon les informations entrées dans la barre de recherche
-    $("#commande-list-search").on("keyup", function () {
+    /*$("#commande-list-search").on("keyup", function () {
 
-    });
+    });*/
 
     //Changement de page avec la pagination
-    $(document).on('click', '#paginate-user ul li button', function (){
+    /*$(document).on('click', '#paginate-user ul li button', function (){
         clearTimeout(page_user_timeout)
 
         user_search_timedout = setTimeout(() => {
@@ -154,11 +189,11 @@ $(document).ready(function () {
                 $('#user-list-search').trigger('keyup');
             }
         },750);
-    });
+    });*/
 
-    $('#produit-list-search').trigger('keyup');
-    $('#user-list-search').trigger('keyup');
-    $('#commande-list-search').trigger('keyup');
+    loadProduitList();
+    loadUserList();
+    loadCommandeList();
     $(document).one('ajaxStop', function (){
         $('#loading').hide("puff").delay(10).queue(function () {
             $('#loading').remove();

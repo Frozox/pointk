@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
 /**
  * @Route("/admin")
  */
@@ -169,31 +168,17 @@ class AdminController extends AbstractController
     {
         if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-                if ($request->get('page') != null) {
-                    $search = $request->get('search');
-                    $page = $request->get('page');
-                    $limit = $this->getParameter('itemperpage');
+                $entityManager = $this->getDoctrine()->getManager();
+                $users = $entityManager->getRepository(User::class)->findAll();
 
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $users = $entityManager->getRepository(User::class)->findBySearch($search, $page, $limit);
-                    $nbusers = $entityManager->getRepository(User::class)->countBySearch($search);
+                $content = $this->renderView('admin/user/user.html.twig', [
+                    'users' => $users,
+                ]);
 
-                    $content = $this->renderView('admin/user/user.html.twig', [
-                        'users' => $users,
-                    ]);
-
-                    $paginate = $this->renderView('paginate.html.twig', [
-                        'page' => $page,
-                        'nbusers' => $nbusers,
-                        'limit' => $limit
-                    ]);
-
-                    return new JsonResponse([
-                        'code' => 200,
-                        'content' => $content,
-                        'paginate' => $paginate,
-                    ]);
-                }
+                return new JsonResponse([
+                    'code' => 200,
+                    'content' => $content
+                ]);
             }
         }
 
