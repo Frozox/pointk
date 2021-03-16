@@ -158,7 +158,10 @@ class AdminController extends AbstractController
      */
     public function findProduitsToList(Request $request): Response
     {
-
+        return new JsonResponse([
+            'code' => 200,
+            'content' => 'test produit'
+        ]);
     }
 
     /**
@@ -193,7 +196,10 @@ class AdminController extends AbstractController
      */
     public function findCommandesToList(Request $request): Response
     {
-
+        return new JsonResponse([
+            'code' => 200,
+            'content' => 'test commandes'
+        ]);
     }
 
     /*
