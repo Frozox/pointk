@@ -1,4 +1,3 @@
-$(document).ready(function () {
     var produit_search_timedout = null;
     var user_search_timedout = null;
     var commandes_search_timedout = null;
