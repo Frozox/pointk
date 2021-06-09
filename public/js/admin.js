@@ -1,52 +1,11 @@
 $(document).ready(function () {
-    var produit_search_timedout = null;
-    var user_search_timedout = null;
-    var commandes_search_timedout = null;
-    var page_produit = 1;
-    var page_user = 1;
-    var page_user_timeout = null;
-    var page_commande = 1;
+    var produitlist = $('#produit-list');
+    var userlist = $('#user-list');
+    var commandelist = $('#commande-list');
 
     //AJAX pour formulaire de création de produit
     $(document).on('submit', '#produit-create-form', function (event) {
-        event.preventDefault();
 
-        var form = $('#produit-create-form');
-
-        form.children().each((i, e) => {
-            $(form.find('[id*="-error"]')).empty();
-        });
-        console.log(form.serialize());
-        $.ajax({
-            method: "POST",
-            url: addProduitUrl,
-            async: false,
-            data: form.serialize(),
-            success: function (data) {
-                //Si le formulaire est valide
-                if (data['code'] === 200) {
-                    form[0].reset();
-                    $('#produit-create-form-result').html('<div class="alert alert-success">Le produit a été ajouté</div>').hide();
-                    $('#produit-create-form-result').fadeIn('slow').delay(5000).fadeOut('slow');
-                    loadProduitList();
-                }
-                //Si le formulaire est invalide
-                else if (data['code'] === 400) {
-                    for (var key in data['errors']) {
-                        $(form.find('[id*="' + key + '-error"]')[0]).append('<div class="alert alert-danger" role="alert">' + data['errors'][key] + '</div>');
-                    }
-
-                }
-
-                $('#submit-form-user').children('i').remove();
-            },
-            //S'il y a une erreur de traitement
-            error: function (data) {
-                $('#submit-form-user').children('i').remove();
-            }
-        });
-
-        event.stopPropagation();
     });
 
     //AJAX pour formulaire de création utilisateur
@@ -134,22 +93,36 @@ $(document).ready(function () {
 
     //AJAX load produit list
     function loadProduitList(){
-
+        $.ajax({
+            method: "POST",
+            url: findProduitsToList,
+            success: function (data) {
+                if(data['code'] === 200){
+                    produitlist.DataTable().clear();
+                    produitlist.DataTable().destroy();
+                    produitlist.children('tbody').append(data['content']);
+                    produitlist.DataTable({
+                        "autoWidth": true,
+                        "bLengthChange": false,
+                        "bInfo": false
+                    });
+                }
+            }
+        });
     }
 
     //AJAX load user list
     function loadUserList(){
-        var userlist = $('#user-list').children('tbody');
-
         $.ajax({
             method: "POST",
             url: findUsersToList,
             success: function (data) {
                 if(data['code'] === 200){
-                    userlist.parent().DataTable().clear();
-                    userlist.parent().DataTable().destroy();
-                    userlist.append(data['content']);
-                    userlist.parent().DataTable({
+                    userlist.DataTable().clear();
+                    userlist.DataTable().destroy();
+                    userlist.children('tbody').append(data['content']);
+                    userlist.DataTable({
+                        "autoWidth": true,
                         "bLengthChange": false,
                         "bInfo": false,
                         columnDefs: [
@@ -163,78 +136,37 @@ $(document).ready(function () {
 
     //AJAX load commande list
     function loadCommandeList(){
-
-    }
-
-    //AJAX pour afficher des produits selon les informations entrées dans la barre de recherche
-    /*$("#produit-list-search").on("keyup", function () {
-
-    });*/
-
-    //AJAX pour afficher des utilisateurs selon les informations entrées dans la barre de recherche
-    /*$("#user-list-search").on("keyup", function () {
-        clearTimeout(user_search_timedout);
-
-        user_search_timedout = setTimeout(() => {
-            var search = $(this).val().toLowerCase();
-            var userlist = $('#user-list').children('tbody');
-            var paginate = $('#paginate-user');
-
-            $.ajax({
-                method: "POST",
-                url: findUsersToList,
-                data: {
-                    search: search,
-                    page: page_user,
-                    sortby: '',
-                    orderby: 'ASC'
-                },
-                success: function (data) {
-                    if (data['code'] === 200) {
-                        userlist.empty();
-                        paginate.empty();
-                        userlist.append(data['content']);
-                        paginate.append(data['paginate']);
-                    }
+        $.ajax({
+            method: "POST",
+            url: findCommandesToList,
+            success: function (data) {
+                if(data['code'] === 200){
+                    commandelist.DataTable().clear();
+                    commandelist.DataTable().destroy();
+                    commandelist.children('tbody').append(data['content']);
+                    commandelist.DataTable({
+                        "autoWidth": true,
+                        "bLengthChange": false,
+                        "bInfo": false
+                    });
                 }
-            });
-        }, 750);
-    });*/
-
-    //AJAX pour afficher des produits selon les informations entrées dans la barre de recherche
-    /*$("#commande-list-search").on("keyup", function () {
-
-    });*/
-
-    //Changement de page avec la pagination
-    /*$(document).on('click', '#paginate-user ul li button', function (){
-        clearTimeout(page_user_timeout)
-
-        user_search_timedout = setTimeout(() => {
-            var value = $(this).attr('value')
-            var temp = page_user;
-
-            if (value === 'previous' && page_user > 1) {
-                page_user--;
-            } else if (value === 'after') {
-                page_user++;
-            } else {
-                page_user = value;
             }
-
-            if (value !== temp) {
-                $('#user-list-search').trigger('keyup');
-            }
-        },750);
-    });*/
+        });
+    }
 
     loadProduitList();
     loadUserList();
     loadCommandeList();
+
     $(document).one('ajaxStop', function (){
         $('#loading').hide("puff").delay(10).queue(function () {
             $('#loading').remove();
             $('.container-fluid').show();
+            produitlist.DataTable().columns.adjust().draw();
+            userlist.DataTable().columns.adjust().draw();
+            commandelist.DataTable().columns.adjust().draw();
+            $('#user').removeClass("show active");
+            $('#commande').removeClass("show active");
         });
     });
 });
