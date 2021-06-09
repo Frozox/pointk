@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Entity\User;
+use App\Form\ProduitType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +36,7 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'users' => $userRepository->findAll(),
             'registrationForm' => $this->createForm(RegistrationFormType::class, new User())->createView(),
+            'produitForm' => $this->createForm(ProduitType::class, new Produit())->createView(),
             //produitForm
         ]);
     }
@@ -42,9 +45,54 @@ class AdminController extends AbstractController
      * Ajout de produits avec ajax (doit être admin pour ajouter)
      * @Route("/addproduit", name="addproduit")
      */
-    public function addProduit(Request $request)
+    public function addProduit(Request $request): Response
     {
+        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
 
+            $produit = new Produit();
+            $produitForm = $this->createForm(ProduitType::class,$produit);
+            $produitForm->handleRequest($request);
+
+            if($produitForm->isSubmitted() && $produitForm->isValid()){
+
+                $imageFile = $produitForm->get('image')->getData();
+
+                if($imageFile){
+                    $newFilename = $produitForm->get('nom')->getData().'-'.uniqid().'.'.$imageFile->guessExtension();
+                    $filePath = 'images/produits/'. $newFilename;
+                    try {
+                        $imageFile->move(
+                            $this->getParameter('imagesProduits_directory'),
+                            $newFilename
+                        );
+                    }catch (FileException $e){
+                        throw $e;
+                    }
+                    $produit->setImage($filePath);
+                }
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($produit);
+                $entityManager->flush();
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'message' => "Formulaire valide"
+                ]);
+            }
+            else if ($produitForm->isSubmitted() && !$produitForm->isValid()) {
+                return new JsonResponse([
+                    'code' => 400,
+                    'message' => "Formulaire invalide",
+                    'id' => $produit->getId(),
+                    'errors' => $this->getErrorsFromForm($produitForm)
+                ]);
+            }
+        }
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized",
+        ]);
     }
 
     /**

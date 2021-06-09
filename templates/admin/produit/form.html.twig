@@ -1,8 +1,19 @@
 <div class="card">
     <div class="card-header">
-        <h3 class="mt-2">Créer un produit</h3>
+        <h3 class="mt-2">Ajouter un Produit</h3>
     </div>
     <div class="card-body">
-
+        {{ form_start(produitForm, {'attr': {'id': 'produit-create-form'}}) }}
+        <div id="produit-create-form-result"></div>
+        <div id="produit-create-form-nom-error"></div>
+        {{ form_row(produitForm.nom) }}
+        <div id="produit-create-form-prix-error"></div>
+        {{ form_row(produitForm.prix) }}
+        <div id="produit-create-form-image-error"></div>
+        {{ form_row(produitForm.image) }}
+    </div>
+    <div class="card-footer">
+        <button id="submit-form-produit" type="submit" class="btn btn-primary">Ajouter le produit</button>
+        {{ form_end(produitForm) }}
     </div>
 </div>
