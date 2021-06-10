@@ -2,15 +2,15 @@
 {% block body %}
     <div class="container-md">
     {% for produit in produits %}
-        <div class="row justify-content-md-center rounded-lg" style="margin-bottom: 10px; background-color: white; padding: 10px;">
+        <div class="row d-flex justify-content-around rounded-lg" style="margin-bottom: 10px; background-color: white; padding: 10px;">
             <div class="col text-left">
                 {% if produit.image != NULL %}
                 <img style="background-color: whitesmoke; padding: 20px;" class="rounded-lg" src="{{ asset(produit.image) }}">
                 {% else %}
                 <img style="background-color: whitesmoke; padding: 20px;" class="rounded-lg" src="{{ asset('images/placeholder/coffee.png') }}">
                 {% endif %}
-                <div class="row" style="display: inline-block; margin-left: 10px;">
-                    <h3>{{ produit.nom }} x2</h3>
+                <div class="row description-product-list">
+                    <p class="title-poduct-list">{{ produit.nom }}</p>
                     <div class="row">
                         <div class="col">
                             <p>prix : {{ produit.prix }} <img src="{{ asset('images/placeholder/chestnut.png') }}"></p>
@@ -19,9 +19,9 @@
                 </div>
             </div>
             <div class="col text-right" style="margin-top: 20px;">
-                <button type="button" style="font-size: 25px; margin: 5px;" class="btn btn-light" disabled> - </button>
-                <p style="display: inline-block;" id="qty">0</p>
-                <button type="button" style="font-size: 25px; margin: 5px;" class="btn btn-light"> + </button>
+                <button type="button" style="font-size: 25px; margin: 5px;" data-id="{{ produit.id }}" class="btn btn-light btn-moins-produit" disabled> - </button>
+                <p style="display: inline-block;" class="quantity-{{ produit.id }}">0</p>
+                <button type="button" style="font-size: 25px; margin: 5px;" data-id="{{ produit.id }}" class="btn btn-light btn-plus-produit"> + </button>
             </div>
         </div>
     {% endfor %}

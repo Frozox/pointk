@@ -1,7 +1,7 @@
 <nav class="navbar sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Point K</a>
+    <a class="navbar-brand" href="{{ path('accueil') }}">Point K</a>
     <span class="navbar-text">
-        <span>Solde : 10</span>
-        <span>deconnexion</span>
+        <span class="solde-info">solde : {{ app.user.solde }} <img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
+        <button type="button" class="btn btn-danger"><a href="{{ path('logout') }}">Deconnexion</a></button>
     </span>
 </nav>
