@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\ProduitFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -172,6 +174,22 @@ class AdminController extends AbstractController
                     $entityManager = $this->getDoctrine()->getManager();
                     $produit = $entityManager->getRepository(Produit::class)->findOneBy(['id' => $request->get('produit')]);
 
+                    try{
+                        $filesystem = new Filesystem();
+                        $filesystem->remove('%kernel.project_dir%' . $produit->getImage());
+                    } catch (FileException $e) {
+                        throw $e;
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    $filesystem = new Filesystem();
+
+                    try{
+                        $filesystem->remove('../public' . $produit->getImage());
+                    }catch (FileException $e){
+                        throw $e;
+                    }
+    
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->remove($produit);
                     $entityManager->flush();
@@ -282,9 +300,25 @@ class AdminController extends AbstractController
      */
     public function findCommandesToList(Request $request): Response
     {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $commandes = $entityManager->getRepository(Commande::class)->findAll();
+
+                $content = $this->renderView('admin/commande/commande.html.twig', [
+                    'commandes' => $commandes,
+                ]);
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'content' => $content
+                ]);
+            }
+        }
+
         return new JsonResponse([
-            'code' => 200,
-            'content' => 'test commandes'
+            'code' => 403,
+            'message' => "Unauthorized"
         ]);
     }
 

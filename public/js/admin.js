@@ -112,32 +112,77 @@ $(document).ready(function () {
         window.confirm("edit user-"+id);
     });
 
-    //AJAX pour supression de produit
+    //Model de supression de Produit
     $(document).on('click', 'button[name*="delete-produit"]', function () {
         var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
-
-        window.confirm("delete produit-"+id);
+        $("#produit-delete-button").val(id);
     });
 
-    //AJAX pour supression d'utilisateurs
+    //Model de supression Utilisateur
     $(document).on('click', 'button[name*="delete-user"]', function () {
         var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
-
-        /*$.ajax({
-            method: "POST",
-            url: deleteUserUrl,
-            async: false,
-            data: {
-                user: id
-            },
-            success: function (data) {
-                if (data['code'] === 200) {
-                    loadUserList();
-                }
-            }
-        });*/
-        window.confirm("delete user-"+id);
+        $("#user-delete-button").val(id);
     });
+
+    //AJAX pour supression de produit
+    $(document).on('click', '#produit-delete-button', function() {
+        var id = $(this).attr('value')
+        
+        if(id){
+
+            $('#produit-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+            $.ajax({
+                method: "POST",
+                url: deleteProduitUrl,
+                async: false,
+                data: {
+                    produit: id
+                },
+                success: function (data) {
+                    if (data['code'] === 200) {
+                        loadProduitList();
+                        $('#produit-cancel-button').click();
+                    }
+
+                    $('#produit-delete-button').children('i').remove();
+                },
+                error: function (data) {
+                    $('#produit-delete-button').children('i').remove();
+                }
+            });
+        }
+    })
+
+    //AJAX pour supression d'utilisateur
+    $(document).on('click', '#user-delete-button', function() {
+        var id = $(this).attr('value')
+        
+        if(id){
+
+            $('#user-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+            $.ajax({
+                method: "POST",
+                url: deleteUserUrl,
+                async: false,
+                data: {
+                    user: id
+                },
+                success: function (data) {
+                    if (data['code'] === 200) {
+                        loadUserList();
+                        $('#user-cancel-button').click();
+                    }
+
+                    $('#user-delete-button').children('i').remove();
+                },
+                error: function (data) {
+                    $('#user-delete-button').children('i').remove();
+                }
+            });
+        }
+    })
 
     //AJAX load produit list
     function loadProduitList(){

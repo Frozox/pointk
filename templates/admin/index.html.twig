@@ -27,6 +27,24 @@
                                 <div class="tab-content">
                                     <div id="product-edit" class="tab-pane fade show active">
                                         {{ include('admin/produit/list.html.twig') }}
+
+                                        <!-- Modal de supression de produit -->
+                                        <div class="modal fade" id="produit-delete-modal" tabindex="-1" aria-labelledby="produit-delete-modal-label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="produit-delete-modal-label">Supprimer le produit</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="produit-cancel-button" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <button value="" id="produit-delete-button" type="button" class="btn btn-danger">Confirmer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="product-create" class="tab-pane fade">
                                         {{ include('admin/produit/form.html.twig') }}
@@ -47,6 +65,24 @@
                                 <div class="tab-content">
                                     <div id="user-edit" class="tab-pane fade show active">
                                         {{ include('admin/user/list.html.twig') }}
+
+                                        <!-- Modal de supression d'utilisateur -->
+                                        <div class="modal fade" id="user-delete-modal" tabindex="-1" aria-labelledby="user-delete-modal-label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="user-delete-modal-label">Supprimer l'utilisateur</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="user-cancel-button" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <button value="" id="user-delete-button" type="button" class="btn btn-danger">Confirmer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div id="user-create" class="tab-pane fade">
                                         {{ include('admin/user/form.html.twig') }}
