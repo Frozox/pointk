@@ -6,6 +6,46 @@ $(document).ready(function () {
     //AJAX pour formulaire de création de produit
     $(document).on('submit', '#produit-create-form', function (event) {
 
+        event.preventDefault();
+
+        var form = $('#produit-create-form');
+
+        form.children().each((i, e) => {
+            $(form.find('[id*="-error"]')).empty();
+        });
+
+        $('#submit-form-produit').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+        $.ajax({
+            method: "POST",
+            url: addProduitUrl,
+            async: false,
+            data: form.serialize(),
+            success: function (data) {
+                //Si le formulaire est valide
+                if (data['code'] === 200) {
+                    form[0].reset();
+                    $('#produit-create-form-result').html('<div class="alert alert-success">Le produit a été créé</div>').hide();
+                    $('#produit-create-form-result').fadeIn('slow').delay(5000).fadeOut('slow');
+                    loadProduitList();
+                }
+                //Si le formulaire est invalide
+                else if (data['code'] === 400) {
+                    for (var key in data['errors']) {
+                        $(form.find('[id*="' + key + '-error"]')[0]).append('<div class="alert alert-danger" role="alert">' + data['errors'][key] + '</div>');
+                    }
+
+                }
+
+                $('#submit-form-produit').children('i').remove();
+            },
+            //S'il y a une erreur de traitement
+            error: function (data) {
+                $('#submit-form-produit').children('i').remove();
+            }
+        });
+
+        event.stopPropagation();
     });
 
     //AJAX pour formulaire de création utilisateur
@@ -55,7 +95,10 @@ $(document).ready(function () {
 
     //AJAX pour édition de produit
     $(document).on('click', 'button[name*="edit-produit"]', function () {
+        var produit = $(this).parent().parent().parent().parent();
+        var id = produit.attr('id').toString().match(/\d+$/)[0];
 
+        window.confirm("edit produit-"+id);
     });
 
     //AJAX pour édition d'utilisateurs
@@ -68,7 +111,9 @@ $(document).ready(function () {
 
     //AJAX pour supression de produit
     $(document).on('click', 'button[name*="delete-produit"]', function () {
+        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
 
+        window.confirm("delete produit-"+id);
     });
 
     //AJAX pour supression d'utilisateurs
@@ -104,7 +149,10 @@ $(document).ready(function () {
                     produitlist.DataTable({
                         "autoWidth": true,
                         "bLengthChange": false,
-                        "bInfo": false
+                        "bInfo": false,
+                        columnDefs: [
+                            { targets: 2, orderable: false, width: "10%" }
+                        ]
                     });
                 }
             }

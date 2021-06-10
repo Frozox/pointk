@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Produit;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,9 +16,25 @@ class ProduitFormType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('prix')
-            ->add('image')
-            ->add('commande')
+            ->add('prix', NumberType::class, [
+                'mapped' => true
+            ])
+            ->add('image', FileType::class, [
+                'mapped' => false,
+                'required' => true,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpg',
+                            'image/jpeg',
+                        ],
+                        'mimeTypesMessage' => 'Please upload an valid image format',
+                    ])
+                ],
+            ])
+
         ;
     }
 
