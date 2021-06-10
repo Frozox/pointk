@@ -2,6 +2,25 @@
     margin-bottom: 10px;
 }
 
+.navbar-text {
+    color: white !important;
+}
+
+.solde-info {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 body{
     background-color: whitesmoke;
+}
+
+.description-product-list {
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.title-poduct-list {
+    font-size: 2rem;
 }
