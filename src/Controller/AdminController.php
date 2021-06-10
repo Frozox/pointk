@@ -52,32 +52,33 @@ class AdminController extends AbstractController
                 $produitForm = $this->createForm(ProduitFormType::class, $produit);
                 $produitForm->handleRequest($request);
 
-                if ($produitForm->isSubmitted() && $produitForm->isValid()) {
+                if ($produitForm->isSubmitted() && $produitForm->isValid()) {    
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($produit);
+                    $entityManager->flush();
+
                     $imageFile = $produitForm->get('image')->getData();
 
-                    if($imageFile){
-                        $newFilename = $produit->getNom() . '.' . $imageFile->guessExtension();
-                        $fullFilePath = '/images/produits/' . $newFilename;
-                        try {
-                            $imageFile->move(
-                                '/images/produits/',
-                                $newFilename
-                            );
-                        } catch (FileException $e) {
-                            throw $e;
-                            // ... handle exception if something happens during file upload
-                        }
-    
-                        $produit->setImage($fullFilePath);
+                    $newFilename = $produit->getId() . '.' . $imageFile->guessExtension();
+                    $fullFilePath = '/images/produits/' . $newFilename;
+                    try {
+                        $imageFile->move(
+                            '../public/images/produits/',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        throw $e;
+                        // ... handle exception if something happens during file upload
                     }
-    
-                    $entityManager = $this->getDoctrine()->getManager();
+
+                    $produit->setImage($fullFilePath);
+
                     $entityManager->persist($produit);
                     $entityManager->flush();
 
                     return new JsonResponse([
                         'code' => 200,
-                        'message' => $imageFile
+                        'message' => 'Formulaire valide'
                     ]);
                 } else if ($produitForm->isSubmitted() && !$produitForm->isValid()) {
                     return new JsonResponse([

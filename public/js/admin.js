@@ -9,6 +9,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         var form = $('#produit-create-form');
+        var formData = new FormData(this);
 
         form.children().each((i, e) => {
             $(form.find('[id*="-error"]')).empty();
@@ -20,7 +21,9 @@ $(document).ready(function () {
             method: "POST",
             url: addProduitUrl,
             async: false,
-            data: form.serialize(),
+            data: formData,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 //Si le formulaire est valide
                 if (data['code'] === 200) {
