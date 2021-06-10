@@ -27,3 +27,11 @@
     {% endfor %}
     </div>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        //Variables twig mise en js pour implémentation dans client-poink.js
+        var addCommande = "{{ path('addcommande') }}";
+    </script>
+    <script src="{{ asset('js/client-pointk.js') }}"></script>
+{% endblock %}

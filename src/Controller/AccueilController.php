@@ -22,4 +22,11 @@ class AccueilController extends AbstractController
         return $this->render('accueil/index.html.twig',
             ['produits' => $produits]);
     }
+    /**
+     * @Route("/addcommande", name="addCommande")
+     */
+    public function addCommande() : Response
+    {
+
+    }
 }
