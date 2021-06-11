@@ -24,3 +24,15 @@ body{
 .title-poduct-list {
     font-size: 2rem;
 }
+
+#recapCommande {
+    display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    background-color : #555555;
+    padding: 10px;
+}
+#recapCommande button {
+    padding: 5px;
+}

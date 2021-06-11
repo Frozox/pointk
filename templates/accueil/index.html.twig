@@ -19,19 +19,27 @@
                 </div>
             </div>
             <div class="col text-right" style="margin-top: 20px;">
-                <button type="button" style="font-size: 25px; margin: 5px;" data-id="{{ produit.id }}" class="btn btn-light btn-moins-produit" disabled> - </button>
-                <p style="display: inline-block;" class="quantity-{{ produit.id }}">0</p>
-                <button type="button" style="font-size: 25px; margin: 5px;" data-id="{{ produit.id }}" class="btn btn-light btn-plus-produit"> + </button>
+                <button type="button" style="font-size: 25px; margin: 5px;" data-prix="{{ produit.prix }}" data-id="{{ produit.id }}" class="btn btn-dark btn-moins-produit" disabled> - </button>
+                <p style="display: inline-block;" class="qty-selected quantity-{{ produit.id }}">0</p>
+                <button type="button" style="font-size: 25px; margin: 5px;" data-prix="{{ produit.prix }}" data-id="{{ produit.id }}" class="btn btn-dark btn-plus-produit"> + </button>
             </div>
         </div>
     {% endfor %}
+    </div>
+    <div id="recapCommande" class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <button id="validerCommande" type="button" class="btn btn-secondary">Valider votre commande : <span id="prixTotalCtg"></span> <img src="{{ asset('images/placeholder/chestnut.png') }}"></button>
+        </div>
+        <div class="col-md-auto ">
+            <button id="annulerCommande" type="button" class="btn btn-secondary">annuler</button>
+        </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script>
         //Variables twig mise en js pour implémentation dans client-poink.js
-        var addCommande = "{{ path('addcommande') }}";
+        var addCommande =  "{{  path('addcommande') }}";
     </script>
     <script src="{{ asset('js/client-pointk.js') }}"></script>
 {% endblock %}
