@@ -71,11 +71,11 @@ $(document).ready(function () {
             },
             success : function (data){
                 if (data['code'] === 200) {
+                    document.location.reload();
                     commandeQty = 0;
                     prixTotal = 0;
                     cacherRecapCommande();
                     remiseAZero();
-                    //document.location.reload();
                 }
             },
             error: function () {
