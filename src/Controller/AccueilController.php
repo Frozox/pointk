@@ -43,7 +43,7 @@ class AccueilController extends AbstractController
                 $entityManager->flush();
                 return new JsonResponse([
                     'code' => 200,
-                    'prix' => $request->get('prix')
+                    'solde' => $user->getSolde()
                 ]);
             }
         }

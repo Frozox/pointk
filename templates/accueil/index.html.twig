@@ -4,11 +4,7 @@
     {% for produit in produits %}
         <div class="row d-flex justify-content-around rounded-lg" style="margin-bottom: 10px; background-color: white; padding: 10px;">
             <div class="col text-left">
-                {% if produit.image != NULL %}
-                <img style="background-color: whitesmoke; padding: 20px;" class="rounded-lg" src="{{ asset(produit.image) }}">
-                {% else %}
-                <img style="background-color: whitesmoke; padding: 20px;" class="rounded-lg" src="{{ asset('images/placeholder/coffee.png') }}">
-                {% endif %}
+                <img class="rounded-lg image-produit"  src="{{ asset(produit.image) }}">
                 <div class="row description-product-list">
                     <p class="title-poduct-list">{{ produit.nom }}</p>
                     <div class="row">
@@ -32,6 +28,25 @@
         </div>
         <div>
             <button id="annulerCommande" type="button" class="btn btn-secondary">annuler</button>
+        </div>
+    </div>
+    <div class="modal fade" id="confirm-commande-modal" tabindex="-1" aria-labelledby="confirm-commande-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirm-commande-modal-label">Commande confirmée</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <span>{{ app.user.nom }}, votre solde a été mis à jour, </br>
+                    il est maintenant de <span class="user-solde-number">{{ app.user.solde }}</span></span><span> <img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

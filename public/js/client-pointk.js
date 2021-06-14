@@ -54,7 +54,6 @@ $(document).ready(function () {
     $('#annulerCommande').click(function (){
         remiseAZero()
         cacherRecapCommande()
-        $('.btn-moins-produit').attr("disabled",true);
     })
 
     function afficherRecapCommande(){
@@ -69,6 +68,7 @@ $(document).ready(function () {
         commandeQty = 0;
         prixTotal = 0;
         $(".qty-selected").text("0");
+        $('.btn-moins-produit').attr("disabled",true);
     }
 
     $("#validerCommande").click(function (){
@@ -81,13 +81,14 @@ $(document).ready(function () {
             },
             success : function (data){
                 if (data['code'] === 200) {
-                    document.location.reload();
+                    $('#confirm-commande-modal').modal('show')
+                    $(".user-solde-number").text(data['solde'])
                     cacherRecapCommande();
                     remiseAZero();
                 }
             },
             error: function () {
-                alert("error")
+                alert("error la commande n'a pas abouti vérifier votre connexion ou contactez l'administration")
             }
         });
     });
