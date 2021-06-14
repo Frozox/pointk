@@ -1,4 +1,60 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
+    <div class="container-md">
+    {% for produit in produits %}
+        <div class="row d-flex justify-content-around rounded-lg" style="margin-bottom: 10px; background-color: white; padding: 10px;">
+            <div class="col text-left">
+                <img class="rounded-lg image-produit"  src="{{ asset(produit.image) }}">
+                <div class="row description-product-list">
+                    <p class="title-poduct-list">{{ produit.nom }}</p>
+                    <div class="row">
+                        <div class="col">
+                            <p>prix : {{ produit.prix }} <img src="{{ asset('images/placeholder/chestnut.png') }}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-right" style="margin-top: 20px;">
+                <button type="button" style="font-size: 25px; margin: 5px;" data-prix="{{ produit.prix }}" data-id="{{ produit.id }}" class="btn btn-dark btn-moins-produit" disabled> - </button>
+                <p style="display: inline-block;" class="qty-selected quantity-{{ produit.id }}">0</p>
+                <button type="button" style="font-size: 25px; margin: 5px;" data-prix="{{ produit.prix }}" data-id="{{ produit.id }}" class="btn btn-dark btn-plus-produit"> + </button>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div id="recapCommande" class="justify-content-md-center">
+        <div>
+            <button id="validerCommande" type="button" class="btn btn-secondary">Valider votre commande : <span id="prixTotalCtg"></span> <img src="{{ asset('images/placeholder/chestnut.png') }}"></button>
+        </div>
+        <div>
+            <button id="annulerCommande" type="button" class="btn btn-secondary">annuler</button>
+        </div>
+    </div>
+    <div class="modal fade" id="confirm-commande-modal" tabindex="-1" aria-labelledby="confirm-commande-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirm-commande-modal-label">Commande confirmée</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <span>{{ app.user.nom }}, votre solde a été mis à jour, </br>
+                    il est maintenant de <span class="user-solde-number">{{ app.user.solde }}</span></span><span> <img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        //Variables twig mise en js pour implémentation dans client-poink.js
+        var addCommande =  "{{  path('addcommande') }}";
+    </script>
+    <script src="{{ asset('js/client-pointk.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,75 @@
+.navbar {
+    margin-bottom: 10px;
+}
+
+.navbar-text {
+    color: white !important;
+}
+
+.solde-info {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+.description-product-list {
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.title-poduct-list {
+    font-size: 2rem;
+}
+
+#recapCommande {
+    display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    background-color : #555555;
+    padding: 10px;
+}
+#recapCommande button {
+    padding: 5px;
+}
+
+#recapCommande div {
+    margin: 0 auto;
+}
+
+.image-produit{
+    width: 64px;
+    background-color: whitesmoke;
+    padding: 5px;
+}
+
+.navbar .dropdown a {
+    color: darkslategrey;
+}
+
+.navbar .dropdown a:hover {
+    color: black;
+}
+.dropdownMenuLink {
+    color : white;
+}
+
+.dropdownMenuLink :hover {
+    color : white;
+}
+
+@media screen and (max-width: 1000px)
+{
+    .image-produit{
+        width: 48px;
+        background-color: whitesmoke;
+        padding: 5px;
+    }
+    .title-poduct-list{
+        font-size: 1.5rem;
+    }
+}

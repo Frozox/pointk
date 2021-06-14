@@ -3,9 +3,17 @@
         <h3 class="mt-2">Liste des commandes</h3>
     </div>
     <div class="card-body">
-        <div class="d-flex mb-3">
-            <button id="refresh-commande-list" class="btn btn-success mr-auto" type="button">Rafraichir la liste</button>
-            <div><input type="search" id="commande-list-search" class="form-control" placeholder="Rechercher"/></div>
+        <div class="table-responsive">
+            <table id="commande-list" class="table table-hover" style="width: 100%">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="far fa-user ml-2"></i><span class="ml-1">Commandé par</span></th>
+                        <th scope="col"><i class="far fa-calendar-plus"></i><span class="ml-1">Date</span></th>
+                        <th scope="col"><i class="fas fa-dolly-flatbed"></i><span class="ml-1">Produits</span></th>
+                    </tr>
+                </thead>
+                <tbody class="text-truncate"></tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -1,15 +1,54 @@
 $(document).ready(function () {
-    var produit_search_timedout = null;
-    var user_search_timedout = null;
-    var commandes_search_timedout = null;
-    var page_produit = 1;
-    var page_user = 1;
-    var page_user_timeout = null;
-    var page_commande = 1;
+    var produitlist = $('#produit-list');
+    var userlist = $('#user-list');
+    var commandelist = $('#commande-list');
 
     //AJAX pour formulaire de création de produit
     $(document).on('submit', '#produit-create-form', function (event) {
 
+        event.preventDefault();
+
+        var form = $('#produit-create-form');
+        var formData = new FormData(this);
+
+        form.children().each((i, e) => {
+            $(form.find('[id*="-error"]')).empty();
+        });
+
+        $('#submit-form-produit').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+        $.ajax({
+            method: "POST",
+            url: addProduitUrl,
+            async: false,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                //Si le formulaire est valide
+                if (data['code'] === 200) {
+                    form[0].reset();
+                    $('#produit-create-form-result').html('<div class="alert alert-success">Le produit a été créé</div>').hide();
+                    $('#produit-create-form-result').fadeIn('slow').delay(5000).fadeOut('slow');
+                    loadProduitList();
+                }
+                //Si le formulaire est invalide
+                else if (data['code'] === 400) {
+                    for (var key in data['errors']) {
+                        $(form.find('[id*="' + key + '-error"]')[0]).append('<div class="alert alert-danger" role="alert">' + data['errors'][key] + '</div>');
+                    }
+
+                }
+
+                $('#submit-form-produit').children('i').remove();
+            },
+            //S'il y a une erreur de traitement
+            error: function (data) {
+                $('#submit-form-produit').children('i').remove();
+            }
+        });
+
+        event.stopPropagation();
     });
 
     //AJAX pour formulaire de création utilisateur
@@ -36,7 +75,7 @@ $(document).ready(function () {
                     form[0].reset();
                     $('#user-create-form-result').html('<div class="alert alert-success">L\'utilisateur a été créé</div>').hide();
                     $('#user-create-form-result').fadeIn('slow').delay(5000).fadeOut('slow');
-                    $('#user-list-search').trigger('keyup');
+                    loadUserList();
                 }
                 //Si le formulaire est invalide
                 else if (data['code'] === 400) {
@@ -59,7 +98,10 @@ $(document).ready(function () {
 
     //AJAX pour édition de produit
     $(document).on('click', 'button[name*="edit-produit"]', function () {
+        var produit = $(this).parent().parent().parent().parent();
+        var id = produit.attr('id').toString().match(/\d+$/)[0];
 
+        window.confirm("edit produit-"+id);
     });
 
     //AJAX pour édition d'utilisateurs
@@ -67,102 +109,160 @@ $(document).ready(function () {
         var user = $(this).parent().parent().parent().parent();
         var id = user.attr('id').toString().match(/\d+$/)[0];
 
-        window.confirm("sometext");
+        window.confirm("edit user-"+id);
+    });
+
+    //Model de supression de Produit
+    $(document).on('click', 'button[name*="delete-produit"]', function () {
+        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
+        $("#produit-delete-button").val(id);
+    });
+
+    //Model de supression Utilisateur
+    $(document).on('click', 'button[name*="delete-user"]', function () {
+        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
+        $("#user-delete-button").val(id);
     });
 
     //AJAX pour supression de produit
-    $(document).on('click', 'button[name*="delete-produit"]', function () {
+    $(document).on('click', '#produit-delete-button', function() {
+        var id = $(this).attr('value')
+        
+        if(id){
 
-    });
-
-    //AJAX pour supression d'utilisateurs
-    $(document).on('click', 'button[name*="delete-user"]', function () {
-        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
-
-        $.ajax({
-            method: "POST",
-            url: deleteUserUrl,
-            async: false,
-            data: {
-                user: id
-            },
-            success: function (data) {
-                if (data['code'] === 200) {
-                    $('#user-list-search').trigger('keyup');
-                }
-            }
-        });
-    });
-
-    //AJAX pour afficher des produits selon les informations entrées dans la barre de recherche
-    $("#produit-list-search").on("keyup", function () {
-
-    });
-
-    //AJAX pour afficher des utilisateurs selon les informations entrées dans la barre de recherche
-    $("#user-list-search").on("keyup", function () {
-        clearTimeout(user_search_timedout);
-
-        user_search_timedout = setTimeout(() => {
-            var search = $(this).val().toLowerCase();
-            var userlist = $('#user-list').children('tbody');
-            var paginate = $('#paginate-user');
+            $('#produit-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
 
             $.ajax({
                 method: "POST",
-                url: findUsersToList,
+                url: deleteProduitUrl,
+                async: false,
                 data: {
-                    search: search,
-                    page: page_user,
-                    sortby: '',
-                    orderby: 'ASC'
+                    produit: id
                 },
                 success: function (data) {
                     if (data['code'] === 200) {
-                        userlist.empty();
-                        paginate.empty();
-                        userlist.append(data['content']);
-                        paginate.append(data['paginate']);
+                        loadProduitList();
+                        $('#produit-cancel-button').click();
                     }
+
+                    $('#produit-delete-button').children('i').remove();
+                },
+                error: function (data) {
+                    $('#produit-delete-button').children('i').remove();
                 }
             });
-        }, 750);
-    });
+        }
+    })
 
-    //AJAX pour afficher des produits selon les informations entrées dans la barre de recherche
-    $("#commande-list-search").on("keyup", function () {
+    //AJAX pour supression d'utilisateur
+    $(document).on('click', '#user-delete-button', function() {
+        var id = $(this).attr('value')
+        
+        if(id){
 
-    });
+            $('#user-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
 
-    //Changement de page avec la pagination
-    $(document).on('click', '#paginate-user ul li button', function (){
-        clearTimeout(page_user_timeout)
+            $.ajax({
+                method: "POST",
+                url: deleteUserUrl,
+                async: false,
+                data: {
+                    user: id
+                },
+                success: function (data) {
+                    if (data['code'] === 200) {
+                        loadUserList();
+                        $('#user-cancel-button').click();
+                    }
 
-        user_search_timedout = setTimeout(() => {
-            var value = $(this).attr('value')
-            var temp = page_user;
+                    $('#user-delete-button').children('i').remove();
+                },
+                error: function (data) {
+                    $('#user-delete-button').children('i').remove();
+                }
+            });
+        }
+    })
 
-            if (value === 'previous' && page_user > 1) {
-                page_user--;
-            } else if (value === 'after') {
-                page_user++;
-            } else {
-                page_user = value;
+    //AJAX load produit list
+    function loadProduitList(){
+        $.ajax({
+            method: "POST",
+            url: findProduitsToList,
+            success: function (data) {
+                if(data['code'] === 200){
+                    produitlist.DataTable().clear();
+                    produitlist.DataTable().destroy();
+                    produitlist.children('tbody').append(data['content']);
+                    produitlist.DataTable({
+                        "autoWidth": true,
+                        "bLengthChange": false,
+                        "bInfo": false,
+                        columnDefs: [
+                            { targets: 2, orderable: false, width: "10%" }
+                        ]
+                    });
+                }
             }
+        });
+    }
 
-            if (value !== temp) {
-                $('#user-list-search').trigger('keyup');
+    //AJAX load user list
+    function loadUserList(){
+        $.ajax({
+            method: "POST",
+            url: findUsersToList,
+            success: function (data) {
+                if(data['code'] === 200){
+                    userlist.DataTable().clear();
+                    userlist.DataTable().destroy();
+                    userlist.children('tbody').append(data['content']);
+                    userlist.DataTable({
+                        "autoWidth": true,
+                        "bLengthChange": false,
+                        "bInfo": false,
+                        columnDefs: [
+                            { targets: 8, orderable: false }
+                        ]
+                    });
+                }
             }
-        },750);
-    });
+        });
+    }
 
-    $('#produit-list-search').trigger('keyup');
-    $('#user-list-search').trigger('keyup');
-    $('#commande-list-search').trigger('keyup');
+    //AJAX load commande list
+    function loadCommandeList(){
+        $.ajax({
+            method: "POST",
+            url: findCommandesToList,
+            success: function (data) {
+                if(data['code'] === 200){
+                    commandelist.DataTable().clear();
+                    commandelist.DataTable().destroy();
+                    commandelist.children('tbody').append(data['content']);
+                    commandelist.DataTable({
+                        "autoWidth": true,
+                        "bLengthChange": false,
+                        "bInfo": false
+                    });
+                }
+            }
+        });
+    }
+
+    loadProduitList();
+    loadUserList();
+    loadCommandeList();
+
     $(document).one('ajaxStop', function (){
         $('#loading').hide("puff").delay(10).queue(function () {
             $('#loading').remove();
             $('.container-fluid').show();
+            produitlist.DataTable().columns.adjust().draw();
+            userlist.DataTable().columns.adjust().draw();
+            commandelist.DataTable().columns.adjust().draw();
+            $('#user').removeClass("show active");
+            $('#commande').removeClass("show active");
         });
     });
 });

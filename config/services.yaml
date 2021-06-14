@@ -6,6 +6,7 @@
 parameters:
     pointk.domain_name: 'http://localhost:8000'
     itemperpage: 10
+    imagesProduits_directory : '%kernel.project_dir%/public/images/produits'
 
 services:
     # default configuration for services in *this* file

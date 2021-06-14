@@ -2,18 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\Produit;
 use App\Entity\User;
+use App\Form\ProduitFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
 /**
  * @Route("/admin")
  */
@@ -35,7 +38,7 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'users' => $userRepository->findAll(),
             'registrationForm' => $this->createForm(RegistrationFormType::class, new User())->createView(),
-            //produitForm
+            'produitForm' => $this->createForm(ProduitFormType::class, new Produit())->createView()
         ]);
     }
 
@@ -45,7 +48,54 @@ class AdminController extends AbstractController
      */
     public function addProduit(Request $request)
     {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                $produit = new Produit();
+                $produitForm = $this->createForm(ProduitFormType::class, $produit);
+                $produitForm->handleRequest($request);
 
+                if ($produitForm->isSubmitted() && $produitForm->isValid()) {    
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($produit);
+                    $entityManager->flush();
+
+                    $imageFile = $produitForm->get('image')->getData();
+
+                    $newFilename = $produit->getId() . '.' . $imageFile->guessExtension();
+                    $fullFilePath = '/images/produits/' . $newFilename;
+                    try {
+                        $imageFile->move(
+                            '../public/images/produits/',
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        throw $e;
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    $produit->setImage($fullFilePath);
+
+                    $entityManager->persist($produit);
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'message' => 'Formulaire valide'
+                    ]);
+                } else if ($produitForm->isSubmitted() && !$produitForm->isValid()) {
+                    return new JsonResponse([
+                        'code' => 400,
+                        'message' => "Formulaire invalide",
+                        'errors' => $this->getErrorsFromForm($produitForm)
+                    ]);
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized",
+        ]);
     }
 
     /**
@@ -118,7 +168,39 @@ class AdminController extends AbstractController
      */
     public function deleteProduit(Request $request): Response
     {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                if ($request->get('produit')) {
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $produit = $entityManager->getRepository(Produit::class)->findOneBy(['id' => $request->get('produit')]);
 
+                    $filesystem = new Filesystem();
+
+                    try{
+                        if($produit->getImage() != null){
+                            $filesystem->remove('../public' . $produit->getImage());   
+                        }
+                    }catch (FileException $e){
+                        throw $e;
+                    }
+    
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->remove($produit);
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'id' => $produit->getId(),
+                        'delete' => true
+                    ]);
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
 
     /**
@@ -159,7 +241,25 @@ class AdminController extends AbstractController
      */
     public function findProduitsToList(Request $request): Response
     {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $produits = $entityManager->getRepository(Produit::class)->findAll();
+                $content = $this->renderView('admin/produit/produit.html.twig', [
+                    'produits' => $produits,
+                ]);
 
+                return new JsonResponse([
+                    'code' => 200,
+                    'content' => $content
+                ]);
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
 
     /**
@@ -169,31 +269,17 @@ class AdminController extends AbstractController
     {
         if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
             if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-                if ($request->get('page') != null) {
-                    $search = $request->get('search');
-                    $page = $request->get('page');
-                    $limit = $this->getParameter('itemperpage');
+                $entityManager = $this->getDoctrine()->getManager();
+                $users = $entityManager->getRepository(User::class)->findAll();
 
-                    $entityManager = $this->getDoctrine()->getManager();
-                    $users = $entityManager->getRepository(User::class)->findBySearch($search, $page, $limit);
-                    $nbusers = $entityManager->getRepository(User::class)->countBySearch($search);
+                $content = $this->renderView('admin/user/user.html.twig', [
+                    'users' => $users,
+                ]);
 
-                    $content = $this->renderView('admin/user/user.html.twig', [
-                        'users' => $users,
-                    ]);
-
-                    $paginate = $this->renderView('paginate.html.twig', [
-                        'page' => $page,
-                        'nbusers' => $nbusers,
-                        'limit' => $limit
-                    ]);
-
-                    return new JsonResponse([
-                        'code' => 200,
-                        'content' => $content,
-                        'paginate' => $paginate,
-                    ]);
-                }
+                return new JsonResponse([
+                    'code' => 200,
+                    'content' => $content
+                ]);
             }
         }
 
@@ -208,7 +294,26 @@ class AdminController extends AbstractController
      */
     public function findCommandesToList(Request $request): Response
     {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $commandes = $entityManager->getRepository(Commande::class)->findAll();
 
+                $content = $this->renderView('admin/commande/commande.html.twig', [
+                    'commandes' => $commandes,
+                ]);
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'content' => $content
+                ]);
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
 
     /*
