@@ -174,18 +174,12 @@ class AdminController extends AbstractController
                     $entityManager = $this->getDoctrine()->getManager();
                     $produit = $entityManager->getRepository(Produit::class)->findOneBy(['id' => $request->get('produit')]);
 
-                    try{
-                        $filesystem = new Filesystem();
-                        $filesystem->remove('%kernel.project_dir%' . $produit->getImage());
-                    } catch (FileException $e) {
-                        throw $e;
-                        // ... handle exception if something happens during file upload
-                    }
-
                     $filesystem = new Filesystem();
 
                     try{
-                        $filesystem->remove('../public' . $produit->getImage());
+                        if($produit->getImage() != null){
+                            $filesystem->remove('../public' . $produit->getImage());   
+                        }
                     }catch (FileException $e){
                         throw $e;
                     }
