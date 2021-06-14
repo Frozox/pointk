@@ -11,14 +11,13 @@
         {% endblock %}
     </head>
     <body>
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
     {% include('navbar.html.twig') %}
     {% endif %}
     {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/jquery.min.js') }}"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('js/client-pointk.js') }}"></script>
         {% endblock %}
     </body>
 </html>
