@@ -27,7 +27,7 @@ $(document).ready(function () {
         }
     })
     $(".btn-moins-produit").click(function (){
-        var attr = $(this).attr("diasbled");
+        var attr = $(this).attr("disabled");
         if (typeof attr == 'undefined' || attr == false) {
             var id = $(this).attr("data-id");
             var qty = $(".quantity-"+id).text();
@@ -50,14 +50,24 @@ $(document).ready(function () {
             }
         }
     })
+
+    $('#annulerCommande').click(function (){
+        remiseAZero()
+        cacherRecapCommande()
+        $('.btn-moins-produit').attr("disabled",true);
+    })
+
     function afficherRecapCommande(){
         $("#recapCommande").css({display : 'flex'})
         $(".container-md").css({'margin-bottom' : '60px'})
     }
     function cacherRecapCommande(){
         $("#recapCommande").css({display : 'none'})
+        $(".container-md").css({'margin-bottom' : '0px'})
     }
     function remiseAZero(){
+        commandeQty = 0;
+        prixTotal = 0;
         $(".qty-selected").text("0");
     }
 
@@ -72,8 +82,6 @@ $(document).ready(function () {
             success : function (data){
                 if (data['code'] === 200) {
                     document.location.reload();
-                    commandeQty = 0;
-                    prixTotal = 0;
                     cacherRecapCommande();
                     remiseAZero();
                 }
