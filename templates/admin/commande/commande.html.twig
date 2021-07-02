@@ -2,9 +2,11 @@
     <tr id="commande-{{ commande.id() }}">
         <td><a href="mailto:{{ commande.getCommandeUser().getEmail() }}">{{ commande.getCommandeUser().getEmail() }}</a</td>
         <td>{{ commande.getDateCrea()|date("d-m-Y") }}</td>
+        <td>{{ commande.getPrix() }}</td>
         <td>
-            {# {% for produit in commande.getProduits() %}
-            {% endfor %} #}
+            {% for commandeProduit in commande.getCommandeProduits() %}
+                {{ commandeProduit.getProduit().nom }} x {{ commandeProduit.getQteProduit() }}
+            {% endfor %}
         </td>
     </tr>
 {% endfor %}
