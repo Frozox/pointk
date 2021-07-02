@@ -25,19 +25,24 @@ class Commande
     private $date_crea;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="commande")
-     */
-    private $produits;
-
-    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $commande_user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeProduit::class, mappedBy="commande", orphanRemoval=true)
+     */
+    private $commandeProduits;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prix;
+
     public function __construct()
     {
-        $this->produits = new ArrayCollection();
+        $this->commandeProduits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,36 +62,6 @@ class Commande
         return $this;
     }
 
-    /**
-     * @return Collection|Produit[]
-     */
-    public function getProduits(): Collection
-    {
-        return $this->produits;
-    }
-
-    public function addProduit(Produit $produit): self
-    {
-        if (!$this->produits->contains($produit)) {
-            $this->produits[] = $produit;
-            $produit->setCommande($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduit(Produit $produit): self
-    {
-        if ($this->produits->removeElement($produit)) {
-            // set the owning side to null (unless already changed)
-            if ($produit->getCommande() === $this) {
-                $produit->setCommande(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getCommandeUser(): ?User
     {
         return $this->commande_user;
@@ -95,6 +70,48 @@ class Commande
     public function setCommandeUser(?User $commande_user): self
     {
         $this->commande_user = $commande_user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeProduit[]
+     */
+    public function getCommandeProduits(): Collection
+    {
+        return $this->commandeProduits;
+    }
+
+    public function addCommandeProduit(CommandeProduit $commandeProduit): self
+    {
+        if (!$this->commandeProduits->contains($commandeProduit)) {
+            $this->commandeProduits[] = $commandeProduit;
+            $commandeProduit->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeProduit(CommandeProduit $commandeProduit): self
+    {
+        if ($this->commandeProduits->removeElement($commandeProduit)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeProduit->getCommande() === $this) {
+                $commandeProduit->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
