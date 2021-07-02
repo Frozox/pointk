@@ -5,7 +5,7 @@
         <td>{{ commande.getPrix() }}</td>
         <td>
             {% for commandeProduit in commande.getCommandeProduits() %}
-                {{ commandeProduit.getProduit().nom }} x {{ commandeProduit.getQteProduit() }}
+                {{ commandeProduit.getProduit().getNom() }}(x{{ commandeProduit.getQteProduit() }})
             {% endfor %}
         </td>
     </tr>

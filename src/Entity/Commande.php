@@ -43,6 +43,7 @@ class Commande
     public function __construct()
     {
         $this->commandeProduits = new ArrayCollection();
+        $this->date_crea = new \DateTime('now');
     }
 
     public function getId(): ?int

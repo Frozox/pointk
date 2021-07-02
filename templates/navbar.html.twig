@@ -9,6 +9,7 @@
 
   <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="{{ path('profile') }}">Mon profil</a>
+    <a class="dropdown-item" href="{{ path('accueil') }}">Accueil</a>
     {% if app.user.roles()[0] == 'ROLE_ADMIN' %}
       <a class="dropdown-item" href="{{ path('admin') }}">Administration</a>
     {% endif %}
