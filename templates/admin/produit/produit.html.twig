@@ -1,14 +1,14 @@
 {% for produit in produits %}
     <tr id="produit-{{ produit.id() }}">
         <td>{{ produit.nom() }}</td>
-        <td>{{ produit.prix() }}</td>
-        <!--td>
-            <img style="background-color: whitesmoke; padding: 20px;" align="middle" class="rounded-lg" src="{{ produit.image() }}">
-        </td-->
+        <td>{{ produit.prix() }}<img style="vertical-align: inherit;" src="/images/placeholder/chestnut.png" width="20px"></td>
+        <td>
+            <img style="vertical-align: inherit;" src="{{produit.getImage()}}" width="20px">
+        </td>
         <td>
             <ul class="list-inline-item m-0">
                 <li class="list-inline-item">
-                    <button class="btn btn-success btn-sm rounded-0" type="button" name="edit-produit" data-original-title="Edit">
+                    <button class="btn btn-success btn-sm rounded-0" type="button" name="edit-produit" data-toggle="modal" data-target="#produit-edit-modal" data-original-title="Edit">
                         <i class="far fa-edit"></i>
                     </button>
                 </li>

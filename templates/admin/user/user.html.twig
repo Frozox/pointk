@@ -18,15 +18,13 @@
             <ul class="list-inline-item m-0">
                 {% if user.roles()[0] == "ROLE_ADMIN" %}
                     <li class="list-inline-item">
-                        <button class="btn btn-success btn-sm rounded-0" type="button"
-                                name="edit-user" data-original-title="Edit">
-                            <i class="far fa-eye"></i>
+                        <button class="btn btn-success btn-sm rounded-0" type="button" name="edit-user" data-toggle="modal" data-target="#user-edit-modal" data-original-title="Edit">
+                            <i class="far fa-edit"></i>
                         </button>
                     </li>
                 {% else %}
                     <li class="list-inline-item">
-                        <button class="btn btn-success btn-sm rounded-0" type="button"
-                                name="edit-user" data-original-title="Edit">
+                        <button class="btn btn-success btn-sm rounded-0" type="button" name="edit-user" data-toggle="modal" data-target="#user-edit-modal" data-original-title="Edit">
                             <i class="far fa-edit"></i>
                         </button>
                     </li>

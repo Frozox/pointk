@@ -53,7 +53,7 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $password;
 
@@ -61,6 +61,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $confirmationToken;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $recoverToken;
 
     /**
      * @ORM\Column(type="date")
@@ -73,7 +78,7 @@ class User implements UserInterface
     private $date_fin;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="commande_user")
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="commande_user", orphanRemoval=true)
      */
     private $commandes;
 
@@ -202,6 +207,30 @@ class User implements UserInterface
     public function setConfirmationToken(?string $confirmationToken): self
     {
         $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRecoverToken(): ?string
+    {
+        return $this->recoverToken;
+    }
+
+    public function addRecoverToken(): self
+    {
+        $recoverToken = rtrim(strtr(base64_encode(random_bytes(150)), '+/', '-_'), '=');
+
+        $this->recoverToken = $recoverToken;
+
+        return $this;
+    }
+
+    public function resetRecoverToken(): self
+    {
+        $this->recoverToken = null;
 
         return $this;
     }

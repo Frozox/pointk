@@ -1,11 +1,11 @@
 {% for commande in commandes %}
     <tr id="commande-{{ commande.id() }}">
         <td><a href="mailto:{{ commande.getCommandeUser().getEmail() }}">{{ commande.getCommandeUser().getEmail() }}</a</td>
-        <td>{{ commande.getDateCrea()|date("d-m-Y") }}</td>
-        <td>{{ commande.getPrix() }}</td>
+        <td>{{ commande.getDateCrea()|date("d-m-Y H:i:s") }}</td>
+        <td>{{ commande.getPrix() }}<img style="vertical-align: inherit;" src="/images/placeholder/chestnut.png" width="20px"></td>
         <td>
             {% for commandeProduit in commande.getCommandeProduits() %}
-                {{ commandeProduit.getProduit().getNom() }}(x{{ commandeProduit.getQteProduit() }})
+                <img style="vertical-align: inherit;" src="{{commandeProduit.getProduit().getImage()}}" width="20px">(x{{ commandeProduit.getQteProduit() }})
             {% endfor %}
         </td>
     </tr>

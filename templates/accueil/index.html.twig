@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    {% include('navbar.html.twig') %}
     <div class="container-md">
     {% for produit in produits %}
         <div class="row d-flex justify-content-around rounded-lg" style="margin-bottom: 10px; background-color: white; padding: 10px;">

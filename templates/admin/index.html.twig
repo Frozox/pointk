@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body %}
+    {% include('navbar.html.twig') %}
     {{ include('loading.html.twig') }}
     <div class="container-fluid" style="display: none;">
         <div class="row">
@@ -28,6 +29,52 @@
                                     <div id="product-edit" class="tab-pane fade show active">
                                         {{ include('admin/produit/list.html.twig') }}
 
+                                        <!-- Modal de edition de produit -->
+                                        <div class="modal fade" id="produit-edit-modal" tabindex="-1" aria-labelledby="produit-edit-modal-label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form>
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="produit-edit-modal-label">Editer le produit</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label class="form-control-label required" for="produit_edit_nom">Nom</label>
+                                                                <input type="text" id="produit_edit_nom" name="produit_edit[nom]" value="" disabled="disabled" class="form-control">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-control-label required" for="produit_edit_prix">Prix</label>
+                                                                <input type="text" id="produit_edit_prix" name="produit_edit[prix]" value="" required="required" class="form-control">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-10">
+                                                                        <label class="form-control-label required" for="produit_form_image">Image</label>
+                                                                        <div class="custom-file">
+                                                                            <label for="produit_edit_image" class="custom-file-label" lang="fr"></label>
+                                                                            <input type="file" id="produit_edit_image" name="produit_edit[image]" required="required" class="custom-file-input">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <div style="position: absolute; bottom: 0px;">
+                                                                            <img id="produit_edit_image_src" style="vertical-align: inherit;" src="test" width="32px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button id="produit-edit-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                            <button value="" id="produit-edit-button" type="submit" class="btn btn-success">Modifier</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <!-- Modal de supression de produit -->
                                         <div class="modal fade" id="produit-delete-modal" tabindex="-1" aria-labelledby="produit-delete-modal-label" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -39,7 +86,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button id="produit-cancel-button" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <button id="produit-delete-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                         <button value="" id="produit-delete-button" type="button" class="btn btn-danger">Confirmer</button>
                                                     </div>
                                                 </div>
@@ -66,6 +113,24 @@
                                     <div id="user-edit" class="tab-pane fade show active">
                                         {{ include('admin/user/list.html.twig') }}
 
+                                        <!-- Modal d'edition d'utilisateur -->
+                                        <div class="modal fade" id="user-edit-modal" tabindex="-1" aria-labelledby="user-edit-modal-label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="user-edit-modal-label">Editer l'utilisateur</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="user-edit-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <button value="" id="user-edit-button" type="button" class="btn btn-danger">Confirmer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <!-- Modal de supression d'utilisateur -->
                                         <div class="modal fade" id="user-delete-modal" tabindex="-1" aria-labelledby="user-delete-modal-label" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -77,7 +142,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button id="user-cancel-button" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <button id="user-delete-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                         <button value="" id="user-delete-button" type="button" class="btn btn-danger">Confirmer</button>
                                                     </div>
                                                 </div>

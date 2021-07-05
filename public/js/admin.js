@@ -96,20 +96,31 @@ $(document).ready(function () {
         event.stopPropagation();
     });
 
-    //AJAX pour édition de produit
+    //Model d'édition de Produit
     $(document).on('click', 'button[name*="edit-produit"]', function () {
-        var produit = $(this).parent().parent().parent().parent();
-        var id = produit.attr('id').toString().match(/\d+$/)[0];
-
-        window.confirm("edit produit-"+id);
+        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
+        $("#produit-edit-button").val(id);
+        $("#produit_edit_nom").val($("#produit-" + id).children()[0].textContent);
+        $("#produit_edit_prix").val($("#produit-" + id).children()[1].textContent);
+        $("#produit_edit_image_src")[0].src = $("#produit-" + id).children()[2].lastElementChild.src;
     });
 
-    //AJAX pour édition d'utilisateurs
+    //Model d'édition d'utilisateur
     $(document).on('click', 'button[name*="edit-user"]', function () {
-        var user = $(this).parent().parent().parent().parent();
-        var id = user.attr('id').toString().match(/\d+$/)[0];
+        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
+        $("#user-edit-button").val(id);
+    });
 
-        window.confirm("edit user-"+id);
+    //AJAX pour editer un produit
+    $(document).on('click', '#produit-edit-button', function () {
+        var id = $(this).attr('value');
+        console.log('produit-edit-' + id);
+    });
+
+    //AJAX pour editer un utilisateur
+    $(document).on('click', '#user-edit-button', function () {
+        var id = $(this).attr('value');
+        console.log('user-edit-' + id);
     });
 
     //Model de supression de Produit
@@ -125,10 +136,10 @@ $(document).ready(function () {
     });
 
     //AJAX pour supression de produit
-    $(document).on('click', '#produit-delete-button', function() {
+    $(document).on('click', '#produit-delete-button', function () {
         var id = $(this).attr('value')
-        
-        if(id){
+
+        if (id) {
 
             $('#produit-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
 
@@ -142,7 +153,8 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data['code'] === 200) {
                         loadProduitList();
-                        $('#produit-cancel-button').click();
+                        loadCommandeList();
+                        $('#produit-delete-cancel').click();
                     }
 
                     $('#produit-delete-button').children('i').remove();
@@ -155,10 +167,10 @@ $(document).ready(function () {
     })
 
     //AJAX pour supression d'utilisateur
-    $(document).on('click', '#user-delete-button', function() {
+    $(document).on('click', '#user-delete-button', function () {
         var id = $(this).attr('value')
-        
-        if(id){
+
+        if (id) {
 
             $('#user-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
 
@@ -172,7 +184,8 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data['code'] === 200) {
                         loadUserList();
-                        $('#user-cancel-button').click();
+                        loadCommandeList();
+                        $('#user-delete-cancel').click();
                     }
 
                     $('#user-delete-button').children('i').remove();
@@ -185,12 +198,12 @@ $(document).ready(function () {
     })
 
     //AJAX load produit list
-    function loadProduitList(){
+    function loadProduitList() {
         $.ajax({
             method: "POST",
             url: findProduitsToList,
             success: function (data) {
-                if(data['code'] === 200){
+                if (data['code'] === 200) {
                     produitlist.DataTable().clear();
                     produitlist.DataTable().destroy();
                     produitlist.children('tbody').append(data['content']);
@@ -199,7 +212,8 @@ $(document).ready(function () {
                         "bLengthChange": false,
                         "bInfo": false,
                         columnDefs: [
-                            { targets: 2, orderable: false, width: "10%" }
+                            { targets: 2, orderable: false },
+                            { targets: 3, orderable: false, width: "10%" }
                         ]
                     });
                 }
@@ -208,12 +222,12 @@ $(document).ready(function () {
     }
 
     //AJAX load user list
-    function loadUserList(){
+    function loadUserList() {
         $.ajax({
             method: "POST",
             url: findUsersToList,
             success: function (data) {
-                if(data['code'] === 200){
+                if (data['code'] === 200) {
                     userlist.DataTable().clear();
                     userlist.DataTable().destroy();
                     userlist.children('tbody').append(data['content']);
@@ -231,19 +245,22 @@ $(document).ready(function () {
     }
 
     //AJAX load commande list
-    function loadCommandeList(){
+    function loadCommandeList() {
         $.ajax({
             method: "POST",
             url: findCommandesToList,
             success: function (data) {
-                if(data['code'] === 200){
+                if (data['code'] === 200) {
                     commandelist.DataTable().clear();
                     commandelist.DataTable().destroy();
                     commandelist.children('tbody').append(data['content']);
                     commandelist.DataTable({
                         "autoWidth": true,
                         "bLengthChange": false,
-                        "bInfo": false
+                        "bInfo": false,
+                        "order": [
+                            [1, "desc"]
+                        ]
                     });
                 }
             }
@@ -254,7 +271,7 @@ $(document).ready(function () {
     loadUserList();
     loadCommandeList();
 
-    $(document).one('ajaxStop', function (){
+    $(document).one('ajaxStop', function () {
         $('#loading').hide("puff").delay(10).queue(function () {
             $('#loading').remove();
             $('.container-fluid').show();
