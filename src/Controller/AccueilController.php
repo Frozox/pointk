@@ -36,45 +36,49 @@ class AccueilController extends AbstractController
      */
     public function addCommande(Request $request, ProduitRepository $produitRepository): Response
     {
-        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-            if ($request->get('prix')) {
-                $user = $this->getUser();
-                $prix = $request->get('prix');
-                $commande_qte = $request->get('commande');
+        return new JsonResponse([
+            'prix' => $request->get('prix'),
+            'commande' => $request->get('commande')
+        ]);
+        // if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+        //     if ($request->get('prix')) {
+        //         $user = $this->getUser();
+        //         $prix = $request->get('prix');
+        //         $commande_qte = $request->get('commande');
 
-                $entityManager = $this->getDoctrine()->getManager();
+        //         $entityManager = $this->getDoctrine()->getManager();
 
-                $commande = new Commande();
-                $commande->setPrix($prix);
-                $commande->setCommandeUser($user);
+        //         $commande = new Commande();
+        //         $commande->setPrix($prix);
+        //         $commande->setCommandeUser($user);
 
-                $entityManager->persist($commande);
+        //         $entityManager->persist($commande);
 
-                foreach ($commande_qte as $key => $val) {
-                    $produit = $produitRepository->findProduitById($key);
+        //         foreach ($commande_qte as $key => $val) {
+        //             $produit = $produitRepository->findProduitById($key);
 
-                    $commandeProduit = new CommandeProduit();
-                    $commandeProduit->setCommande($commande);
-                    $commandeProduit->setProduit($produit);
-                    $commandeProduit->setQteProduit($val);
-                    $commandeProduit->setPrixProduit($produit->getPrix() * $val);
+        //             $commandeProduit = new CommandeProduit();
+        //             $commandeProduit->setCommande($commande);
+        //             $commandeProduit->setProduit($produit);
+        //             $commandeProduit->setQteProduit($val);
+        //             $commandeProduit->setPrixProduit($produit->getPrix() * $val);
 
-                    $entityManager->persist($commandeProduit);
+        //             $entityManager->persist($commandeProduit);
 
-                    $commande->addCommandeProduit($commandeProduit);
-                }
+        //             $commande->addCommandeProduit($commandeProduit);
+        //         }
 
-                $solde = $user->getSolde();
-                $newSolde = $solde - $prix;
-                $user->setSolde($newSolde);
+        //         $solde = $user->getSolde();
+        //         $newSolde = $solde - $prix;
+        //         $user->setSolde($newSolde);
 
-                $entityManager->flush();
+        //         $entityManager->flush();
 
-                return new JsonResponse([
-                    'code' => 200,
-                    'solde' => $user->getSolde()
-                ]);
-            }
-        }
+        //         return new JsonResponse([
+        //             'code' => 200,
+        //             'solde' => $user->getSolde()
+        //         ]);
+        //     }
+        // }
     }
 }
