@@ -44,6 +44,7 @@ class Commande
     {
         $this->commandeProduits = new ArrayCollection();
         $this->date_crea = new \DateTime('now');
+        $this->prix = 0;
     }
 
     public function getId(): ?int

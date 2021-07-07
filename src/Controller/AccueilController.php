@@ -36,49 +36,48 @@ class AccueilController extends AbstractController
      */
     public function addCommande(Request $request, ProduitRepository $produitRepository): Response
     {
-        return new JsonResponse([
-            'prix' => $request->get('prix'),
-            'commande' => $request->get('commande')
-        ]);
-        // if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-        //     if ($request->get('prix')) {
-        //         $user = $this->getUser();
-        //         $prix = $request->get('prix');
-        //         $commande_qte = $request->get('commande');
+        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+            if ($request->get('commande')) {
+                $user = $this->getUser();
+                $commande_qte = $request->get('commande');
+                $prix = 0;
 
-        //         $entityManager = $this->getDoctrine()->getManager();
+                $entityManager = $this->getDoctrine()->getManager();
 
-        //         $commande = new Commande();
-        //         $commande->setPrix($prix);
-        //         $commande->setCommandeUser($user);
+                $commande = new Commande();
+                $commande->setCommandeUser($user);
 
-        //         $entityManager->persist($commande);
+                $entityManager->persist($commande);
 
-        //         foreach ($commande_qte as $key => $val) {
-        //             $produit = $produitRepository->findProduitById($key);
+                foreach ($commande_qte as $key => $val) {
+                    $produit = $produitRepository->findProduitById($key);
 
-        //             $commandeProduit = new CommandeProduit();
-        //             $commandeProduit->setCommande($commande);
-        //             $commandeProduit->setProduit($produit);
-        //             $commandeProduit->setQteProduit($val);
-        //             $commandeProduit->setPrixProduit($produit->getPrix() * $val);
+                    $commandeProduit = new CommandeProduit();
+                    $commandeProduit->setCommande($commande);
+                    $commandeProduit->setProduit($produit);
+                    $commandeProduit->setQteProduit($val);
+                    $commandeProduit->setPrixProduit($produit->getPrix() * $val);
 
-        //             $entityManager->persist($commandeProduit);
+                    $prix += $produit->getPrix() * $val;
 
-        //             $commande->addCommandeProduit($commandeProduit);
-        //         }
+                    $entityManager->persist($commandeProduit);
 
-        //         $solde = $user->getSolde();
-        //         $newSolde = $solde - $prix;
-        //         $user->setSolde($newSolde);
+                    $commande->addCommandeProduit($commandeProduit);
+                }
 
-        //         $entityManager->flush();
+                $commande->setPrix($prix);
 
-        //         return new JsonResponse([
-        //             'code' => 200,
-        //             'solde' => $user->getSolde()
-        //         ]);
-        //     }
-        // }
+                $solde = $user->getSolde();
+                $newSolde = $solde - $prix;
+                $user->setSolde($newSolde);
+
+                $entityManager->flush();
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'solde' => $user->getSolde()
+                ]);
+            }
+        }
     }
 }
