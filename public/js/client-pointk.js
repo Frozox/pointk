@@ -15,7 +15,7 @@ $(document).ready(function () {
         }
         qte--;
         qtTotal--;
-        prixTotal -= parseFloat($(`#produit-prix-${id}`).text().toString().match(/[\d.]*$/)[0]);
+        prixTotal -= parseFloat($(`#produit-prix-${id}`).text());
         $('#prixTotalCtg').text(prixTotal);
         $(this).parent().children('p').text(qte);
         if (qtTotal <= 0) {
@@ -30,7 +30,7 @@ $(document).ready(function () {
         if (qte >= 0) {
             qte++;
             qtTotal++;
-            prixTotal += parseFloat($(`#produit-prix-${id}`).text().toString().match(/[\d.]*$/)[0]);
+            prixTotal += parseFloat($(`#produit-prix-${id}`).text());
             $('#prixTotalCtg').text(prixTotal);
             $(this).parent().children('button[id*="produit-moins"]').removeAttr("disabled");
             $(this).parent().children('p').text(qte);
@@ -63,7 +63,9 @@ $(document).ready(function () {
     function addProduitsModal() {
         var produitsModal = $('#commande-produit-modal');
         var prixModal = $('#commande-prix-modal');
-        var produits = $('p[id*="produit-"]')
+        var produits = $('p[id*="produit-qte-"]');
+
+        console.log(produits);
 
         for (let i = 0; i < produits.length; i++) {
             var produitQte = parseInt($(produits[i]).text());

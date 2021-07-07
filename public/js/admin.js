@@ -101,7 +101,7 @@ $(document).ready(function () {
         var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
         $("#produit-edit-button").val(id);
         $("#produit_edit_nom").val($("#produit-" + id).children()[0].textContent);
-        $("#produit_edit_prix").val($("#produit-" + id).children()[1].textContent);
+        $("#edit_produit_form_prix").val($("#produit-" + id).children()[1].textContent);
         $("#produit_edit_image_src")[0].src = $("#produit-" + id).children()[2].lastElementChild.src;
     });
 
@@ -112,15 +112,51 @@ $(document).ready(function () {
     });
 
     //AJAX pour editer un produit
-    $(document).on('click', '#produit-edit-button', function () {
-        var id = $(this).attr('value');
-        console.log('produit-edit-' + id);
+    $(document).on('submit', '#produit-edit-form', function (event) {
+        event.preventDefault();
+
+        var id = $('#produit-edit-button').attr('value');
+        var formData = new FormData(this);
+
+        formData.append('produit', id);
+        console.log(formData.getAll('image'));
+
+        $('#produit-edit-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+        $.ajax({
+            method: "POST",
+            url: editProduitUrl,
+            async: false,
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                //Si le formulaire est valide
+                if (data['code'] === 200) {
+                    loadProduitList();
+                    loadCommandeList();
+                    $('#produit-edit-cancel').click();
+                }
+
+                $('#produit-edit-button').children('i').remove();
+            },
+            //S'il y a une erreur de traitement
+            error: function (data) {
+                $('#produit-edit-button').children('i').remove();
+            }
+        });
+
+        event.stopPropagation();
     });
 
     //AJAX pour editer un utilisateur
-    $(document).on('click', '#user-edit-button', function () {
+    $(document).on('submit', '#user-edit-button', function (event) {
+        event.preventDefault();
+
         var id = $(this).attr('value');
-        console.log('user-edit-' + id);
+        console.log(`user-edit-${id}`);
+
+        event.stopPropagation();
     });
 
     //Model de supression de Produit

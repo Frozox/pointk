@@ -3,7 +3,7 @@
         <td>{{ produit.nom() }}</td>
         <td>{{ produit.prix() }}<img style="vertical-align: inherit;" src="/images/placeholder/chestnut.png" width="20px"></td>
         <td>
-            <img style="vertical-align: inherit;" src="{{produit.getImage()}}" width="20px">
+            <img style="vertical-align: inherit;" src="{{produit.getImage()}}?cache={{ random() }}" width="20px">
         </td>
         <td>
             <ul class="list-inline-item m-0">

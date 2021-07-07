@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Commande;
 use App\Entity\Produit;
 use App\Entity\User;
+use App\Form\EditProduitFormType;
+use App\Form\EditUserFormType;
 use App\Form\ProduitFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
@@ -39,7 +41,9 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'users' => $userRepository->findAll(),
             'registrationForm' => $this->createForm(RegistrationFormType::class, new User())->createView(),
-            'produitForm' => $this->createForm(ProduitFormType::class, new Produit())->createView()
+            'produitForm' => $this->createForm(ProduitFormType::class, new Produit())->createView(),
+            'editProduitForm' => $this->createForm(EditProduitFormType::class, new Produit())->createView(),
+            'editUserForm' => $this->createForm(EditUserFormType::class, new User())->createView()
         ]);
     }
 
@@ -155,6 +159,58 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Editer les attributs d'un produit
+     * @Route("/editproduit", name="editproduit")
+     */
+    public function editProduit(Request $request): Response
+    {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $produit = $entityManager->getRepository(Produit::class)->findOneBy(['id' => $request->get('produit')]);
+
+                $editProduitForm = $this->createForm(EditProduitFormType::class, $produit);
+                $editProduitForm->handleRequest($request);
+
+                if ($editProduitForm->isSubmitted() && $editProduitForm->isValid()) {
+                    $imageFile = $editProduitForm->get('image')->getData();
+
+                    if ($imageFile) {
+                        $newFilename = $produit->getId() . '.' . $imageFile->guessExtension();
+
+                        try {
+                            $imageFile->move(
+                                '../public/images/produits/',
+                                $newFilename
+                            );
+                        } catch (FileException $e) {
+                            throw $e;
+                            // ... handle exception if something happens during file upload
+                        }
+                    }
+
+                    $entityManager->flush();
+                }
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'message' => 'Formulaire valide',
+                    'image' => $editProduitForm->get('image')->getData()
+                ]);
+            }
+        }
+    }
+
+    /**
+     * Editer les attributs d'un utilisateur
+     * @Route("/edituser", name="edituser")
+     */
+    public function editUser(Request $request): Response
+    {
+    }
+
+    /**
      * Suppression de produits avec ajax (doit être admin pour supprimer)
      * @Route("/deleteproduit", name="deleteproduit")
      */
@@ -193,26 +249,6 @@ class AdminController extends AbstractController
             'code' => 403,
             'message' => "Unauthorized"
         ]);
-    }
-
-    /**
-     * Editer les attributs d'un produit
-     * @Route("/editproduit", name="editproduit")
-     */
-    public function editProduit(Request $request): Response
-    {
-        return new JsonResponse([
-            'code' => 200,
-            'message' => 'test'
-        ]);
-    }
-
-    /**
-     * Editer les attributs d'un utilisateur
-     * @Route("/edituser", name="edituser")
-     */
-    public function editUser(Request $request): Response
-    {
     }
 
     /**

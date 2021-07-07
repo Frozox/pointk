@@ -8,7 +8,7 @@
                 <img id="produit-img-{{ produit.id }}" class="rounded-lg image-produit"  src="{{ produit.image }}">
                 <div class="row description-product-list">
                     <p class="title-poduct-list">{{ produit.nom }}</p>
-                    <span><p id="produit-prix-{{ produit.id }}" style="display: inline-block;">prix : {{ produit.prix }}</p><img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
+                    <span><p id="produit-prix-{{ produit.id }}" style="display: inline-block;">{{ produit.prix }}</p><img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
                 </div>
             </div>
             <div class="col text-right" style="margin-top: 20px;">
