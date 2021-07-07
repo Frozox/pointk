@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
@@ -126,12 +127,13 @@ class AdminController extends AbstractController
 
                     $userId = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()])->getId();
 
-                    $urlConfirmation = $this->getParameter('pointk.domain_name') . $this->generateUrl(
+                    $urlConfirmation = $this->generateUrl(
                         'confirm_account',
                         [
                             'userId' => $userId,
                             'token' => $user->getConfirmationToken()
-                        ]
+                        ],
+                        UrlGeneratorInterface::ABSOLUTE_URL
                     );
 
                     $this->sendMailToUser($mailer, $registrationForm, $urlConfirmation);
@@ -232,7 +234,6 @@ class AdminController extends AbstractController
                         throw $e;
                     }
 
-                    $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->remove($produit);
                     $entityManager->flush();
 
@@ -283,6 +284,36 @@ class AdminController extends AbstractController
             'message' => "Unauthorized"
         ]);
     }
+
+    /**
+     * Suppression de commande avec ajax (doit être admin pour supprimer, ne peut pas se supprimer sois même)
+     * @Route("/deletecommande", name="deletecommande")
+     */
+    public function deleteCommande(Request $request): Response
+    {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                if ($request->get('commande')) {
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $commande = $entityManager->getRepository(Commande::class)->findOneBy(['id' => $request->get('commande')]);
+                    
+                    //Remboursement
+                    $user = $commande->getCommandeUser();
+                    $user->addSolde($commande->getPrix());
+
+                    $entityManager->remove($commande);
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'id' => $commande->getId(),
+                        'delete' => true
+                    ]);
+                }
+            }
+        }
+    }
+    
 
     /**
      * @Route("/findproduits", name="findproduits")

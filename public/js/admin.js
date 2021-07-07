@@ -171,6 +171,12 @@ $(document).ready(function () {
         $("#user-delete-button").val(id);
     });
 
+    //Model de supression de Commande
+    $(document).on('click', 'button[name*="delete-commande"]', function () {
+        var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
+        $("#commande-delete-button").val(id);
+    });
+
     //AJAX pour supression de produit
     $(document).on('click', '#produit-delete-button', function () {
         var id = $(this).attr('value')
@@ -233,6 +239,37 @@ $(document).ready(function () {
         }
     })
 
+    //AJAX pour supression de Commande
+    $(document).on('click', '#commande-delete-button', function () {
+        var id = $(this).attr('value')
+
+        if (id) {
+
+            $('#commande-delete-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+            $.ajax({
+                method: "POST",
+                url: deleteCommandeUrl,
+                async: false,
+                data: {
+                    commande: id
+                },
+                success: function (data) {
+                    if (data['code'] === 200) {
+                        loadUserList();
+                        loadCommandeList();
+                        $('#commande-delete-cancel').click();
+                    }
+
+                    $('#commande-delete-button').children('i').remove();
+                },
+                error: function (data) {
+                    $('#commande-delete-button').children('i').remove();
+                }
+            });
+        }
+    })
+
     //AJAX load produit list
     function loadProduitList() {
         $.ajax({
@@ -244,7 +281,7 @@ $(document).ready(function () {
                     produitlist.DataTable().destroy();
                     produitlist.children('tbody').append(data['content']);
                     produitlist.DataTable({
-                        "autoWidth": true,
+                        "autoWidth": false,
                         "bLengthChange": false,
                         "bInfo": false,
                         columnDefs: [
@@ -268,11 +305,11 @@ $(document).ready(function () {
                     userlist.DataTable().destroy();
                     userlist.children('tbody').append(data['content']);
                     userlist.DataTable({
-                        "autoWidth": true,
+                        "autoWidth": false,
                         "bLengthChange": false,
                         "bInfo": false,
                         columnDefs: [
-                            { targets: 8, orderable: false }
+                            { targets: 8, orderable: false, width: "10%" }
                         ]
                     });
                 }
@@ -291,11 +328,14 @@ $(document).ready(function () {
                     commandelist.DataTable().destroy();
                     commandelist.children('tbody').append(data['content']);
                     commandelist.DataTable({
-                        "autoWidth": true,
+                        "autoWidth": false,
                         "bLengthChange": false,
                         "bInfo": false,
                         "order": [
                             [1, "desc"]
+                        ],
+                        columnDefs: [
+                            { targets: 4, orderable: false, width: "10%" }
                         ]
                     });
                 }

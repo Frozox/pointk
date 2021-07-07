@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}" />
+{% endblock %}
+
+{% block body %}
+    {{ include('navbar.html.twig') }}
+    {# {{ include('loading.html.twig') }}
+    <div class="container-fluid" style="display: none;"> #}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="tab-content">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="mt-2">Liste des commandes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="commande-list" class="table table-hover" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><i class="far fa-calendar-plus"></i><span class="ml-1">Date</span></th>
+                                            <th scope="col"><i class="fas fa-dollar-sign"></i><span class="ml-1">Prix</span></th>
+                                            <th scope="col"><i class="fas fa-dolly-flatbed"></i><span class="ml-1">Produits</span></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-truncate"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/historique.js') }}"></script>
+{% endblock %}

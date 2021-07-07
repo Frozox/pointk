@@ -155,6 +155,20 @@ class User implements UserInterface
         return $this->solde;
     }
 
+    public function addSolde(float $solde): self
+    {
+        $this->solde += $solde;
+        
+        return $this;
+    }
+
+    public function remSolde(float $solde): self
+    {
+        $this->solde -= $solde;
+
+        return $this;
+    }
+
     public function setSolde(float $solde): self
     {
         $this->solde = $solde;

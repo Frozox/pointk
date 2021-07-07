@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RecoverPasswordController extends AbstractController
@@ -41,12 +42,13 @@ class RecoverPasswordController extends AbstractController
 
                     $userId = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()])->getId();
 
-                    $url_recover = $this->getParameter('pointk.domain_name') . $this->generateUrl(
+                    $url_recover = $this->generateUrl(
                         'recover_account',
                         [
                             'userId' => $userId,
                             'token' => $user->getRecoverToken()
-                        ]
+                        ],
+                        UrlGeneratorInterface::ABSOLUTE_URL
                     );
 
                     $this->sendMailToUser($mailer, $url_recover, $user);
