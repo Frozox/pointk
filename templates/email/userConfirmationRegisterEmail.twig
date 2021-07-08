@@ -1,5 +1,3 @@
-{% extends 'base.html.twig' %}
-
 {% block title %}Bienvenu Dans le Pointk !{% endblock %}
 
 {% block body %}
@@ -10,6 +8,5 @@
         {% elseif role == 'ROLE_USER'%}
             <pre>role: Utilisateur</pre>
         {% endif %}
-    <pre>mot de passe temporaire: {{ password }}</pre>
     <pre><a href="{{ url_confirmation }}">Activer mon compte</a></pre>
 {% endblock %}

@@ -11,9 +11,9 @@
         {% endblock %}
     </head>
     <body>
-    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-    {% include('navbar.html.twig') %}
-    {% endif %}
+    {# {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% include('navbar.html.twig') %}
+    {% endif %} #}
     {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('js/jquery.min.js') }}"></script>

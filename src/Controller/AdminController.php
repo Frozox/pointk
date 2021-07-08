@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Commande;
 use App\Entity\Produit;
 use App\Entity\User;
+use App\Form\EditProduitFormType;
+use App\Form\EditUserFormType;
 use App\Form\ProduitFormType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
@@ -16,7 +18,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 /**
  * @Route("/admin")
  */
@@ -38,7 +42,9 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'users' => $userRepository->findAll(),
             'registrationForm' => $this->createForm(RegistrationFormType::class, new User())->createView(),
-            'produitForm' => $this->createForm(ProduitFormType::class, new Produit())->createView()
+            'produitForm' => $this->createForm(ProduitFormType::class, new Produit())->createView(),
+            'editProduitForm' => $this->createForm(EditProduitFormType::class, new Produit())->createView(),
+            'editUserForm' => $this->createForm(EditUserFormType::class, new User())->createView()
         ]);
     }
 
@@ -54,7 +60,7 @@ class AdminController extends AbstractController
                 $produitForm = $this->createForm(ProduitFormType::class, $produit);
                 $produitForm->handleRequest($request);
 
-                if ($produitForm->isSubmitted() && $produitForm->isValid()) {    
+                if ($produitForm->isSubmitted() && $produitForm->isValid()) {
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($produit);
                     $entityManager->flush();
@@ -115,30 +121,22 @@ class AdminController extends AbstractController
                         $registrationForm->get('roles')->getData()
                     );
 
-                    $randomPassword = rtrim(strtr(base64_encode(random_bytes(10)), '+/', '-_'), '=');
-
-                    $user->setPassword(
-                        $passwordEncoder->encodePassword(
-                            $user,
-                            $randomPassword
-                        )
-                    );
-
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($user);
                     $entityManager->flush();
 
                     $userId = $entityManager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()])->getId();
 
-                    $urlConfirmation = $this->getParameter('pointk.domain_name') . $this->generateUrl(
-                            'confirm_account',
-                            [
-                                'userId' => $userId,
-                                'token' => $user->getConfirmationToken()
-                            ]
-                        );
+                    $urlConfirmation = $this->generateUrl(
+                        'confirm_account',
+                        [
+                            'userId' => $userId,
+                            'token' => $user->getConfirmationToken()
+                        ],
+                        UrlGeneratorInterface::ABSOLUTE_URL
+                    );
 
-                    $this->sendMailToUser($mailer, $registrationForm, $randomPassword, $urlConfirmation);
+                    $this->sendMailToUser($mailer, $registrationForm, $urlConfirmation);
 
                     return new JsonResponse([
                         'code' => 200,
@@ -163,6 +161,111 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Editer les attributs d'un produit
+     * @Route("/editproduit", name="editproduit")
+     */
+    public function editProduit(Request $request): Response
+    {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $produit = $entityManager->getRepository(Produit::class)->findOneBy(['id' => $request->get('produit')]);
+
+                $editProduitForm = $this->createForm(EditProduitFormType::class, $produit);
+                $editProduitForm->handleRequest($request);
+
+                if ($editProduitForm->isSubmitted() && $editProduitForm->isValid()) {
+                    $imageFile = $editProduitForm->get('image')->getData();
+
+                    if ($imageFile) {
+                        $newFilename = $produit->getId() . '.' . $imageFile->guessExtension();
+
+                        try {
+                            $imageFile->move(
+                                '../public/images/produits/',
+                                $newFilename
+                            );
+                        } catch (FileException $e) {
+                            throw $e;
+                            // ... handle exception if something happens during file upload
+                        }
+                    }
+
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'message' => 'Formulaire valide',
+                        'image' => $editProduitForm->get('image')->getData()
+                    ]);
+                } else if ($editProduitForm->isSubmitted() && !$editProduitForm->isValid()) {
+                    return new JsonResponse([
+                        'code' => 400,
+                        'message' => "Formulaire invalide",
+                        'errors' => $this->getErrorsFromForm($editProduitForm)
+                    ]);
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
+    }
+
+    /**
+     * Editer les attributs d'un utilisateur
+     * @Route("/edituser", name="edituser")
+     */
+    public function editUser(Request $request): Response
+    {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $request->get('user')]);
+
+                $editUserForm = $this->createForm(EditUserFormType::class, $user);
+                $editUserForm->handleRequest($request);
+
+                if ($editUserForm->isSubmitted() && $editUserForm->isValid()) {
+                    $soldAdded = $editUserForm->get('addsolde')->getData();
+                    $telephone = $editUserForm->get('telephone')->getData();
+
+                    if ($soldAdded) {
+                        if ($soldAdded > 0) {
+                            $user->addSolde($soldAdded);
+                        }
+                    }
+
+                    $user->setTelephone($telephone);
+
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'message' => 'Formulaire valide',
+                        'tel' => $editUserForm->get('telephone')->getData()
+                    ]);
+                } else if ($editUserForm->isSubmitted() && !$editUserForm->isValid()) {
+                    return new JsonResponse([
+                        'code' => 400,
+                        'message' => "Formulaire invalide",
+                        'errors' => $this->getErrorsFromForm($editUserForm)
+                    ]);
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
+    }
+
+    /**
      * Suppression de produits avec ajax (doit être admin pour supprimer)
      * @Route("/deleteproduit", name="deleteproduit")
      */
@@ -176,15 +279,14 @@ class AdminController extends AbstractController
 
                     $filesystem = new Filesystem();
 
-                    try{
-                        if($produit->getImage() != null){
-                            $filesystem->remove('../public' . $produit->getImage());   
+                    try {
+                        if ($produit->getImage() != null) {
+                            $filesystem->remove('../public' . $produit->getImage());
                         }
-                    }catch (FileException $e){
+                    } catch (FileException $e) {
                         throw $e;
                     }
-    
-                    $entityManager = $this->getDoctrine()->getManager();
+
                     $entityManager->remove($produit);
                     $entityManager->flush();
 
@@ -235,6 +337,41 @@ class AdminController extends AbstractController
             'message' => "Unauthorized"
         ]);
     }
+
+    /**
+     * Suppression de commande avec ajax (doit être admin pour supprimer, ne peut pas se supprimer sois même)
+     * @Route("/deletecommande", name="deletecommande")
+     */
+    public function deleteCommande(Request $request): Response
+    {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+                if ($request->get('commande')) {
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $commande = $entityManager->getRepository(Commande::class)->findOneBy(['id' => $request->get('commande')]);
+
+                    //Remboursement
+                    $user = $commande->getCommandeUser();
+                    $user->addSolde($commande->getPrix());
+
+                    $entityManager->remove($commande);
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'id' => $commande->getId(),
+                        'delete' => true
+                    ]);
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
+    }
+
 
     /**
      * @Route("/findproduits", name="findproduits")
@@ -338,7 +475,7 @@ class AdminController extends AbstractController
     /*
      * Envoie un mail à un utilisateur avec les informations de son compte
      */
-    private function sendMailToUser(\Swift_Mailer $mailer, FormInterface $form, string $randomPassword, string $urlConfirmation)
+    private function sendMailToUser(\Swift_Mailer $mailer, FormInterface $form, string $urlConfirmation)
     {
         $email = (new \Swift_Message('Bienvenu dans le Pointk ' . $form->get('nom')->getData()))
             ->setFrom('pointk.geeps@gmail.com')
@@ -349,7 +486,6 @@ class AdminController extends AbstractController
                     'nom' => $form->get('nom')->getData(),
                     'telephone' => $form->get('telephone')->getData(),
                     'role' => $form->get('roles')->getData()[0],
-                    'password' => $randomPassword,
                     'url_confirmation' => $urlConfirmation
                 ]),
                 'text/html'

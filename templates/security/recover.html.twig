@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <main class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12 p-5">
+                    <form method="post">
+                        <h1 class="m-b-5 text-center"><img style="vertical-align: inherit;" src="/images/logo-site.png" width="75px">Récupération</h1>
+                        <hr>
+
+                        {% if info %}
+                            <div class="alert alert-success">{{ info }}</div>
+                        {% elseif error %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="inputEmail">Email de récupération</label>
+                            <input type="email"  name="email" id="inputEmail" class="form-control" required autofocus>
+                        </div>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        <div class="pb-3">
+                            <a href="{{ path('login') }}">Se connecter ?</a>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary" type="submit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

@@ -1,23 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    {% include('navbar.html.twig') %}
     <div class="container-md">
     {% for produit in produits %}
         <div class="row d-flex justify-content-around rounded-lg" style="margin-bottom: 10px; background-color: white; padding: 10px;">
             <div class="col text-left">
-                <img class="rounded-lg image-produit"  src="{{ asset(produit.image) }}">
+                <img id="produit-img-{{ produit.id }}" class="rounded-lg image-produit"  src="{{ produit.image }}">
                 <div class="row description-product-list">
                     <p class="title-poduct-list">{{ produit.nom }}</p>
-                    <div class="row">
-                        <div class="col">
-                            <p>prix : {{ produit.prix }} <img src="{{ asset('images/placeholder/chestnut.png') }}"></p>
-                        </div>
-                    </div>
+                    <span><p id="produit-prix-{{ produit.id }}" style="display: inline-block;">{{ produit.prix }}</p><img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
                 </div>
             </div>
             <div class="col text-right" style="margin-top: 20px;">
-                <button type="button" style="font-size: 25px; margin: 5px;" data-prix="{{ produit.prix }}" data-id="{{ produit.id }}" class="btn btn-dark btn-moins-produit" disabled> - </button>
-                <p style="display: inline-block;" class="qty-selected quantity-{{ produit.id }}">0</p>
-                <button type="button" style="font-size: 25px; margin: 5px;" data-prix="{{ produit.prix }}" data-id="{{ produit.id }}" class="btn btn-dark btn-plus-produit"> + </button>
+                <button id="produit-moins-{{produit.id}}" type="button" style="font-size: 25px; margin: 5px;" class="btn btn-dark" disabled>-</button>
+                <p id="produit-qte-{{produit.id}}" style="display: inline-block;">0</p>
+                <button id="produit-plus-{{produit.id}}" type="button" style="font-size: 25px; margin: 5px;" class="btn btn-dark">+</button>
             </div>
         </div>
     {% endfor %}
@@ -30,21 +27,24 @@
             <button id="annulerCommande" type="button" class="btn btn-secondary">annuler</button>
         </div>
     </div>
+
     <div class="modal fade" id="confirm-commande-modal" tabindex="-1" aria-labelledby="confirm-commande-modal-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="confirm-commande-modal-label">Commande confirmée</h5>
+                    <h5 class="modal-title" id="confirm-commande-modal-label">Confirmer la commande</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <span>{{ app.user.nom }}, votre solde a été mis à jour, </br>
-                    il est maintenant de <span class="user-solde-number">{{ app.user.solde }}</span></span><span> <img src="{{ asset('images/placeholder/chestnut.png') }}"></span>
+                    <span>{{ app.user.nom }}, Voulez vous confirmer la commande ?</br>
+                    <span id="commande-produit-modal"></span></br>
+                    <span id="commande-prix-modal"></span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    <button id="commande-produit-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button value="" id="commande-produit-confirm" type="submit" class="btn btn-success">Confirmer</button>
                 </div>
             </div>
         </div>

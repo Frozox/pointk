@@ -12,7 +12,7 @@
 }
 
 body{
-    background-color: whitesmoke;
+    background-color: #f4f2eb;
 }
 
 .description-product-list {
@@ -43,7 +43,7 @@ body{
 
 .image-produit{
     width: 64px;
-    background-color: whitesmoke;
+    background-color: #f4f2eb;
     padding: 5px;
 }
 
@@ -62,11 +62,19 @@ body{
     color : white;
 }
 
+.card-header, .nav-tabs .nav-link.active {
+    background-color: #D3D2C8;
+}
+
+.card-body {
+    background-color: #FFFEFD;
+}
+
 @media screen and (max-width: 1000px)
 {
     .image-produit{
         width: 48px;
-        background-color: whitesmoke;
+        background-color: #f4f2eb;
         padding: 5px;
     }
     .title-poduct-list{

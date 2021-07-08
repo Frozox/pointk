@@ -8,37 +8,27 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+class EditUserFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, [
-                'required' => true
+            ->add('addsolde', NumberType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'Nombre de Châtaignes'
             ])
             ->add('nom', TextType::class, [
-                'required' => true,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a name',
-                    ]),
-                    new Length([
-                        'min' => 3,
-                        'max' => 20,
-                        'minMessage' => 'Le nom est trop court, il doit au minimum faire {{ limit }} caractères',
-                        'maxMessage' => 'Le nom est trop long, il doit au maximum faire {{ limit }} caractères',
-                    ]),
-                ],
+                'required' => false
             ])
             ->add('telephone', PhoneNumberType::class, [
                 'preferred' => 'FR',
+                'mapped' => false,
                 'required'  => false,
             ])
             ->add('roles', ChoiceType::class, [

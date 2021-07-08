@@ -1,21 +1,11 @@
 {% for commande in commandes %}
     <tr id="commande-{{ commande.id() }}">
-        <td><a href="mailto:{{ commande.getCommandeUser().getEmail() }}">{{ commande.getCommandeUser().getEmail() }}</a</td>
         <td>{{ commande.getDateCrea()|date("d-m-Y H:i:s") }}</td>
         <td>{{ commande.getPrix() }}<img style="vertical-align: inherit;" src="/images/placeholder/chestnut.png" width="20px"></td>
         <td>
             {% for commandeProduit in commande.getCommandeProduits() %}
                 <img style="vertical-align: inherit;" src="{{commandeProduit.getProduit().getImage()}}?cache={{ random() }}" width="20px">(x{{ commandeProduit.getQteProduit() }})
             {% endfor %}
-        </td>
-        <td>
-            <ul class="list-inline-item m-0">
-                <li class="list-inline-item">
-                    <button class="btn btn-danger btn-sm rounded-0" type="button" name="delete-commande" data-toggle="modal" data-target="#commande-delete-modal" data-original-title="Delete">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
-                </li>
-            </ul>
         </td>
     </tr>
 {% endfor %}
