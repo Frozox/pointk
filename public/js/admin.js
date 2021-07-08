@@ -109,6 +109,34 @@ $(document).ready(function () {
     $(document).on('click', 'button[name*="edit-user"]', function () {
         var id = $(this).parent().parent().parent().parent().attr('id').toString().match(/\d+$/)[0];
         $("#user-edit-button").val(id);
+
+        const roles = {
+            "Administrateur": "ROLE_ADMIN",
+            "Utilisateur": "ROLE_USER"
+        }
+
+        $("#edit_user_form_addsolde").val(0);
+        $("#edit_user_form_nom").val($("#user-" + id).children()[0].textContent);
+
+        if ($("#user-" + id).children()[2].textContent.toString().match(/^-$/) == null) {
+            $("#edit_user_form_telephone_number").val($("#user-" + id).children()[2].textContent);
+        }
+        else {
+            $("#edit_user_form_telephone_number").val(null);
+        }
+
+        $("#edit_user_form_roles").val(roles[$("#user-" + id).children()[3].textContent]);
+
+        if ($("#user-" + id).children()[7].textContent.toString().match(/^-$/) == null) {
+            $("#edit_user_form_date_fin_day").val(parseInt($("#user-" + id).children()[7].textContent.toString().match(/^[\d]{2}/)[0]));
+            $("#edit_user_form_date_fin_month").val(parseInt($("#user-" + id).children()[7].textContent.toString().match(/-([\d]{2})-/)[1]));
+            $("#edit_user_form_date_fin_year").val(parseInt($("#user-" + id).children()[7].textContent.toString().match(/[\d]{4}$/)[0]));
+        }
+        else {
+            $("#edit_user_form_date_fin_day").val(null);
+            $("#edit_user_form_date_fin_month").val(null);
+            $("#edit_user_form_date_fin_year").val(null);
+        }
     });
 
     //AJAX pour editer un produit
@@ -119,7 +147,6 @@ $(document).ready(function () {
         var formData = new FormData(this);
 
         formData.append('produit', id);
-        console.log(formData.getAll('image'));
 
         $('#produit-edit-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
 
@@ -150,13 +177,61 @@ $(document).ready(function () {
     });
 
     //AJAX pour editer un utilisateur
-    $(document).on('submit', '#user-edit-button', function (event) {
+    $(document).on('submit', '#user-edit-form', function (event) {
         event.preventDefault();
 
-        var id = $(this).attr('value');
-        console.log(`user-edit-${id}`);
+        var form = $(this);
+        var id = $('#user-edit-button').attr('value');
+
+        $('#user-edit-button').append(' <i class="fas fa-sync-alt fa-spin"></i>');
+
+        $.ajax({
+            method: "POST",
+            url: editUserUrl,
+            async: false,
+            data: `${form.serialize()}&user=${id}`,
+            success: function (data) {
+                //Si le formulaire est valide
+                if (data['code'] === 200) {
+                    loadUserList();
+                    $('#user-edit-cancel').click();
+                }
+
+                $('#user-edit-button').children('i').remove();
+            },
+            //S'il y a une erreur de traitement
+            error: function (data) {
+                $('#user-edit-button').children('i').remove();
+            }
+        });
 
         event.stopPropagation();
+    });
+
+    $(document).on('click', '#user-info-replenishment-moins', function () {
+        var qte = parseFloat($(this).parent().parent().children('input').val());
+        if (!qte) {
+            qte = 0;
+        }
+
+        if (qte <= 1) {
+            $(this).attr("disabled", true);
+        }
+        qte--;
+        $(this).parent().parent().children('input').val(qte);
+    });
+
+    $(document).on('click', '#user-info-replenishment-plus', function () {
+        var qte = parseFloat($(this).parent().parent().children('input').val());
+        if (!qte) {
+            qte = 0;
+        }
+
+        if (qte >= 0) {
+            qte++;
+            $('#user-info-replenishment-moins').removeAttr("disabled");
+            $(this).parent().parent().children('input').val(qte);
+        }
     });
 
     //Model de supression de Produit
@@ -351,11 +426,6 @@ $(document).ready(function () {
         $('#loading').hide("puff").delay(10).queue(function () {
             $('#loading').remove();
             $('.container-fluid').show();
-            produitlist.DataTable().columns.adjust().draw();
-            userlist.DataTable().columns.adjust().draw();
-            commandelist.DataTable().columns.adjust().draw();
-            $('#user').removeClass("show active");
-            $('#commande').removeClass("show active");
         });
     });
 });

@@ -221,6 +221,48 @@ class AdminController extends AbstractController
      */
     public function editUser(Request $request): Response
     {
+        if ($this->getUser() && $this->isGranted('ROLE_ADMIN')) {
+            if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $request->get('user')]);
+
+                $editUserForm = $this->createForm(EditUserFormType::class, $user);
+                $editUserForm->handleRequest($request);
+
+                if ($editUserForm->isSubmitted() && $editUserForm->isValid()) {
+                    $soldAdded = $editUserForm->get('addsolde')->getData();
+                    $telephone = $editUserForm->get('telephone')->getData();
+
+                    if ($soldAdded) {
+                        if ($soldAdded > 0) {
+                            $user->addSolde($soldAdded);
+                        }
+                    }
+
+                    $user->setTelephone($telephone);
+
+                    $entityManager->flush();
+
+                    return new JsonResponse([
+                        'code' => 200,
+                        'message' => 'Formulaire valide',
+                        'tel' => $editUserForm->get('telephone')->getData()
+                    ]);
+                } else if ($editUserForm->isSubmitted() && !$editUserForm->isValid()) {
+                    return new JsonResponse([
+                        'code' => 400,
+                        'message' => "Formulaire invalide",
+                        'errors' => $this->getErrorsFromForm($editUserForm)
+                    ]);
+                }
+            }
+        }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
 
     /**

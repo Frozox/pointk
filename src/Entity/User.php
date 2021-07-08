@@ -158,7 +158,7 @@ class User implements UserInterface
     public function addSolde(float $solde): self
     {
         $this->solde += $solde;
-        
+
         return $this;
     }
 

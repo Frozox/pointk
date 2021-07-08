@@ -2,6 +2,7 @@
 <div class="modal fade" id="user-edit-modal" tabindex="-1" aria-labelledby="user-edit-modal-label" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+            {{ form_start(editUserForm, {'attr': {'id': 'user-edit-form'} }) }}
             <div class="modal-header">
                 <h5 class="modal-title" id="user-edit-modal-label">Editer l'utilisateur</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -9,11 +10,47 @@
                 </button>
             </div>
             <div class="modal-body">
+                <ul class="nav nav-tabs mb-3">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#user-info-replenishment">Réapprovisionnement</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user-info-edit">Editer</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="user-info-replenishment" class="tab-pane fade show active">
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    {{form_label(editUserForm.addsolde)}}
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button id="user-info-replenishment-moins" type="button" class="btn btn-dark" disabled="disabled">-</button>
+                                        </div>
+                                        {{form_widget(editUserForm.addsolde, {'attr': {'id': 'user-info-replenishment-input', 'placeholder' : '10'} })}}
+                                        <div class="input-group-append">
+                                            <button id="user-info-replenishment-plus" type="button" class="btn btn-dark">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div style="position: absolute; bottom: 15px;">
+                                    <img style="vertical-align: inherit;" src="/images/placeholder/chestnut.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="user-info-edit" class="tab-pane fade">
+                        {{form_row(editUserForm.nom)}}
+                        {{form_row(editUserForm.telephone)}}
+                        {{form_row(editUserForm.roles)}}
+                        {{form_row(editUserForm.date_fin)}}
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button id="user-edit-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button value="" id="user-edit-button" type="submit" class="btn btn-success">Modifier</button>
+                <button value="" id="user-edit-button" type="submit" class="btn btn-success">Sauvegarder</button>
             </div>
+            {{ form_end(editUserForm) }}
         </div>
     </div>
 </div>

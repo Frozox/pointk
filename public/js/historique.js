@@ -30,7 +30,6 @@ $(document).ready(function () {
         $('#loading').hide("puff").delay(10).queue(function () {
             $('#loading').remove();
             $('.container-fluid').show();
-            commandelist.DataTable().columns.adjust().draw();
         });
     });
 });
