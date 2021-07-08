@@ -1,0 +1,11 @@
+{% for commande in commandes %}
+    <tr id="commande-{{ commande.id() }}">
+        <td>{{ commande.getDateCrea()|date("d-m-Y H:i:s") }}</td>
+        <td>{{ commande.getPrix() }}<img style="vertical-align: inherit;" src="/images/placeholder/chestnut.png" width="20px"></td>
+        <td>
+            {% for commandeProduit in commande.getCommandeProduits() %}
+                <img style="vertical-align: inherit;" src="{{commandeProduit.getProduit().getImage()}}?cache={{ random() }}" width="20px">(x{{ commandeProduit.getQteProduit() }})
+            {% endfor %}
+        </td>
+    </tr>
+{% endfor %}

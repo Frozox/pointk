@@ -193,15 +193,26 @@ class AdminController extends AbstractController
                     }
 
                     $entityManager->flush();
-                }
 
-                return new JsonResponse([
-                    'code' => 200,
-                    'message' => 'Formulaire valide',
-                    'image' => $editProduitForm->get('image')->getData()
-                ]);
+                    return new JsonResponse([
+                        'code' => 200,
+                        'message' => 'Formulaire valide',
+                        'image' => $editProduitForm->get('image')->getData()
+                    ]);
+                } else if ($editProduitForm->isSubmitted() && !$editProduitForm->isValid()) {
+                    return new JsonResponse([
+                        'code' => 400,
+                        'message' => "Formulaire invalide",
+                        'errors' => $this->getErrorsFromForm($editProduitForm)
+                    ]);
+                }
             }
         }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
 
     /**
@@ -296,7 +307,7 @@ class AdminController extends AbstractController
                 if ($request->get('commande')) {
                     $entityManager = $this->getDoctrine()->getManager();
                     $commande = $entityManager->getRepository(Commande::class)->findOneBy(['id' => $request->get('commande')]);
-                    
+
                     //Remboursement
                     $user = $commande->getCommandeUser();
                     $user->addSolde($commande->getPrix());
@@ -312,8 +323,13 @@ class AdminController extends AbstractController
                 }
             }
         }
+
+        return new JsonResponse([
+            'code' => 403,
+            'message' => "Unauthorized"
+        ]);
     }
-    
+
 
     /**
      * @Route("/findproduits", name="findproduits")
